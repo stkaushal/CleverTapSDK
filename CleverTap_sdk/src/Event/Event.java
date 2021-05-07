@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.Http_Client;
@@ -21,14 +22,6 @@ public class Event {
 	
 	public Response uploadEvents(EventPayload payload) throws IOException
 	{
-		String status;
-		int processed;
-		String unprocessed;
-		int code;
-		String error;
-		
-		Response res = new Response();
-		
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -36,38 +29,15 @@ public class Event {
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlUploadEvent, json);
 
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("processed"))
-		{
-			processed = obj.getInt("processed");
-			res.setProcessed(processed);
-		}
-		if(obj.has("unprocessed"))
-		{
-			unprocessed = obj.getString("unprocessed");
-			res.setUnprocessed(unprocessed);
-		}
-		if(obj.has("code"))
-		{
-			code = obj.getInt("code");
-			res.setCode(code);
-		}
-		if(obj.has("error"))
-		{
-			error = obj.getString("error");
-			res.setError(error);
-		}
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	
 	public Cursor getEventsCursor(EventPayload payload, int batch_size) throws IOException
 	{
-		Cursor cur = new Cursor();
 		String url = urlGetEventCursor + "?batch_size=" + batch_size;
 		
 		Http_Client client = new Http_Client();
@@ -77,55 +47,27 @@ public class Event {
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(url, json);
 		
-		String cursor = null;
-		if(obj.has("cursor")) {
-			cursor = obj.getString("cursor");
-			cur.setCur(cursor);
-		}
-		
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Cursor cur = objectMapper.readValue(obj.toString(), Cursor.class);
 		return cur;	
 	}
 	
 	public GetEventsResponse getEventsData(Cursor cursor) throws IOException
 	{
-		String url = urlGetEventCursor + "?cursor=" + cursor.getCur();
-		GetEventsResponse res = new GetEventsResponse();
+		String url = urlGetEventCursor + "?cursor=" + cursor.getCursor();
 		
 		Http_Client client = new Http_Client();
 		JSONObject obj = client.get_request(url);
 		
-		String status = null;
-		String next_cur = null;
-		JSONObject records;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		GetEventsResponse res = objectMapper.readValue(obj.toString(), GetEventsResponse.class);
 		
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("next_cursor"))
-		{
-			next_cur = obj.getString("next_cursor");
-			res.setNextCursor(next_cur);
-		}
-		if(obj.has("records"))
-		{
-			records = obj.getJSONObject("records");
-			res.setRecords(records);
-		}
 		return res;	
 	}
 	
 	public Response getEventCount(EventPayload payload) throws IOException
 	{
-		String status;
-		int count;
-		int code;
-		String error;
-		long req_id;
-		
-		Response res = new Response();
-		
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -133,31 +75,9 @@ public class Event {
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlGetEventCount, json);
 
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("count"))
-		{
-			count = obj.getInt("count");
-			res.setCount(count);
-		}
-		if(obj.has("req_id"))
-		{
-			req_id = obj.getLong("req_id");
-			res.setReq_id(req_id);
-		}
-		if(obj.has("code"))
-		{
-			code = obj.getInt("code");
-			res.setCode(code);
-		}
-		if(obj.has("error"))
-		{
-			error = obj.getString("error");
-			res.setError(error);
-		}
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 }

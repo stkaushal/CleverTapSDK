@@ -1,12 +1,19 @@
 package Helper;
 
 public class Cursor {
-	String cur;
-	public String getCur() {
-		return cur;
+	String cursor;
+	String status;
+	public String getStatus() {
+		return status;
 	}
-	public void setCur(String cur) {
-		this.cur = cur;
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getCursor() {
+		return cursor;
+	}
+	public void setCursor(String cursor) {
+		this.cursor = cursor;
 	}
 	
 }

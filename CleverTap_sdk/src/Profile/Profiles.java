@@ -4,6 +4,7 @@ import java.io.IOException;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.Http_Client;
@@ -24,13 +25,6 @@ public class Profiles {
 	
 	public Response uploadUserProfile(ProfilePayload payload) throws IOException
 	{
-		String status;
-		int processed;
-		String unprocessed;
-		int code;
-		String error;
-		
-		Response res = new Response();
 		
 		Http_Client client = new Http_Client();
 		
@@ -39,38 +33,14 @@ public class Profiles {
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		
 		JSONObject obj = client.post_request(urlUpload, json);
-//		System.out.println("obj is::: "+obj);
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("processed"))
-		{
-			processed = obj.getInt("processed");
-			res.setProcessed(processed);
-		}
-		if(obj.has("unprocessed"))
-		{
-			unprocessed = obj.getString("unprocessed");
-			res.setUnprocessed(unprocessed);
-		}
-		if(obj.has("code"))
-		{
-			code = obj.getInt("code");
-			res.setCode(code);
-		}
-		if(obj.has("error"))
-		{
-			error = obj.getString("error");
-			res.setError(error);
-		}
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	public Cursor getUserProfileCursor(ProfilePayload payload, int batch_size) throws IOException
 	{
-		Cursor cur = new Cursor();
 		String url = urlGetProfileCursor + "?batch_size=" + batch_size;
 		
 		Http_Client client = new Http_Client();
@@ -81,117 +51,57 @@ public class Profiles {
 		
 		JSONObject obj = client.post_request(url, json);
 		
-		String cursor = null;
-		if(obj.has("cursor")) {
-			cursor = obj.getString("cursor");
-			cur.setCur(cursor);
-		}
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Cursor cur = objectMapper.readValue(obj.toString(), Cursor.class);
 		
 		return cur;	
 	}
 	
 	public GetUserProfileResponse getUserProfileData(Cursor cursor) throws IOException
 	{
-		String url = urlGetProfileCursor + "?cursor=" + cursor.getCur();
-		GetUserProfileResponse res = new GetUserProfileResponse();
+		String url = urlGetProfileCursor + "?cursor=" + cursor.getCursor();
 		
 		Http_Client client = new Http_Client();
 		JSONObject obj = client.get_request(url);
 		
-		String status = null;
-		String next_cur = null;
-		String records = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		GetUserProfileResponse res = objectMapper.readValue(obj.toString(), GetUserProfileResponse.class);
 		
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("next_cursor"))
-		{
-			next_cur = obj.getString("next_cursor");
-			res.setNextCursor(next_cur);
-		}
-		if(obj.has("records"))
-		{
-			records = obj.getString("records");
-			res.setRecords(records);
-		}
 		return res;	
 	}
 	
 	public GetUserProfileResponse getUserProfileById(String id) throws IOException
 	{
 		String url = urlGetProfileCursor + "?email=" + id;
-		GetUserProfileResponse res = new GetUserProfileResponse();
 		
 		Http_Client client = new Http_Client();
 		JSONObject obj = client.get_request(url);
 		
-		String status = null;
-		String records;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		GetUserProfileResponse res = objectMapper.readValue(obj.toString(), GetUserProfileResponse.class);
 		
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("records"))
-		{
-			records = obj.getString("records");
-			res.setRecords(records);
-		}
 		return res;	
 	}
 	
 	public Response uploadDeviceTokens(ProfilePayload[] payload) throws IOException
-	{
-		String status;
-		int processed;
-		String unprocessed;
-		int code;
-		String error;
-		
-		Response res = new Response();
-		
+	{	
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlUpload, json);
+		
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("processed"))
-		{
-			processed = obj.getInt("processed");
-			res.setProcessed(processed);
-		}
-		if(obj.has("unprocessed"))
-		{
-			unprocessed = obj.getString("unprocessed");
-			res.setUnprocessed(unprocessed);
-		}
-		if(obj.has("code"))
-		{
-			code = obj.getInt("code");
-			res.setCode(code);
-		}
-		if(obj.has("error"))
-		{
-			error = obj.getString("error");
-			res.setError(error);
-		}
 		return res;
 	}
 	
 	public Response getProfileCount(ProfilePayload payload) throws IOException
 	{
-		Response res = new Response();
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -199,74 +109,43 @@ public class Profiles {
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlGetProfileCount, json);
 		
-		String status = null;
-		int count;
-		long req_id;
-		
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("count"))
-		{
-			count = obj.getInt("count");
-			res.setCount(count);
-		}
-		if(obj.has("req_id"))
-		{
-			req_id = obj.getLong("req_id");
-			res.setReq_id(req_id);
-		}
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		return res;
 	}
 	
 	public Response deleteUserProfile(ProfilePayload payload) throws IOException
 	{
-		Response res = new Response();
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlDeleteProfile, json);
-		String status = null;
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
+		
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
-	Response demergeUserProfile(ProfilePayload payload) throws IOException
+	public Response demergeUserProfile(ProfilePayload payload) throws IOException
 	{
-		Response res = new Response();
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlDemergeProfile, json);
-		String status = null;
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
+		
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	public Response subscribe(ProfilePayload[] payload) throws IOException
 	{
-		String status;
-		int processed;
-		String unprocessed;
-		int code;
-		String error;
-		
-		Response res = new Response();
-		
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -274,44 +153,14 @@ public class Profiles {
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlSubscribe, json);
 
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("processed"))
-		{
-			processed = obj.getInt("processed");
-			res.setProcessed(processed);
-		}
-		if(obj.has("unprocessed"))
-		{
-			unprocessed = obj.getString("unprocessed");
-			res.setUnprocessed(unprocessed);
-		}
-		if(obj.has("code"))
-		{
-			code = obj.getInt("code");
-			res.setCode(code);
-		}
-		if(obj.has("error"))
-		{
-			error = obj.getString("error");
-			res.setError(error);
-		}
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	public Response dissociate(ProfilePayload payload) throws IOException
-	{
-		String status;
-		int processed;
-		String unprocessed;
-		int code;
-		String error;
-		
-		Response res = new Response();
-		
+	{	
 		Http_Client client = new Http_Client();
 		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -319,31 +168,9 @@ public class Profiles {
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject obj = client.post_request(urlDisassociate, json);
 
-		if(obj.has("status"))
-		{
-			status = obj.getString("status");
-			res.setStatus(status);
-		}
-		if(obj.has("processed"))
-		{
-			processed = obj.getInt("processed");
-			res.setProcessed(processed);
-		}
-		if(obj.has("unprocessed"))
-		{
-			unprocessed = obj.getString("unprocessed");
-			res.setUnprocessed(unprocessed);
-		}
-		if(obj.has("code"))
-		{
-			code = obj.getInt("code");
-			res.setCode(code);
-		}
-		if(obj.has("error"))
-		{
-			error = obj.getString("error");
-			res.setError(error);
-		}
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 }
