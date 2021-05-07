@@ -24,11 +24,12 @@ import org.apache.http.message.BasicHeaderElementIterator;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+
+import Helper.SetCredentials;
+
 import org.apache.http.conn.HttpClientConnectionManager;
 
 public class Http_Client {
-    String Cid = "4R8-K98-8Z6Z";
-	String CPswd = "AOE-RUW-CHUL";
 	
 	private int keepAlive = 5*60*1000;
 	CloseableHttpClient httpClient = null;
@@ -50,6 +51,8 @@ public class Http_Client {
 			return keepAlive;
 		}
 	};
+	
+	SetCredentials credentials = new SetCredentials();
 	
 	public Http_Client()
 	{
@@ -88,12 +91,13 @@ public class Http_Client {
 	    		  .build();
 
         httppost.setConfig(requestConfig);
+        
 
         //Printing the method used
         //System.out.println("Request Type: "+httppost.getMethod());
         httppost.addHeader("Content-Type", "application/json; charset=UTF-8");
-        httppost.addHeader("X-CleverTap-Account-Id", Cid);
-        httppost.addHeader("X-CleverTap-Passcode", CPswd);
+        httppost.addHeader("X-CleverTap-Account-Id", credentials.getId());
+        httppost.addHeader("X-CleverTap-Passcode", credentials.getPassword());
         
         
         StringEntity params = null;
@@ -191,8 +195,8 @@ public class Http_Client {
 
 	    httpget.setConfig(requestConfig);
 	    httpget.addHeader("Content-Type", "application/json; charset=UTF-8");
-	    httpget.addHeader("X-CleverTap-Account-Id", Cid);
-	    httpget.addHeader("X-CleverTap-Passcode", CPswd);
+	    httpget.addHeader("X-CleverTap-Account-Id", credentials.getId());
+	    httpget.addHeader("X-CleverTap-Passcode", credentials.getPassword());
 
 	    //Printing the method used
 	    //System.out.println("Request Type: "+httpget.getMethod());
