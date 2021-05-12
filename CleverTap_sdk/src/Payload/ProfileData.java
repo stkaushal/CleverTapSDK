@@ -1,22 +1,47 @@
 package Payload;
 
+import java.util.HashMap;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ProfileData {
 	
     String Name;
     String Email;
     String Phone;
     String Gender;
+    
+    @JsonProperty(value="MSG-sms")
     boolean MSG_sms;
+    
+    @JsonProperty(value="MSG-email")
     boolean MSG_email;
+    
+    @JsonProperty(value="MSG-whatsapp")
     boolean MSG_whatsapp;
+    
+    @JsonProperty(value="MSG-dndPhone")
     boolean MSG_dndPhone;
+    
+    @JsonProperty(value="MSG-dndEmail")
     boolean MSG_dndEmail;
+    
+    @JsonProperty(value="category-unsubscribe")
     CategoryUnsubscribe category_unsubscribe;
+    
+    @JsonProperty(value="category-resubscribe")
     CategoryResubscribe category_resubscribe;
-    String DOB;   
-    String Customer_Type;
-    CustomMultiValue custom_multi_value;
-    IncreDecre incre_decre;
+   
+    String DOB;  
+    HashMap<String, Object> extra_data;
+    
+    
+	public HashMap<String, Object> getExtra_data() {
+		return extra_data;
+	}
+	public void setExtra_data(HashMap<String, Object> extra_data) {
+		this.extra_data = extra_data;
+	}
 	public String getName() {
 		return Name;
 	}
@@ -89,23 +114,5 @@ public class ProfileData {
 	public void setDOB(String dOB) {
 		DOB = dOB;
 	}
-	public String getCustomer_Type() {
-		return Customer_Type;
-	}
-	public void setCustomer_Type(String customer_Type) {
-		Customer_Type = customer_Type;
-	}
-	public CustomMultiValue getCustom_multi_value() {
-		return custom_multi_value;
-	}
-	public void setCustom_multi_value(CustomMultiValue custom_multi_value) {
-		this.custom_multi_value = custom_multi_value;
-	}
-	public IncreDecre getIncre_decre() {
-		return incre_decre;
-	}
-	public void setIncre_decre(IncreDecre incre_decre) {
-		this.incre_decre = incre_decre;
-	}
-  
+	
 }

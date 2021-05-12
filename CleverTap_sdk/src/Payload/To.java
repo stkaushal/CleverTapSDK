@@ -1,21 +1,22 @@
 package Payload;
 
 public class To {
-	String FBID;
-	String Email;
+	String[] FBID;
+	String[] Email;
 	String[] Identity;
 	String[] objectId;
 	
-	public String getFBID() {
+	
+	public String[] getFBID() {
 		return FBID;
 	}
-	public void setFBID(String fBID) {
+	public void setFBID(String[] fBID) {
 		FBID = fBID;
 	}
-	public String getEmail() {
+	public String[] getEmail() {
 		return Email;
 	}
-	public void setEmail(String email) {
+	public void setEmail(String[] email) {
 		Email = email;
 	}
 	public String[] getIdentity() {

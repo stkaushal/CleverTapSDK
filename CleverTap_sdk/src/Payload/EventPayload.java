@@ -9,7 +9,7 @@ public class EventPayload {
 	String type;
 	String evtName;
 	String timestamp;
-	HashMap<String, String> evtData;
+	HashMap<String, Object> evtData;
 	HashMap<String, String> event_properties;
 	long ts;
 	String identity;
@@ -18,6 +18,12 @@ public class EventPayload {
 	String objectId;
 	
 	
+	public HashMap<String, Object> getEvtData() {
+		return evtData;
+	}
+	public void setEvtData(HashMap<String, Object> evtData) {
+		this.evtData = evtData;
+	}
 	public int getFrom() {
 		return from;
 	}
@@ -35,12 +41,6 @@ public class EventPayload {
 	}
 	public void setEvtName(String evtName) {
 		this.evtName = evtName;
-	}
-	public HashMap<String, String> getEvtData() {
-		return evtData;
-	}
-	public void setEvtData(HashMap<String, String> evtData) {
-		this.evtData = evtData;
 	}
 	public long getTs() {
 		return ts;

@@ -1,15 +1,15 @@
 package Response;
 
-import org.json.JSONObject;
 
 public class GetEventsResponse extends Response{
 	String nextCursor = null;
-	JSONObject records;
+	RecordsProfile records;
 	
-	public JSONObject getRecords() {
+	
+	public RecordsProfile getRecords() {
 		return records;
 	}
-	public void setRecords(JSONObject records) {
+	public void setRecords(RecordsProfile records) {
 		this.records = records;
 	}
 	public String getNextCursor() {

@@ -21,7 +21,6 @@ public class CampaignPayload {
 	boolean skip_estimate;
 	boolean send_to_all_devices;
 	int segment;
-	String platform_specific;
 	To to;
 	String tag_group;
 	int badge_id;
@@ -84,12 +83,6 @@ public class CampaignPayload {
 	}
 	public void setTtl(int ttl) {
 		this.ttl = ttl;
-	}
-	public String getPlatform_specific() {
-		return platform_specific;
-	}
-	public void setPlatform_specific(String platform_specific) {
-		this.platform_specific = platform_specific;
 	}
 	public int getSegment() {
 		return segment;

@@ -1,8 +1,15 @@
 package Response;
 
+import java.util.HashMap;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Message {
+	
+	@JsonProperty(value="message id")
 	long message_id;
-	String[] data;
+	
+	HashMap<String, String>[] data;
 	String start_date;
 	String[] device;
 	String conversion_event;
@@ -16,10 +23,11 @@ public class Message {
 	public void setMessage_id(long message_id) {
 		this.message_id = message_id;
 	}
-	public String[] getData() {
+
+	public HashMap<String, String>[] getData() {
 		return data;
 	}
-	public void setData(String[] data) {
+	public void setData(HashMap<String, String>[] data) {
 		this.data = data;
 	}
 	public String getStart_date() {

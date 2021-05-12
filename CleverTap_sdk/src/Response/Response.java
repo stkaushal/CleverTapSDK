@@ -1,5 +1,7 @@
 package Response;
 
+import java.util.HashMap;
+
 public class Response {
 	
 	String status = null;
@@ -12,13 +14,14 @@ public class Response {
 	String user_type;
 	int total_results;
 	Message messages;
+	
 	String foo;
-	String bar;
-	String foobar;
+	
+	HashMap<String, String> estimates;
 	Result result;
 	Target[] targets;
-	String estimates;
 	String message = null;
+	
 	public String getStatus() {
 		return status;
 	}
@@ -85,18 +88,7 @@ public class Response {
 	public void setFoo(String foo) {
 		this.foo = foo;
 	}
-	public String getBar() {
-		return bar;
-	}
-	public void setBar(String bar) {
-		this.bar = bar;
-	}
-	public String getFoobar() {
-		return foobar;
-	}
-	public void setFoobar(String foobar) {
-		this.foobar = foobar;
-	}
+	
 	public Result getResult() {
 		return result;
 	}

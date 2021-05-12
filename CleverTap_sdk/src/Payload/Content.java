@@ -1,5 +1,7 @@
 package Payload;
 
+import java.util.HashMap;
+
 public class Content {
 	String title;
 	String body;
@@ -9,6 +11,7 @@ public class Content {
 	String replacements;
 	String attachments;
 	String template_id;
+	HashMap<String, Object> platform_specific;
 	
 	public String getTemplate_id() {
 		return template_id;

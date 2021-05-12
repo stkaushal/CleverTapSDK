@@ -1,10 +1,12 @@
 package Payload;
 
+import java.util.HashMap;
+
 public class ProfilePayload {
-	String identity;
+	String[] identity;
 	String[] indentities; 
 	String objectId;
-	String guid;
+	String[] guid;
 	String FBID;
 	String event_name; 
 	TokenData tokenData;
@@ -12,11 +14,29 @@ public class ProfilePayload {
 	int to;
 	String ts;
 	ProfileData profileData;
-	EventProperties event_properties;
+	HashMap<String, String> event_properties;
 	String status; 
 	String type;
 	String value;
 	
+	public String[] getIdentity() {
+		return identity;
+	}
+	public void setIdentity(String[] identity) {
+		this.identity = identity;
+	}
+	public String[] getGuid() {
+		return guid;
+	}
+	public void setGuid(String[] guid) {
+		this.guid = guid;
+	}
+	public HashMap<String, String> getEvent_properties() {
+		return event_properties;
+	}
+	public void setEvent_properties(HashMap<String, String> event_properties) {
+		this.event_properties = event_properties;
+	}
 	public String getFBID() {
 		return FBID;
 	}
@@ -29,19 +49,7 @@ public class ProfilePayload {
 	public void setTs(String ts) {
 		this.ts = ts;
 	}
-	public EventProperties getEvent_properties() {
-		return event_properties;
-	}
-	public void setEvent_properties(EventProperties event_properties) {
-		this.event_properties = event_properties;
-	}
 	
-	public String getIdentity() {
-		return identity;
-	}
-	public void setIdentity(String identity) {
-		this.identity = identity;
-	}
 	public String[] getIndentities() {
 		return indentities;
 	}
@@ -53,12 +61,6 @@ public class ProfilePayload {
 	}
 	public void setObjectId(String objectId) {
 		this.objectId = objectId;
-	}
-	public String getGuid() {
-		return guid;
-	}
-	public void setGuid(String guid) {
-		this.guid = guid;
 	}
 	
 	public String getEvent_name() {
