@@ -2,6 +2,9 @@ package Response;
 
 import java.util.HashMap;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+
 public class Response {
 	
 	String status = null;
@@ -22,6 +25,16 @@ public class Response {
 	Target[] targets;
 	String message = null;
 	
+	HashMap<String, String> extra_data;
+	
+	@JsonAnyGetter
+	public HashMap<String, String> getExtra_data() {
+		return extra_data;
+	}
+	@JsonAnySetter
+	public void setExtra_data(HashMap<String, String> extra_data) {
+		this.extra_data = extra_data;
+	}
 	public String getStatus() {
 		return status;
 	}
@@ -101,10 +114,10 @@ public class Response {
 	public void setTargets(Target[] targets) {
 		this.targets = targets;
 	}
-	public String getEstimates() {
+	public HashMap<String, String> getEstimates() {
 		return estimates;
 	}
-	public void setEstimates(String estimates) {
+	public void setEstimates(HashMap<String, String> estimates) {
 		this.estimates = estimates;
 	}
 	public String getMessage() {

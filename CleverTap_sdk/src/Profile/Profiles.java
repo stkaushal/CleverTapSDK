@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import HTTP.Http_Client;
+import HTTP.HttpClient;
 import Helper.Cursor;
 import Payload.ProfilePayload;
 import Response.GetUserProfileResponse;
@@ -23,152 +23,120 @@ public class Profiles {
 	static String urlSubscribe = "https://api.clevertap.com/1/subscribe/";
 	static String urlDisassociate = "https://api.clevertap.com/1/disassociate/";
 	
-	public Response uploadUserProfile(ProfilePayload payload) throws IOException
+	ObjectMapper objectMapper = new ObjectMapper();
+	
+	public Profiles(){
+		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
+		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+	}
+
+
+	public Response uploadUserProfile(ProfilePayload payload) throws IOException, InterruptedException
 	{
+		HttpClient client = new HttpClient();
 		
-		Http_Client client = new Http_Client();
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		
-		JSONObject obj = client.post_request(urlUpload, json);
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlUpload, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Cursor getUserProfileCursor(ProfilePayload payload, int batch_size) throws IOException
+	public Cursor getUserProfileCursor(ProfilePayload payload, int batch_size) throws IOException, InterruptedException
 	{
 		String url = urlGetProfileCursor + "?batch_size=" + batch_size;
 		
-		Http_Client client = new Http_Client();
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
+		HttpClient client = new HttpClient();
+
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		
-		JSONObject obj = client.post_request(url, json);
-		
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(url, json);
 		Cursor cur = objectMapper.readValue(obj.toString(), Cursor.class);
 		
 		return cur;	
 	}
 	
-	public GetUserProfileResponse getUserProfileData(Cursor cursor) throws IOException
+	public GetUserProfileResponse getUserProfileData(Cursor cursor) throws IOException, InterruptedException
 	{
 		String url = urlGetProfileCursor + "?cursor=" + cursor.getCursor();
 		
-		Http_Client client = new Http_Client();
-		JSONObject obj = client.get_request(url);
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		HttpClient client = new HttpClient();
+		JSONObject obj = client.getRequest(url);
 		GetUserProfileResponse res = objectMapper.readValue(obj.toString(), GetUserProfileResponse.class);
 		
 		return res;	
 	}
 	
-	public GetUserProfileResponse getUserProfileById(String id) throws IOException
+	public GetUserProfileResponse getUserProfileById(String id) throws IOException, InterruptedException
 	{
 		String url = urlGetProfileCursor + "?email=" + id;
 		
-		Http_Client client = new Http_Client();
-		JSONObject obj = client.get_request(url);
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		HttpClient client = new HttpClient();
+		JSONObject obj = client.getRequest(url);
 		GetUserProfileResponse res = objectMapper.readValue(obj.toString(), GetUserProfileResponse.class);
 		
 		return res;	
 	}
 	
-	public Response uploadDeviceTokens(ProfilePayload[] payload) throws IOException
+	public Response uploadDeviceTokens(ProfilePayload[] payload) throws IOException, InterruptedException
 	{	
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlUpload, json);
-		
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlUpload, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 
 		return res;
 	}
 	
-	public Response getProfileCount(ProfilePayload payload) throws IOException
+	public Response getProfileCount(ProfilePayload payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlGetProfileCount, json);
-		
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlGetProfileCount, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		return res;
 	}
 	
-	public Response deleteUserProfile(ProfilePayload payload) throws IOException
+	public Response deleteUserProfile(ProfilePayload payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlDeleteProfile, json);
-		
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlDeleteProfile, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response demergeUserProfile(ProfilePayload payload) throws IOException
+	public Response demergeUserProfile(ProfilePayload payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlDemergeProfile, json);
-		
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlDemergeProfile, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response subscribe(ProfilePayload[] payload) throws IOException
+	public Response subscribe(ProfilePayload[] payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlSubscribe, json);
-
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlSubscribe, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response dissociate(ProfilePayload payload) throws IOException
+	public Response dissociate(ProfilePayload payload) throws IOException, InterruptedException
 	{	
-		Http_Client client = new Http_Client();
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
+		HttpClient client = new HttpClient();
+	
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlDisassociate, json);
-
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlDisassociate, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;

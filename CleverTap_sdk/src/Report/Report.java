@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import HTTP.Http_Client;
+import HTTP.HttpClient;
 import Payload.ReportPayload;
 import Response.Response;
 
@@ -19,62 +19,57 @@ public class Report {
 	static String urlGetTopPropertyCount = "https://api.clevertap.com/1/counts/top.json";
 	static String urlGetTrends = "https://api.clevertap.com/1/counts/trends.json";
 	
+	ObjectMapper objectMapper = new ObjectMapper();
 	
-	public Response getRealTimeCounts(ReportPayload payload) throws IOException
+	public Report(){
+		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
+		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+	}
+	
+	
+	public Response getRealTimeCounts(ReportPayload payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
+		
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlGetRealTimeCounts, json);
-
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlGetRealTimeCounts, json);
+				
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response getMessageReports(ReportPayload payload) throws IOException
+	public Response getMessageReports(ReportPayload payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
+		
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlGetMessageReport, json);
+		JSONObject obj = client.postRequest(urlGetMessageReport, json);
 
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response getTopPropertyCount(ReportPayload payload) throws IOException
+	public Response getTopPropertyCount(ReportPayload payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlGetTopPropertyCount, json);
-
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlGetTopPropertyCount, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response getTrends(ReportPayload payload) throws IOException
+	public Response getTrends(ReportPayload payload) throws IOException, InterruptedException
 	{
-		Http_Client client = new Http_Client();
+		HttpClient client = new HttpClient();
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.post_request(urlGetTrends, json);
-		
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		JSONObject obj = client.postRequest(urlGetTrends, json);
 		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
