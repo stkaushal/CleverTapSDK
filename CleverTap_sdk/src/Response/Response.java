@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 
 public class Response {
 	
-	String status = null;
+	String status;
 	int processed;
-	String unprocessed = null;
-	String error = null;
+	Object[] unprocessed;
+	String error;
 	int code;
 	int count;
 	long req_id;
@@ -23,7 +23,7 @@ public class Response {
 	HashMap<String, String> estimates;
 	Result result;
 	Target[] targets;
-	String message = null;
+	String message;
 	
 	HashMap<String, String> extra_data;
 	
@@ -47,10 +47,10 @@ public class Response {
 	public void setProcessed(int processed) {
 		this.processed = processed;
 	}
-	public String getUnprocessed() {
+	public Object[] getUnprocessed() {
 		return unprocessed;
 	}
-	public void setUnprocessed(String unprocessed) {
+	public void setUnprocessed(Object[] unprocessed) {
 		this.unprocessed = unprocessed;
 	}
 	public String getError() {

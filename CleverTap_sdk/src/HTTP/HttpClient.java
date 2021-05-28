@@ -30,11 +30,13 @@ import org.apache.http.conn.HttpClientConnectionManager;
 
 public class HttpClient {
 	
-	private int keepAlive = 5*60*1000;
-	private int MAX_CONN = 3;
-	private int MAX_CONN_PER_ROUTE = 3;
-	private int CONN_TIMEOUT = 10*1000;
-	private CloseableHttpClient httpClient = null;
+	private static final int KEEP_ALIVE = 5*60*1000;
+	private static final int MAX_CONN = 3;
+	private static final int MAX_CONN_PER_ROUTE = 3;
+	private static final int CONN_TIMEOUT = 10*1000;
+	private RequestConfig requestConfig;
+	private CloseableHttpClient httpClient;
+	private CloseableHttpResponse httpResponse;
 	private PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
 	
 	private ConnectionKeepAliveStrategy keepAliveStrategy = new ConnectionKeepAliveStrategy() {
@@ -50,27 +52,30 @@ public class HttpClient {
 					return Long.parseLong(value) * 1000;
 				}
 			}
-			return keepAlive;
+			return KEEP_ALIVE;
 		}
 	};
 
 	
 	public HttpClient()
 	{
-		connManager.setMaxTotal(MAX_CONN);
+		this.httpClient = null;
+		this.httpResponse = null;
+		
+		this.requestConfig = RequestConfig.custom()
+	    		  .setSocketTimeout(CONN_TIMEOUT)
+	    		  .setConnectTimeout(CONN_TIMEOUT)
+	    		  .setConnectionRequestTimeout(CONN_TIMEOUT)
+	    		  .build();
+		
+		this.connManager.setMaxTotal(MAX_CONN);
 		// Increase default max connection per route
-		connManager.setDefaultMaxPerRoute(MAX_CONN_PER_ROUTE);
+		this.connManager.setDefaultMaxPerRoute(MAX_CONN_PER_ROUTE);
 
-		// config timeout
-		RequestConfig config = RequestConfig.custom()
-				.setConnectTimeout(CONN_TIMEOUT)
-				.setConnectionRequestTimeout(CONN_TIMEOUT)
-				.setSocketTimeout(CONN_TIMEOUT).build();
-
-		httpClient = HttpClients.custom()
+		this.httpClient = HttpClients.custom()
 				.setKeepAliveStrategy(keepAliveStrategy)
 				.setConnectionManager(connManager)
-				.setDefaultRequestConfig(config).build();
+				.setDefaultRequestConfig(requestConfig).build();
 
 		// detect idle and expired connections and close them
 		IdleConnectionMonitorThread staleMonitor = new IdleConnectionMonitorThread(connManager);
@@ -81,16 +86,9 @@ public class HttpClient {
 	
 	public JSONObject postRequest(String url, JSONObject obj) throws IOException, InterruptedException
 	{
-		
 		JSONObject response = null;
         HttpPost httpPost = new HttpPost(url);
         
-        RequestConfig requestConfig = RequestConfig.custom()
-	    		  .setSocketTimeout(CONN_TIMEOUT)
-	    		  .setConnectTimeout(CONN_TIMEOUT)
-	    		  .setConnectionRequestTimeout(CONN_TIMEOUT)
-	    		  .build();
-
         httpPost.setConfig(requestConfig);
 
         httpPost.addHeader("Content-Type", "application/json; charset=UTF-8");
@@ -101,7 +99,6 @@ public class HttpClient {
 		params = new StringEntity(obj.toString());
         httpPost.setEntity(params);
         
-        CloseableHttpResponse httpResponse = null;
         int tries = 5;
         int timeoutSeed = 1;
 		while (true) {
@@ -166,20 +163,13 @@ public class HttpClient {
 	   
 	    //Creating a HttpGet object
 	    HttpGet httpGet = new HttpGet(url);
-	    
-	    RequestConfig requestConfig = RequestConfig.custom()
-	    		  .setSocketTimeout(CONN_TIMEOUT)
-	    		  .setConnectTimeout(CONN_TIMEOUT)
-	    		  .setConnectionRequestTimeout(CONN_TIMEOUT)
-	    		  .build();
 
 	    httpGet.setConfig(requestConfig);
+	    
 	    httpGet.addHeader("Content-Type", "application/json; charset=UTF-8");
 	    httpGet.addHeader("X-CleverTap-Account-Id", ClevertapInstance.getId());
 	    httpGet.addHeader("X-CleverTap-Passcode", ClevertapInstance.getPassword());
 
-	    //Executing the Get request
-	    CloseableHttpResponse httpResponse = null;
 	    int tries = 5;
 	    int timeoutSeed = 1;
 		while (true) {

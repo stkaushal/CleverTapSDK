@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: Event.EventTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.44 sec <<< FAILURE!
+Event.EventTest.testUploadEvents()  Time elapsed: 0.439 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at Event.EventTest.testUploadEvents(EventTest.java:44)
+
+Event.EventTest.testGetEventsCursor()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at Event.EventTest.testGetEventsCursor(EventTest.java:60)
+
+Event.EventTest.testGetEventsData()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at Event.EventTest.testGetEventsData(EventTest.java:74)
+
+Event.EventTest.testGetEventCount()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at Event.EventTest.testGetEventCount(EventTest.java:91)
+
