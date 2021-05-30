@@ -1,7 +1,8 @@
 # CleverTapSDK
 
-[![codecov](https://codecov.io/gh/dharmendersheshma/CleverTapSDK/branch/master/graph/badge.svg)](https://codecov.io/gh/dharmendersheshma/CleverTapSDK)
+[![codecov](https://codecov.io/gh/dharmendersheshma/CleverTapSDK/branch/main/graph/badge.svg?token=ZK52LMPKPA)](https://codecov.io/gh/dharmendersheshma/CleverTapSDK)
 
 
 
-API SDK
+To check test coverage click on the above badge.
+
