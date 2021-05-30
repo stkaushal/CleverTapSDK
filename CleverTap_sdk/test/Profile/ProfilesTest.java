@@ -54,7 +54,6 @@ public class ProfilesTest {
 		Cursor cursor = null;
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("cursor", "fhsklaioclamlkkjadajj");
-		jsonResponse.put("status", "success");
 		ProfilePayload payload = new ProfilePayload();
 		payload.setFBID("Random_id");
 		
@@ -64,7 +63,6 @@ public class ProfilesTest {
 		
         Assert.assertNotNull(cursor);
         Assert.assertEquals("fhsklaioclamlkkjadajj", cursor.getCursor());
-        Assert.assertEquals("success", cursor.getStatus());
 	}
 	
 

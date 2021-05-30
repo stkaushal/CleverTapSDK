@@ -21,7 +21,7 @@ public class CampaignsTest {
 
 	@Before
 	public void setUp() throws Exception {
-		System.out.println("Before Campaign test call");
+		System.out.println("Before profile test call");
 		MockitoAnnotations.initMocks(this);
 	}
 

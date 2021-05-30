@@ -1,25 +1,20 @@
 package HTTP;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpVersion;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicStatusLine;
 import org.json.JSONObject;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -27,7 +22,7 @@ import org.mockito.MockitoAnnotations;
 
 import HTTP.HttpClient;
 
-public class HttpClientTest {
+class HttpClientTest {
 	
 	private static String URL_DUMMY = "random";
 	
@@ -38,20 +33,20 @@ public class HttpClientTest {
 	
 	@InjectMocks private HttpClient client;
 	
-	@Before
+	@BeforeEach
 	public void setup() {
-		System.out.println("Before HttpClient test call");
+		System.out.println("Before test call");
 		MockitoAnnotations.initMocks(this);
 	}
 
 	
 	@Test
-	public void testHttpClient() {
+	void testHttpClient() {
 		//fail("Not yet implemented");
 	}
 
 	@Test
-	public void testPostRequest() {
+	void testPostRequest() {
 		JSONObject result = null;
 	
         try {
@@ -70,13 +65,13 @@ public class HttpClientTest {
 			e.printStackTrace();
 		}
         
-        Assert.assertEquals(200, httpResponse.getStatusLine().getStatusCode());
-        Assert.assertNotNull(result);
-        Assert.assertEquals("string", result.getString("dummy"));
+        Assertions.assertEquals(200, httpResponse.getStatusLine().getStatusCode());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals("string", result.getString("dummy"));
 	}
-	
+
 	@Test
-	public void testGetRequest() {
+	void testGetRequest() {
 		JSONObject result = null;
 		
         try {
@@ -95,53 +90,9 @@ public class HttpClientTest {
 			e.printStackTrace();
 		}
         
-        Assert.assertEquals(200, httpResponse.getStatusLine().getStatusCode());
-        Assert.assertNotNull(result);
-        Assert.assertEquals("string", result.getString("dummy"));
+        Assertions.assertEquals(200, httpResponse.getStatusLine().getStatusCode());
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals("string", result.getString("dummy"));
 	}
-	
-	@Test
-	public void testConnectTimeoutException() throws IOException, InterruptedException {
-		
-		Mockito.when(httpResponse.getStatusLine()).thenReturn(new BasicStatusLine(HttpVersion.HTTP_1_1, 200, null));
-    	Mockito.when(httpResponse.getEntity()).thenReturn(entity);
-    	InputStream stream = new ByteArrayInputStream("{ \"dummy\" : \"string\" }".getBytes());
-    	Mockito.when(entity.getContent()).thenReturn(stream);
-    	ConnectTimeoutException connExc = new ConnectTimeoutException();
-    	
-		Mockito.when(httpClient.execute(Mockito.any(HttpPost.class))).thenThrow(connExc);
-		Mockito.when(httpClient.execute(Mockito.any(HttpGet.class))).thenThrow(connExc);
-		HttpClient spyClient = Mockito.spy(new HttpClient());
-	    Mockito.doReturn(0).when(spyClient).getTryConnTimeOut();
-		
-		try {
-			spyClient.getRequest(URL_DUMMY);
-			spyClient.postRequest(URL_DUMMY, payload);
-		}catch(ConnectTimeoutException e) {
-			Assert.assertTrue(true);
-		}
-	}
-	
-	@Test
-	public void testClientProtocolException() throws IOException, InterruptedException {
-		
-		Mockito.when(httpResponse.getStatusLine()).thenReturn(new BasicStatusLine(HttpVersion.HTTP_1_1, 200, null));
-    	Mockito.when(httpResponse.getEntity()).thenReturn(entity);
-    	InputStream stream = new ByteArrayInputStream("{ \"dummy\" : \"string\" }".getBytes());
-    	Mockito.when(entity.getContent()).thenReturn(stream);
-    	
-    	ClientProtocolException cliExc = new ClientProtocolException();
-    	
-		Mockito.when(httpClient.execute(Mockito.any(HttpGet.class))).thenThrow(cliExc);
-		Mockito.when(httpClient.execute(Mockito.any(HttpPost.class))).thenThrow(cliExc);
-    	
-		
-		try {
-			client.getRequest(URL_DUMMY);
-			client.postRequest(URL_DUMMY, payload);
-		}catch(ClientProtocolException e) {
-			Assert.assertTrue(true);
-		}
-		
-	}
+
 }

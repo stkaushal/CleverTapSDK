@@ -99,29 +99,18 @@ public class HttpClient {
 		params = new StringEntity(obj.toString());
         httpPost.setEntity(params);
         
-        int tryStatus500 = 5;
-        int tryConnTimeOut = getTryConnTimeOut();
-        int tryHttpHostConn = 5;
-        int tryIO = 5;
-        
-        int timeStatus500 = 1;
-        int timeConnTimeOut = 1;
-        int timeHttpHostConn = 1;
-        int timeIO = 1;
-        
+        int tries = 5;
+        int timeoutSeed = 1;
 		while (true) {
-			tryStatus500--;
-			tryConnTimeOut--;
-			tryHttpHostConn--;
-			tryIO--;
+			tries--;
 			try {
 				httpResponse = httpClient.execute(httpPost);
 				if(httpResponse.getStatusLine().getStatusCode()>=500 && httpResponse.getStatusLine().getStatusCode()<=599)
 				{
-					System.out.println("Server status " + httpResponse.getStatusLine().getStatusCode() + ". Retrying to post in " + timeStatus500*2 +  " seconds...");
-					TimeUnit.SECONDS.sleep(timeStatus500*2);
-					timeStatus500 = 2*timeStatus500;
-			        if(tryStatus500 == 0)
+					System.out.println("Server status " + httpResponse.getStatusLine().getStatusCode() + ". Retrying to post in " + timeoutSeed*2 +  " seconds...");
+					TimeUnit.SECONDS.sleep(timeoutSeed*2);
+			        timeoutSeed = 2*timeoutSeed;
+			        if(tries == 0)
 			        {
 						System.out.println("Server status " + httpResponse.getStatusLine().getStatusCode() + ". Maximum retries exceeded, try later.");
 			        	break;
@@ -137,17 +126,17 @@ public class HttpClient {
 				protocolException.printStackTrace();
 				break;	
 			} catch(ConnectTimeoutException | SocketTimeoutException timeoutException) {
-				System.out.println("Failed! Timeout in post request, retrying in " + timeConnTimeOut*2 + " seconds...");
-				TimeUnit.SECONDS.sleep(timeConnTimeOut*2);
-				timeConnTimeOut = 2*timeConnTimeOut;
+				System.out.println("Failed! Timeout in post request, retrying in " + timeoutSeed*2 + " seconds...");
+				TimeUnit.SECONDS.sleep(timeoutSeed*2);
+		        timeoutSeed = 2*timeoutSeed;
 			} catch(HttpHostConnectException connectionException) {
-				System.out.println("Connection refused by server during post request. Retrying in " + timeHttpHostConn*2 + " seconds...");
-				TimeUnit.SECONDS.sleep(timeHttpHostConn*2);
-				timeHttpHostConn = timeHttpHostConn*2;
+				System.out.println("Connection refused by server during post request. Retrying in " + timeoutSeed*2 + " seconds...");
+				TimeUnit.SECONDS.sleep(timeoutSeed*2);
+				timeoutSeed = timeoutSeed*2;
 			} catch (IOException ioException) {
-				System.out.println("IOException caught during post request: " + ioException + "\n Retrying in " + timeIO*2 + " seconds...");
-				TimeUnit.SECONDS.sleep(timeIO*2);
-				timeIO = timeIO*2;
+				System.out.println("IOException caught during post request: " + ioException + "\n Retrying in " + timeoutSeed*2 + " seconds...");
+				TimeUnit.SECONDS.sleep(timeoutSeed*2);
+				timeoutSeed = timeoutSeed*2;
 			}
 			finally {
 				if(httpResponse!=null)
@@ -159,7 +148,7 @@ public class HttpClient {
 					}
 				}
 			}
-			if(tryStatus500==0 || tryConnTimeOut==0 || tryHttpHostConn==0 || tryIO==0)
+			if(tries==0)
 			{
 				System.out.println("Maximum retries exceeded, try later.");
 				break;
@@ -168,12 +157,6 @@ public class HttpClient {
 		return response;
 	}
 	
-	protected int getTryConnTimeOut() {
-		return 5;
-	}
-
-
-
 	public JSONObject getRequest(String url) throws IOException, InterruptedException {
 		
 	    JSONObject response = null;
@@ -187,29 +170,18 @@ public class HttpClient {
 	    httpGet.addHeader("X-CleverTap-Account-Id", ClevertapInstance.getId());
 	    httpGet.addHeader("X-CleverTap-Passcode", ClevertapInstance.getPassword());
 
-	    int tryStatus500 = 5;
-        int tryConnTimeOut = getTryConnTimeOut();
-        int tryHttpHostConn = 5;
-        int tryIO = 5;
-        
-        int timeStatus500 = 1;
-        int timeConnTimeOut = 1;
-        int timeHttpHostConn = 1;
-        int timeIO = 1;
-        
+	    int tries = 5;
+	    int timeoutSeed = 1;
 		while (true) {
-			tryStatus500--;
-			tryConnTimeOut--;
-			tryHttpHostConn--;
-			tryIO--;
+			tries--;
 			try {
 				httpResponse = httpClient.execute(httpGet);
 				if(httpResponse.getStatusLine().getStatusCode()>=500 && httpResponse.getStatusLine().getStatusCode()<=599)
 				{
-					System.out.println("Server status " + httpResponse.getStatusLine().getStatusCode() + ". Retrying to get in " + timeStatus500*2 +  " seconds...");
-					TimeUnit.SECONDS.sleep(timeStatus500*2);
-					timeStatus500 = 2*timeStatus500;
-			        if(tryStatus500 == 0)
+					System.out.println("Server status for get request" + httpResponse.getStatusLine().getStatusCode() + ". Retrying to post in " + timeoutSeed*2 +  " seconds...");
+					TimeUnit.SECONDS.sleep(timeoutSeed*2);
+			        timeoutSeed = 2*timeoutSeed;
+			        if(tries == 0)
 			        {
 						System.out.println("Server status " + httpResponse.getStatusLine().getStatusCode() + ". Maximum retries exceeded, try later.");
 			        	break;
@@ -219,23 +191,23 @@ public class HttpClient {
 				HttpEntity entity = httpResponse.getEntity();
 				String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);
 				response = new JSONObject(json);
-		        break;
+				break;
 			} catch (ClientProtocolException protocolException) {
 				System.out.println("Exception occured: " + protocolException);
 				protocolException.printStackTrace();
 				break;	
 			} catch(ConnectTimeoutException | SocketTimeoutException timeoutException) {
-				System.out.println("Failed! Timeout in get request, retrying in " + timeConnTimeOut*2 + " seconds...");
-				TimeUnit.SECONDS.sleep(timeConnTimeOut*2);
-				timeConnTimeOut = 2*timeConnTimeOut;
+				System.out.println("Failed! Timeout in post request, retrying in " + timeoutSeed*2 + " seconds...");
+				TimeUnit.SECONDS.sleep(timeoutSeed*2);
+		        timeoutSeed = 2*timeoutSeed;
 			} catch(HttpHostConnectException connectionException) {
-				System.out.println("Connection refused by server during get request. Retrying in " + timeHttpHostConn*2 + " seconds...");
-				TimeUnit.SECONDS.sleep(timeHttpHostConn*2);
-				timeHttpHostConn = timeHttpHostConn*2;
+				System.out.println("Connection refused by server during post request. Retrying in " + timeoutSeed*2 + " seconds...");
+				TimeUnit.SECONDS.sleep(timeoutSeed*2);
+				timeoutSeed = timeoutSeed*2;
 			} catch (IOException ioException) {
-				System.out.println("IOException caught during get request: " + ioException + "\n Retrying in " + timeIO*2 + " seconds...");
-				TimeUnit.SECONDS.sleep(timeIO*2);
-				timeIO = timeIO*2;
+				System.out.println("IOException caught during post request: " + ioException + "\n Retrying in " + timeoutSeed*2 + " seconds...");
+				TimeUnit.SECONDS.sleep(timeoutSeed*2);
+				timeoutSeed = timeoutSeed*2;
 			} finally {
 				if(httpResponse!=null)
 				{
@@ -246,7 +218,7 @@ public class HttpClient {
 					}
 				}
 	    	}
-			if(tryStatus500==0 || tryConnTimeOut==0 || tryHttpHostConn==0 || tryIO==0)
+			if(tries==0)
 			{
 				System.out.println("Maximum retries exceeded, try later.");
 				break;

@@ -22,7 +22,7 @@ public class ReportTest {
 
 	@Before
 	public void setUp() throws Exception {
-		System.out.println("Before Report test call");
+		System.out.println("Before profile test call");
 		MockitoAnnotations.initMocks(this);
 	}
 
