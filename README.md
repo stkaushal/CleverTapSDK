@@ -1,6 +1,7 @@
 # CleverTapSDK
 
-[![Coverage](.github/badges/jacoco.svg)](https://github.com/dharmendersheshma/CleverTapSDK/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/dharmendersheshma/CleverTapSDK/branch/master/graph/badge.svg)](https://codecov.io/gh/dharmendersheshma/CleverTapSDK)
+
 
 
 API SDK
