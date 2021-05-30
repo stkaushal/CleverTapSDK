@@ -14,17 +14,14 @@ import Response.Response;
 
 public class Report {
 	
-	private static final String urlGetRealTimeCounts = "https://location.api.clevertap.com/1/now.jsonPayload";
-	private static final String urlGetMessageReport = "https://api.clevertap.com/1/message/report.jsonPayload";
-	private static final String urlGetTopPropertyCount = "https://api.clevertap.com/1/counts/top.jsonPayload";
-	private static final String urlGetTrends = "https://api.clevertap.com/1/counts/trends.jsonPayload";
+	static String urlGetRealTimeCounts = "https://location.api.clevertap.com/1/now.json";
+	static String urlGetMessageReport = "https://api.clevertap.com/1/message/report.json";
+	static String urlGetTopPropertyCount = "https://api.clevertap.com/1/counts/top.json";
+	static String urlGetTrends = "https://api.clevertap.com/1/counts/trends.json";
 	
-	private ObjectMapper objectMapper;
-	private HttpClient client;
+	ObjectMapper objectMapper = new ObjectMapper();
 	
 	public Report(){
-		this.client = new HttpClient();
-		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
@@ -32,33 +29,49 @@ public class Report {
 	
 	public Response getRealTimeCounts(ReportPayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlGetRealTimeCounts, jsonPayload);	
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlGetRealTimeCounts, json);
+				
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	public Response getMessageReports(ReportPayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlGetMessageReport, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		
+		HttpClient client = new HttpClient();
+		
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlGetMessageReport, json);
+
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	public Response getTopPropertyCount(ReportPayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlGetTopPropertyCount, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlGetTopPropertyCount, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	public Response getTrends(ReportPayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlGetTrends, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlGetTrends, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 }

@@ -1,8 +1,6 @@
 package Profile;
 import java.io.IOException;
-import java.util.List;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -17,43 +15,42 @@ import Response.Response;
 
 public class Profiles {
 	
-	private static final String urlUploadData = "https://api.clevertap.com/1/upload";
-	private static final String urlGetProfileCursor = "https://api.clevertap.com/1/profiles.jsonPayload";
-	private static final String urlGetProfileCount = "https://api.clevertap.com/1/counts/profiles.jsonPayload";
-	private static final String urlDeleteProfile = "https://api.clevertap.com/1/delete/profiles.jsonPayload";
-	private static final String urlDemergeProfile = "https://api.clevertap.com/1/demerge/profiles.jsonPayload";
-	private static final String urlSubscribe = "https://api.clevertap.com/1/subscribe/";
-	private static final String urlDisassociate = "https://api.clevertap.com/1/disassociate/";
+	static String urlUpload = "https://api.clevertap.com/1/upload";
+	static String urlGetProfileCursor = "https://api.clevertap.com/1/profiles.json";
+	static String urlGetProfileCount = "https://api.clevertap.com/1/counts/profiles.json";
+	static String urlDeleteProfile = "https://api.clevertap.com/1/delete/profiles.json";
+	static String urlDemergeProfile = "https://api.clevertap.com/1/demerge/profiles.json";
+	static String urlSubscribe = "https://api.clevertap.com/1/subscribe/";
+	static String urlDisassociate = "https://api.clevertap.com/1/disassociate/";
 	
-	private ObjectMapper objectMapper;
-	private HttpClient client; 
+	ObjectMapper objectMapper = new ObjectMapper();
 	
 	public Profiles(){
-		this.client = new HttpClient();
-		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 
-	public Response uploadUserProfile(List<ProfilePayload> payload) throws IOException, InterruptedException
+	public Response uploadUserProfile(ProfilePayload payload) throws IOException, InterruptedException
 	{
-		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));
-		JSONObject jsonPayload = new JSONObject();
-		jsonPayload.put("d", jsonPayloadArray);
-		JSONObject jsonResponse = client.postRequest(urlUploadData, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlUpload, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
 	public Cursor getUserProfileCursor(ProfilePayload payload, int batch_size) throws IOException, InterruptedException
 	{
-		String url = urlGetProfileCursor + "?batch_size=" + String.valueOf(batch_size);
+		String url = urlGetProfileCursor + "?batch_size=" + batch_size;
 		
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(url, jsonPayload);
-		Cursor cur = objectMapper.readValue(jsonResponse.toString(), Cursor.class);
+		HttpClient client = new HttpClient();
+
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(url, json);
+		Cursor cur = objectMapper.readValue(obj.toString(), Cursor.class);
 		
 		return cur;	
 	}
@@ -62,8 +59,9 @@ public class Profiles {
 	{
 		String url = urlGetProfileCursor + "?cursor=" + cursor.getCursor();
 		
-		JSONObject jsonResponse = client.getRequest(url);
-		GetUserProfileResponse res = objectMapper.readValue(jsonResponse.toString(), GetUserProfileResponse.class);
+		HttpClient client = new HttpClient();
+		JSONObject obj = client.getRequest(url);
+		GetUserProfileResponse res = objectMapper.readValue(obj.toString(), GetUserProfileResponse.class);
 		
 		return res;	
 	}
@@ -72,67 +70,74 @@ public class Profiles {
 	{
 		String url = urlGetProfileCursor + "?email=" + id;
 		
-		JSONObject jsonResponse = client.getRequest(url);
-		GetUserProfileResponse res = objectMapper.readValue(jsonResponse.toString(), GetUserProfileResponse.class);
+		HttpClient client = new HttpClient();
+		JSONObject obj = client.getRequest(url);
+		GetUserProfileResponse res = objectMapper.readValue(obj.toString(), GetUserProfileResponse.class);
 		
 		return res;	
 	}
 	
-	public Response uploadDeviceTokens(List<ProfilePayload> payload) throws IOException, InterruptedException
+	public Response uploadDeviceTokens(ProfilePayload[] payload) throws IOException, InterruptedException
 	{	
-		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));
-		JSONObject jsonPayload = new JSONObject();
-		jsonPayload.put("d", jsonPayloadArray);
-		JSONObject jsonResponse = client.postRequest(urlUploadData, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlUpload, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 
 		return res;
 	}
 	
 	public Response getProfileCount(ProfilePayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlGetProfileCount, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlGetProfileCount, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		return res;
 	}
 	
 	public Response deleteUserProfile(ProfilePayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlDeleteProfile, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlDeleteProfile, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
 	public Response demergeUserProfile(ProfilePayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlDemergeProfile, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlDemergeProfile, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response subscribe(List<ProfilePayload> payload) throws IOException, InterruptedException
+	public Response subscribe(ProfilePayload[] payload) throws IOException, InterruptedException
 	{
-		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));
-		JSONObject jsonPayload = new JSONObject();
-		jsonPayload.put("d", jsonPayloadArray);
-		JSONObject jsonResponse = client.postRequest(urlSubscribe, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlSubscribe, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}
 	
-	public Response dissociate(List<ProfilePayload> payload) throws IOException, InterruptedException
+	public Response dissociate(ProfilePayload payload) throws IOException, InterruptedException
 	{	
-		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));
-		JSONObject jsonPayload = new JSONObject();
-		jsonPayload.put("d", jsonPayloadArray);
-		JSONObject jsonResponse = client.postRequest(urlDisassociate, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+	
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlDisassociate, json);
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
 		
 		return res;
 	}

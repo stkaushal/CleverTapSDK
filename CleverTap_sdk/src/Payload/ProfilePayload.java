@@ -19,7 +19,6 @@ public class ProfilePayload {
 	String type;
 	String value;
 	
-	
 	public String[] getIdentity() {
 		return identity;
 	}

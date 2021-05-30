@@ -1,9 +1,7 @@
 package Event;
 
 import java.io.IOException;
-import java.util.List;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -18,38 +16,39 @@ import Response.Response;
 
 public class Event {
 	
-	private static final String urlUploadEvent = "https://api.clevertap.com/1/upload";
-	private static final String urlGetEventCount = "https://api.clevertap.com/1/counts/events.jsonPayload";
-	private static final String urlGetEventCursor = "https://api.clevertap.com/1/events.jsonPayload";
+	static String urlUploadEvent = "https://api.clevertap.com/1/upload";
+	static String urlGetEventCount = "https://api.clevertap.com/1/counts/events.json";
+	static String urlGetEventCursor = "https://api.clevertap.com/1/events.json";
 	
-	private ObjectMapper objectMapper;
-	private HttpClient client;
+	ObjectMapper objectMapper = new ObjectMapper();
 	
 	public Event(){
-		this.client = new HttpClient();
-		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 	
-	public Response uploadEvents(List<EventPayload> payload) throws IOException, InterruptedException
+	public Response uploadEvents(EventPayload payload) throws IOException, InterruptedException
 	{
-		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));
-		JSONObject jsonPayload = new JSONObject();
-		jsonPayload.put("d", jsonPayloadArray);
-		JSONObject jsonResponse = client.postRequest(urlUploadEvent, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);	
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlUploadEvent, json);
+
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 	
 	
 	public Cursor getEventsCursor(EventPayload payload, int batch_size) throws IOException, InterruptedException
 	{
-		String url = urlGetEventCursor + "?batch_size=" + String.valueOf(batch_size);
+		String url = urlGetEventCursor + "?batch_size=" + batch_size;
 		
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(url, jsonPayload);
-		Cursor cur = objectMapper.readValue(jsonResponse.toString(), Cursor.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(url, json);
+		Cursor cur = objectMapper.readValue(obj.toString(), Cursor.class);
 		return cur;	
 	}
 	
@@ -57,16 +56,23 @@ public class Event {
 	{
 		String url = urlGetEventCursor + "?cursor=" + cursor.getCursor();
 		
-		JSONObject jsonResponse = client.getRequest(url);
-		GetEventsResponse res = objectMapper.readValue(jsonResponse.toString(), GetEventsResponse.class);
+		HttpClient client = new HttpClient();
+		JSONObject obj = client.getRequest(url);
+		
+		GetEventsResponse res = objectMapper.readValue(obj.toString(), GetEventsResponse.class);
+		
 		return res;	
 	}
 	
 	public Response getEventCount(EventPayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject jsonResponse = client.postRequest(urlGetEventCount, jsonPayload);
-		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		HttpClient client = new HttpClient();
+		
+		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject obj = client.postRequest(urlGetEventCount, json);
+
+		Response res = objectMapper.readValue(obj.toString(), Response.class);
+		
 		return res;
 	}
 }
