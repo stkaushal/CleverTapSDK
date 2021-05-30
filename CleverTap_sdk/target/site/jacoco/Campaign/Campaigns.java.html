@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Campaigns.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Campaign</a> &gt; <span class="el_source">Campaigns.java</span></div><h1>Campaigns.java</h1><pre class="source lang-java linenums">package Campaign;
+
+import java.io.IOException;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import HTTP.HttpClient;
+import Payload.CampaignPayload;
+import Response.Response;
+
+public class Campaigns {
+	
+	private static final String urlStopScheduledCampaign = &quot;https://api.clevertap.com/1/targets/stop.jsonPayload&quot;;
+	private static final String urlGetCampaignReport = &quot;https://api.clevertap.com/1/targets/result.jsonPayload&quot;;
+	private static final String urlGetCampaigns = &quot;https://api.clevertap.com/1/targets/list.jsonPayload&quot;;
+	private static final String urlCreateCampaignTargetUserEvents = &quot;https://api.clevertap.com/1/targets/create.jsonPayload&quot;;
+	private static final String urlCreateCampaignTargetUserIdSMS = &quot;https://api.clevertap.com/1/send/sms.jsonPayload&quot;;
+	private static final String urlCreateCampaignTargetUserIdPush = &quot;https://api.clevertap.com/1/send/push.jsonPayload&quot;;
+	private static final String urlCreateCampaignTargetUserIdWebPush = &quot;https://api.clevertap.com/1/send/webpush.jsonPayload&quot;;
+	private static final String urlCreateCampaignTargetUserIdEmail = &quot;https://api.clevertap.com/1/send/email.jsonPayload&quot;;
+	
+
+	private ObjectMapper objectMapper;
+	private HttpClient client; 
+	
+<span class="fc" id="L30">	public Campaigns(){</span>
+<span class="fc" id="L31">		this.client = new HttpClient();</span>
+<span class="fc" id="L32">		this.objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L33">		this.objectMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="fc" id="L34">		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="fc" id="L35">	}</span>
+
+	public Response stopScheduledCampaign(CampaignPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L39">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L40">		JSONObject jsonResponse = client.postRequest(urlStopScheduledCampaign, jsonPayload);</span>
+<span class="fc" id="L41">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L42">		return res;</span>
+	}
+	
+	public Response getCampaignReport(CampaignPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L47">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L48">		JSONObject jsonResponse = client.postRequest(urlGetCampaignReport, jsonPayload);</span>
+<span class="fc" id="L49">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L50">		return res;</span>
+	}
+	
+	public Response getCampaigns(CampaignPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L55">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L56">		JSONObject jsonResponse = client.postRequest(urlGetCampaigns, jsonPayload);</span>
+<span class="fc" id="L57">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L58">		return res;</span>
+	}
+	
+	public Response createCampaignTargetUserEvents(CampaignPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L63">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L64">		JSONObject jsonResponse = client.postRequest(urlCreateCampaignTargetUserEvents, jsonPayload);</span>
+<span class="fc" id="L65">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L66">		return res;</span>
+	}
+	
+	public Response createCampaignTargetId(String method, CampaignPayload payload) throws IOException, InterruptedException
+	{
+		
+<span class="fc" id="L72">		String url = null;</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">		if(method.equals(&quot;SMS&quot;))</span>
+		{
+<span class="fc" id="L75">			url = urlCreateCampaignTargetUserIdSMS;</span>
+		}
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		else if(method.equals(&quot;EMAIL&quot;))</span>
+		{
+<span class="fc" id="L79">			url = urlCreateCampaignTargetUserIdEmail;</span>
+		}
+<span class="fc bfc" id="L81" title="All 2 branches covered.">		else if(method.equals(&quot;PUSH&quot;))</span>
+		{
+<span class="fc" id="L83">			url = urlCreateCampaignTargetUserIdPush;</span>
+		}
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">		else if(method.equals(&quot;WEBPUSH&quot;))</span>
+		{
+<span class="fc" id="L87">			url = urlCreateCampaignTargetUserIdWebPush;</span>
+		}
+		
+<span class="fc" id="L90">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L91">		JSONObject jsonResponse = client.postRequest(url, jsonPayload);</span>
+<span class="fc" id="L92">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);	</span>
+<span class="fc" id="L93">		return res;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

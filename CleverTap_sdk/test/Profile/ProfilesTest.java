@@ -1,115 +1,211 @@
-/**
- * 
- */
 package Profile;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.json.JSONObject;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import HTTP.HttpClient;
+import Helper.Cursor;
+import Payload.ProfilePayload;
+import Response.GetUserProfileResponse;
+import Response.Response;
 
-/**
- * @author dharmender
- *
- */
-class ProfilesTest {
+public class ProfilesTest {
+	
+	@Mock Cursor cursorMock;
+	@Mock HttpClient client;
+	@InjectMocks Profiles profile;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		System.out.println("Test starting..");
+	@BeforeEach
+	public void setUp() throws Exception {
+		System.out.println("Before profile test call");
+		MockitoAnnotations.initMocks(this);
 	}
 
-
-	/**
-	 * Test method for {@link Profile.Profiles#Profiles()}.
-	 */
 	@Test
-	void testProfiles() {
+	public void testUploadUserProfile() throws IOException, InterruptedException {
+		Response response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
+		payloadList.add(payload);
 		
-		System.out.println("Test Profile passed.");
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+		
+		response = profile.uploadUserProfile(payloadList);
+   
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
 	}
 
-	/**
-	 * Test method for {@link Profile.Profiles#uploadUserProfile(Payload.ProfilePayload)}.
-	 */
 	@Test
-	void testUploadUserProfile() {
-		fail("Not yet implemented");
+	public void testGetUserProfileCursor() throws IOException, InterruptedException {
+  
+		Cursor cursor = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("cursor", "fhsklaioclamlkkjadajj");
+		jsonResponse.put("status", "success");
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+
+		cursor = profile.getUserProfileCursor(payload, 0);
+		
+		Assertions.assertNotNull(cursor);
+		Assertions.assertEquals("fhsklaioclamlkkjadajj", cursor.getCursor());
+		Assertions.assertEquals("success", cursor.getStatus());
+	}
+	
+
+	@Test
+	public void testGetUserProfileData() throws IOException, InterruptedException {
+		GetUserProfileResponse response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		Mockito.when(client.getRequest(Mockito.anyString())).thenReturn(jsonResponse);
+		
+		response = profile.getUserProfileData(cursorMock);
+		
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
+	}
+	
+
+	@Test
+	public void testGetUserProfileById() throws IOException, InterruptedException {
+		
+        GetUserProfileResponse response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		Mockito.when(client.getRequest(Mockito.anyString())).thenReturn(jsonResponse);
+		
+		response = profile.getUserProfileById("dummy");
+		
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
 	}
 
-	/**
-	 * Test method for {@link Profile.Profiles#getUserProfileCursor(Payload.ProfilePayload, int)}.
-	 */
 	@Test
-	void testGetUserProfileCursor() {
-		fail("Not yet implemented");
+	public void testUploadDeviceTokens() throws IOException, InterruptedException {
+		Response response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
+		payloadList.add(payload);
+		
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+		
+		response = profile.uploadDeviceTokens(payloadList);
+   
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
+        
 	}
 
-	/**
-	 * Test method for {@link Profile.Profiles#getUserProfileData(Helper.Cursor)}.
-	 */
 	@Test
-	void testGetUserProfileData() {
-		fail("Not yet implemented");
+	public void testGetProfileCount() throws IOException, InterruptedException {
+		Response response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+		
+		response = profile.getProfileCount(payload);
+   
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
 	}
 
-	/**
-	 * Test method for {@link Profile.Profiles#getUserProfileById(java.lang.String)}.
-	 */
 	@Test
-	void testGetUserProfileById() {
-		fail("Not yet implemented");
+	public void testDeleteUserProfile() throws IOException, InterruptedException {
+		Response response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+		
+		response = profile.deleteUserProfile(payload);
+   
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
 	}
 
-	/**
-	 * Test method for {@link Profile.Profiles#uploadDeviceTokens(Payload.ProfilePayload[])}.
-	 */
 	@Test
-	void testUploadDeviceTokens() {
-		fail("Not yet implemented");
+	public void testDemergeUserProfile() throws IOException, InterruptedException {
+		Response response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+		
+		response = profile.demergeUserProfile(payload);
+   
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
 	}
 
-	/**
-	 * Test method for {@link Profile.Profiles#getProfileCount(Payload.ProfilePayload)}.
-	 */
 	@Test
-	void testGetProfileCount() {
-		fail("Not yet implemented");
+	public void testSubscribe() throws IOException, InterruptedException {
+		Response response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
+		payloadList.add(payload);
+		
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+		
+		response = profile.subscribe(payloadList);
+   
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
+		
 	}
 
-	/**
-	 * Test method for {@link Profile.Profiles#deleteUserProfile(Payload.ProfilePayload)}.
-	 */
 	@Test
-	void testDeleteUserProfile() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link Profile.Profiles#demergeUserProfile(Payload.ProfilePayload)}.
-	 */
-	@Test
-	void testDemergeUserProfile() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link Profile.Profiles#subscribe(Payload.ProfilePayload[])}.
-	 */
-	@Test
-	void testSubscribe() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link Profile.Profiles#dissociate(Payload.ProfilePayload)}.
-	 */
-	@Test
-	void testDissociate() {
-		fail("Not yet implemented");
+	public void testDissociate() throws IOException, InterruptedException {
+		Response response = null;
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");
+		
+		ProfilePayload payload = new ProfilePayload();
+		payload.setFBID("Random_id");
+		List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
+		payloadList.add(payload);
+		
+		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
+		
+		response = profile.dissociate(payloadList);
+   
+		Assertions.assertNotNull(response);
+		Assertions.assertEquals("success", response.getStatus());
 	}
 
 }

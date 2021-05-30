@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EventPayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Payload</a> &gt; <span class="el_source">EventPayload.java</span></div><h1>EventPayload.java</h1><pre class="source lang-java linenums">package Payload;
+
+import java.util.HashMap;
+
+<span class="fc" id="L5">public class EventPayload {</span>
+	String event_name;
+	int from;
+	int to; 
+	String type;
+	String evtName;
+	String timestamp;
+	HashMap&lt;String, Object&gt; evtData;
+	HashMap&lt;String, String&gt; event_properties;
+	long ts;
+	String identity;
+	String FBID;
+	String GPID;
+	String objectId;
+	
+	
+	public HashMap&lt;String, Object&gt; getEvtData() {
+<span class="fc" id="L22">		return evtData;</span>
+	}
+	public void setEvtData(HashMap&lt;String, Object&gt; evtData) {
+<span class="nc" id="L25">		this.evtData = evtData;</span>
+<span class="nc" id="L26">	}</span>
+	public int getFrom() {
+<span class="fc" id="L28">		return from;</span>
+	}
+	public void setFrom(int from) {
+<span class="nc" id="L31">		this.from = from;</span>
+<span class="nc" id="L32">	}</span>
+	public int getTo() {
+<span class="fc" id="L34">		return to;</span>
+	}
+	public void setTo(int to) {
+<span class="nc" id="L37">		this.to = to;</span>
+<span class="nc" id="L38">	}</span>
+	public String getEvtName() {
+<span class="fc" id="L40">		return evtName;</span>
+	}
+	public void setEvtName(String evtName) {
+<span class="nc" id="L43">		this.evtName = evtName;</span>
+<span class="nc" id="L44">	}</span>
+	public long getTs() {
+<span class="fc" id="L46">		return ts;</span>
+	}
+	public void setTs(long ts) {
+<span class="nc" id="L49">		this.ts = ts;</span>
+<span class="nc" id="L50">	}</span>
+	public String getFBID() {
+<span class="fc" id="L52">		return FBID;</span>
+	}
+	public void setFBID(String fBID) {
+<span class="fc" id="L55">		FBID = fBID;</span>
+<span class="fc" id="L56">	}</span>
+	public String getGPID() {
+<span class="fc" id="L58">		return GPID;</span>
+	}
+	public void setGPID(String gPID) {
+<span class="nc" id="L61">		GPID = gPID;</span>
+<span class="nc" id="L62">	}</span>
+	public String getEvent_name() {
+<span class="fc" id="L64">		return event_name;</span>
+	}
+	public void setEvent_name(String event_name) {
+<span class="nc" id="L67">		this.event_name = event_name;</span>
+<span class="nc" id="L68">	}</span>
+	public String getType() {
+<span class="fc" id="L70">		return type;</span>
+	}
+	public void setType(String type) {
+<span class="nc" id="L73">		this.type = type;</span>
+<span class="nc" id="L74">	}</span>
+	public String getTimestamp() {
+<span class="fc" id="L76">		return timestamp;</span>
+	}
+	public void setTimestamp(String timestamp) {
+<span class="nc" id="L79">		this.timestamp = timestamp;</span>
+<span class="nc" id="L80">	}</span>
+	public String getIdentity() {
+<span class="fc" id="L82">		return identity;</span>
+	}
+	public void setIdentity(String identity) {
+<span class="nc" id="L85">		this.identity = identity;</span>
+<span class="nc" id="L86">	}</span>
+	public String getObjectId() {
+<span class="fc" id="L88">		return objectId;</span>
+	}
+	public void setObjectId(String objectId) {
+<span class="nc" id="L91">		this.objectId = objectId;</span>
+<span class="nc" id="L92">	}</span>
+	public HashMap&lt;String, String&gt; getEvent_properties() {
+<span class="fc" id="L94">		return event_properties;</span>
+	}
+	public void setEvent_properties(HashMap&lt;String, String&gt; event_properties) {
+<span class="nc" id="L97">		this.event_properties = event_properties;</span>
+<span class="nc" id="L98">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

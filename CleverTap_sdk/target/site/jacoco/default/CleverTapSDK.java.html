@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CleverTapSDK.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">CleverTapSDK.java</span></div><h1>CleverTapSDK.java</h1><pre class="source lang-java linenums">import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Helper.ClevertapInstance;
+import Payload.ProfilePayload;
+import Response.Response;
+
+<span class="nc" id="L16">public class CleverTapSDK {</span>
+	
+    public static void main(String[] args) throws IOException, InterruptedException {
+    	
+<span class="nc" id="L20">	   String Cid = &quot;4R8-K98-8Z6Z&quot;;</span>
+<span class="nc" id="L21">	   String CPswd = &quot;AOE-RUW-CHUL&quot;;</span>
+<span class="nc" id="L22">	   ProfilePayload payload = new ProfilePayload();</span>
+<span class="nc" id="L23">	   payload.setFBID(&quot;hshjksks&quot;);</span>
+<span class="nc" id="L24">	   List&lt;ProfilePayload&gt; payloadList = new ArrayList&lt;ProfilePayload&gt;();</span>
+<span class="nc" id="L25">	   payloadList.add(payload);</span>
+<span class="nc" id="L26">	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);</span>
+	   
+<span class="nc" id="L28">	   Response res = instance.getProfileInstance().uploadUserProfile(payloadList);</span>
+<span class="nc" id="L29">	   System.out.println(res.getReq_id());</span>
+	   
+<span class="nc" id="L31">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
+<span class="nc" id="L32">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="nc" id="L33">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="nc" id="L34">	   JSONObject jsonPayload = new JSONObject(jsonMapper.writeValueAsString(res));</span>
+<span class="nc" id="L35">	   System.out.println(jsonPayload);</span>
+	   
+	   
+	
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+        
+//	   Profiles profile = new Profiles();
+//	   
+//	   ObjectMapper objectMapper = new ObjectMapper();
+//	   objectMapper.setSerializationInclusion(Include.NON_NULL);
+//	   JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
+//	   System.out.println(json);
+//	   
+//	   Helper.Cursor x =  profile.getUserProfileCursor(payload, 50);
+//	   System.out.println(x.getCursor());
+//	   
+//	   GetUserProfileResponse gg = profile.getUserProfileData(x);
+//	   JSONObject jj = new JSONObject(objectMapper.writeValueAsString(gg));
+//	   System.out.println(jj);
+	   
+<span class="nc" id="L65">    }</span>
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

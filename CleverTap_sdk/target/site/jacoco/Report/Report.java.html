@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Report.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Report</a> &gt; <span class="el_source">Report.java</span></div><h1>Report.java</h1><pre class="source lang-java linenums">package Report;
+
+import java.io.IOException;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import HTTP.HttpClient;
+import Payload.ReportPayload;
+import Response.Response;
+
+public class Report {
+	
+	private static final String urlGetRealTimeCounts = &quot;https://location.api.clevertap.com/1/now.jsonPayload&quot;;
+	private static final String urlGetMessageReport = &quot;https://api.clevertap.com/1/message/report.jsonPayload&quot;;
+	private static final String urlGetTopPropertyCount = &quot;https://api.clevertap.com/1/counts/top.jsonPayload&quot;;
+	private static final String urlGetTrends = &quot;https://api.clevertap.com/1/counts/trends.jsonPayload&quot;;
+	
+	private ObjectMapper objectMapper;
+	private HttpClient client;
+	
+<span class="fc" id="L25">	public Report(){</span>
+<span class="fc" id="L26">		this.client = new HttpClient();</span>
+<span class="fc" id="L27">		this.objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L28">		this.objectMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="fc" id="L29">		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="fc" id="L30">	}</span>
+	
+	
+	public Response getRealTimeCounts(ReportPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L35">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L36">		JSONObject jsonResponse = client.postRequest(urlGetRealTimeCounts, jsonPayload);	</span>
+<span class="fc" id="L37">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L38">		return res;</span>
+	}
+	
+	public Response getMessageReports(ReportPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L43">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L44">		JSONObject jsonResponse = client.postRequest(urlGetMessageReport, jsonPayload);</span>
+<span class="fc" id="L45">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L46">		return res;</span>
+	}
+	
+	public Response getTopPropertyCount(ReportPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L51">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L52">		JSONObject jsonResponse = client.postRequest(urlGetTopPropertyCount, jsonPayload);</span>
+<span class="fc" id="L53">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L54">		return res;</span>
+	}
+	
+	public Response getTrends(ReportPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L59">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L60">		JSONObject jsonResponse = client.postRequest(urlGetTrends, jsonPayload);</span>
+<span class="fc" id="L61">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L62">		return res;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

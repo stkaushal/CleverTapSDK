@@ -14,69 +14,55 @@ import Response.Response;
 
 public class Campaigns {
 	
-	static String urlStopScheduledCampaign = "https://api.clevertap.com/1/targets/stop.json";
-	static String urlGetCampaignReport = "https://api.clevertap.com/1/targets/result.json";
-	static String urlGetCampaigns = "https://api.clevertap.com/1/targets/list.json";
-	static String urlCreateCampaignTargetUserEvents = "https://api.clevertap.com/1/targets/create.json";
-	static String urlCreateCampaignTargetUserIdSMS = "https://api.clevertap.com/1/send/sms.json";
-	static String urlCreateCampaignTargetUserIdPush = "https://api.clevertap.com/1/send/push.json";
-	static String urlCreateCampaignTargetUserIdWebPush = "https://api.clevertap.com/1/send/webpush.json";
-	static String urlCreateCampaignTargetUserIdEmail = "https://api.clevertap.com/1/send/email.json";
+	private static final String urlStopScheduledCampaign = "https://api.clevertap.com/1/targets/stop.jsonPayload";
+	private static final String urlGetCampaignReport = "https://api.clevertap.com/1/targets/result.jsonPayload";
+	private static final String urlGetCampaigns = "https://api.clevertap.com/1/targets/list.jsonPayload";
+	private static final String urlCreateCampaignTargetUserEvents = "https://api.clevertap.com/1/targets/create.jsonPayload";
+	private static final String urlCreateCampaignTargetUserIdSMS = "https://api.clevertap.com/1/send/sms.jsonPayload";
+	private static final String urlCreateCampaignTargetUserIdPush = "https://api.clevertap.com/1/send/push.jsonPayload";
+	private static final String urlCreateCampaignTargetUserIdWebPush = "https://api.clevertap.com/1/send/webpush.jsonPayload";
+	private static final String urlCreateCampaignTargetUserIdEmail = "https://api.clevertap.com/1/send/email.jsonPayload";
 	
 
-	ObjectMapper objectMapper = new ObjectMapper();
+	private ObjectMapper objectMapper;
+	private HttpClient client; 
 	
 	public Campaigns(){
+		this.client = new HttpClient();
+		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 	public Response stopScheduledCampaign(CampaignPayload payload) throws IOException, InterruptedException
 	{
-		HttpClient client = new HttpClient();
-		
-		
-		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.postRequest(urlStopScheduledCampaign, json);
-
-		Response res = objectMapper.readValue(obj.toString(), Response.class);
-		
+		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject jsonResponse = client.postRequest(urlStopScheduledCampaign, jsonPayload);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		
 		return res;
 	}
 	
 	public Response getCampaignReport(CampaignPayload payload) throws IOException, InterruptedException
 	{
-		HttpClient client = new HttpClient();
-		
-		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.postRequest(urlGetCampaignReport, json);
-
-		Response res = objectMapper.readValue(obj.toString(), Response.class);
-		
+		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject jsonResponse = client.postRequest(urlGetCampaignReport, jsonPayload);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		
 		return res;
 	}
 	
 	public Response getCampaigns(CampaignPayload payload) throws IOException, InterruptedException
 	{
-		HttpClient client = new HttpClient();
-		
-		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.postRequest(urlGetCampaigns, json);
-
-		Response res = objectMapper.readValue(obj.toString(), Response.class);
-		
+		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject jsonResponse = client.postRequest(urlGetCampaigns, jsonPayload);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		
 		return res;
 	}
 	
 	public Response createCampaignTargetUserEvents(CampaignPayload payload) throws IOException, InterruptedException
 	{
-		HttpClient client = new HttpClient();
-		
-		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.postRequest(urlCreateCampaignTargetUserEvents, json);
-
-		Response res = objectMapper.readValue(obj.toString(), Response.class);
-		
+		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject jsonResponse = client.postRequest(urlCreateCampaignTargetUserEvents, jsonPayload);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		
 		return res;
 	}
 	
@@ -101,13 +87,9 @@ public class Campaigns {
 			url = urlCreateCampaignTargetUserIdWebPush;
 		}
 		
-		HttpClient client = new HttpClient();
-		
-		JSONObject json = new JSONObject(objectMapper.writeValueAsString(payload));
-		JSONObject obj = client.postRequest(url, json);
-
-		Response res = objectMapper.readValue(obj.toString(), Response.class);
-		
+		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject jsonResponse = client.postRequest(url, jsonPayload);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);	
 		return res;
 	}
 	

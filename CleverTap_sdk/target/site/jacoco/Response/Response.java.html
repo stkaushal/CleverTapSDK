@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Response.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Response</a> &gt; <span class="el_source">Response.java</span></div><h1>Response.java</h1><pre class="source lang-java linenums">package Response;
+
+import java.util.HashMap;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+
+<span class="fc" id="L8">public class Response {</span>
+	
+	String status;
+	int processed;
+	Object[] unprocessed;
+	String error;
+	int code;
+	int count;
+	long req_id;
+	String user_type;
+	int total_results;
+	Message messages;
+	
+	String foo;
+	
+	HashMap&lt;String, String&gt; estimates;
+	Result result;
+	Target[] targets;
+	String message;
+	
+	HashMap&lt;String, String&gt; extra_data;
+	
+	@JsonAnyGetter
+	public HashMap&lt;String, String&gt; getExtra_data() {
+<span class="nc" id="L32">		return extra_data;</span>
+	}
+	@JsonAnySetter
+	public void setExtra_data(HashMap&lt;String, String&gt; extra_data) {
+<span class="nc" id="L36">		this.extra_data = extra_data;</span>
+<span class="nc" id="L37">	}</span>
+	public String getStatus() {
+<span class="fc" id="L39">		return status;</span>
+	}
+	public void setStatus(String status) {
+<span class="fc" id="L42">		this.status = status;</span>
+<span class="fc" id="L43">	}</span>
+	public int getProcessed() {
+<span class="nc" id="L45">		return processed;</span>
+	}
+	public void setProcessed(int processed) {
+<span class="nc" id="L48">		this.processed = processed;</span>
+<span class="nc" id="L49">	}</span>
+	public Object[] getUnprocessed() {
+<span class="nc" id="L51">		return unprocessed;</span>
+	}
+	public void setUnprocessed(Object[] unprocessed) {
+<span class="nc" id="L54">		this.unprocessed = unprocessed;</span>
+<span class="nc" id="L55">	}</span>
+	public String getError() {
+<span class="nc" id="L57">		return error;</span>
+	}
+	public void setError(String error) {
+<span class="nc" id="L60">		this.error = error;</span>
+<span class="nc" id="L61">	}</span>
+	public int getCode() {
+<span class="nc" id="L63">		return code;</span>
+	}
+	public void setCode(int code) {
+<span class="nc" id="L66">		this.code = code;</span>
+<span class="nc" id="L67">	}</span>
+	public int getCount() {
+<span class="nc" id="L69">		return count;</span>
+	}
+	public void setCount(int count) {
+<span class="nc" id="L72">		this.count = count;</span>
+<span class="nc" id="L73">	}</span>
+	public long getReq_id() {
+<span class="nc" id="L75">		return req_id;</span>
+	}
+	public void setReq_id(long req_id) {
+<span class="nc" id="L78">		this.req_id = req_id;</span>
+<span class="nc" id="L79">	}</span>
+	public String getUser_type() {
+<span class="nc" id="L81">		return user_type;</span>
+	}
+	public void setUser_type(String user_type) {
+<span class="nc" id="L84">		this.user_type = user_type;</span>
+<span class="nc" id="L85">	}</span>
+	public int getTotal_results() {
+<span class="nc" id="L87">		return total_results;</span>
+	}
+	public void setTotal_results(int total_results) {
+<span class="nc" id="L90">		this.total_results = total_results;</span>
+<span class="nc" id="L91">	}</span>
+	public Message getMessages() {
+<span class="nc" id="L93">		return messages;</span>
+	}
+	public void setMessages(Message messages) {
+<span class="nc" id="L96">		this.messages = messages;</span>
+<span class="nc" id="L97">	}</span>
+	public String getFoo() {
+<span class="nc" id="L99">		return foo;</span>
+	}
+	public void setFoo(String foo) {
+<span class="nc" id="L102">		this.foo = foo;</span>
+<span class="nc" id="L103">	}</span>
+	
+	public Result getResult() {
+<span class="nc" id="L106">		return result;</span>
+	}
+	public void setResult(Result result) {
+<span class="nc" id="L109">		this.result = result;</span>
+<span class="nc" id="L110">	}</span>
+	public Target[] getTargets() {
+<span class="nc" id="L112">		return targets;</span>
+	}
+	public void setTargets(Target[] targets) {
+<span class="nc" id="L115">		this.targets = targets;</span>
+<span class="nc" id="L116">	}</span>
+	public HashMap&lt;String, String&gt; getEstimates() {
+<span class="nc" id="L118">		return estimates;</span>
+	}
+	public void setEstimates(HashMap&lt;String, String&gt; estimates) {
+<span class="nc" id="L121">		this.estimates = estimates;</span>
+<span class="nc" id="L122">	}</span>
+	public String getMessage() {
+<span class="nc" id="L124">		return message;</span>
+	}
+	public void setMessage(String message) {
+<span class="nc" id="L127">		this.message = message;</span>
+<span class="nc" id="L128">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

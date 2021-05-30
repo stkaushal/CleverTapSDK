@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Event.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Event</a> &gt; <span class="el_source">Event.java</span></div><h1>Event.java</h1><pre class="source lang-java linenums">package Event;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import HTTP.HttpClient;
+import Helper.Cursor;
+import Payload.EventPayload;
+import Response.GetEventsResponse;
+import Response.Response;
+
+public class Event {
+	
+	private static final String urlUploadEvent = &quot;https://api.clevertap.com/1/upload&quot;;
+	private static final String urlGetEventCount = &quot;https://api.clevertap.com/1/counts/events.jsonPayload&quot;;
+	private static final String urlGetEventCursor = &quot;https://api.clevertap.com/1/events.jsonPayload&quot;;
+	
+	private ObjectMapper objectMapper;
+	private HttpClient client;
+	
+<span class="fc" id="L28">	public Event(){</span>
+<span class="fc" id="L29">		this.client = new HttpClient();</span>
+<span class="fc" id="L30">		this.objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L31">		this.objectMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="fc" id="L32">		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="fc" id="L33">	}</span>
+	
+	public Response uploadEvents(List&lt;EventPayload&gt; payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L37">		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L38">		JSONObject jsonPayload = new JSONObject();</span>
+<span class="fc" id="L39">		jsonPayload.put(&quot;d&quot;, jsonPayloadArray);</span>
+<span class="fc" id="L40">		JSONObject jsonResponse = client.postRequest(urlUploadEvent, jsonPayload);</span>
+<span class="fc" id="L41">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);	</span>
+<span class="fc" id="L42">		return res;</span>
+	}
+	
+	
+	public Cursor getEventsCursor(EventPayload payload, int batch_size) throws IOException, InterruptedException
+	{
+<span class="fc" id="L48">		String url = urlGetEventCursor + &quot;?batch_size=&quot; + String.valueOf(batch_size);</span>
+		
+<span class="fc" id="L50">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L51">		JSONObject jsonResponse = client.postRequest(url, jsonPayload);</span>
+<span class="fc" id="L52">		Cursor cur = objectMapper.readValue(jsonResponse.toString(), Cursor.class);</span>
+<span class="fc" id="L53">		return cur;	</span>
+	}
+	
+	public GetEventsResponse getEventsData(Cursor cursor) throws IOException, InterruptedException
+	{
+<span class="fc" id="L58">		String url = urlGetEventCursor + &quot;?cursor=&quot; + cursor.getCursor();</span>
+		
+<span class="fc" id="L60">		JSONObject jsonResponse = client.getRequest(url);</span>
+<span class="fc" id="L61">		GetEventsResponse res = objectMapper.readValue(jsonResponse.toString(), GetEventsResponse.class);</span>
+<span class="fc" id="L62">		return res;	</span>
+	}
+	
+	public Response getEventCount(EventPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L67">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L68">		JSONObject jsonResponse = client.postRequest(urlGetEventCount, jsonPayload);</span>
+<span class="fc" id="L69">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L70">		return res;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

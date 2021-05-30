@@ -1,0 +1,34 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+CleverTap API SDK,Response,Response,105,10,0,0,45,4,30,3,30,3
+CleverTap API SDK,Response,RecordsProfile,45,0,0,0,19,0,13,0,13,0
+CleverTap API SDK,Response,Result,17,0,0,0,7,0,5,0,5,0
+CleverTap API SDK,Response,GetEventsResponse,14,6,0,0,6,2,4,1,4,1
+CleverTap API SDK,Response,GetUserProfileResponse,14,6,0,0,6,2,4,1,4,1
+CleverTap API SDK,Response,Target,31,0,0,0,13,0,9,0,9,0
+CleverTap API SDK,Response,RecordsEvent,31,0,0,0,13,0,9,0,9,0
+CleverTap API SDK,Response,Message,66,0,0,0,28,0,19,0,19,0
+CleverTap API SDK,Response,Profile,45,0,0,0,19,0,13,0,13,0
+CleverTap API SDK,Helper,Cursor,0,17,0,0,0,7,0,5,0,5
+CleverTap API SDK,Helper,ClevertapInstance,39,4,0,0,12,2,5,2,5,2
+CleverTap API SDK,default,CleverTapSDK,61,0,0,0,16,0,2,0,2,0
+CleverTap API SDK,Campaign,Campaigns,0,173,1,7,0,35,1,9,0,6
+CleverTap API SDK,Report,Report,0,120,0,0,0,22,0,5,0,5
+CleverTap API SDK,Event,Event,0,128,0,0,0,25,0,5,0,5
+CleverTap API SDK,Payload,Content,59,0,0,0,25,0,17,0,17,0
+CleverTap API SDK,Payload,To,31,0,0,0,13,0,9,0,9,0
+CleverTap API SDK,Payload,CategoryResubscribe,10,0,0,0,4,0,3,0,3,0
+CleverTap API SDK,Payload,ControlGroup,24,0,0,0,10,0,7,0,7,0
+CleverTap API SDK,Payload,CategoryUnsubscribe,10,0,0,0,4,0,3,0,3,0
+CleverTap API SDK,Payload,Where,31,0,0,0,13,0,9,0,9,0
+CleverTap API SDK,Payload,EventPayload,48,46,0,0,24,16,12,15,12,15
+CleverTap API SDK,Payload,TokenData,24,0,0,0,10,0,7,0,7,0
+CleverTap API SDK,Payload,Group,38,0,0,0,16,0,11,0,11,0
+CleverTap API SDK,Payload,Keys,17,0,0,0,7,0,5,0,5,0
+CleverTap API SDK,Payload,ReportPayload,48,46,0,0,24,16,12,15,12,15
+CleverTap API SDK,Payload,ProfilePayload,56,52,0,0,28,18,14,17,14,17
+CleverTap API SDK,Payload,CampaignPayload,108,91,0,0,54,31,27,30,27,30
+CleverTap API SDK,Payload,ProfileData,94,0,0,0,40,0,27,0,27,0
+CleverTap API SDK,HTTP,HttpClient.new ConnectionKeepAliveStrategy() {...},33,6,6,0,9,1,4,1,1,1
+CleverTap API SDK,HTTP,HttpClient.IdleConnectionMonitorThread,33,13,1,1,13,5,2,2,1,2
+CleverTap API SDK,HTTP,HttpClient,218,228,28,4,50,77,16,4,0,4
+CleverTap API SDK,Profile,Profiles,0,293,0,0,0,55,0,11,0,11

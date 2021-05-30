@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfilePayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Payload</a> &gt; <span class="el_source">ProfilePayload.java</span></div><h1>ProfilePayload.java</h1><pre class="source lang-java linenums">package Payload;
+
+import java.util.HashMap;
+
+<span class="fc" id="L5">public class ProfilePayload {</span>
+	String[] identity;
+	String[] indentities; 
+	String objectId;
+	String[] guid;
+	String FBID;
+	String event_name; 
+	TokenData tokenData;
+	int from;
+	int to;
+	String ts;
+	ProfileData profileData;
+	HashMap&lt;String, String&gt; event_properties;
+	String status; 
+	String type;
+	String value;
+	
+	
+	public String[] getIdentity() {
+<span class="fc" id="L24">		return identity;</span>
+	}
+	public void setIdentity(String[] identity) {
+<span class="nc" id="L27">		this.identity = identity;</span>
+<span class="nc" id="L28">	}</span>
+	public String[] getGuid() {
+<span class="fc" id="L30">		return guid;</span>
+	}
+	public void setGuid(String[] guid) {
+<span class="nc" id="L33">		this.guid = guid;</span>
+<span class="nc" id="L34">	}</span>
+	public HashMap&lt;String, String&gt; getEvent_properties() {
+<span class="fc" id="L36">		return event_properties;</span>
+	}
+	public void setEvent_properties(HashMap&lt;String, String&gt; event_properties) {
+<span class="nc" id="L39">		this.event_properties = event_properties;</span>
+<span class="nc" id="L40">	}</span>
+	public String getFBID() {
+<span class="fc" id="L42">		return FBID;</span>
+	}
+	public void setFBID(String fBID) {
+<span class="fc" id="L45">		FBID = fBID;</span>
+<span class="fc" id="L46">	}</span>
+	public String getTs() {
+<span class="fc" id="L48">		return ts;</span>
+	}
+	public void setTs(String ts) {
+<span class="nc" id="L51">		this.ts = ts;</span>
+<span class="nc" id="L52">	}</span>
+	
+	public String[] getIndentities() {
+<span class="fc" id="L55">		return indentities;</span>
+	}
+	public void setIndentities(String[] indentities) {
+<span class="nc" id="L58">		this.indentities = indentities;</span>
+<span class="nc" id="L59">	}</span>
+	public String getObjectId() {
+<span class="fc" id="L61">		return objectId;</span>
+	}
+	public void setObjectId(String objectId) {
+<span class="nc" id="L64">		this.objectId = objectId;</span>
+<span class="nc" id="L65">	}</span>
+	
+	public String getEvent_name() {
+<span class="fc" id="L68">		return event_name;</span>
+	}
+	public void setEvent_name(String event_name) {
+<span class="nc" id="L71">		this.event_name = event_name;</span>
+<span class="nc" id="L72">	}</span>
+	public int getFrom() {
+<span class="fc" id="L74">		return from;</span>
+	}
+	public void setFrom(int from) {
+<span class="nc" id="L77">		this.from = from;</span>
+<span class="nc" id="L78">	}</span>
+	public int getTo() {
+<span class="fc" id="L80">		return to;</span>
+	}
+	public void setTo(int to) {
+<span class="nc" id="L83">		this.to = to;</span>
+<span class="nc" id="L84">	}</span>
+	public TokenData getTokenData() {
+<span class="fc" id="L86">		return tokenData;</span>
+	}
+	public void setTokenData(TokenData tokenData) {
+<span class="nc" id="L89">		this.tokenData = tokenData;</span>
+<span class="nc" id="L90">	}</span>
+	
+	public ProfileData getProfileData() {
+<span class="fc" id="L93">		return profileData;</span>
+	}
+	public void setProfileData(ProfileData profileData) {
+<span class="nc" id="L96">		this.profileData = profileData;</span>
+<span class="nc" id="L97">	}</span>
+	
+	public String getStatus() {
+<span class="fc" id="L100">		return status;</span>
+	}
+	public void setStatus(String status) {
+<span class="nc" id="L103">		this.status = status;</span>
+<span class="nc" id="L104">	}</span>
+	public String getType() {
+<span class="fc" id="L106">		return type;</span>
+	}
+	public void setType(String type) {
+<span class="nc" id="L109">		this.type = type;</span>
+<span class="nc" id="L110">	}</span>
+	public String getValue() {
+<span class="fc" id="L112">		return value;</span>
+	}
+	public void setValue(String value) {
+<span class="nc" id="L115">		this.value = value;</span>
+<span class="nc" id="L116">	}</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
