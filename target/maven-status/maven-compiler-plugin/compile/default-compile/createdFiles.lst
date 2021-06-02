@@ -2,6 +2,7 @@ HTTP/HttpClient$1.class
 Response/GetEventsResponse.class
 Payload/ProfilePayload.class
 Response/Response.class
+HTTP/HttpClient$3.class
 Response/Target.class
 Helper/ClevertapInstance.class
 HTTP/HttpClient$IdleConnectionMonitorThread.class
@@ -21,6 +22,7 @@ Profile/Profiles.class
 Response/RecordsProfile.class
 Payload/TokenData.class
 Payload/ProfileData.class
+HTTP/HttpClient$2.class
 Payload/Group.class
 Payload/Where.class
 Response/Result.class

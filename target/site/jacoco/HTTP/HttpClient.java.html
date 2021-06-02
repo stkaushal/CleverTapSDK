@@ -67,7 +67,7 @@ public class HttpClient {
 <span class="nc bnc" id="L67" title="All 4 branches missed.">				if (value != null &amp;&amp; param.equalsIgnoreCase(&quot;timeout&quot;)) {</span>
 <span class="nc" id="L68">					return Long.parseLong(value) * 1000;</span>
 				}
-			}
+<span class="nc" id="L70">			}</span>
 <span class="nc" id="L71">			return KEEP_ALIVE;</span>
 		}
 	};
@@ -79,14 +79,14 @@ public class HttpClient {
 <span class="nc bnc" id="L79" title="All 2 branches missed.">        	if (retryTimes &gt;= maxRetries) {</span>
 <span class="nc" id="L80">                return false;</span>
             }
-<span class="nc bnc" id="L82" title="All 6 branches missed.">			if (exception instanceof ConnectTimeoutException || exception instanceof NoHttpResponseException || exception instanceof SocketTimeoutException</span>
-<span class="nc bnc" id="L83" title="All 6 branches missed.">					|| !(exception instanceof UnknownHostException) || !(exception instanceof InterruptedIOException) || !(exception instanceof SSLException)</span>
-<span class="nc bnc" id="L84" title="All 2 branches missed.">					|| !(exception instanceof SSLHandshakeException)) {</span>
+<span class="nc bnc" id="L82" title="All 14 branches missed.">			if (exception instanceof ConnectTimeoutException || exception instanceof NoHttpResponseException || exception instanceof SocketTimeoutException</span>
+					|| !(exception instanceof UnknownHostException) || !(exception instanceof InterruptedIOException) || !(exception instanceof SSLException)
+					|| !(exception instanceof SSLHandshakeException)) {
 				try {
 <span class="nc" id="L86">					TimeUnit.SECONDS.sleep(3);</span>
 <span class="nc" id="L87">				} catch (InterruptedException e) {</span>
 <span class="nc" id="L88">					e.printStackTrace();</span>
-				}
+<span class="nc" id="L89">				}</span>
 <span class="nc" id="L90">				return true;</span>
 			}else {
 <span class="nc" id="L92">				 System.out.println(&quot;unlogged request exception:&quot; + exception.getClass());</span>
@@ -100,7 +100,7 @@ public class HttpClient {
 <span class="nc" id="L100">					TimeUnit.SECONDS.sleep(3);</span>
 <span class="nc" id="L101">				} catch (InterruptedException e) {</span>
 <span class="nc" id="L102">					e.printStackTrace();</span>
-				}                     
+<span class="nc" id="L103">				}                     </span>
 <span class="nc" id="L104">                return true; // If the request is considered to be idempotent, then try again. That is, repeated execution does not affect other effects of the program.</span>
             }
 <span class="nc" id="L106">            return false;</span>
@@ -189,9 +189,9 @@ public class HttpClient {
 <span class="pc bpc" id="L189" title="1 of 2 branches missed.">		if (httpResponse != null) {</span>
 			try {
 <span class="fc" id="L191">				httpResponse.close();</span>
-<span class="pc" id="L192">			} catch (IOException ioException) {</span>
+<span class="nc" id="L192">			} catch (IOException ioException) {</span>
 <span class="nc" id="L193">				ioException.printStackTrace();</span>
-			}
+<span class="fc" id="L194">			}</span>
 		}
 
 <span class="fc" id="L197">		return response;</span>
@@ -219,9 +219,9 @@ public class HttpClient {
 <span class="pc bpc" id="L219" title="1 of 2 branches missed.">		if (httpResponse != null) {</span>
 			try {
 <span class="fc" id="L221">				httpResponse.close();</span>
-<span class="pc" id="L222">			} catch (IOException e) {</span>
+<span class="nc" id="L222">			} catch (IOException e) {</span>
 <span class="nc" id="L223">				e.printStackTrace();</span>
-			}
+<span class="fc" id="L224">			}</span>
 		}
 
 <span class="fc" id="L227">		return response;</span>
@@ -241,26 +241,26 @@ public class HttpClient {
 		public void run() {
 			try {
 <span class="pc bpc" id="L243" title="1 of 2 branches missed.">				while (!shutdown) {</span>
-<span class="pc" id="L244">					synchronized (this) {</span>
+<span class="fc" id="L244">					synchronized (this) {</span>
 <span class="nc" id="L245">						wait(5000);</span>
 						// Close expired connections
 <span class="nc" id="L247">						connMgr.closeExpiredConnections();</span>
 						// Optionally, close connections
 						// that have been idle longer than 60 sec
 <span class="nc" id="L250">						connMgr.closeIdleConnections(60, TimeUnit.SECONDS);</span>
-					}
+<span class="nc" id="L251">					}</span>
 				}
 <span class="nc" id="L253">			} catch (InterruptedException ex) {</span>
 				// terminate
 <span class="nc" id="L255">				shutdown();</span>
-			}
+<span class="nc" id="L256">			}</span>
 <span class="nc" id="L257">		}</span>
 
 		public void shutdown() {
 <span class="nc" id="L260">			shutdown = true;</span>
 <span class="nc" id="L261">			synchronized (this) {</span>
 <span class="nc" id="L262">				notifyAll();</span>
-			}
+<span class="nc" id="L263">			}</span>
 <span class="nc" id="L264">		}</span>
 
 	}
