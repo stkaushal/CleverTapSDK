@@ -2,8 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>CleverTap_sdk</groupId>
-	<artifactId>CleverTap_sdk</artifactId>
+	<groupId>CleverTapSDK</groupId>
+	<artifactId>CleverTapSDK</artifactId>
 	<version>1.0</version>
 	<name>CleverTap API SDK</name>
 	<description>SDK for clevertap api</description>
@@ -41,21 +41,21 @@
 						<exclude>META-INF/**</exclude>
 					</excludes>
 				</configuration>
-				 <executions>
-                    <execution>
-                        <id>jacoco-initialize</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>jacoco-site</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -129,6 +129,12 @@
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>eu.codearte.catch-exception</groupId>
+			<artifactId>catch-exception</artifactId>
+			<version>1.4.4</version>
+			<scope>test</scope> <!-- test scope to use it only in tests -->
 		</dependency>
 
 	</dependencies>

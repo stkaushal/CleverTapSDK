@@ -3,12 +3,8 @@ package HTTP;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.SocketTimeoutException;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpVersion;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -22,7 +18,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
 import HTTP.HttpClient;
 
 public class HttpClientTest {
@@ -33,9 +28,8 @@ public class HttpClientTest {
 	@Mock private CloseableHttpResponse httpResponse;
 	@Mock private HttpEntity entity;
 	@Mock private JSONObject payload;
-	@InjectMocks private HttpClient client;
-	
 	@Mock private HttpClient clientMock;
+	@InjectMocks private HttpClient client;
 	
 	@BeforeEach
 	public void setup() {
@@ -98,73 +92,22 @@ public class HttpClientTest {
         Assertions.assertNotNull(result);
         Assertions.assertEquals("string", result.getString("dummy"));
 	}
+    
+	@Test
+	//@Timeout(value = 100, unit = TimeUnit.MILLISECONDS)
 	
-//	@Test
-//	public void testConnectTimeoutException() throws IOException, InterruptedException {
-//		
-//		Mockito.when(httpResponse.getStatusLine()).thenReturn(new BasicStatusLine(HttpVersion.HTTP_1_1, 500, null));
-//    	Mockito.when(httpResponse.getEntity()).thenReturn(entity);
-//    	InputStream stream = new ByteArrayInputStream("{ \"dummy\" : \"string\" }".getBytes());
-//    	Mockito.when(entity.getContent()).thenReturn(stream);
-//    	ConnectTimeoutException connExc = new ConnectTimeoutException();
-//    	
-//		Mockito.when(httpClient.execute(Mockito.any(HttpPost.class))).thenThrow(connExc).thenReturn(httpResponse);
-//		Mockito.when(httpClient.execute(Mockito.any(HttpGet.class))).thenThrow(connExc).thenReturn(httpResponse);
-//		
-//	    Mockito.doReturn(0).when(clientMock).getTryConnTimeOut();
-//		
-//		try {
-//			clientMock.getRequest(URL_DUMMY);
-//			clientMock.postRequest(URL_DUMMY, payload);
-//		}catch(ConnectTimeoutException e) {
-//			Assert.assertTrue(true);
-//		}
-//		 Assert.assertEquals(500, httpResponse.getStatusLine().getStatusCode());
-//	}
-	
-//	@Test
-//	public void testSocketTimeoutException() throws IOException, InterruptedException {
-//		
-//		Mockito.when(httpResponse.getStatusLine()).thenReturn(new BasicStatusLine(HttpVersion.HTTP_1_1, 500, null));
-//    	Mockito.when(httpResponse.getEntity()).thenReturn(entity);
-//    	InputStream stream = new ByteArrayInputStream("{ \"dummy\" : \"string\" }".getBytes());
-//    	Mockito.when(entity.getContent()).thenReturn(stream);
-//    	SocketTimeoutException connSoc = new SocketTimeoutException();
-//    	
-//		Mockito.when(httpClient.execute(Mockito.any(HttpPost.class))).thenThrow(connSoc).thenReturn(httpResponse);
-//		Mockito.when(httpClient.execute(Mockito.any(HttpGet.class))).thenThrow(connSoc).thenReturn(httpResponse);
-//		
-//	    Mockito.doReturn(0).when(clientMock).getTryConnTimeOut();
-//		
-//		try {
-//			clientMock.getRequest(URL_DUMMY);
-//			clientMock.postRequest(URL_DUMMY, payload);
-//		}catch(SocketTimeoutException e) {
-//			Assert.assertTrue(true);
-//		}
-//		Assert.assertEquals(500, httpResponse.getStatusLine().getStatusCode());
-//	}
-//	
-//	@Test
-//	public void testClientProtocolException() throws IOException, InterruptedException {
-//		
-//		Mockito.when(httpResponse.getStatusLine()).thenReturn(new BasicStatusLine(HttpVersion.HTTP_1_1, 200, null));
-//    	Mockito.when(httpResponse.getEntity()).thenReturn(entity);
-//    	InputStream stream = new ByteArrayInputStream("{ \"dummy\" : \"string\" }".getBytes());
-//    	Mockito.when(entity.getContent()).thenReturn(stream);
-//    	
-//    	ClientProtocolException cliExc = new ClientProtocolException();
-//    	
-//		Mockito.when(httpClient.execute(Mockito.any(HttpGet.class))).thenThrow(cliExc);
-//		Mockito.when(httpClient.execute(Mockito.any(HttpPost.class))).thenThrow(cliExc);
-//    	
-//		
-//		try {
-//			client.getRequest(URL_DUMMY);
-//			client.postRequest(URL_DUMMY, payload);
-//		}catch(ClientProtocolException e) {
-//			Assert.assertTrue(true);
-//		}
+	public void testConnectTimeoutException() throws IOException, InterruptedException {
 		
-//	}
+		Mockito.when(httpResponse.getStatusLine()).thenReturn(new BasicStatusLine(HttpVersion.HTTP_1_1, 429, null));
+    	Mockito.when(httpResponse.getEntity()).thenReturn(entity);
+    	InputStream stream = new ByteArrayInputStream("{ \"Retry-After\" : \"2\" }".getBytes());
+    	Mockito.when(entity.getContent()).thenReturn(stream);
+    	
+		Mockito.when(httpClient.execute(Mockito.any(HttpPost.class))).thenReturn(httpResponse);
+		
+		client.postRequest(URL_DUMMY, payload);
+
+	}
+
 }
+
