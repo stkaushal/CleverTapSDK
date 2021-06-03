@@ -2,7 +2,7 @@
 
 import java.util.HashMap;
 
-<span class="nc" id="L5">public class Content {</span>
+<span class="fc" id="L5">public class Content {</span>
 	String title;
 	String body;
 	String subject;
@@ -13,54 +13,60 @@ import java.util.HashMap;
 	String template_id;
 	HashMap&lt;String, Object&gt; platform_specific;
 	
+	public HashMap&lt;String, Object&gt; getPlatform_specific() {
+<span class="fc" id="L17">		return platform_specific;</span>
+	}
+	public void setPlatform_specific(HashMap&lt;String, Object&gt; platform_specific) {
+<span class="fc" id="L20">		this.platform_specific = platform_specific;</span>
+<span class="fc" id="L21">	}</span>
 	public String getTemplate_id() {
-<span class="nc" id="L17">		return template_id;</span>
+<span class="fc" id="L23">		return template_id;</span>
 	}
 	public void setTemplate_id(String template_id) {
-<span class="nc" id="L20">		this.template_id = template_id;</span>
-<span class="nc" id="L21">	}</span>
+<span class="fc" id="L26">		this.template_id = template_id;</span>
+<span class="fc" id="L27">	}</span>
 	public String getTitle() {
-<span class="nc" id="L23">		return title;</span>
+<span class="fc" id="L29">		return title;</span>
 	}
 	public void setTitle(String title) {
-<span class="nc" id="L26">		this.title = title;</span>
-<span class="nc" id="L27">	}</span>
+<span class="fc" id="L32">		this.title = title;</span>
+<span class="fc" id="L33">	}</span>
 	public String getBody() {
-<span class="nc" id="L29">		return body;</span>
+<span class="fc" id="L35">		return body;</span>
 	}
 	public void setBody(String body) {
-<span class="nc" id="L32">		this.body = body;</span>
-<span class="nc" id="L33">	}</span>
+<span class="fc" id="L38">		this.body = body;</span>
+<span class="fc" id="L39">	}</span>
 	public String getSubject() {
-<span class="nc" id="L35">		return subject;</span>
+<span class="fc" id="L41">		return subject;</span>
 	}
 	public void setSubject(String subject) {
-<span class="nc" id="L38">		this.subject = subject;</span>
-<span class="nc" id="L39">	}</span>
+<span class="fc" id="L44">		this.subject = subject;</span>
+<span class="fc" id="L45">	}</span>
 	public String getSender_name() {
-<span class="nc" id="L41">		return sender_name;</span>
+<span class="fc" id="L47">		return sender_name;</span>
 	}
 	public void setSender_name(String sender_name) {
-<span class="nc" id="L44">		this.sender_name = sender_name;</span>
-<span class="nc" id="L45">	}</span>
+<span class="fc" id="L50">		this.sender_name = sender_name;</span>
+<span class="fc" id="L51">	}</span>
 	public String getTemplate_name() {
-<span class="nc" id="L47">		return template_name;</span>
+<span class="fc" id="L53">		return template_name;</span>
 	}
 	public void setTemplate_name(String template_name) {
-<span class="nc" id="L50">		this.template_name = template_name;</span>
-<span class="nc" id="L51">	}</span>
+<span class="fc" id="L56">		this.template_name = template_name;</span>
+<span class="fc" id="L57">	}</span>
 	public String getReplacements() {
-<span class="nc" id="L53">		return replacements;</span>
+<span class="fc" id="L59">		return replacements;</span>
 	}
 	public void setReplacements(String replacements) {
-<span class="nc" id="L56">		this.replacements = replacements;</span>
-<span class="nc" id="L57">	}</span>
+<span class="fc" id="L62">		this.replacements = replacements;</span>
+<span class="fc" id="L63">	}</span>
 	public String getAttachments() {
-<span class="nc" id="L59">		return attachments;</span>
+<span class="fc" id="L65">		return attachments;</span>
 	}
 	public void setAttachments(String attachments) {
-<span class="nc" id="L62">		this.attachments = attachments;</span>
-<span class="nc" id="L63">	}</span>
+<span class="fc" id="L68">		this.attachments = attachments;</span>
+<span class="fc" id="L69">	}</span>
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

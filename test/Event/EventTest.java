@@ -2,6 +2,7 @@ package Event;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -38,6 +39,23 @@ public class EventTest {
 		jsonResponse.put("status", "success");
 		EventPayload payload = new EventPayload();
 		payload.setFBID("Random_id");
+		payload.setFrom(01012020);
+		payload.setTo(01022021);
+		payload.setEvent_name("test");
+		payload.setTs(0126542);
+		payload.setGPID("dummy");
+		payload.setEvtName("dummy");
+		payload.setType("test");
+		payload.setTimestamp("dummy");
+		payload.setIdentity("dummy");
+		payload.setObjectId("dummy");
+		HashMap<String, Object> evtData = new HashMap<String, Object>();
+		evtData.put("key", "value");
+		HashMap<String, String> event_properties = new HashMap<String, String>();
+		event_properties.put("key", "value");
+		payload.setEvtData(evtData);
+		payload.setEvent_properties(event_properties);
+		
 		List<EventPayload> payloadList = new ArrayList<EventPayload>();
 		payloadList.add(payload);
 		

@@ -1,6 +1,7 @@
 package Report;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import HTTP.HttpClient;
+import Payload.Group;
 import Payload.ReportPayload;
 import Response.Response;
 
@@ -33,7 +35,35 @@ public class ReportTest {
 		jsonResponse.put("status", "success");
 		
 		ReportPayload payload = new ReportPayload();
-		payload.setEvent_name("Bought watch");;
+		payload.setEvent_name("Bought watch");
+		payload.setFrom(01012020);
+		payload.setTo(01012021);
+		String[] delivery = {"dummy"};
+		payload.setDelivery(delivery);
+		
+		HashMap<String, Group> groups = new HashMap<String, Group>();
+		Group group = new Group();
+		group.setName("dummy");
+		group.setOrder("dummy");
+		group.setProperty_type("dummy");
+		group.setTop_n(1);
+		group.setTrend_type("dummy");
+		groups.put("group", group);
+		
+		payload.setGroups(groups);
+		payload.setUser_type(true);
+		
+		String[] channel = {"dummy"};
+		payload.setChannel(channel);
+		payload.setDaily(true);
+		String[] status = {"dummy"};
+		payload.setStatus(status);
+		String[] message_type = {"dummy"};
+		payload.setMessage_type(message_type);
+		String[] lable = {"dummy"};
+		payload.setLable(lable);
+		payload.setUnique(true);
+		payload.setSum_event_prop(1);
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		

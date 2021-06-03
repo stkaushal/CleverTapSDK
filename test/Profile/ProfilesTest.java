@@ -2,6 +2,7 @@ package Profile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -14,7 +15,12 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import HTTP.HttpClient;
 import Helper.Cursor;
+import Payload.CategoryResubscribe;
+import Payload.CategoryUnsubscribe;
+import Payload.Keys;
+import Payload.ProfileData;
 import Payload.ProfilePayload;
+import Payload.TokenData;
 import Response.GetUserProfileResponse;
 import Response.Response;
 
@@ -36,7 +42,59 @@ public class ProfilesTest {
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
 		ProfilePayload payload = new ProfilePayload();
+		payload.setValue("random");
 		payload.setFBID("Random_id");
+		payload.setType("Payload");
+		payload.setStatus("success");
+		payload.setFrom(01032020);
+		payload.setTo(11022020);
+		payload.setEvent_name("testing class");
+		payload.setObjectId("dksjka");
+		payload.setTs("10112020002");
+		String[] identity = {"dummy"};
+		String[] identities = {"dummy"};
+		String[] guid = {"dummy"};
+		payload.setIdentity(identity);
+		payload.setIndentities(identities);
+		payload.setGuid(guid);
+		HashMap<String, String> evtProps = new HashMap<String, String>();
+		evtProps.put("type", "test");
+		payload.setEvent_properties(evtProps);
+		
+		ProfileData profileData = new ProfileData();
+		profileData.setName("dummy");
+		profileData.setEmail("dummy");
+		profileData.setPhone("dummy");
+		profileData.setGender("dummy");
+		profileData.setMSG_sms(true);
+		profileData.setMSG_email(true);
+		profileData.setMSG_whatsapp(true);
+		profileData.setMSG_dndEmail(true);
+		profileData.setMSG_dndPhone(true);
+		profileData.setDOB("01012020");
+		CategoryUnsubscribe categoryUnsubscribe = new CategoryUnsubscribe();
+		CategoryResubscribe categoryResubscribe = new CategoryResubscribe();
+		String[] email = {"dummy"};
+		categoryUnsubscribe.setEmail(email);
+		categoryResubscribe.setEmail(email);
+		profileData.setCategory_resubscribe(categoryResubscribe);
+		profileData.setCategory_unsubscribe(categoryUnsubscribe);
+		HashMap<String, Object> extra_data = new HashMap<String, Object>();
+		extra_data.put("extra", "data");
+		profileData.setExtra_data(extra_data);
+		
+		payload.setProfileData(profileData);
+		
+		TokenData tokenData = new TokenData();
+		tokenData.setId("dummy");
+		tokenData.setType("test");
+		Keys keys = new Keys();
+		keys.setAuth("auth");
+		keys.setP256dh("jjfjfj");
+		tokenData.setKeys(keys);
+		
+		payload.setTokenData(tokenData);
+		
 		List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
 		payloadList.add(payload);
 		

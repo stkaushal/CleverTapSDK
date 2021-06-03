@@ -14,20 +14,20 @@ CleverTap API SDK,default,CleverTapSDK,61,0,0,0,16,0,2,0,2,0
 CleverTap API SDK,Campaign,Campaigns,0,173,1,7,0,35,1,9,0,6
 CleverTap API SDK,Report,Report,0,120,0,0,0,22,0,5,0,5
 CleverTap API SDK,Event,Event,0,128,0,0,0,25,0,5,0,5
-CleverTap API SDK,Payload,Content,59,0,0,0,25,0,17,0,17,0
-CleverTap API SDK,Payload,To,31,0,0,0,13,0,9,0,9,0
-CleverTap API SDK,Payload,CategoryResubscribe,10,0,0,0,4,0,3,0,3,0
-CleverTap API SDK,Payload,ControlGroup,24,0,0,0,10,0,7,0,7,0
-CleverTap API SDK,Payload,CategoryUnsubscribe,10,0,0,0,4,0,3,0,3,0
-CleverTap API SDK,Payload,Where,31,0,0,0,13,0,9,0,9,0
-CleverTap API SDK,Payload,EventPayload,48,46,0,0,24,16,12,15,12,15
-CleverTap API SDK,Payload,TokenData,24,0,0,0,10,0,7,0,7,0
-CleverTap API SDK,Payload,Group,38,0,0,0,16,0,11,0,11,0
-CleverTap API SDK,Payload,Keys,17,0,0,0,7,0,5,0,5,0
-CleverTap API SDK,Payload,ReportPayload,48,46,0,0,24,16,12,15,12,15
-CleverTap API SDK,Payload,ProfilePayload,56,52,0,0,28,18,14,17,14,17
-CleverTap API SDK,Payload,CampaignPayload,108,91,0,0,54,31,27,30,27,30
-CleverTap API SDK,Payload,ProfileData,94,0,0,0,40,0,27,0,27,0
+CleverTap API SDK,Payload,Content,0,66,0,0,0,28,0,19,0,19
+CleverTap API SDK,Payload,To,0,31,0,0,0,13,0,9,0,9
+CleverTap API SDK,Payload,CategoryResubscribe,0,10,0,0,0,4,0,3,0,3
+CleverTap API SDK,Payload,ControlGroup,0,24,0,0,0,10,0,7,0,7
+CleverTap API SDK,Payload,CategoryUnsubscribe,0,10,0,0,0,4,0,3,0,3
+CleverTap API SDK,Payload,Where,0,31,0,0,0,13,0,9,0,9
+CleverTap API SDK,Payload,EventPayload,0,94,0,0,0,40,0,27,0,27
+CleverTap API SDK,Payload,TokenData,0,24,0,0,0,10,0,7,0,7
+CleverTap API SDK,Payload,Group,0,38,0,0,0,16,0,11,0,11
+CleverTap API SDK,Payload,Keys,0,17,0,0,0,7,0,5,0,5
+CleverTap API SDK,Payload,ReportPayload,0,94,0,0,0,40,0,27,0,27
+CleverTap API SDK,Payload,ProfilePayload,0,108,0,0,0,46,0,31,0,31
+CleverTap API SDK,Payload,CampaignPayload,0,199,0,0,0,85,0,57,0,57
+CleverTap API SDK,Payload,ProfileData,0,94,0,0,0,40,0,27,0,27
 CleverTap API SDK,HTTP,HttpClient.new HttpRequestRetryHandler() {...},68,6,20,0,19,1,11,1,1,1
 CleverTap API SDK,HTTP,HttpClient.new ServiceUnavailableRetryStrategy() {...},51,9,10,0,8,2,7,1,2,1
 CleverTap API SDK,HTTP,HttpClient.new ConnectionKeepAliveStrategy() {...},33,6,6,0,10,1,4,1,1,1

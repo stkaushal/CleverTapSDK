@@ -13,6 +13,12 @@ public class Content {
 	String template_id;
 	HashMap<String, Object> platform_specific;
 	
+	public HashMap<String, Object> getPlatform_specific() {
+		return platform_specific;
+	}
+	public void setPlatform_specific(HashMap<String, Object> platform_specific) {
+		this.platform_specific = platform_specific;
+	}
 	public String getTemplate_id() {
 		return template_id;
 	}

@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicStatusLine;
 import org.json.JSONObject;
+import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,7 @@ public class HttpClientTest {
 	@Mock private JSONObject payload;
 	@Mock private HttpClient clientMock;
 	@InjectMocks private HttpClient client;
+		
 	
 	@BeforeEach
 	public void setup() {
@@ -106,6 +108,7 @@ public class HttpClientTest {
 		Mockito.when(httpClient.execute(Mockito.any(HttpPost.class))).thenReturn(httpResponse);
 		
 		client.postRequest(URL_DUMMY, payload);
+		
 
 	}
 
