@@ -3,6 +3,7 @@ package Campaign;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Payload.CampaignPayload;
 import Payload.Content;
 import Payload.ControlGroup;
@@ -21,6 +23,9 @@ import Payload.Where;
 import Response.Response;
 
 public class CampaignsTest {
+	
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy");   
+	Campaigns resCampaigns = instance.getCampaignInstance();
 	
 	@Mock HttpClient client;
 	@InjectMocks Campaigns campaigns;
@@ -123,6 +128,58 @@ public class CampaignsTest {
 		Response response = null;
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
+		jsonResponse.put("processed", 1);
+		JSONArray unProcessed = new JSONArray();
+		JSONObject jsonUnProcessed = new JSONObject();
+		jsonUnProcessed.put("test", "dummy");
+		unProcessed.put(jsonUnProcessed);
+		jsonResponse.put("unprocessed", unProcessed);
+		jsonResponse.put("error", "Failed");
+		jsonResponse.put("code", 200);
+		jsonResponse.put("count", 1);
+		jsonResponse.put("req_id", 1);
+		jsonResponse.put("user_type", "test");
+		jsonResponse.put("total_results", 1);
+		JSONArray messages = new JSONArray();
+		JSONObject jsonMessages = new JSONObject();
+		jsonMessages.put("message id", 1);
+		JSONArray msgData = new JSONArray();
+		JSONObject jsonData = new JSONObject();
+		jsonData.put("test", "dummy");
+		msgData.put(jsonData);
+		jsonMessages.put("data", msgData);
+		jsonMessages.put("start_date", "dummy");
+		JSONArray device = new JSONArray();
+		device.put("dummy");
+		jsonMessages.put("device", device);
+		jsonMessages.put("conversion_event", "dummy");
+		JSONArray lables = new JSONArray();
+		jsonMessages.put("lables", lables);
+		jsonMessages.put("channel", "dummy");
+		jsonMessages.put("message_name", "dummy");
+		jsonMessages.put("delivery", "dummy");
+		messages.put(jsonMessages);
+		
+		jsonResponse.put("messages", messages);
+		JSONObject jsonEstimates = new JSONObject();
+		jsonEstimates.put("dummy", "test");
+		jsonResponse.put("estimates", jsonEstimates);
+		JSONObject resultCampReport = new JSONObject();
+		resultCampReport.put("clicked", 1);
+		resultCampReport.put("sent", 1);
+		jsonResponse.put("result", resultCampReport);
+		
+		JSONArray campTargets = new JSONArray();
+		JSONObject jsonCampTargets = new JSONObject();
+		jsonCampTargets.put("id", 1);
+		jsonCampTargets.put("name", "dummy");
+		jsonCampTargets.put("scheduled_on", 1);
+		jsonCampTargets.put("status", "dummy");
+		campTargets.put(jsonCampTargets);
+		jsonResponse.put("targets", campTargets);
+		jsonResponse.put("message", "dummy");
+		jsonResponse.put("extraData", "dummy");
+		
 		CampaignPayload payload = new CampaignPayload();
 		payload.setName("Send Mail");
 		
@@ -131,6 +188,35 @@ public class CampaignsTest {
 		response = campaigns.getCampaigns(payload);
    
 		Assertions.assertNotNull(response);
+		Assertions.assertNotNull(response.getOtherInfo());
+		Assertions.assertNotNull(response.getCode());
+		Assertions.assertNotNull(response.getCount());
+		Assertions.assertNotNull(response.getError());
+		Assertions.assertNotNull(response.getEstimates());
+		Assertions.assertNotNull(response.getMessage());
+		Assertions.assertNotNull(response.getMessages());
+		Assertions.assertNotNull(response.getMessages().get(0).getChannel());
+		Assertions.assertNotNull(response.getMessages().get(0).getConversion_event());
+		Assertions.assertNotNull(response.getMessages().get(0).getData());
+		Assertions.assertNotNull(response.getMessages().get(0).getDelivery());
+		Assertions.assertNotNull(response.getMessages().get(0).getDevice());
+		Assertions.assertNotNull(response.getMessages().get(0).getLables());
+		Assertions.assertNotNull(response.getMessages().get(0).getMessage_id());
+		Assertions.assertNotNull(response.getMessages().get(0).getMessage_name());
+		Assertions.assertNotNull(response.getMessages().get(0).getStart_date());
+		Assertions.assertNotNull(response.getProcessed());
+		Assertions.assertNotNull(response.getReq_id());
+		Assertions.assertNotNull(response.getResult());
+		Assertions.assertNotNull(response.getResult().getClicked());
+		Assertions.assertNotNull(response.getResult().getSent());
+		Assertions.assertNotNull(response.getTargets());
+		Assertions.assertNotNull(response.getTargets().get(0).getId());
+		Assertions.assertNotNull(response.getTargets().get(0).getName());
+		Assertions.assertNotNull(response.getTargets().get(0).getScheduled_on());
+		Assertions.assertNotNull(response.getTargets().get(0).getStatus());
+		Assertions.assertNotNull(response.getTotal_results());
+		Assertions.assertNotNull(response.getUnprocessed());
+		Assertions.assertNotNull(response.getUser_type());
 		Assertions.assertEquals("success", response.getStatus());
 	}
 

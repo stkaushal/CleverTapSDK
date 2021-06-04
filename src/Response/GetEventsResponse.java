@@ -1,21 +1,22 @@
 package Response;
 
+import java.util.List;
 
 public class GetEventsResponse extends Response{
-	String nextCursor = null;
-	RecordsProfile records;
+	String next_cursor = null;
+	List<RecordsEvent> records;
 	
 	
-	public RecordsProfile getRecords() {
+	public List<RecordsEvent> getRecords() {
 		return records;
 	}
-	public void setRecords(RecordsProfile records) {
+	public void setRecords(List<RecordsEvent> records) {
 		this.records = records;
 	}
-	public String getNextCursor() {
-		return nextCursor;
+	public String getNext_cursor() {
+		return next_cursor;
 	}
-	public void setNextCursor(String nextCursor) {
-		this.nextCursor = nextCursor;
+	public void setNext_cursor(String next_cursor) {
+		this.next_cursor = next_cursor;
 	}
 }

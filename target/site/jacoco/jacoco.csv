@@ -1,16 +1,16 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-CleverTap API SDK,Response,Response,105,10,0,0,45,4,30,3,30,3
-CleverTap API SDK,Response,RecordsProfile,45,0,0,0,19,0,13,0,13,0
-CleverTap API SDK,Response,Result,17,0,0,0,7,0,5,0,5,0
-CleverTap API SDK,Response,GetEventsResponse,14,6,0,0,6,2,4,1,4,1
-CleverTap API SDK,Response,GetUserProfileResponse,14,6,0,0,6,2,4,1,4,1
-CleverTap API SDK,Response,Target,31,0,0,0,13,0,9,0,9,0
-CleverTap API SDK,Response,RecordsEvent,31,0,0,0,13,0,9,0,9,0
-CleverTap API SDK,Response,Message,66,0,0,0,28,0,19,0,19,0
-CleverTap API SDK,Response,Profile,45,0,0,0,19,0,13,0,13,0
+CleverTap API SDK,Response,Response,0,119,1,1,0,48,1,31,0,31
+CleverTap API SDK,Response,RecordsProfile,0,45,0,0,0,19,0,13,0,13
+CleverTap API SDK,Response,Result,0,17,0,0,0,7,0,5,0,5
+CleverTap API SDK,Response,GetEventsResponse,0,20,0,0,0,8,0,5,0,5
+CleverTap API SDK,Response,GetUserProfileResponse,0,20,0,0,0,8,0,5,0,5
+CleverTap API SDK,Response,Target,0,31,0,0,0,13,0,9,0,9
+CleverTap API SDK,Response,RecordsEvent,0,31,0,0,0,13,0,9,0,9
+CleverTap API SDK,Response,Message,0,66,0,0,0,28,0,19,0,19
+CleverTap API SDK,Response,Profile,0,45,0,0,0,19,0,13,0,13
 CleverTap API SDK,Helper,Cursor,0,17,0,0,0,7,0,5,0,5
-CleverTap API SDK,Helper,ClevertapInstance,39,4,0,0,12,2,5,2,5,2
-CleverTap API SDK,default,CleverTapSDK,61,0,0,0,16,0,2,0,2,0
+CleverTap API SDK,Helper,ClevertapInstance,0,43,0,0,0,14,0,7,0,7
+CleverTap API SDK,default,CleverTapSDK,4,0,0,0,2,0,2,0,2,0
 CleverTap API SDK,Campaign,Campaigns,0,173,1,7,0,35,1,9,0,6
 CleverTap API SDK,Report,Report,0,120,0,0,0,22,0,5,0,5
 CleverTap API SDK,Event,Event,0,128,0,0,0,25,0,5,0,5

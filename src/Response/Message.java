@@ -1,6 +1,7 @@
 package Response;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,11 +10,11 @@ public class Message {
 	@JsonProperty(value="message id")
 	long message_id;
 	
-	HashMap<String, String>[] data;
+	List<HashMap<String, String>> data;
 	String start_date;
-	String[] device;
-	String conversion_event;
-	String[] labels;
+	List<String> device;
+	Object conversion_event;
+	List<String> lables;
 	String channel;
 	String message_name;
 	String delivery;
@@ -24,10 +25,10 @@ public class Message {
 		this.message_id = message_id;
 	}
 
-	public HashMap<String, String>[] getData() {
+	public List<HashMap<String, String>> getData() {
 		return data;
 	}
-	public void setData(HashMap<String, String>[] data) {
+	public void setData(List<HashMap<String, String>> data) {
 		this.data = data;
 	}
 	public String getStart_date() {
@@ -36,23 +37,23 @@ public class Message {
 	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
-	public String[] getDevice() {
+	public List<String> getDevice() {
 		return device;
 	}
-	public void setDevice(String[] device) {
+	public void setDevice(List<String> device) {
 		this.device = device;
 	}
-	public String getConversion_event() {
+	public Object getConversion_event() {
 		return conversion_event;
 	}
-	public void setConversion_event(String conversion_event) {
+	public void setConversion_event(Object conversion_event) {
 		this.conversion_event = conversion_event;
 	}
-	public String[] getLabels() {
-		return labels;
+	public List<String> getLables() {
+		return lables;
 	}
-	public void setLabels(String[] labels) {
-		this.labels = labels;
+	public void setLables(List<String> lables) {
+		this.lables = lables;
 	}
 	public String getChannel() {
 		return channel;

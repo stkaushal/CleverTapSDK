@@ -1,35 +1,15 @@
 package Response;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class RecordsProfile {
 	String email;
 	String name;
 	String identity;
-	HashMap<String, String> profileData;
+	HashMap<String, Object> profileData;
 	HashMap<String, Object> events;
-	HashMap<String, Object> platformInfo;
-	
-	
-	public HashMap<String, String> getProfileData() {
-		return profileData;
-	}
-	public void setProfileData(HashMap<String, String> profileData) {
-		this.profileData = profileData;
-	}
-	public HashMap<String, Object> getEvents() {
-		return events;
-	}
-	public void setEvents(HashMap<String, Object> events) {
-		this.events = events;
-	}
-	public HashMap<String, Object> getPlatformInfo() {
-		return platformInfo;
-	}
-	public void setPlatformInfo(HashMap<String, Object> platformInfo) {
-		this.platformInfo = platformInfo;
-	}
-	
+	List<HashMap<String, Object>> platformInfo;
 	public String getEmail() {
 		return email;
 	}
@@ -47,6 +27,24 @@ public class RecordsProfile {
 	}
 	public void setIdentity(String identity) {
 		this.identity = identity;
+	}
+	public HashMap<String, Object> getProfileData() {
+		return profileData;
+	}
+	public void setProfileData(HashMap<String, Object> profileData) {
+		this.profileData = profileData;
+	}
+	public HashMap<String, Object> getEvents() {
+		return events;
+	}
+	public void setEvents(HashMap<String, Object> events) {
+		this.events = events;
+	}
+	public List<HashMap<String, Object>> getPlatformInfo() {
+		return platformInfo;
+	}
+	public void setPlatformInfo(List<HashMap<String, Object>> platformInfo) {
+		this.platformInfo = platformInfo;
 	}
 	
 }

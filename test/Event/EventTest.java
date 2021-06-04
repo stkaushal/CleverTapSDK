@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,12 +16,16 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Payload.EventPayload;
 import Response.GetEventsResponse;
 import Response.Response;
 
 public class EventTest {
+	
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy");
+	Event resEvent = instance.getEventInstance();
 	
 	@Mock HttpClient client;
 	@Mock Cursor cursorMock;
@@ -88,12 +93,49 @@ public class EventTest {
 		GetEventsResponse response = null;
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
+		jsonResponse.put("next_cursor", "dummy");
+		
+		JSONArray records = new JSONArray();
+		JSONObject jsonRecords = new JSONObject();
+		JSONObject profile = new JSONObject();
+		profile.put("objectId", "dummy");
+		profile.put("platform", "dummy");
+		profile.put("email", "dummy");
+		JSONObject profileData = new JSONObject();
+		profileData.put("test", "dummy");
+		profile.put("profileData", profileData);
+		profile.put("identity", 1);
+		profile.put("id", 1);
+		jsonRecords.put("profile", profile);
+		jsonRecords.put("ts", 1);
+		JSONObject event_props = new JSONObject();
+		event_props.put("test", "dummy");
+		jsonRecords.put("event_props", event_props);
+		JSONObject session_props = new JSONObject();
+		session_props.put("test", "dummy");
+		jsonRecords.put("session_props", session_props);
+		
+		records.put(jsonRecords);
+		jsonResponse.put("records", records);
+		
 		
 		Mockito.when(client.getRequest(Mockito.anyString())).thenReturn(jsonResponse);
 		
 		response = event.getEventsData(cursorMock);
 		
 		Assertions.assertNotNull(response);
+		Assertions.assertNotNull(response.getNext_cursor());
+		Assertions.assertNotNull(response.getRecords());
+		Assertions.assertNotNull(response.getRecords().get(0).getEvent_props());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfile());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getEmail());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getId());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getIdentity());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getObjectId());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getPlatform());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getProfileData());
+		Assertions.assertNotNull(response.getRecords().get(0).getSession_props());
+		Assertions.assertNotNull(response.getRecords().get(0).getTs());
 		Assertions.assertEquals("success", response.getStatus());
 	}
 

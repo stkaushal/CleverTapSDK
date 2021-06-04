@@ -17,22 +17,22 @@ import Response.Response;
 	
     public static void main(String[] args) throws IOException, InterruptedException {
     	
-<span class="nc" id="L20">	   String Cid = &quot;4R8-K98-8Z6Z&quot;;</span>
-<span class="nc" id="L21">	   String CPswd = &quot;AOE-RUW-CHUL&quot;;</span>
-<span class="nc" id="L22">	   ProfilePayload payload = new ProfilePayload();</span>
-<span class="nc" id="L23">	   payload.setFBID(&quot;hshjksks&quot;);</span>
-<span class="nc" id="L24">	   List&lt;ProfilePayload&gt; payloadList = new ArrayList&lt;ProfilePayload&gt;();</span>
-<span class="nc" id="L25">	   payloadList.add(payload);</span>
-<span class="nc" id="L26">	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);</span>
-	   
-<span class="nc" id="L28">	   Response res = instance.getProfileInstance().uploadUserProfile(payloadList);</span>
-<span class="nc" id="L29">	   System.out.println(res.getReq_id());</span>
-	   
-<span class="nc" id="L31">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
-<span class="nc" id="L32">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
-<span class="nc" id="L33">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
-<span class="nc" id="L34">	   JSONObject jsonPayload = new JSONObject(jsonMapper.writeValueAsString(res));</span>
-<span class="nc" id="L35">	   System.out.println(jsonPayload);</span>
+//	   String Cid = &quot;4R8-K98-8Z6Z&quot;;
+//	   String CPswd = &quot;AOE-RUW-CHUL&quot;;
+//	   ProfilePayload payload = new ProfilePayload();
+//	   payload.setFBID(&quot;hshjksks&quot;);
+//	   List&lt;ProfilePayload&gt; payloadList = new ArrayList&lt;ProfilePayload&gt;();
+//	   payloadList.add(payload);
+//	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);
+//	   
+//	   Response res = instance.getProfileInstance().uploadUserProfile(payloadList);
+//	   System.out.println(res.getReq_id());
+//	   
+//	   ObjectMapper jsonMapper = new ObjectMapper();
+//	   jsonMapper.setSerializationInclusion(Include.NON_NULL);
+//	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//	   JSONObject jsonPayload = new JSONObject(jsonMapper.writeValueAsString(res));
+//	   System.out.println(jsonPayload);
 	   
 	   
 	

@@ -13,11 +13,15 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Payload.Group;
 import Payload.ReportPayload;
 import Response.Response;
 
 public class ReportTest {
+	
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy");
+	Report resReport = instance.getReportInstance();
 	
 	@Mock HttpClient client;
 	@InjectMocks Report report;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +14,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Payload.CategoryResubscribe;
 import Payload.CategoryUnsubscribe;
@@ -25,6 +28,9 @@ import Response.GetUserProfileResponse;
 import Response.Response;
 
 public class ProfilesTest {
+	
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy");
+	Profiles resProfiles = instance.getProfileInstance();
 	
 	@Mock Cursor cursorMock;
 	@Mock HttpClient client;
@@ -38,9 +44,7 @@ public class ProfilesTest {
 
 	@Test
 	public void testUploadUserProfile() throws IOException, InterruptedException {
-		Response response = null;
-		JSONObject jsonResponse = new JSONObject();
-		jsonResponse.put("status", "success");
+		
 		ProfilePayload payload = new ProfilePayload();
 		payload.setValue("random");
 		payload.setFBID("Random_id");
@@ -98,6 +102,11 @@ public class ProfilesTest {
 		List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
 		payloadList.add(payload);
 		
+		Response response = null;
+		
+		JSONObject jsonResponse = new JSONObject();
+		jsonResponse.put("status", "success");		
+		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
 		response = profile.uploadUserProfile(payloadList);
@@ -129,14 +138,45 @@ public class ProfilesTest {
 	@Test
 	public void testGetUserProfileData() throws IOException, InterruptedException {
 		GetUserProfileResponse response = null;
+		
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
+		jsonResponse.put("next_cursor", "dummy");
+		
+		JSONArray records = new JSONArray();
+		JSONObject jsonRecords = new JSONObject();
+		jsonRecords.put("email", "dummy");
+		jsonRecords.put("name", "dummy");
+		jsonRecords.put("identity", "dummy");
+		JSONObject profileData = new JSONObject();
+		profileData.put("test", "dummy");
+		jsonRecords.put("profileData", profileData);
+		JSONObject events = new JSONObject();
+		events.put("test", "dummy");
+		jsonRecords.put("events", events);
+		JSONArray platformInfo = new JSONArray();
+		JSONObject jsonPlatformInfo = new JSONObject();
+		jsonPlatformInfo.put("test", "dummy");
+		platformInfo.put(jsonPlatformInfo);
+		jsonRecords.put("platformInfo", platformInfo);
+		
+		records.put(jsonRecords);
+		jsonResponse.put("records", records);
 		
 		Mockito.when(client.getRequest(Mockito.anyString())).thenReturn(jsonResponse);
 		
 		response = profile.getUserProfileData(cursorMock);
 		
 		Assertions.assertNotNull(response);
+		Assertions.assertNotNull(response.getNext_cursor());
+		Assertions.assertNotNull(response.getRecords());
+		Assertions.assertNotNull(response.getRecords().get(0).getEmail());
+		Assertions.assertNotNull(response.getRecords().get(0).getEvents());
+		Assertions.assertNotNull(response.getRecords().get(0).getIdentity());
+		Assertions.assertNotNull(response.getRecords().get(0).getName());
+		Assertions.assertNotNull(response.getRecords().get(0).getPlatformInfo());
+		Assertions.assertNotNull(response.getRecords().get(0).getProfileData());
+		System.out.println(response.getRecords());
 		Assertions.assertEquals("success", response.getStatus());
 	}
 	

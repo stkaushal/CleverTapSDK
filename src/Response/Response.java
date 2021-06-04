@@ -1,6 +1,7 @@
 package Response;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -9,31 +10,32 @@ public class Response {
 	
 	String status;
 	int processed;
-	Object[] unprocessed;
+	List<Object> unprocessed;
 	String error;
 	int code;
 	int count;
 	long req_id;
 	String user_type;
 	int total_results;
-	Message messages;
-	
-	String foo;
+	List<Message> messages;
 	
 	HashMap<String, String> estimates;
 	Result result;
-	Target[] targets;
+	List<Target> targets;
 	String message;
 	
-	HashMap<String, String> extra_data;
+	HashMap<String, Object> otherInfo;
 	
 	@JsonAnyGetter
-	public HashMap<String, String> getExtra_data() {
-		return extra_data;
+	public HashMap<String, Object> getOtherInfo() {
+		return otherInfo;
 	}
 	@JsonAnySetter
-	public void setExtra_data(HashMap<String, String> extra_data) {
-		this.extra_data = extra_data;
+	public void setOtherInfo(String key, Object value) {
+		if(this.otherInfo == null) {
+			this.otherInfo = new HashMap<String,Object>();
+		}
+		this.otherInfo.put(key,value);
 	}
 	public String getStatus() {
 		return status;
@@ -47,10 +49,10 @@ public class Response {
 	public void setProcessed(int processed) {
 		this.processed = processed;
 	}
-	public Object[] getUnprocessed() {
+	public List<Object> getUnprocessed() {
 		return unprocessed;
 	}
-	public void setUnprocessed(Object[] unprocessed) {
+	public void setUnprocessed(List<Object> unprocessed) {
 		this.unprocessed = unprocessed;
 	}
 	public String getError() {
@@ -89,30 +91,11 @@ public class Response {
 	public void setTotal_results(int total_results) {
 		this.total_results = total_results;
 	}
-	public Message getMessages() {
+	public List<Message> getMessages() {
 		return messages;
 	}
-	public void setMessages(Message messages) {
+	public void setMessages(List<Message> messages) {
 		this.messages = messages;
-	}
-	public String getFoo() {
-		return foo;
-	}
-	public void setFoo(String foo) {
-		this.foo = foo;
-	}
-	
-	public Result getResult() {
-		return result;
-	}
-	public void setResult(Result result) {
-		this.result = result;
-	}
-	public Target[] getTargets() {
-		return targets;
-	}
-	public void setTargets(Target[] targets) {
-		this.targets = targets;
 	}
 	public HashMap<String, String> getEstimates() {
 		return estimates;
@@ -120,11 +103,24 @@ public class Response {
 	public void setEstimates(HashMap<String, String> estimates) {
 		this.estimates = estimates;
 	}
+	public Result getResult() {
+		return result;
+	}
+	public void setResult(Result result) {
+		this.result = result;
+	}
+	public List<Target> getTargets() {
+		return targets;
+	}
+	public void setTargets(List<Target> targets) {
+		this.targets = targets;
+	}
 	public String getMessage() {
 		return message;
 	}
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 	
 }
