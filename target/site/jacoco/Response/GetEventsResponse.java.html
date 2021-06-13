@@ -2,22 +2,28 @@
 
 import java.util.List;
 
-<span class="fc" id="L5">public class GetEventsResponse extends Response{</span>
-<span class="fc" id="L6">	String next_cursor = null;</span>
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+<span class="fc" id="L7">public class GetEventsResponse extends Response{</span>
+	
+	@JsonProperty(value=&quot;next_cursor&quot;)
+	String nextCursor;
+	
 	List&lt;RecordsEvent&gt; records;
 	
 	
 	public List&lt;RecordsEvent&gt; getRecords() {
-<span class="fc" id="L11">		return records;</span>
+<span class="fc" id="L16">		return records;</span>
 	}
 	public void setRecords(List&lt;RecordsEvent&gt; records) {
-<span class="fc" id="L14">		this.records = records;</span>
-<span class="fc" id="L15">	}</span>
-	public String getNext_cursor() {
-<span class="fc" id="L17">		return next_cursor;</span>
+<span class="fc" id="L19">		this.records = records;</span>
+<span class="fc" id="L20">	}</span>
+	public String getNextCursor() {
+<span class="fc" id="L22">		return nextCursor;</span>
 	}
-	public void setNext_cursor(String next_cursor) {
-<span class="fc" id="L20">		this.next_cursor = next_cursor;</span>
-<span class="fc" id="L21">	}</span>
+	public void setNextCursor(String nextCursor) {
+<span class="fc" id="L25">		this.nextCursor = nextCursor;</span>
+<span class="fc" id="L26">	}</span>
+	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

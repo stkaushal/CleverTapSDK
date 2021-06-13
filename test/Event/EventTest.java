@@ -43,23 +43,24 @@ public class EventTest {
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
 		EventPayload payload = new EventPayload();
-		payload.setFBID("Random_id");
-		payload.setFrom(01012020);
-		payload.setTo(01022021);
-		payload.setEvent_name("test");
+		payload.setFbid("Random_id");
+		payload.setFromDate(01012020);
+		payload.setToDate(01022021);
+		payload.setEventNameUpload("test");
 		payload.setTs(0126542);
-		payload.setGPID("dummy");
-		payload.setEvtName("dummy");
+		payload.setGpid("dummy");
 		payload.setType("test");
 		payload.setTimestamp("dummy");
 		payload.setIdentity("dummy");
 		payload.setObjectId("dummy");
 		HashMap<String, Object> evtData = new HashMap<String, Object>();
 		evtData.put("key", "value");
-		HashMap<String, String> event_properties = new HashMap<String, String>();
+		HashMap<String, Object> event_properties = new HashMap<String, Object>();
 		event_properties.put("key", "value");
-		payload.setEvtData(evtData);
-		payload.setEvent_properties(event_properties);
+		List<HashMap<String, Object>> eventPropList = new ArrayList<HashMap<String, Object>>();
+		eventPropList.add(event_properties);
+		payload.setEventData(evtData);
+		payload.setEventProperties(eventPropList);
 		
 		List<EventPayload> payloadList = new ArrayList<EventPayload>();
 		payloadList.add(payload);
@@ -78,7 +79,7 @@ public class EventTest {
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("cursor", "fhsklaioclamlkkjadajj");
 		EventPayload payload = new EventPayload();
-		payload.setFBID("Random_id");
+		payload.setFbid("Random_id");
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 
@@ -124,9 +125,9 @@ public class EventTest {
 		response = event.getEventsData(cursorMock);
 		
 		Assertions.assertNotNull(response);
-		Assertions.assertNotNull(response.getNext_cursor());
+		Assertions.assertNotNull(response.getNextCursor());
 		Assertions.assertNotNull(response.getRecords());
-		Assertions.assertNotNull(response.getRecords().get(0).getEvent_props());
+		Assertions.assertNotNull(response.getRecords().get(0).getEventProps());
 		Assertions.assertNotNull(response.getRecords().get(0).getProfile());
 		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getEmail());
 		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getId());
@@ -134,8 +135,8 @@ public class EventTest {
 		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getObjectId());
 		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getPlatform());
 		Assertions.assertNotNull(response.getRecords().get(0).getProfile().getProfileData());
-		Assertions.assertNotNull(response.getRecords().get(0).getSession_props());
-		Assertions.assertNotNull(response.getRecords().get(0).getTs());
+		Assertions.assertNotNull(response.getRecords().get(0).getSessionProps());
+		Assertions.assertNotNull(response.getRecords().get(0).getTimestamp());
 		Assertions.assertEquals("success", response.getStatus());
 	}
 
@@ -146,7 +147,8 @@ public class EventTest {
 		jsonResponse.put("status", "success");
 		
 		EventPayload payload = new EventPayload();
-		payload.setFBID("Random_id");
+		payload.setFbid("Random_id");
+		payload.setEventNameDownload("dummy");
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		

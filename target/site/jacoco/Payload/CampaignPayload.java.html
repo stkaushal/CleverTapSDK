@@ -1,204 +1,307 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CampaignPayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Payload</a> &gt; <span class="el_source">CampaignPayload.java</span></div><h1>CampaignPayload.java</h1><pre class="source lang-java linenums">package Payload;
 
-<span class="fc" id="L3">public class CampaignPayload {</span>
-	String name;
-	String when;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L8">public class CampaignPayload {</span>
+	
+	@JsonProperty(value=&quot;name&quot;)
+	String campaignName;
+	
+	@JsonProperty(value=&quot;when&quot;)
+	String campaignSendTime;
+	
 	Content content;
-	String provider_nick_name;
-	String provider_group_nickname;
-	Where where;
-	boolean respect_frequency_caps;
-	boolean estimate_only;
-	boolean async_estimate;
-	int ttl;
-	String wzrk_cid;
-	String wzrk_bc;
-	String wzrk_bi;
-	boolean system_control_group_include;
-	ControlGroup control_group;
-	String wzrk_acts;
-	boolean respect_throttle;
-	boolean skip_estimate;
-	boolean send_to_all_devices;
+	
+	@JsonProperty(value=&quot;provider_nick_name&quot;)
+	String providerNickName;
+	
+	@JsonProperty(value=&quot;provider_group_nickname&quot;)
+	String providerGroupNickname;
+	
+	@JsonProperty(value=&quot;where&quot;)
+	Where campaignSendTo;
+	
+	@JsonProperty(value=&quot;respect_frequency_caps&quot;)
+	boolean respectFrequencyCaps;
+	
+	@JsonProperty(value=&quot;estimate_only&quot;)
+	boolean estimateOnly;
+	
+	@JsonProperty(value=&quot;async_estimate&quot;)
+	boolean asyncEstimate;
+	
+	@JsonProperty(value=&quot;ttl&quot;)
+	int timeTolive;
+	
+	@JsonProperty(value=&quot;wzrk_cid&quot;)
+	String wzrkCid;
+	
+	@JsonProperty(value=&quot;wzrk_bc&quot;)
+	String wzrkBc;
+	
+	@JsonProperty(value=&quot;wzrk_bi&quot;)
+	String wzrkBi;
+	
+	@JsonProperty(value=&quot;system_control_group_include&quot;)
+	boolean includeSystemControlGroup;
+	
+	@JsonProperty(value=&quot;control_group&quot;)
+	ControlGroup controlGroup;
+	
+	@JsonProperty(value=&quot;wzrk_acts&quot;)
+	String wzrkActs;
+	
+	@JsonProperty(value=&quot;respect_throttle&quot;)
+	boolean respectThrottle;
+	
+	@JsonProperty(value=&quot;skip_estimate&quot;)
+	boolean skipEstimate;
+	
+	@JsonProperty(value=&quot;send_to_all_devices&quot;)
+	boolean sendToAllDevices;
+	
 	int segment;
-	To to;
-	String tag_group;
-	int badge_id;
-	String badge_icon;
-	boolean mutable_content;
-	int id;
-	int from;
-	int toDate;
 	
-	public int getFrom() {
-<span class="fc" id="L34">		return from;</span>
+	@JsonProperty(value=&quot;to&quot;)
+	To sendMessageTo;
+	
+	@JsonProperty(value=&quot;tag_group&quot;)
+	String tagGroup;
+	
+	@JsonProperty(value=&quot;badge_id&quot;)
+	int badgeId;
+	
+	@JsonProperty(value=&quot;badge_icon&quot;)
+	String badgeIcon;
+	
+	@JsonProperty(value=&quot;mutable_content&quot;)
+	boolean mutableContent;
+	
+	@JsonProperty(value=&quot;id&quot;)
+	int campaignId;
+	
+	@JsonProperty(value=&quot;target_mode&quot;)
+	String targetMode;
+
+	public String getTargetMode() {
+<span class="fc" id="L90">		return targetMode;</span>
 	}
-	public void setFrom(int from) {
-<span class="fc" id="L37">		this.from = from;</span>
-<span class="fc" id="L38">	}</span>
-	public int getToDate() {
-<span class="fc" id="L40">		return toDate;</span>
+
+	public void setTargetMode(String targetMode) {
+<span class="nc" id="L94">		this.targetMode = targetMode;</span>
+<span class="nc" id="L95">	}</span>
+
+	public String getCampaignName() {
+<span class="fc" id="L98">		return campaignName;</span>
 	}
-	public void setToDate(int toDate) {
-<span class="fc" id="L43">		this.toDate = toDate;</span>
-<span class="fc" id="L44">	}</span>
-	public String getName() {
-<span class="fc" id="L46">		return name;</span>
+
+	public void setCampaignName(String campaignName) {
+<span class="fc" id="L102">		this.campaignName = campaignName;</span>
+<span class="fc" id="L103">	}</span>
+
+	public String getCampaignSendTime() {
+<span class="fc" id="L106">		return campaignSendTime;</span>
 	}
-	public void setName(String name) {
-<span class="fc" id="L49">		this.name = name;</span>
-<span class="fc" id="L50">	}</span>
-	public String getWhen() {
-<span class="fc" id="L52">		return when;</span>
-	}
-	public void setWhen(String when) {
-<span class="fc" id="L55">		this.when = when;</span>
-<span class="fc" id="L56">	}</span>
+
+	public void setCampaignSendTime(String campaignSendTime) {
+<span class="fc" id="L110">		this.campaignSendTime = campaignSendTime;</span>
+<span class="fc" id="L111">	}</span>
+
 	public Content getContent() {
-<span class="fc" id="L58">		return content;</span>
+<span class="fc" id="L114">		return content;</span>
 	}
+
 	public void setContent(Content content) {
-<span class="fc" id="L61">		this.content = content;</span>
-<span class="fc" id="L62">	}</span>
-	public boolean isRespect_frequency_caps() {
-<span class="fc" id="L64">		return respect_frequency_caps;</span>
+<span class="fc" id="L118">		this.content = content;</span>
+<span class="fc" id="L119">	}</span>
+
+	public String getProviderNickName() {
+<span class="fc" id="L122">		return providerNickName;</span>
 	}
-	public void setRespect_frequency_caps(boolean respect_frequency_caps) {
-<span class="fc" id="L67">		this.respect_frequency_caps = respect_frequency_caps;</span>
-<span class="fc" id="L68">	}</span>
-	public boolean isEstimate_only() {
-<span class="fc" id="L70">		return estimate_only;</span>
+
+	public void setProviderNickName(String providerNickName) {
+<span class="fc" id="L126">		this.providerNickName = providerNickName;</span>
+<span class="fc" id="L127">	}</span>
+
+	public String getProviderGroupNickname() {
+<span class="fc" id="L130">		return providerGroupNickname;</span>
 	}
-	public void setEstimate_only(boolean estimate_only) {
-<span class="fc" id="L73">		this.estimate_only = estimate_only;</span>
-<span class="fc" id="L74">	}</span>
-	public boolean isAsync_estimate() {
-<span class="fc" id="L76">		return async_estimate;</span>
+
+	public void setProviderGroupNickname(String providerGroupNickname) {
+<span class="fc" id="L134">		this.providerGroupNickname = providerGroupNickname;</span>
+<span class="fc" id="L135">	}</span>
+
+	public Where getCampaignSendTo() {
+<span class="fc" id="L138">		return campaignSendTo;</span>
 	}
-	public void setAsync_estimate(boolean async_estimate) {
-<span class="fc" id="L79">		this.async_estimate = async_estimate;</span>
-<span class="fc" id="L80">	}</span>
-	public int getTtl() {
-<span class="fc" id="L82">		return ttl;</span>
+
+	public void setCampaignSendTo(Where campaignSendTo) {
+<span class="fc" id="L142">		this.campaignSendTo = campaignSendTo;</span>
+<span class="fc" id="L143">	}</span>
+
+	public boolean isRespectFrequencyCaps() {
+<span class="fc" id="L146">		return respectFrequencyCaps;</span>
 	}
-	public void setTtl(int ttl) {
-<span class="fc" id="L85">		this.ttl = ttl;</span>
-<span class="fc" id="L86">	}</span>
-	public int getSegment() {
-<span class="fc" id="L88">		return segment;</span>
+
+	public void setRespectFrequencyCaps(boolean respectFrequencyCaps) {
+<span class="fc" id="L150">		this.respectFrequencyCaps = respectFrequencyCaps;</span>
+<span class="fc" id="L151">	}</span>
+
+	public boolean isEstimateOnly() {
+<span class="fc" id="L154">		return estimateOnly;</span>
 	}
-	public void setSegment(int segment) {
-<span class="fc" id="L91">		this.segment = segment;</span>
-<span class="fc" id="L92">	}</span>
-	public boolean isSend_to_all_devices() {
-<span class="fc" id="L94">		return send_to_all_devices;</span>
+
+	public void setEstimateOnly(boolean estimateOnly) {
+<span class="fc" id="L158">		this.estimateOnly = estimateOnly;</span>
+<span class="fc" id="L159">	}</span>
+
+	public boolean isAsyncEstimate() {
+<span class="fc" id="L162">		return asyncEstimate;</span>
 	}
-	public void setSend_to_all_devices(boolean send_to_all_devices) {
-<span class="fc" id="L97">		this.send_to_all_devices = send_to_all_devices;</span>
-<span class="fc" id="L98">	}</span>
-	public boolean isSkip_estimate() {
-<span class="fc" id="L100">		return skip_estimate;</span>
+
+	public void setAsyncEstimate(boolean asyncEstimate) {
+<span class="fc" id="L166">		this.asyncEstimate = asyncEstimate;</span>
+<span class="fc" id="L167">	}</span>
+
+	public int getTimeTolive() {
+<span class="fc" id="L170">		return timeTolive;</span>
 	}
-	public void setSkip_estimate(boolean skip_estimate) {
-<span class="fc" id="L103">		this.skip_estimate = skip_estimate;</span>
-<span class="fc" id="L104">	}</span>
-	public boolean isRespect_throttle() {
-<span class="fc" id="L106">		return respect_throttle;</span>
+
+	public void setTimeTolive(int timeTolive) {
+<span class="fc" id="L174">		this.timeTolive = timeTolive;</span>
+<span class="fc" id="L175">	}</span>
+
+	public String getWzrkCid() {
+<span class="fc" id="L178">		return wzrkCid;</span>
 	}
-	public void setRespect_throttle(boolean respect_throttle) {
-<span class="fc" id="L109">		this.respect_throttle = respect_throttle;</span>
-<span class="fc" id="L110">	}</span>
-	public String getWzrk_cid() {
-<span class="fc" id="L112">		return wzrk_cid;</span>
-	}
-	public void setWzrk_cid(String wzrk_cid) {
-<span class="fc" id="L115">		this.wzrk_cid = wzrk_cid;</span>
-<span class="fc" id="L116">	}</span>
-	public String getWzrk_bc() {
-<span class="fc" id="L118">		return wzrk_bc;</span>
-	}
-	public void setWzrk_bc(String wzrk_bc) {
-<span class="fc" id="L121">		this.wzrk_bc = wzrk_bc;</span>
-<span class="fc" id="L122">	}</span>
-	public String getWzrk_bi() {
-<span class="fc" id="L124">		return wzrk_bi;</span>
-	}
-	public void setWzrk_bi(String wzrk_bi) {
-<span class="fc" id="L127">		this.wzrk_bi = wzrk_bi;</span>
-<span class="fc" id="L128">	}</span>
-	public String getWzrk_acts() {
-<span class="fc" id="L130">		return wzrk_acts;</span>
-	}
-	public void setWzrk_acts(String wzrk_acts) {
-<span class="fc" id="L133">		this.wzrk_acts = wzrk_acts;</span>
-<span class="fc" id="L134">	}</span>
-	public Where getWhere() {
-<span class="fc" id="L136">		return where;</span>
-	}
-	public void setWhere(Where where) {
-<span class="fc" id="L139">		this.where = where;</span>
-<span class="fc" id="L140">	}</span>
-	public String getBadge_icon() {
-<span class="fc" id="L142">		return badge_icon;</span>
-	}
-	public void setBadge_icon(String badge_icon) {
-<span class="fc" id="L145">		this.badge_icon = badge_icon;</span>
-<span class="fc" id="L146">	}</span>
-	public int getBadge_id() {
-<span class="fc" id="L148">		return badge_id;</span>
-	}
-	public void setBadge_id(int badge_id) {
-<span class="fc" id="L151">		this.badge_id = badge_id;</span>
-<span class="fc" id="L152">	}</span>
-	public boolean isMutable_content() {
-<span class="fc" id="L154">		return mutable_content;</span>
-	}
-	public void setMutable_content(boolean mutable_content) {
-<span class="fc" id="L157">		this.mutable_content = mutable_content;</span>
-<span class="fc" id="L158">	}</span>
-	public int getId() {
-<span class="fc" id="L160">		return id;</span>
-	}
-	public void setId(int id) {
-<span class="fc" id="L163">		this.id = id;</span>
-<span class="fc" id="L164">	}</span>
-	
-	public String getProvider_nick_name() {
-<span class="fc" id="L167">		return provider_nick_name;</span>
-	}
-	public void setProvider_nick_name(String provider_nick_name) {
-<span class="fc" id="L170">		this.provider_nick_name = provider_nick_name;</span>
-<span class="fc" id="L171">	}</span>
-	public String getProvider_group_nickname() {
-<span class="fc" id="L173">		return provider_group_nickname;</span>
-	}
-	public void setProvider_group_nickname(String provider_group_nickname) {
-<span class="fc" id="L176">		this.provider_group_nickname = provider_group_nickname;</span>
-<span class="fc" id="L177">	}</span>
-	public boolean isSystem_control_group_include() {
-<span class="fc" id="L179">		return system_control_group_include;</span>
-	}
-	public void setSystem_control_group_include(boolean system_control_group_include) {
-<span class="fc" id="L182">		this.system_control_group_include = system_control_group_include;</span>
+
+	public void setWzrkCid(String wzrkCid) {
+<span class="fc" id="L182">		this.wzrkCid = wzrkCid;</span>
 <span class="fc" id="L183">	}</span>
-	public ControlGroup getControl_group() {
-<span class="fc" id="L185">		return control_group;</span>
+
+	public String getWzrkBc() {
+<span class="fc" id="L186">		return wzrkBc;</span>
 	}
-	public void setControl_group(ControlGroup control_group) {
-<span class="fc" id="L188">		this.control_group = control_group;</span>
-<span class="fc" id="L189">	}</span>
-	public To getTo() {
-<span class="fc" id="L191">		return to;</span>
+
+	public void setWzrkBc(String wzrkBc) {
+<span class="fc" id="L190">		this.wzrkBc = wzrkBc;</span>
+<span class="fc" id="L191">	}</span>
+
+	public String getWzrkBi() {
+<span class="fc" id="L194">		return wzrkBi;</span>
 	}
-	public void setTo(To to) {
-<span class="fc" id="L194">		this.to = to;</span>
-<span class="fc" id="L195">	}</span>
-	public String getTag_group() {
-<span class="fc" id="L197">		return tag_group;</span>
+
+	public void setWzrkBi(String wzrkBi) {
+<span class="fc" id="L198">		this.wzrkBi = wzrkBi;</span>
+<span class="fc" id="L199">	}</span>
+
+	public boolean isIncludeSystemControlGroup() {
+<span class="fc" id="L202">		return includeSystemControlGroup;</span>
 	}
-	public void setTag_group(String tag_group) {
-<span class="fc" id="L200">		this.tag_group = tag_group;</span>
-<span class="fc" id="L201">	}</span>
+
+	public void setIncludeSystemControlGroup(boolean includeSystemControlGroup) {
+<span class="fc" id="L206">		this.includeSystemControlGroup = includeSystemControlGroup;</span>
+<span class="fc" id="L207">	}</span>
+
+	public ControlGroup getControlGroup() {
+<span class="fc" id="L210">		return controlGroup;</span>
+	}
+
+	public void setControlGroup(ControlGroup controlGroup) {
+<span class="fc" id="L214">		this.controlGroup = controlGroup;</span>
+<span class="fc" id="L215">	}</span>
+
+	public String getWzrkActs() {
+<span class="fc" id="L218">		return wzrkActs;</span>
+	}
+
+	public void setWzrkActs(String wzrkActs) {
+<span class="fc" id="L222">		this.wzrkActs = wzrkActs;</span>
+<span class="fc" id="L223">	}</span>
+
+	public boolean isRespectThrottle() {
+<span class="fc" id="L226">		return respectThrottle;</span>
+	}
+
+	public void setRespectThrottle(boolean respectThrottle) {
+<span class="fc" id="L230">		this.respectThrottle = respectThrottle;</span>
+<span class="fc" id="L231">	}</span>
+
+	public boolean isSkipEstimate() {
+<span class="fc" id="L234">		return skipEstimate;</span>
+	}
+
+	public void setSkipEstimate(boolean skipEstimate) {
+<span class="fc" id="L238">		this.skipEstimate = skipEstimate;</span>
+<span class="fc" id="L239">	}</span>
+
+	public boolean isSendToAllDevices() {
+<span class="fc" id="L242">		return sendToAllDevices;</span>
+	}
+
+	public void setSendToAllDevices(boolean sendToAllDevices) {
+<span class="fc" id="L246">		this.sendToAllDevices = sendToAllDevices;</span>
+<span class="fc" id="L247">	}</span>
+
+	public int getSegment() {
+<span class="fc" id="L250">		return segment;</span>
+	}
+
+	public void setSegment(int segment) {
+<span class="fc" id="L254">		this.segment = segment;</span>
+<span class="fc" id="L255">	}</span>
+
+	public To getSendMessageTo() {
+<span class="fc" id="L258">		return sendMessageTo;</span>
+	}
+
+	public void setSendMessageTo(To sendMessageTo) {
+<span class="fc" id="L262">		this.sendMessageTo = sendMessageTo;</span>
+<span class="fc" id="L263">	}</span>
+
+	public String getTagGroup() {
+<span class="fc" id="L266">		return tagGroup;</span>
+	}
+
+	public void setTagGroup(String tagGroup) {
+<span class="fc" id="L270">		this.tagGroup = tagGroup;</span>
+<span class="fc" id="L271">	}</span>
+
+	public int getBadgeId() {
+<span class="fc" id="L274">		return badgeId;</span>
+	}
+
+	public void setBadgeId(int badgeId) {
+<span class="fc" id="L278">		this.badgeId = badgeId;</span>
+<span class="fc" id="L279">	}</span>
+
+	public String getBadgeIcon() {
+<span class="fc" id="L282">		return badgeIcon;</span>
+	}
+
+	public void setBadgeIcon(String badgeIcon) {
+<span class="fc" id="L286">		this.badgeIcon = badgeIcon;</span>
+<span class="fc" id="L287">	}</span>
+
+	public boolean isMutableContent() {
+<span class="fc" id="L290">		return mutableContent;</span>
+	}
+
+	public void setMutableContent(boolean mutableContent) {
+<span class="fc" id="L294">		this.mutableContent = mutableContent;</span>
+<span class="fc" id="L295">	}</span>
+
+	public int getCampaignId() {
+<span class="fc" id="L298">		return campaignId;</span>
+	}
+
+	public void setCampaignId(int campaignId) {
+<span class="fc" id="L302">		this.campaignId = campaignId;</span>
+<span class="fc" id="L303">	}</span>
+
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

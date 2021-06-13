@@ -1,203 +1,306 @@
 package Payload;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class CampaignPayload {
-	String name;
-	String when;
-	Content content;
-	String provider_nick_name;
-	String provider_group_nickname;
-	Where where;
-	boolean respect_frequency_caps;
-	boolean estimate_only;
-	boolean async_estimate;
-	int ttl;
-	String wzrk_cid;
-	String wzrk_bc;
-	String wzrk_bi;
-	boolean system_control_group_include;
-	ControlGroup control_group;
-	String wzrk_acts;
-	boolean respect_throttle;
-	boolean skip_estimate;
-	boolean send_to_all_devices;
-	int segment;
-	To to;
-	String tag_group;
-	int badge_id;
-	String badge_icon;
-	boolean mutable_content;
-	int id;
-	int from;
-	int toDate;
 	
-	public int getFrom() {
-		return from;
+	@JsonProperty(value="name")
+	String campaignName;
+	
+	@JsonProperty(value="when")
+	String campaignSendTime;
+	
+	Content content;
+	
+	@JsonProperty(value="provider_nick_name")
+	String providerNickName;
+	
+	@JsonProperty(value="provider_group_nickname")
+	String providerGroupNickname;
+	
+	@JsonProperty(value="where")
+	Where campaignSendTo;
+	
+	@JsonProperty(value="respect_frequency_caps")
+	boolean respectFrequencyCaps;
+	
+	@JsonProperty(value="estimate_only")
+	boolean estimateOnly;
+	
+	@JsonProperty(value="async_estimate")
+	boolean asyncEstimate;
+	
+	@JsonProperty(value="ttl")
+	int timeTolive;
+	
+	@JsonProperty(value="wzrk_cid")
+	String wzrkCid;
+	
+	@JsonProperty(value="wzrk_bc")
+	String wzrkBc;
+	
+	@JsonProperty(value="wzrk_bi")
+	String wzrkBi;
+	
+	@JsonProperty(value="system_control_group_include")
+	boolean includeSystemControlGroup;
+	
+	@JsonProperty(value="control_group")
+	ControlGroup controlGroup;
+	
+	@JsonProperty(value="wzrk_acts")
+	String wzrkActs;
+	
+	@JsonProperty(value="respect_throttle")
+	boolean respectThrottle;
+	
+	@JsonProperty(value="skip_estimate")
+	boolean skipEstimate;
+	
+	@JsonProperty(value="send_to_all_devices")
+	boolean sendToAllDevices;
+	
+	int segment;
+	
+	@JsonProperty(value="to")
+	To sendMessageTo;
+	
+	@JsonProperty(value="tag_group")
+	String tagGroup;
+	
+	@JsonProperty(value="badge_id")
+	int badgeId;
+	
+	@JsonProperty(value="badge_icon")
+	String badgeIcon;
+	
+	@JsonProperty(value="mutable_content")
+	boolean mutableContent;
+	
+	@JsonProperty(value="id")
+	int campaignId;
+	
+	@JsonProperty(value="target_mode")
+	String targetMode;
+
+	public String getTargetMode() {
+		return targetMode;
 	}
-	public void setFrom(int from) {
-		this.from = from;
+
+	public void setTargetMode(String targetMode) {
+		this.targetMode = targetMode;
 	}
-	public int getToDate() {
-		return toDate;
+
+	public String getCampaignName() {
+		return campaignName;
 	}
-	public void setToDate(int toDate) {
-		this.toDate = toDate;
+
+	public void setCampaignName(String campaignName) {
+		this.campaignName = campaignName;
 	}
-	public String getName() {
-		return name;
+
+	public String getCampaignSendTime() {
+		return campaignSendTime;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setCampaignSendTime(String campaignSendTime) {
+		this.campaignSendTime = campaignSendTime;
 	}
-	public String getWhen() {
-		return when;
-	}
-	public void setWhen(String when) {
-		this.when = when;
-	}
+
 	public Content getContent() {
 		return content;
 	}
+
 	public void setContent(Content content) {
 		this.content = content;
 	}
-	public boolean isRespect_frequency_caps() {
-		return respect_frequency_caps;
+
+	public String getProviderNickName() {
+		return providerNickName;
 	}
-	public void setRespect_frequency_caps(boolean respect_frequency_caps) {
-		this.respect_frequency_caps = respect_frequency_caps;
+
+	public void setProviderNickName(String providerNickName) {
+		this.providerNickName = providerNickName;
 	}
-	public boolean isEstimate_only() {
-		return estimate_only;
+
+	public String getProviderGroupNickname() {
+		return providerGroupNickname;
 	}
-	public void setEstimate_only(boolean estimate_only) {
-		this.estimate_only = estimate_only;
+
+	public void setProviderGroupNickname(String providerGroupNickname) {
+		this.providerGroupNickname = providerGroupNickname;
 	}
-	public boolean isAsync_estimate() {
-		return async_estimate;
+
+	public Where getCampaignSendTo() {
+		return campaignSendTo;
 	}
-	public void setAsync_estimate(boolean async_estimate) {
-		this.async_estimate = async_estimate;
+
+	public void setCampaignSendTo(Where campaignSendTo) {
+		this.campaignSendTo = campaignSendTo;
 	}
-	public int getTtl() {
-		return ttl;
+
+	public boolean isRespectFrequencyCaps() {
+		return respectFrequencyCaps;
 	}
-	public void setTtl(int ttl) {
-		this.ttl = ttl;
+
+	public void setRespectFrequencyCaps(boolean respectFrequencyCaps) {
+		this.respectFrequencyCaps = respectFrequencyCaps;
 	}
+
+	public boolean isEstimateOnly() {
+		return estimateOnly;
+	}
+
+	public void setEstimateOnly(boolean estimateOnly) {
+		this.estimateOnly = estimateOnly;
+	}
+
+	public boolean isAsyncEstimate() {
+		return asyncEstimate;
+	}
+
+	public void setAsyncEstimate(boolean asyncEstimate) {
+		this.asyncEstimate = asyncEstimate;
+	}
+
+	public int getTimeTolive() {
+		return timeTolive;
+	}
+
+	public void setTimeTolive(int timeTolive) {
+		this.timeTolive = timeTolive;
+	}
+
+	public String getWzrkCid() {
+		return wzrkCid;
+	}
+
+	public void setWzrkCid(String wzrkCid) {
+		this.wzrkCid = wzrkCid;
+	}
+
+	public String getWzrkBc() {
+		return wzrkBc;
+	}
+
+	public void setWzrkBc(String wzrkBc) {
+		this.wzrkBc = wzrkBc;
+	}
+
+	public String getWzrkBi() {
+		return wzrkBi;
+	}
+
+	public void setWzrkBi(String wzrkBi) {
+		this.wzrkBi = wzrkBi;
+	}
+
+	public boolean isIncludeSystemControlGroup() {
+		return includeSystemControlGroup;
+	}
+
+	public void setIncludeSystemControlGroup(boolean includeSystemControlGroup) {
+		this.includeSystemControlGroup = includeSystemControlGroup;
+	}
+
+	public ControlGroup getControlGroup() {
+		return controlGroup;
+	}
+
+	public void setControlGroup(ControlGroup controlGroup) {
+		this.controlGroup = controlGroup;
+	}
+
+	public String getWzrkActs() {
+		return wzrkActs;
+	}
+
+	public void setWzrkActs(String wzrkActs) {
+		this.wzrkActs = wzrkActs;
+	}
+
+	public boolean isRespectThrottle() {
+		return respectThrottle;
+	}
+
+	public void setRespectThrottle(boolean respectThrottle) {
+		this.respectThrottle = respectThrottle;
+	}
+
+	public boolean isSkipEstimate() {
+		return skipEstimate;
+	}
+
+	public void setSkipEstimate(boolean skipEstimate) {
+		this.skipEstimate = skipEstimate;
+	}
+
+	public boolean isSendToAllDevices() {
+		return sendToAllDevices;
+	}
+
+	public void setSendToAllDevices(boolean sendToAllDevices) {
+		this.sendToAllDevices = sendToAllDevices;
+	}
+
 	public int getSegment() {
 		return segment;
 	}
+
 	public void setSegment(int segment) {
 		this.segment = segment;
 	}
-	public boolean isSend_to_all_devices() {
-		return send_to_all_devices;
+
+	public To getSendMessageTo() {
+		return sendMessageTo;
 	}
-	public void setSend_to_all_devices(boolean send_to_all_devices) {
-		this.send_to_all_devices = send_to_all_devices;
+
+	public void setSendMessageTo(To sendMessageTo) {
+		this.sendMessageTo = sendMessageTo;
 	}
-	public boolean isSkip_estimate() {
-		return skip_estimate;
+
+	public String getTagGroup() {
+		return tagGroup;
 	}
-	public void setSkip_estimate(boolean skip_estimate) {
-		this.skip_estimate = skip_estimate;
+
+	public void setTagGroup(String tagGroup) {
+		this.tagGroup = tagGroup;
 	}
-	public boolean isRespect_throttle() {
-		return respect_throttle;
+
+	public int getBadgeId() {
+		return badgeId;
 	}
-	public void setRespect_throttle(boolean respect_throttle) {
-		this.respect_throttle = respect_throttle;
+
+	public void setBadgeId(int badgeId) {
+		this.badgeId = badgeId;
 	}
-	public String getWzrk_cid() {
-		return wzrk_cid;
+
+	public String getBadgeIcon() {
+		return badgeIcon;
 	}
-	public void setWzrk_cid(String wzrk_cid) {
-		this.wzrk_cid = wzrk_cid;
+
+	public void setBadgeIcon(String badgeIcon) {
+		this.badgeIcon = badgeIcon;
 	}
-	public String getWzrk_bc() {
-		return wzrk_bc;
+
+	public boolean isMutableContent() {
+		return mutableContent;
 	}
-	public void setWzrk_bc(String wzrk_bc) {
-		this.wzrk_bc = wzrk_bc;
+
+	public void setMutableContent(boolean mutableContent) {
+		this.mutableContent = mutableContent;
 	}
-	public String getWzrk_bi() {
-		return wzrk_bi;
+
+	public int getCampaignId() {
+		return campaignId;
 	}
-	public void setWzrk_bi(String wzrk_bi) {
-		this.wzrk_bi = wzrk_bi;
+
+	public void setCampaignId(int campaignId) {
+		this.campaignId = campaignId;
 	}
-	public String getWzrk_acts() {
-		return wzrk_acts;
-	}
-	public void setWzrk_acts(String wzrk_acts) {
-		this.wzrk_acts = wzrk_acts;
-	}
-	public Where getWhere() {
-		return where;
-	}
-	public void setWhere(Where where) {
-		this.where = where;
-	}
-	public String getBadge_icon() {
-		return badge_icon;
-	}
-	public void setBadge_icon(String badge_icon) {
-		this.badge_icon = badge_icon;
-	}
-	public int getBadge_id() {
-		return badge_id;
-	}
-	public void setBadge_id(int badge_id) {
-		this.badge_id = badge_id;
-	}
-	public boolean isMutable_content() {
-		return mutable_content;
-	}
-	public void setMutable_content(boolean mutable_content) {
-		this.mutable_content = mutable_content;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public String getProvider_nick_name() {
-		return provider_nick_name;
-	}
-	public void setProvider_nick_name(String provider_nick_name) {
-		this.provider_nick_name = provider_nick_name;
-	}
-	public String getProvider_group_nickname() {
-		return provider_group_nickname;
-	}
-	public void setProvider_group_nickname(String provider_group_nickname) {
-		this.provider_group_nickname = provider_group_nickname;
-	}
-	public boolean isSystem_control_group_include() {
-		return system_control_group_include;
-	}
-	public void setSystem_control_group_include(boolean system_control_group_include) {
-		this.system_control_group_include = system_control_group_include;
-	}
-	public ControlGroup getControl_group() {
-		return control_group;
-	}
-	public void setControl_group(ControlGroup control_group) {
-		this.control_group = control_group;
-	}
-	public To getTo() {
-		return to;
-	}
-	public void setTo(To to) {
-		this.to = to;
-	}
-	public String getTag_group() {
-		return tag_group;
-	}
-	public void setTag_group(String tag_group) {
-		this.tag_group = tag_group;
-	}
+
 	
 }

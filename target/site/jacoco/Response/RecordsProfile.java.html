@@ -3,49 +3,67 @@
 import java.util.HashMap;
 import java.util.List;
 
-<span class="fc" id="L6">public class RecordsProfile {</span>
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+
+<span class="fc" id="L9">public class RecordsProfile {</span>
 	String email;
 	String name;
 	String identity;
 	HashMap&lt;String, Object&gt; profileData;
 	HashMap&lt;String, Object&gt; events;
 	List&lt;HashMap&lt;String, Object&gt;&gt; platformInfo;
+	
+	HashMap&lt;String, Object&gt; otherInfo;
+	
+	@JsonAnyGetter
+	public HashMap&lt;String, Object&gt; getOtherInfo() {
+<span class="nc" id="L21">		return otherInfo;</span>
+	}
+	@JsonAnySetter
+	public void setOtherInfo(String key, Object value) {
+<span class="nc bnc" id="L25" title="All 2 branches missed.">		if(this.otherInfo == null) {</span>
+<span class="nc" id="L26">			this.otherInfo = new HashMap&lt;String,Object&gt;();</span>
+		}
+<span class="nc" id="L28">		this.otherInfo.put(key,value);</span>
+<span class="nc" id="L29">	}</span>
+	
 	public String getEmail() {
-<span class="fc" id="L14">		return email;</span>
+<span class="fc" id="L32">		return email;</span>
 	}
 	public void setEmail(String email) {
-<span class="fc" id="L17">		this.email = email;</span>
-<span class="fc" id="L18">	}</span>
+<span class="fc" id="L35">		this.email = email;</span>
+<span class="fc" id="L36">	}</span>
 	public String getName() {
-<span class="fc" id="L20">		return name;</span>
+<span class="fc" id="L38">		return name;</span>
 	}
 	public void setName(String name) {
-<span class="fc" id="L23">		this.name = name;</span>
-<span class="fc" id="L24">	}</span>
+<span class="fc" id="L41">		this.name = name;</span>
+<span class="fc" id="L42">	}</span>
 	public String getIdentity() {
-<span class="fc" id="L26">		return identity;</span>
+<span class="fc" id="L44">		return identity;</span>
 	}
 	public void setIdentity(String identity) {
-<span class="fc" id="L29">		this.identity = identity;</span>
-<span class="fc" id="L30">	}</span>
+<span class="fc" id="L47">		this.identity = identity;</span>
+<span class="fc" id="L48">	}</span>
 	public HashMap&lt;String, Object&gt; getProfileData() {
-<span class="fc" id="L32">		return profileData;</span>
+<span class="fc" id="L50">		return profileData;</span>
 	}
 	public void setProfileData(HashMap&lt;String, Object&gt; profileData) {
-<span class="fc" id="L35">		this.profileData = profileData;</span>
-<span class="fc" id="L36">	}</span>
+<span class="fc" id="L53">		this.profileData = profileData;</span>
+<span class="fc" id="L54">	}</span>
 	public HashMap&lt;String, Object&gt; getEvents() {
-<span class="fc" id="L38">		return events;</span>
+<span class="fc" id="L56">		return events;</span>
 	}
 	public void setEvents(HashMap&lt;String, Object&gt; events) {
-<span class="fc" id="L41">		this.events = events;</span>
-<span class="fc" id="L42">	}</span>
+<span class="fc" id="L59">		this.events = events;</span>
+<span class="fc" id="L60">	}</span>
 	public List&lt;HashMap&lt;String, Object&gt;&gt; getPlatformInfo() {
-<span class="fc" id="L44">		return platformInfo;</span>
+<span class="fc" id="L62">		return platformInfo;</span>
 	}
 	public void setPlatformInfo(List&lt;HashMap&lt;String, Object&gt;&gt; platformInfo) {
-<span class="fc" id="L47">		this.platformInfo = platformInfo;</span>
-<span class="fc" id="L48">	}</span>
+<span class="fc" id="L65">		this.platformInfo = platformInfo;</span>
+<span class="fc" id="L66">	}</span>
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

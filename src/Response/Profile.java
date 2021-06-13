@@ -9,6 +9,7 @@ public class Profile {
 	HashMap<String, String> profileData;
 	long identity;
 	int id;
+	
 	public String getObjectId() {
 		return objectId;
 	}

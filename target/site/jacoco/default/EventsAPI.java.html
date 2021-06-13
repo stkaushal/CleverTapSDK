@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EventsAPI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">EventsAPI.java</span></div><h1>EventsAPI.java</h1><pre class="source lang-java linenums">import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Helper.ClevertapInstance;
+import Helper.Cursor;
+import Payload.EventPayload;
+import Response.GetEventsResponse;
+import Response.Response;
+
+<span class="nc" id="L18">public class EventsAPI {</span>
+	public static void main(String[] args) throws IOException, InterruptedException {
+    	
+<span class="nc" id="L21">	   String Cid = &quot;4R8-K98-8Z6Z&quot;;</span>
+<span class="nc" id="L22">	   String CPswd = &quot;AOE-RUW-CHUL&quot;;</span>
+<span class="nc" id="L23">	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);</span>
+	   
+<span class="nc" id="L25">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
+<span class="nc" id="L26">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="nc" id="L27">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+	   
+	   //Upload events//
+	   
+//	   EventPayload uploadPayload = new EventPayload();
+//	   uploadPayload.setIdentity(&quot;rohan@gmail.com&quot;);
+//	   uploadPayload.setTs(1623380602);
+//	   uploadPayload.setType(&quot;event&quot;);
+//	   uploadPayload.setEventNameUpload(&quot;charged&quot;);
+//	   HashMap&lt;String, Object&gt; evtData = new HashMap&lt;String, Object&gt;();
+//	   evtData.put(&quot;Amount&quot;, 100);
+//	   evtData.put(&quot;Currency&quot;, &quot;Cardano&quot;);
+//	   evtData.put(&quot;Payment Method&quot;, &quot;Uniswap&quot;);
+//	   
+//	   uploadPayload.setEventData(evtData);
+//	   List&lt;EventPayload&gt; uploadList = new ArrayList&lt;EventPayload&gt;();
+//	   uploadList.add(uploadPayload);
+//	   
+//	   Response resUpload = instance.getEventInstance().uploadEvents(uploadList);
+//	   
+//	   JSONObject uploadEvtResponse= new JSONObject(jsonMapper.writeValueAsString(resUpload));
+//	   System.out.println(uploadEvtResponse.toString(4));
+	   
+	   //Event count//
+	   
+//	   EventPayload countPayload = new EventPayload();
+//	   countPayload.setEventName(&quot;charged&quot;);
+//	   List&lt;HashMap&lt;String, Object&gt;&gt; eventProperties = new ArrayList&lt;HashMap&lt;String, Object&gt;&gt;();
+//	   HashMap&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+//	   map.put(&quot;Amount&quot;, 300);
+//	   map.put(&quot;Currency&quot;, &quot;Bitcoin&quot;);
+//	   map.put(&quot;Payment Method&quot;, &quot;Trust wallet transfer&quot;);	
+//	   eventProperties.add(map);
+//	   countPayload.setEventProperties(eventProperties );
+//	   countPayload.setFromDate(20210607);
+//	   countPayload.setToDate(20210609);
+//	   
+//	   Response resCount = instance.getEventInstance().getEventCount(countPayload);	   
+//	   JSONObject countEvtResponse= new JSONObject(jsonMapper.writeValueAsString(countPayload));
+//	   System.out.println(countEvtResponse.toString(4));
+//	   
+//	   if(resCount.getReqId()!=0)
+//	   {
+//		   Response resCountByReqId = instance.getEventInstance().getEventCountByReqId(resCount.getReqId());	   
+//		   JSONObject countEvtReqIdResponse= new JSONObject(jsonMapper.writeValueAsString(resCountByReqId));
+//		   System.out.println(countEvtReqIdResponse.toString(4));
+//	   }
+	   
+	   // get events with cursor//
+	   
+//	   EventPayload payloadgetEventCur = new EventPayload();
+//	   payloadgetEventCur.setEventNameDownload(&quot;charged&quot;);
+//	   payloadgetEventCur.setFromDate(20210607);
+//	   payloadgetEventCur.setToDate(20210611);
+//	   
+//	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1);
+//	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(eventCursor));
+//	   System.out.println(eventCursorResponse.toString(4));
+//	   
+//	   GetEventsResponse getEvents = instance.getEventInstance().getEventsData(eventCursor);
+//	   JSONObject getEventsResponse= new JSONObject(jsonMapper.writeValueAsString(getEvents));
+//	   System.out.println(getEventsResponse.toString(4));
+<span class="nc" id="L89">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

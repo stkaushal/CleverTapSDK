@@ -3,75 +3,104 @@
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-<span class="fc" id="L8">public class Message {</span>
+<span class="fc" id="L10">public class Message {</span>
 	
 	@JsonProperty(value=&quot;message id&quot;)
-	long message_id;
+	long messageId;
 	
 	List&lt;HashMap&lt;String, String&gt;&gt; data;
-	String start_date;
+	
+	@JsonProperty(value=&quot;start_date&quot;)
+	String startDate;
 	List&lt;String&gt; device;
-	Object conversion_event;
+	
+	@JsonProperty(value=&quot;conversion_event&quot;)
+	Object conversionEvent;
+	
 	List&lt;String&gt; lables;
 	String channel;
-	String message_name;
+	
+	@JsonProperty(value=&quot;message_name&quot;)
+	String messageName;
+	
 	String delivery;
-	public long getMessage_id() {
-<span class="fc" id="L22">		return message_id;</span>
+
+
+	public long getMessageId() {
+<span class="fc" id="L34">		return messageId;</span>
 	}
-	public void setMessage_id(long message_id) {
-<span class="fc" id="L25">		this.message_id = message_id;</span>
-<span class="fc" id="L26">	}</span>
+
+	public void setMessageId(long messageId) {
+<span class="fc" id="L38">		this.messageId = messageId;</span>
+<span class="fc" id="L39">	}</span>
 
 	public List&lt;HashMap&lt;String, String&gt;&gt; getData() {
-<span class="fc" id="L29">		return data;</span>
+<span class="fc" id="L42">		return data;</span>
 	}
+
 	public void setData(List&lt;HashMap&lt;String, String&gt;&gt; data) {
-<span class="fc" id="L32">		this.data = data;</span>
-<span class="fc" id="L33">	}</span>
-	public String getStart_date() {
-<span class="fc" id="L35">		return start_date;</span>
+<span class="fc" id="L46">		this.data = data;</span>
+<span class="fc" id="L47">	}</span>
+
+	public String getStartDate() {
+<span class="fc" id="L50">		return startDate;</span>
 	}
-	public void setStart_date(String start_date) {
-<span class="fc" id="L38">		this.start_date = start_date;</span>
-<span class="fc" id="L39">	}</span>
+
+	public void setStartDate(String startDate) {
+<span class="fc" id="L54">		this.startDate = startDate;</span>
+<span class="fc" id="L55">	}</span>
+
 	public List&lt;String&gt; getDevice() {
-<span class="fc" id="L41">		return device;</span>
+<span class="fc" id="L58">		return device;</span>
 	}
+
 	public void setDevice(List&lt;String&gt; device) {
-<span class="fc" id="L44">		this.device = device;</span>
-<span class="fc" id="L45">	}</span>
-	public Object getConversion_event() {
-<span class="fc" id="L47">		return conversion_event;</span>
-	}
-	public void setConversion_event(Object conversion_event) {
-<span class="fc" id="L50">		this.conversion_event = conversion_event;</span>
-<span class="fc" id="L51">	}</span>
-	public List&lt;String&gt; getLables() {
-<span class="fc" id="L53">		return lables;</span>
-	}
-	public void setLables(List&lt;String&gt; lables) {
-<span class="fc" id="L56">		this.lables = lables;</span>
-<span class="fc" id="L57">	}</span>
-	public String getChannel() {
-<span class="fc" id="L59">		return channel;</span>
-	}
-	public void setChannel(String channel) {
-<span class="fc" id="L62">		this.channel = channel;</span>
+<span class="fc" id="L62">		this.device = device;</span>
 <span class="fc" id="L63">	}</span>
-	public String getMessage_name() {
-<span class="fc" id="L65">		return message_name;</span>
+
+	public Object getConversionEvent() {
+<span class="fc" id="L66">		return conversionEvent;</span>
 	}
-	public void setMessage_name(String message_name) {
-<span class="fc" id="L68">		this.message_name = message_name;</span>
-<span class="fc" id="L69">	}</span>
+
+	public void setConversionEvent(Object conversionEvent) {
+<span class="fc" id="L70">		this.conversionEvent = conversionEvent;</span>
+<span class="fc" id="L71">	}</span>
+
+	public List&lt;String&gt; getLables() {
+<span class="fc" id="L74">		return lables;</span>
+	}
+
+	public void setLables(List&lt;String&gt; lables) {
+<span class="fc" id="L78">		this.lables = lables;</span>
+<span class="fc" id="L79">	}</span>
+
+	public String getChannel() {
+<span class="fc" id="L82">		return channel;</span>
+	}
+
+	public void setChannel(String channel) {
+<span class="fc" id="L86">		this.channel = channel;</span>
+<span class="fc" id="L87">	}</span>
+
+	public String getMessageName() {
+<span class="fc" id="L90">		return messageName;</span>
+	}
+
+	public void setMessageName(String messageName) {
+<span class="fc" id="L94">		this.messageName = messageName;</span>
+<span class="fc" id="L95">	}</span>
+
 	public String getDelivery() {
-<span class="fc" id="L71">		return delivery;</span>
+<span class="fc" id="L98">		return delivery;</span>
 	}
+
 	public void setDelivery(String delivery) {
-<span class="fc" id="L74">		this.delivery = delivery;</span>
-<span class="fc" id="L75">	}</span>
+<span class="fc" id="L102">		this.delivery = delivery;</span>
+<span class="fc" id="L103">	}</span>
+	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

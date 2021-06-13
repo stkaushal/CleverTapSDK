@@ -6,113 +6,158 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProfileData {
 	
-    String Name;
-    String Email;
-    String Phone;
-    String Gender;
+	@JsonProperty(value="Name")
+    String name;
+	
+	@JsonProperty(value="Email")
+    String email;
+	
+	@JsonProperty(value="Phone")
+    String phone;
+	
+	@JsonProperty(value="Gender")
+    String gender;
     
     @JsonProperty(value="MSG-sms")
-    boolean MSG_sms;
+    boolean msgSMS;
     
     @JsonProperty(value="MSG-email")
-    boolean MSG_email;
+    boolean msgEmail;
     
     @JsonProperty(value="MSG-whatsapp")
-    boolean MSG_whatsapp;
+    boolean msgWhatsapp;
     
     @JsonProperty(value="MSG-dndPhone")
-    boolean MSG_dndPhone;
+    boolean msgDndPhone;
     
     @JsonProperty(value="MSG-dndEmail")
-    boolean MSG_dndEmail;
+    boolean msgDndEmail;
     
     @JsonProperty(value="category-unsubscribe")
-    CategoryUnsubscribe category_unsubscribe;
+    CategoryUnsubscribe categoryUnsubscribe;
     
     @JsonProperty(value="category-resubscribe")
-    CategoryResubscribe category_resubscribe;
+    CategoryResubscribe categoryResubscribe;
    
-    String DOB;  
-    HashMap<String, Object> extra_data;
+    @JsonProperty(value="DOB")
+    String dob;  
     
+    @JsonProperty(value="Customer Type")
+	String customerType;
     
-	public HashMap<String, Object> getExtra_data() {
-		return extra_data;
-	}
-	public void setExtra_data(HashMap<String, Object> extra_data) {
-		this.extra_data = extra_data;
-	}
+    HashMap<String, Object> userInfo;
+
 	public String getName() {
-		return Name;
+		return name;
 	}
+
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
+
 	public String getEmail() {
-		return Email;
+		return email;
 	}
+
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
+
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
+
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
+
 	public String getGender() {
-		return Gender;
+		return gender;
 	}
+
 	public void setGender(String gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
-	public boolean isMSG_sms() {
-		return MSG_sms;
+
+	public boolean isMsgSMS() {
+		return msgSMS;
 	}
-	public void setMSG_sms(boolean mSG_sms) {
-		MSG_sms = mSG_sms;
+
+	public void setMsgSMS(boolean msgSMS) {
+		this.msgSMS = msgSMS;
 	}
-	public boolean isMSG_email() {
-		return MSG_email;
+
+	public boolean isMsgEmail() {
+		return msgEmail;
 	}
-	public void setMSG_email(boolean mSG_email) {
-		MSG_email = mSG_email;
+
+	public void setMsgEmail(boolean msgEmail) {
+		this.msgEmail = msgEmail;
 	}
-	public boolean isMSG_whatsapp() {
-		return MSG_whatsapp;
+
+	public boolean isMsgWhatsapp() {
+		return msgWhatsapp;
 	}
-	public void setMSG_whatsapp(boolean mSG_whatsapp) {
-		MSG_whatsapp = mSG_whatsapp;
+
+	public void setMsgWhatsapp(boolean msgWhatsapp) {
+		this.msgWhatsapp = msgWhatsapp;
 	}
-	public boolean isMSG_dndPhone() {
-		return MSG_dndPhone;
+
+	public boolean isMsgDndPhone() {
+		return msgDndPhone;
 	}
-	public void setMSG_dndPhone(boolean mSG_dndPhone) {
-		MSG_dndPhone = mSG_dndPhone;
+
+	public void setMsgDndPhone(boolean msgDndPhone) {
+		this.msgDndPhone = msgDndPhone;
 	}
-	public boolean isMSG_dndEmail() {
-		return MSG_dndEmail;
+
+	public boolean isMsgDndEmail() {
+		return msgDndEmail;
 	}
-	public void setMSG_dndEmail(boolean mSG_dndEmail) {
-		MSG_dndEmail = mSG_dndEmail;
+
+	public void setMsgDndEmail(boolean msgDndEmail) {
+		this.msgDndEmail = msgDndEmail;
 	}
-	public CategoryUnsubscribe getCategory_unsubscribe() {
-		return category_unsubscribe;
+
+	public CategoryUnsubscribe getCategoryUnsubscribe() {
+		return categoryUnsubscribe;
 	}
-	public void setCategory_unsubscribe(CategoryUnsubscribe category_unsubscribe) {
-		this.category_unsubscribe = category_unsubscribe;
+
+	public void setCategoryUnsubscribe(CategoryUnsubscribe categoryUnsubscribe) {
+		this.categoryUnsubscribe = categoryUnsubscribe;
 	}
-	public CategoryResubscribe getCategory_resubscribe() {
-		return category_resubscribe;
+
+	public CategoryResubscribe getCategoryResubscribe() {
+		return categoryResubscribe;
 	}
-	public void setCategory_resubscribe(CategoryResubscribe category_resubscribe) {
-		this.category_resubscribe = category_resubscribe;
+
+	public void setCategoryResubscribe(CategoryResubscribe categoryResubscribe) {
+		this.categoryResubscribe = categoryResubscribe;
 	}
-	public String getDOB() {
-		return DOB;
+
+	public String getDob() {
+		return dob;
 	}
-	public void setDOB(String dOB) {
-		DOB = dOB;
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
-	
+
+	public String getCustomerType() {
+		return customerType;
+	}
+
+	public void setCustomerType(String customerType) {
+		this.customerType = customerType;
+	}
+
+	public HashMap<String, Object> getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(HashMap<String, Object> userInfo) {
+		this.userInfo = userInfo;
+	}
+    
+    
 }

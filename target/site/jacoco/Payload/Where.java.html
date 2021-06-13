@@ -1,34 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Where.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Payload</a> &gt; <span class="el_source">Where.java</span></div><h1>Where.java</h1><pre class="source lang-java linenums">package Payload;
 
-<span class="fc" id="L3">public class Where {</span>
-	String event_name;
-	int from;
-	int to;
-	String profile_fields;
-	public int getFrom() {
-<span class="fc" id="L9">		return from;</span>
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L8">public class Where {</span>
+	
+	@JsonProperty(value=&quot;event_name&quot;)
+	String eventName;
+	
+	@JsonProperty(value=&quot;from&quot;)
+	int fromDate;
+	
+	@JsonProperty(value=&quot;to&quot;)
+	int toDate;
+	
+	@JsonProperty(value=&quot;common_profile_properties&quot;)
+	Object commonProfileProperties;
+
+	public String getEventName() {
+<span class="fc" id="L23">		return eventName;</span>
 	}
-	public void setFrom(int from) {
-<span class="fc" id="L12">		this.from = from;</span>
-<span class="fc" id="L13">	}</span>
-	public int getTo() {
-<span class="fc" id="L15">		return to;</span>
+
+	public void setEventName(String eventName) {
+<span class="fc" id="L27">		this.eventName = eventName;</span>
+<span class="fc" id="L28">	}</span>
+
+	public int getFromDate() {
+<span class="fc" id="L31">		return fromDate;</span>
 	}
-	public void setTo(int to) {
-<span class="fc" id="L18">		this.to = to;</span>
-<span class="fc" id="L19">	}</span>
-	public String getEvent_name() {
-<span class="fc" id="L21">		return event_name;</span>
+
+	public void setFromDate(int fromDate) {
+<span class="fc" id="L35">		this.fromDate = fromDate;</span>
+<span class="fc" id="L36">	}</span>
+
+	public int getToDate() {
+<span class="fc" id="L39">		return toDate;</span>
 	}
-	public void setEvent_name(String event_name) {
-<span class="fc" id="L24">		this.event_name = event_name;</span>
-<span class="fc" id="L25">	}</span>
-	public String getProfile_fields() {
-<span class="fc" id="L27">		return profile_fields;</span>
+
+	public void setToDate(int toDate) {
+<span class="fc" id="L43">		this.toDate = toDate;</span>
+<span class="fc" id="L44">	}</span>
+
+	public Object getProfileFields() {
+<span class="fc" id="L47">		return commonProfileProperties;</span>
 	}
-	public void setProfile_fields(String profile_fields) {
-<span class="fc" id="L30">		this.profile_fields = profile_fields;</span>
-<span class="fc" id="L31">	}</span>
+
+	public void setProfileFields(Object commonProfileProperties) {
+<span class="fc" id="L51">		this.commonProfileProperties = commonProfileProperties;</span>
+<span class="fc" id="L52">	}</span>
+	
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

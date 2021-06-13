@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Response {
 	
@@ -14,9 +15,16 @@ public class Response {
 	String error;
 	int code;
 	int count;
-	long req_id;
-	String user_type;
-	int total_results;
+	
+	@JsonProperty(value="req_id")
+	long reqId;
+	
+	@JsonProperty(value="user_type")
+	HashMap<String, Object> userType;
+	
+	@JsonProperty(value="total_results")
+	int totalResults;
+	
 	List<Message> messages;
 	
 	HashMap<String, String> estimates;
@@ -73,23 +81,27 @@ public class Response {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public long getReq_id() {
-		return req_id;
+	
+	public long getReqId() {
+		return reqId;
 	}
-	public void setReq_id(long req_id) {
-		this.req_id = req_id;
+	public void setReqId(long reqId) {
+		this.reqId = reqId;
 	}
-	public String getUser_type() {
-		return user_type;
+	public HashMap<String, Object> getUserType() {
+		return userType;
 	}
-	public void setUser_type(String user_type) {
-		this.user_type = user_type;
+	public void setUserType(HashMap<String, Object> userType) {
+		this.userType = userType;
 	}
-	public int getTotal_results() {
-		return total_results;
+	public int getTotalResults() {
+		return totalResults;
 	}
-	public void setTotal_results(int total_results) {
-		this.total_results = total_results;
+	public void setTotalResults(int totalResults) {
+		this.totalResults = totalResults;
+	}
+	public void setOtherInfo(HashMap<String, Object> otherInfo) {
+		this.otherInfo = otherInfo;
 	}
 	public List<Message> getMessages() {
 		return messages;

@@ -19,8 +19,9 @@ import Response.Response;
 public class Event {
 	
 	private static final String urlUploadEvent = "https://api.clevertap.com/1/upload";
-	private static final String urlGetEventCount = "https://api.clevertap.com/1/counts/events.jsonPayload";
-	private static final String urlGetEventCursor = "https://api.clevertap.com/1/events.jsonPayload";
+	private static final String urlGetEventCount = "https://api.clevertap.com/1/counts/events.json";
+	private static final String urlGetEventCursor = "https://api.clevertap.com/1/events.json";
+	private static final String urlGetEventCountByReqId = "https://api.clevertap.com/1/counts/events.json?req_id=";
 	
 	private ObjectMapper objectMapper;
 	private HttpClient client;
@@ -66,6 +67,14 @@ public class Event {
 	{
 		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject jsonResponse = client.postRequest(urlGetEventCount, jsonPayload);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		return res;
+	}
+	
+	public Response getEventCountByReqId(long ReqId) throws IOException, InterruptedException
+	{
+		String url = urlGetEventCountByReqId + String.valueOf(ReqId);
+		JSONObject jsonResponse = client.getRequest(url);
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
 		return res;
 	}

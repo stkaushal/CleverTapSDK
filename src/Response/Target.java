@@ -1,9 +1,14 @@
 package Response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Target {
 	long id;
 	String name;
-	long scheduled_on;
+	
+	@JsonProperty(value="scheduled_on")
+	long scheduledOn;
+	
 	String status;
 	public long getId() {
 		return id;
@@ -17,11 +22,12 @@ public class Target {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public long getScheduled_on() {
-		return scheduled_on;
+
+	public long getScheduledOn() {
+		return scheduledOn;
 	}
-	public void setScheduled_on(long scheduled_on) {
-		this.scheduled_on = scheduled_on;
+	public void setScheduledOn(long scheduledOn) {
+		this.scheduledOn = scheduledOn;
 	}
 	public String getStatus() {
 		return status;

@@ -14,10 +14,12 @@ import Response.Response;
 
 public class Report {
 	
-	private static final String urlGetRealTimeCounts = "https://location.api.clevertap.com/1/now.jsonPayload";
-	private static final String urlGetMessageReport = "https://api.clevertap.com/1/message/report.jsonPayload";
-	private static final String urlGetTopPropertyCount = "https://api.clevertap.com/1/counts/top.jsonPayload";
-	private static final String urlGetTrends = "https://api.clevertap.com/1/counts/trends.jsonPayload";
+	private static final String urlGetRealTimeCounts = "https://api.clevertap.com/1/now.json";
+	private static final String urlGetMessageReport = "https://api.clevertap.com/1/message/report.json";
+	private static final String urlGetTopPropertyCount = "https://api.clevertap.com/1/counts/top.json";
+	private static final String urlGetTrends = "https://api.clevertap.com/1/counts/trends.json";
+	private static final String urlGetTopPropertyCountByReqId = "https://api.clevertap.com/1/counts/top.json?req_id=";
+	private static final String urlGetTrendsByReqId = "https://api.clevertap.com/1/counts/trends.json?req_id=";
 	
 	private ObjectMapper objectMapper;
 	private HttpClient client;
@@ -54,6 +56,14 @@ public class Report {
 		return res;
 	}
 	
+	public Response getTopPropertyCountByReqId(long ReqId) throws IOException, InterruptedException
+	{
+		String url = urlGetTopPropertyCountByReqId + String.valueOf(ReqId);
+		JSONObject jsonResponse = client.getRequest(url);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		return res;
+	}
+	
 	public Response getTrends(ReportPayload payload) throws IOException, InterruptedException
 	{
 		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
@@ -61,4 +71,12 @@ public class Report {
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
 		return res;
 	}
+	public Response getTrendsByReqId(long ReqId) throws IOException, InterruptedException
+	{
+		String url = urlGetTrendsByReqId + String.valueOf(ReqId);
+		JSONObject jsonResponse = client.getRequest(url);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
+		return res;
+	}
+	
 }

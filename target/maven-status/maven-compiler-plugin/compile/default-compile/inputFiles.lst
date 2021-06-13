@@ -1,5 +1,4 @@
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Campaign/Campaigns.java
-/home/dharmender/eclipse-workspace/CleverTapSDK/src/CleverTapSDK.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/TokenData.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Profile/Profiles.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/ProfilePayload.java
@@ -9,14 +8,19 @@
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Response/Message.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Response/RecordsEvent.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Event/Event.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/src/CampaignAPI.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/src/EventsAPI.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/EventPayload.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/src/ProfileAPI.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/To.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/HTTP/HttpClient.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/CategoryUnsubscribe.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Helper/ClevertapInstance.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/TimeInterval.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Response/RecordsProfile.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/ControlGroup.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Response/GetUserProfileResponse.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/src/ReportAPI.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/Content.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Response/Target.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/src/Payload/Keys.java

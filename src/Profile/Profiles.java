@@ -15,15 +15,16 @@ import Payload.ProfilePayload;
 import Response.GetUserProfileResponse;
 import Response.Response;
 
-public class Profiles {
+public class Profiles {	
 	
 	private static final String urlUploadData = "https://api.clevertap.com/1/upload";
-	private static final String urlGetProfileCursor = "https://api.clevertap.com/1/profiles.jsonPayload";
-	private static final String urlGetProfileCount = "https://api.clevertap.com/1/counts/profiles.jsonPayload";
-	private static final String urlDeleteProfile = "https://api.clevertap.com/1/delete/profiles.jsonPayload";
-	private static final String urlDemergeProfile = "https://api.clevertap.com/1/demerge/profiles.jsonPayload";
-	private static final String urlSubscribe = "https://api.clevertap.com/1/subscribe/";
-	private static final String urlDisassociate = "https://api.clevertap.com/1/disassociate/";
+	private static final String urlGetProfileCursor = "https://api.clevertap.com/1/profiles.json";
+	private static final String urlGetProfileById = "https://api.clevertap.com/1/profile.json";
+	private static final String urlGetProfileCount = "https://api.clevertap.com/1/counts/profiles.json";
+	private static final String urlDeleteProfile = "https://api.clevertap.com/1/delete/profiles.json";
+	private static final String urlDemergeProfile = "https://api.clevertap.com/1/demerge/profiles.json";
+	private static final String urlSubscribe = "https://api.clevertap.com/1/subscribe";
+	private static final String urlDisassociate = "https://api.clevertap.com/1/disassociate";
 	
 	private ObjectMapper objectMapper;
 	private HttpClient client; 
@@ -68,11 +69,23 @@ public class Profiles {
 		return res;	
 	}
 	
-	public GetUserProfileResponse getUserProfileById(String id) throws IOException, InterruptedException
+	public GetUserProfileResponse getUserProfileById(String type, String id) throws IOException, InterruptedException
 	{
-		String url = urlGetProfileCursor + "?email=" + id;
+		String url = urlGetProfileById;
+		if(type.equals("email"))
+		{
+			url = url + "?email=" + id;
+		}
+		else if(type.equals("identity"))
+		{
+			url = url + "?identity=" + id;
+		}
+		else if(type.equals("objectId"))
+		{
+			url = url + "?objectId=" + id;
+		}
 		
-		JSONObject jsonResponse = client.getRequest(url);
+		JSONObject jsonResponse = client.getRequest(url); 
 		GetUserProfileResponse res = objectMapper.readValue(jsonResponse.toString(), GetUserProfileResponse.class);
 		
 		return res;	
@@ -111,7 +124,7 @@ public class Profiles {
 		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject jsonResponse = client.postRequest(urlDemergeProfile, jsonPayload);
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
-		
+		System.out.println(jsonPayload);
 		return res;
 	}
 	
@@ -126,7 +139,7 @@ public class Profiles {
 		return res;
 	}
 	
-	public Response dissociate(List<ProfilePayload> payload) throws IOException, InterruptedException
+	public Response disassociate(List<ProfilePayload> payload) throws IOException, InterruptedException
 	{	
 		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));
 		JSONObject jsonPayload = new JSONObject();

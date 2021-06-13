@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: Event.EventTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.75 s - in Event.EventTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.788 s - in Event.EventTest

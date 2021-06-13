@@ -2,71 +2,103 @@
 
 import java.util.HashMap;
 
-<span class="fc" id="L5">public class Content {</span>
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L10">public class Content {</span>
 	String title;
 	String body;
 	String subject;
-	String sender_name;
-	String template_name;
+	
+	@JsonProperty(value=&quot;sender_name&quot;)
+	String senderName;
+	
+	@JsonProperty(value=&quot;template_name&quot;)
+	String templateName;
+	
 	String replacements;
 	String attachments;
-	String template_id;
-	HashMap&lt;String, Object&gt; platform_specific;
 	
-	public HashMap&lt;String, Object&gt; getPlatform_specific() {
-<span class="fc" id="L17">		return platform_specific;</span>
-	}
-	public void setPlatform_specific(HashMap&lt;String, Object&gt; platform_specific) {
-<span class="fc" id="L20">		this.platform_specific = platform_specific;</span>
-<span class="fc" id="L21">	}</span>
-	public String getTemplate_id() {
-<span class="fc" id="L23">		return template_id;</span>
-	}
-	public void setTemplate_id(String template_id) {
-<span class="fc" id="L26">		this.template_id = template_id;</span>
-<span class="fc" id="L27">	}</span>
+	@JsonProperty(value=&quot;template_id&quot;)
+	String templateId;
+	
+	@JsonProperty(value=&quot;platform_specific&quot;)
+	HashMap&lt;String, Object&gt; platformSpecific;
+
 	public String getTitle() {
-<span class="fc" id="L29">		return title;</span>
+<span class="fc" id="L31">		return title;</span>
 	}
+
 	public void setTitle(String title) {
-<span class="fc" id="L32">		this.title = title;</span>
-<span class="fc" id="L33">	}</span>
+<span class="fc" id="L35">		this.title = title;</span>
+<span class="fc" id="L36">	}</span>
+
 	public String getBody() {
-<span class="fc" id="L35">		return body;</span>
+<span class="fc" id="L39">		return body;</span>
 	}
+
 	public void setBody(String body) {
-<span class="fc" id="L38">		this.body = body;</span>
-<span class="fc" id="L39">	}</span>
+<span class="fc" id="L43">		this.body = body;</span>
+<span class="fc" id="L44">	}</span>
+
 	public String getSubject() {
-<span class="fc" id="L41">		return subject;</span>
+<span class="fc" id="L47">		return subject;</span>
 	}
+
 	public void setSubject(String subject) {
-<span class="fc" id="L44">		this.subject = subject;</span>
-<span class="fc" id="L45">	}</span>
-	public String getSender_name() {
-<span class="fc" id="L47">		return sender_name;</span>
+<span class="fc" id="L51">		this.subject = subject;</span>
+<span class="fc" id="L52">	}</span>
+
+	public String getSenderName() {
+<span class="fc" id="L55">		return senderName;</span>
 	}
-	public void setSender_name(String sender_name) {
-<span class="fc" id="L50">		this.sender_name = sender_name;</span>
-<span class="fc" id="L51">	}</span>
-	public String getTemplate_name() {
-<span class="fc" id="L53">		return template_name;</span>
+
+	public void setSenderName(String senderName) {
+<span class="fc" id="L59">		this.senderName = senderName;</span>
+<span class="fc" id="L60">	}</span>
+
+	public String getTemplateName() {
+<span class="fc" id="L63">		return templateName;</span>
 	}
-	public void setTemplate_name(String template_name) {
-<span class="fc" id="L56">		this.template_name = template_name;</span>
-<span class="fc" id="L57">	}</span>
+
+	public void setTemplateName(String templateName) {
+<span class="fc" id="L67">		this.templateName = templateName;</span>
+<span class="fc" id="L68">	}</span>
+
 	public String getReplacements() {
-<span class="fc" id="L59">		return replacements;</span>
+<span class="fc" id="L71">		return replacements;</span>
 	}
+
 	public void setReplacements(String replacements) {
-<span class="fc" id="L62">		this.replacements = replacements;</span>
-<span class="fc" id="L63">	}</span>
+<span class="fc" id="L75">		this.replacements = replacements;</span>
+<span class="fc" id="L76">	}</span>
+
 	public String getAttachments() {
-<span class="fc" id="L65">		return attachments;</span>
+<span class="fc" id="L79">		return attachments;</span>
 	}
+
 	public void setAttachments(String attachments) {
-<span class="fc" id="L68">		this.attachments = attachments;</span>
-<span class="fc" id="L69">	}</span>
+<span class="fc" id="L83">		this.attachments = attachments;</span>
+<span class="fc" id="L84">	}</span>
+
+	public String getTemplateId() {
+<span class="fc" id="L87">		return templateId;</span>
+	}
+
+	public void setTemplateId(String templateId) {
+<span class="fc" id="L91">		this.templateId = templateId;</span>
+<span class="fc" id="L92">	}</span>
+
+	public HashMap&lt;String, Object&gt; getPlatformSpecific() {
+<span class="fc" id="L95">		return platformSpecific;</span>
+	}
+
+	public void setPlatformSpecific(HashMap&lt;String, Object&gt; platformSpecific) {
+<span class="fc" id="L99">		this.platformSpecific = platformSpecific;</span>
+<span class="fc" id="L100">	}</span>
+	
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -2,14 +2,28 @@ package Response;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class GetUserProfileResponse extends Response{
-	String next_cursor = null;
+	
+	@JsonProperty(value="next_cursor")
+	String nextCursor;
+	
 	List<RecordsProfile> records;
-	public String getNext_cursor() {
-		return next_cursor;
+	RecordsProfile record;
+	
+	public RecordsProfile getRecord() {
+		return record;
 	}
-	public void setNext_cursor(String next_cursor) {
-		this.next_cursor = next_cursor;
+	public void setRecord(RecordsProfile record) {
+		this.record = record;
+	}
+	
+	public String getNextCursor() {
+		return nextCursor;
+	}
+	public void setNextCursor(String nextCursor) {
+		this.nextCursor = nextCursor;
 	}
 	public List<RecordsProfile> getRecords() {
 		return records;

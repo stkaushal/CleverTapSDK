@@ -18,6 +18,7 @@ import Helper.ClevertapInstance;
 import Payload.CampaignPayload;
 import Payload.Content;
 import Payload.ControlGroup;
+import Payload.TimeInterval;
 import Payload.To;
 import Payload.Where;
 import Response.Response;
@@ -42,7 +43,7 @@ public class CampaignsTest {
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
 		CampaignPayload payload = new CampaignPayload();
-		payload.setName("Send Mail");
+		payload.setCampaignName("Send Mail");
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
@@ -58,61 +59,59 @@ public class CampaignsTest {
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
 		CampaignPayload payload = new CampaignPayload();
-		payload.setName("Send Mail");
-		payload.setFrom(01012020);
-		payload.setToDate(01012021);
-		payload.setWhen("dummy");
+		payload.setCampaignName("Send Mail");
+		payload.setCampaignSendTime("dummy");
 		Content content = new Content();
 		content.setTitle("dummy");
 		content.setBody("dummy");
 		content.setSubject("dummy");
-		content.setSender_name("dummy");
-		content.setTemplate_id("dummy");
-		content.setTemplate_name("dummy");
+		content.setSenderName("dummy");
+		content.setTemplateId("dummy");
+		content.setTemplateName("dummy");
 		content.setReplacements("dummy");
 		content.setAttachments("dummy");
 		HashMap<String, Object> platform_specific = new HashMap<String, Object>();
 		platform_specific.put("key", "value");
-		content.setPlatform_specific(platform_specific);
+		content.setPlatformSpecific(platform_specific);
 		payload.setContent(content);
-		payload.setRespect_frequency_caps(true);
-		payload.setEstimate_only(true);
-		payload.setAsync_estimate(true);
-		payload.setTtl(0);
+		payload.setRespectFrequencyCaps(true);
+		payload.setEstimateOnly(true);
+		payload.setAsyncEstimate(true);
+		payload.setTimeTolive(0);
 		payload.setSegment(0);
-		payload.setSend_to_all_devices(true);
-		payload.setSkip_estimate(true);
-		payload.setRespect_throttle(true);
-		payload.setWzrk_acts("dummy");
-		payload.setWzrk_bc("dummy");
-		payload.setWzrk_bi("dummy");
-		payload.setWzrk_cid("dummy");
+		payload.setSendToAllDevices(true);
+		payload.setSkipEstimate(true);
+		payload.setRespectThrottle(true);
+		payload.setWzrkActs("dummy");
+		payload.setWzrkBc("dummy");
+		payload.setWzrkBi("dummy");
+		payload.setWzrkCid("dummy");
 		Where where = new Where();
-		where.setEvent_name("dummy");
-		where.setFrom(01012020);
-		where.setProfile_fields("dummy");
-		where.setTo(01012021);
-		payload.setWhere(where);
-		payload.setBadge_icon("dummy");
-		payload.setBadge_id(0);
-		payload.setMutable_content(true);
-		payload.setId(0);
-		payload.setProvider_group_nickname("dummy");
-		payload.setProvider_nick_name("dummy");
-		payload.setSystem_control_group_include(true);
-		payload.setTag_group("dummy");
+		where.setEventName("dummy");
+		where.setFromDate(01012020);
+		where.setProfileFields("dummy");
+		where.setToDate(01012021);
+		payload.setCampaignSendTo(where);
+		payload.setBadgeIcon("dummy");
+		payload.setBadgeId(0);
+		payload.setMutableContent(true);
+		payload.setCampaignId(0);
+		payload.setProviderGroupNickname("dummy");
+		payload.setProviderNickName("dummy");
+		payload.setIncludeSystemControlGroup(true);
+		payload.setTagGroup("dummy");
 		ControlGroup control_group = new ControlGroup();
 		control_group.setName("dummy");
 		control_group.setPercentage(90);
 		control_group.setType("dummy");
-		payload.setControl_group(control_group);
+		payload.setControlGroup(control_group);
 		To to = new To();
 		String[] id = {"dummy"};
 		to.setEmail(id);
 		to.setFBID(id);
 		to.setIdentity(id);
 		to.setObjectId(id);
-		payload.setTo(to);
+		payload.setSendMessageTo(to);
 		
 
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
@@ -138,7 +137,9 @@ public class CampaignsTest {
 		jsonResponse.put("code", 200);
 		jsonResponse.put("count", 1);
 		jsonResponse.put("req_id", 1);
-		jsonResponse.put("user_type", "test");
+		JSONObject userT = new JSONObject();
+		userT.put("type1", "test");
+		jsonResponse.put("user_type", userT);
 		jsonResponse.put("total_results", 1);
 		JSONArray messages = new JSONArray();
 		JSONObject jsonMessages = new JSONObject();
@@ -180,12 +181,13 @@ public class CampaignsTest {
 		jsonResponse.put("message", "dummy");
 		jsonResponse.put("extraData", "dummy");
 		
-		CampaignPayload payload = new CampaignPayload();
-		payload.setName("Send Mail");
+		TimeInterval timeRange = new TimeInterval();
+		timeRange.setFromDate(20210606);
+		timeRange.setToDate(20210609);
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
-		response = campaigns.getCampaigns(payload);
+		response = campaigns.getCampaigns(timeRange);
    
 		Assertions.assertNotNull(response);
 		Assertions.assertNotNull(response.getOtherInfo());
@@ -196,27 +198,27 @@ public class CampaignsTest {
 		Assertions.assertNotNull(response.getMessage());
 		Assertions.assertNotNull(response.getMessages());
 		Assertions.assertNotNull(response.getMessages().get(0).getChannel());
-		Assertions.assertNotNull(response.getMessages().get(0).getConversion_event());
+		Assertions.assertNotNull(response.getMessages().get(0).getConversionEvent());
 		Assertions.assertNotNull(response.getMessages().get(0).getData());
 		Assertions.assertNotNull(response.getMessages().get(0).getDelivery());
 		Assertions.assertNotNull(response.getMessages().get(0).getDevice());
 		Assertions.assertNotNull(response.getMessages().get(0).getLables());
-		Assertions.assertNotNull(response.getMessages().get(0).getMessage_id());
-		Assertions.assertNotNull(response.getMessages().get(0).getMessage_name());
-		Assertions.assertNotNull(response.getMessages().get(0).getStart_date());
+		Assertions.assertNotNull(response.getMessages().get(0).getMessageId());
+		Assertions.assertNotNull(response.getMessages().get(0).getMessageName());
+		Assertions.assertNotNull(response.getMessages().get(0).getStartDate());
 		Assertions.assertNotNull(response.getProcessed());
-		Assertions.assertNotNull(response.getReq_id());
+		Assertions.assertNotNull(response.getReqId());
 		Assertions.assertNotNull(response.getResult());
 		Assertions.assertNotNull(response.getResult().getClicked());
 		Assertions.assertNotNull(response.getResult().getSent());
 		Assertions.assertNotNull(response.getTargets());
 		Assertions.assertNotNull(response.getTargets().get(0).getId());
 		Assertions.assertNotNull(response.getTargets().get(0).getName());
-		Assertions.assertNotNull(response.getTargets().get(0).getScheduled_on());
+		Assertions.assertNotNull(response.getTargets().get(0).getScheduledOn());
 		Assertions.assertNotNull(response.getTargets().get(0).getStatus());
-		Assertions.assertNotNull(response.getTotal_results());
+		Assertions.assertNotNull(response.getTotalResults());
 		Assertions.assertNotNull(response.getUnprocessed());
-		Assertions.assertNotNull(response.getUser_type());
+		Assertions.assertNotNull(response.getUserType());
 		Assertions.assertEquals("success", response.getStatus());
 	}
 
@@ -226,7 +228,7 @@ public class CampaignsTest {
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
 		CampaignPayload payload = new CampaignPayload();
-		payload.setName("Send Mail");
+		payload.setCampaignName("Send Mail");
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
@@ -245,7 +247,7 @@ public class CampaignsTest {
 		JSONObject jsonResponse = new JSONObject();
 		jsonResponse.put("status", "success");
 		CampaignPayload payload = new CampaignPayload();
-		payload.setName("Send Mail");
+		payload.setCampaignName("Send Mail");
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		

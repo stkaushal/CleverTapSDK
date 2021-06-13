@@ -1,33 +1,55 @@
 package Payload;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class Where {
-	String event_name;
-	int from;
-	int to;
-	String profile_fields;
-	public int getFrom() {
-		return from;
+	
+	@JsonProperty(value="event_name")
+	String eventName;
+	
+	@JsonProperty(value="from")
+	int fromDate;
+	
+	@JsonProperty(value="to")
+	int toDate;
+	
+	@JsonProperty(value="common_profile_properties")
+	Object commonProfileProperties;
+
+	public String getEventName() {
+		return eventName;
 	}
-	public void setFrom(int from) {
-		this.from = from;
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
-	public int getTo() {
-		return to;
+
+	public int getFromDate() {
+		return fromDate;
 	}
-	public void setTo(int to) {
-		this.to = to;
+
+	public void setFromDate(int fromDate) {
+		this.fromDate = fromDate;
 	}
-	public String getEvent_name() {
-		return event_name;
+
+	public int getToDate() {
+		return toDate;
 	}
-	public void setEvent_name(String event_name) {
-		this.event_name = event_name;
+
+	public void setToDate(int toDate) {
+		this.toDate = toDate;
 	}
-	public String getProfile_fields() {
-		return profile_fields;
+
+	public Object getProfileFields() {
+		return commonProfileProperties;
 	}
-	public void setProfile_fields(String profile_fields) {
-		this.profile_fields = profile_fields;
+
+	public void setProfileFields(Object commonProfileProperties) {
+		this.commonProfileProperties = commonProfileProperties;
 	}
+	
 	
 }

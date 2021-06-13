@@ -2,8 +2,13 @@ package Response;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class GetEventsResponse extends Response{
-	String next_cursor = null;
+	
+	@JsonProperty(value="next_cursor")
+	String nextCursor;
+	
 	List<RecordsEvent> records;
 	
 	
@@ -13,10 +18,11 @@ public class GetEventsResponse extends Response{
 	public void setRecords(List<RecordsEvent> records) {
 		this.records = records;
 	}
-	public String getNext_cursor() {
-		return next_cursor;
+	public String getNextCursor() {
+		return nextCursor;
 	}
-	public void setNext_cursor(String next_cursor) {
-		this.next_cursor = next_cursor;
+	public void setNextCursor(String nextCursor) {
+		this.nextCursor = nextCursor;
 	}
+	
 }

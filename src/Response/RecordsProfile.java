@@ -3,6 +3,9 @@ package Response;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+
 public class RecordsProfile {
 	String email;
 	String name;
@@ -10,6 +13,21 @@ public class RecordsProfile {
 	HashMap<String, Object> profileData;
 	HashMap<String, Object> events;
 	List<HashMap<String, Object>> platformInfo;
+	
+	HashMap<String, Object> otherInfo;
+	
+	@JsonAnyGetter
+	public HashMap<String, Object> getOtherInfo() {
+		return otherInfo;
+	}
+	@JsonAnySetter
+	public void setOtherInfo(String key, Object value) {
+		if(this.otherInfo == null) {
+			this.otherInfo = new HashMap<String,Object>();
+		}
+		this.otherInfo.put(key,value);
+	}
+	
 	public String getEmail() {
 		return email;
 	}

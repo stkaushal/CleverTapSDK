@@ -5,8 +5,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-<span class="fc" id="L9">public class Response {</span>
+<span class="fc" id="L10">public class Response {</span>
 	
 	String status;
 	int processed;
@@ -14,9 +15,16 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 	String error;
 	int code;
 	int count;
-	long req_id;
-	String user_type;
-	int total_results;
+	
+	@JsonProperty(value=&quot;req_id&quot;)
+	long reqId;
+	
+	@JsonProperty(value=&quot;user_type&quot;)
+	HashMap&lt;String, Object&gt; userType;
+	
+	@JsonProperty(value=&quot;total_results&quot;)
+	int totalResults;
+	
 	List&lt;Message&gt; messages;
 	
 	HashMap&lt;String, String&gt; estimates;
@@ -28,99 +36,103 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 	
 	@JsonAnyGetter
 	public HashMap&lt;String, Object&gt; getOtherInfo() {
-<span class="fc" id="L31">		return otherInfo;</span>
+<span class="fc" id="L39">		return otherInfo;</span>
 	}
 	@JsonAnySetter
 	public void setOtherInfo(String key, Object value) {
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">		if(this.otherInfo == null) {</span>
-<span class="fc" id="L36">			this.otherInfo = new HashMap&lt;String,Object&gt;();</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">		if(this.otherInfo == null) {</span>
+<span class="fc" id="L44">			this.otherInfo = new HashMap&lt;String,Object&gt;();</span>
 		}
-<span class="fc" id="L38">		this.otherInfo.put(key,value);</span>
-<span class="fc" id="L39">	}</span>
+<span class="fc" id="L46">		this.otherInfo.put(key,value);</span>
+<span class="fc" id="L47">	}</span>
 	public String getStatus() {
-<span class="fc" id="L41">		return status;</span>
+<span class="fc" id="L49">		return status;</span>
 	}
 	public void setStatus(String status) {
-<span class="fc" id="L44">		this.status = status;</span>
-<span class="fc" id="L45">	}</span>
+<span class="fc" id="L52">		this.status = status;</span>
+<span class="fc" id="L53">	}</span>
 	public int getProcessed() {
-<span class="fc" id="L47">		return processed;</span>
+<span class="fc" id="L55">		return processed;</span>
 	}
 	public void setProcessed(int processed) {
-<span class="fc" id="L50">		this.processed = processed;</span>
-<span class="fc" id="L51">	}</span>
+<span class="fc" id="L58">		this.processed = processed;</span>
+<span class="fc" id="L59">	}</span>
 	public List&lt;Object&gt; getUnprocessed() {
-<span class="fc" id="L53">		return unprocessed;</span>
+<span class="fc" id="L61">		return unprocessed;</span>
 	}
 	public void setUnprocessed(List&lt;Object&gt; unprocessed) {
-<span class="fc" id="L56">		this.unprocessed = unprocessed;</span>
-<span class="fc" id="L57">	}</span>
+<span class="fc" id="L64">		this.unprocessed = unprocessed;</span>
+<span class="fc" id="L65">	}</span>
 	public String getError() {
-<span class="fc" id="L59">		return error;</span>
+<span class="fc" id="L67">		return error;</span>
 	}
 	public void setError(String error) {
-<span class="fc" id="L62">		this.error = error;</span>
-<span class="fc" id="L63">	}</span>
+<span class="fc" id="L70">		this.error = error;</span>
+<span class="fc" id="L71">	}</span>
 	public int getCode() {
-<span class="fc" id="L65">		return code;</span>
+<span class="fc" id="L73">		return code;</span>
 	}
 	public void setCode(int code) {
-<span class="fc" id="L68">		this.code = code;</span>
-<span class="fc" id="L69">	}</span>
+<span class="fc" id="L76">		this.code = code;</span>
+<span class="fc" id="L77">	}</span>
 	public int getCount() {
-<span class="fc" id="L71">		return count;</span>
+<span class="fc" id="L79">		return count;</span>
 	}
 	public void setCount(int count) {
-<span class="fc" id="L74">		this.count = count;</span>
-<span class="fc" id="L75">	}</span>
-	public long getReq_id() {
-<span class="fc" id="L77">		return req_id;</span>
+<span class="fc" id="L82">		this.count = count;</span>
+<span class="fc" id="L83">	}</span>
+	
+	public long getReqId() {
+<span class="fc" id="L86">		return reqId;</span>
 	}
-	public void setReq_id(long req_id) {
-<span class="fc" id="L80">		this.req_id = req_id;</span>
-<span class="fc" id="L81">	}</span>
-	public String getUser_type() {
-<span class="fc" id="L83">		return user_type;</span>
+	public void setReqId(long reqId) {
+<span class="fc" id="L89">		this.reqId = reqId;</span>
+<span class="fc" id="L90">	}</span>
+	public HashMap&lt;String, Object&gt; getUserType() {
+<span class="fc" id="L92">		return userType;</span>
 	}
-	public void setUser_type(String user_type) {
-<span class="fc" id="L86">		this.user_type = user_type;</span>
-<span class="fc" id="L87">	}</span>
-	public int getTotal_results() {
-<span class="fc" id="L89">		return total_results;</span>
+	public void setUserType(HashMap&lt;String, Object&gt; userType) {
+<span class="fc" id="L95">		this.userType = userType;</span>
+<span class="fc" id="L96">	}</span>
+	public int getTotalResults() {
+<span class="fc" id="L98">		return totalResults;</span>
 	}
-	public void setTotal_results(int total_results) {
-<span class="fc" id="L92">		this.total_results = total_results;</span>
-<span class="fc" id="L93">	}</span>
+	public void setTotalResults(int totalResults) {
+<span class="fc" id="L101">		this.totalResults = totalResults;</span>
+<span class="fc" id="L102">	}</span>
+	public void setOtherInfo(HashMap&lt;String, Object&gt; otherInfo) {
+<span class="nc" id="L104">		this.otherInfo = otherInfo;</span>
+<span class="nc" id="L105">	}</span>
 	public List&lt;Message&gt; getMessages() {
-<span class="fc" id="L95">		return messages;</span>
+<span class="fc" id="L107">		return messages;</span>
 	}
 	public void setMessages(List&lt;Message&gt; messages) {
-<span class="fc" id="L98">		this.messages = messages;</span>
-<span class="fc" id="L99">	}</span>
+<span class="fc" id="L110">		this.messages = messages;</span>
+<span class="fc" id="L111">	}</span>
 	public HashMap&lt;String, String&gt; getEstimates() {
-<span class="fc" id="L101">		return estimates;</span>
+<span class="fc" id="L113">		return estimates;</span>
 	}
 	public void setEstimates(HashMap&lt;String, String&gt; estimates) {
-<span class="fc" id="L104">		this.estimates = estimates;</span>
-<span class="fc" id="L105">	}</span>
+<span class="fc" id="L116">		this.estimates = estimates;</span>
+<span class="fc" id="L117">	}</span>
 	public Result getResult() {
-<span class="fc" id="L107">		return result;</span>
+<span class="fc" id="L119">		return result;</span>
 	}
 	public void setResult(Result result) {
-<span class="fc" id="L110">		this.result = result;</span>
-<span class="fc" id="L111">	}</span>
+<span class="fc" id="L122">		this.result = result;</span>
+<span class="fc" id="L123">	}</span>
 	public List&lt;Target&gt; getTargets() {
-<span class="fc" id="L113">		return targets;</span>
+<span class="fc" id="L125">		return targets;</span>
 	}
 	public void setTargets(List&lt;Target&gt; targets) {
-<span class="fc" id="L116">		this.targets = targets;</span>
-<span class="fc" id="L117">	}</span>
+<span class="fc" id="L128">		this.targets = targets;</span>
+<span class="fc" id="L129">	}</span>
 	public String getMessage() {
-<span class="fc" id="L119">		return message;</span>
+<span class="fc" id="L131">		return message;</span>
 	}
 	public void setMessage(String message) {
-<span class="fc" id="L122">		this.message = message;</span>
-<span class="fc" id="L123">	}</span>
+<span class="fc" id="L134">		this.message = message;</span>
+<span class="fc" id="L135">	}</span>
 	
 	
 }

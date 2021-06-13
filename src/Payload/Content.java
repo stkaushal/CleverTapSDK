@@ -2,70 +2,102 @@ package Payload;
 
 import java.util.HashMap;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class Content {
 	String title;
 	String body;
 	String subject;
-	String sender_name;
-	String template_name;
+	
+	@JsonProperty(value="sender_name")
+	String senderName;
+	
+	@JsonProperty(value="template_name")
+	String templateName;
+	
 	String replacements;
 	String attachments;
-	String template_id;
-	HashMap<String, Object> platform_specific;
 	
-	public HashMap<String, Object> getPlatform_specific() {
-		return platform_specific;
-	}
-	public void setPlatform_specific(HashMap<String, Object> platform_specific) {
-		this.platform_specific = platform_specific;
-	}
-	public String getTemplate_id() {
-		return template_id;
-	}
-	public void setTemplate_id(String template_id) {
-		this.template_id = template_id;
-	}
+	@JsonProperty(value="template_id")
+	String templateId;
+	
+	@JsonProperty(value="platform_specific")
+	HashMap<String, Object> platformSpecific;
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getBody() {
 		return body;
 	}
+
 	public void setBody(String body) {
 		this.body = body;
 	}
+
 	public String getSubject() {
 		return subject;
 	}
+
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getSender_name() {
-		return sender_name;
+
+	public String getSenderName() {
+		return senderName;
 	}
-	public void setSender_name(String sender_name) {
-		this.sender_name = sender_name;
+
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
 	}
-	public String getTemplate_name() {
-		return template_name;
+
+	public String getTemplateName() {
+		return templateName;
 	}
-	public void setTemplate_name(String template_name) {
-		this.template_name = template_name;
+
+	public void setTemplateName(String templateName) {
+		this.templateName = templateName;
 	}
+
 	public String getReplacements() {
 		return replacements;
 	}
+
 	public void setReplacements(String replacements) {
 		this.replacements = replacements;
 	}
+
 	public String getAttachments() {
 		return attachments;
 	}
+
 	public void setAttachments(String attachments) {
 		this.attachments = attachments;
 	}
+
+	public String getTemplateId() {
+		return templateId;
+	}
+
+	public void setTemplateId(String templateId) {
+		this.templateId = templateId;
+	}
+
+	public HashMap<String, Object> getPlatformSpecific() {
+		return platformSpecific;
+	}
+
+	public void setPlatformSpecific(HashMap<String, Object> platformSpecific) {
+		this.platformSpecific = platformSpecific;
+	}
+	
 	
 }

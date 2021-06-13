@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfileAPI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ProfileAPI.java</span></div><h1>ProfileAPI.java</h1><pre class="source lang-java linenums">import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Helper.ClevertapInstance;
+import Helper.Cursor;
+import Payload.CategoryResubscribe;
+import Payload.CategoryUnsubscribe;
+import Payload.Keys;
+import Payload.ProfileData;
+import Payload.ProfilePayload;
+import Payload.TokenData;
+import Response.GetUserProfileResponse;
+import Response.Response;
+
+<span class="nc" id="L24">public class ProfileAPI {</span>
+	
+    public static void main(String[] args) throws IOException, InterruptedException {
+    	
+<span class="nc" id="L28">	   String Cid = &quot;4R8-K98-8Z6Z&quot;;</span>
+<span class="nc" id="L29">	   String CPswd = &quot;AOE-RUW-CHUL&quot;;</span>
+<span class="nc" id="L30">	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);</span>
+	   
+<span class="nc" id="L32">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
+<span class="nc" id="L33">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="nc" id="L34">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+	   
+	   //Upload profile//
+	   
+//	   ProfilePayload payload = new ProfilePayload();
+//	   payload.setUserIdentity(&quot;123456&quot;);
+//	   payload.setType(&quot;profile&quot;);
+//	   ProfileData profileData = new ProfileData();
+//	   profileData.setName(&quot;Rohan&quot;);
+//	   profileData.setEmail(&quot;rohan@gmail.com&quot;);
+//	   profileData.setPhone(&quot;+919988776655&quot;);
+//	   profileData.setGender(&quot;M&quot;);
+//	   profileData.setMsgSMS(false);
+//	   profileData.setMsgEmail(true);
+//	   profileData.setMsgWhatsapp(true);
+//	   profileData.setMsgDndPhone(false);
+//	   profileData.setMsgDndEmail(false);
+//	   CategoryUnsubscribe categoryUnsubscribe = new CategoryUnsubscribe();
+//	   String[] categoryUS = {&quot;Newsletter&quot;};
+//	   categoryUnsubscribe.setEmail(categoryUS);
+//	   profileData.setCategoryUnsubscribe(categoryUnsubscribe);
+//	   
+//	   CategoryResubscribe categoryResubscribe = new CategoryResubscribe();
+//	   String[] categoryRS = {&quot;Football&quot;};
+//	   categoryResubscribe.setEmail(categoryRS);
+//	   profileData.setCategoryResubscribe(categoryResubscribe);
+//	   profileData.setDob(&quot;$D_1623298338&quot;);
+//	   profileData.setCustomerType(&quot;Silver&quot;);
+//	   HashMap&lt;String, Object&gt; userInfo = new HashMap&lt;String, Object&gt;(); 
+//	   userInfo.put(&quot;Entry number&quot;, &quot;3rd&quot;);
+//	   
+//	   profileData.setUserInfo(userInfo);
+//	   
+//	   payload.setProfileData(profileData);
+//	   List&lt;ProfilePayload&gt; payloadList = new ArrayList&lt;ProfilePayload&gt;();
+//	   payloadList.add(payload);
+//	   
+//	   Response resUploadProfile = instance.getProfileInstance().uploadUserProfile(payloadList);
+//	   JSONObject uploadProfileResponse= new JSONObject(jsonMapper.writeValueAsString(resUploadProfile));
+//	   System.out.println(uploadProfileResponse.toString(4));
+	   
+	   //Get profile by ID//
+	   
+//	   GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById(&quot;identity&quot;, &quot;123456&quot;);
+//	 
+//	   JSONObject getProfileIdResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileId));
+//	   System.out.println(getProfileIdResponse.toString(4));
+	   
+	   
+	   //get profile by cursor//
+	   
+//	   ProfilePayload payloadCursor = new ProfilePayload(); GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById(&quot;identity&quot;, &quot;1&quot;);
+//	 
+//	   JSONObject getProfileIdResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileId));
+//	   System.out.println(getProfileIdResponse.toString(4));
+//	   payloadCursor.setEventName(&quot;charged&quot;);
+//	   payloadCursor.setFromDate(20210606);
+//	   payloadCursor.setToDate(20210609);
+//	   Cursor cursor = instance.getProfileInstance().getUserProfileCursor(payloadCursor, 1000);
+//	   GetUserProfileResponse getProfileEv = instance.getProfileInstance().getUserProfileData(cursor);
+//	   while(getProfileEv.getNextCursor()!=null)
+//	   {
+//		   JSONObject getProfileEvResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileEv));
+//		   System.out.println(getProfileEvResponse.toString(4));
+//		   cursor.setCursor(getProfileEv.getNextCursor());
+//		   getProfileEv = instance.getProfileInstance().getUserProfileData(cursor);
+//	   }
+//	   JSONObject getProfileEvResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileEv));
+//	   System.out.println(getProfileEvResponse.toString(4));
+	   
+	   //Delete profile//
+	   
+//	   ProfilePayload userDeletePayload = new ProfilePayload();
+//	   userDeletePayload.setUserIdentity(&quot;123456&quot;);
+//	   Response resUserDeletePayload = instance.getProfileInstance().deleteUserProfile(userDeletePayload);
+//	   JSONObject getProfileIdDeleteResponse= new JSONObject(jsonMapper.writeValueAsString(resUserDeletePayload));
+//	   System.out.println(getProfileIdDeleteResponse.toString(4));
+	   
+	   //Upload device tokens//
+	   
+//	   ProfilePayload tokenPayload = new ProfilePayload();
+//	   tokenPayload.setType(&quot;token&quot;);
+//	   TokenData tokenData = new TokenData();
+//	   tokenData.setId(&quot;sjddsjnoosjfjks&quot;);
+//	   tokenData.setType(&quot;chrome&quot;);
+//	   Keys keys = new Keys();
+//	   keys.setP256dh(&quot;dummy P256dh&quot;);
+//	   keys.setAuth(&quot;dummy Auth&quot;);
+//	   tokenData.setKeys(keys);
+//	   tokenPayload.setTokenData(tokenData);
+//	   tokenPayload.setObjectId(&quot;IZ8MGYYO9pLJraUK-D9Dfw&quot;);
+//	   List&lt;ProfilePayload&gt; payloadTokensList = new ArrayList&lt;ProfilePayload&gt;();
+//	   payloadTokensList.add(tokenPayload);
+//	   Response uploadTokensResponse = instance.getProfileInstance().uploadDeviceTokens(payloadTokensList);
+//	   JSONObject uploadTokensResponseJSON= new JSONObject(jsonMapper.writeValueAsString(uploadTokensResponse));
+//	   System.out.println(uploadTokensResponseJSON.toString(4));
+	   
+	   //Demerge//
+	   
+//	   ProfilePayload userDemergePayload = new ProfilePayload();
+//	   String[] id = {&quot;1999999&quot;, &quot;12345&quot;};
+//	   userDemergePayload.setIdentities(id);
+//	   Response resUserDemergePayload= instance.getProfileInstance().demergeUserProfile(userDemergePayload);
+//	   JSONObject getProfileIdDemergeResponse= new JSONObject(jsonMapper.writeValueAsString(resUserDemergePayload));
+//	   System.out.println(getProfileIdDemergeResponse.toString(4));
+   
+	   //Subscribe//
+	   
+//	   List&lt;ProfilePayload&gt; paySubscribeList = new ArrayList&lt;ProfilePayload&gt;();
+//	   ProfilePayload subscribePayload = new ProfilePayload();
+//	   subscribePayload.setType(&quot;phone&quot;);
+//	   subscribePayload.setValue(&quot;+919116724916&quot;);
+//	   subscribePayload.setStatus(&quot;Resubscribe&quot;);
+//	   paySubscribeList.add(subscribePayload);
+//	   Response resSubscribePayload= instance.getProfileInstance().subscribe(paySubscribeList);
+//	   JSONObject getSubscribeResponse= new JSONObject(jsonMapper.writeValueAsString(resSubscribePayload));
+//	   System.out.println(getSubscribeResponse.toString(4));
+	   
+	   // Disassociate //
+	   
+//	   List&lt;ProfilePayload&gt; payDisasList = new ArrayList&lt;ProfilePayload&gt;();
+//	   ProfilePayload disassociatePayload = new ProfilePayload();
+//	   disassociatePayload.setType(&quot;phone&quot;);
+//	   disassociatePayload.setValue(&quot;+919116724916&quot;);
+//	   payDisasList.add(disassociatePayload);
+//	   Response resDisasPayload= instance.getProfileInstance().disassociate(payDisasList);
+//	   JSONObject getSubscribeResponse= new JSONObject(jsonMapper.writeValueAsString(resDisasPayload));
+//	   System.out.println(getSubscribeResponse.toString(4));
+	   
+	   
+	
+	   
+	   
+	   
+<span class="nc" id="L168">    }</span>
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

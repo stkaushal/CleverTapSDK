@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CampaignAPI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">CampaignAPI.java</span></div><h1>CampaignAPI.java</h1><pre class="source lang-java linenums">import java.io.IOException;
+import java.util.HashMap;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Helper.ClevertapInstance;
+import Payload.CampaignPayload;
+import Payload.Content;
+import Payload.TimeInterval;
+import Payload.To;
+import Payload.Where;
+import Response.Response;
+
+<span class="nc" id="L18">public class CampaignAPI {</span>
+	public static void main(String[] args) throws IOException, InterruptedException {
+    	
+<span class="nc" id="L21">	   String Cid = &quot;4R8-K98-8Z6Z&quot;;</span>
+<span class="nc" id="L22">	   String CPswd = &quot;AOE-RUW-CHUL&quot;;</span>
+<span class="nc" id="L23">	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);</span>
+	   
+<span class="nc" id="L25">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
+<span class="nc" id="L26">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="nc" id="L27">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+	   
+	   
+	   //create campaign by id//
+	   
+<span class="nc" id="L32">	   CampaignPayload campaignPayload = new CampaignPayload();</span>
+<span class="nc" id="L33">	   To sendMessageTo = new To();</span>
+<span class="nc" id="L34">	   String[] emailId = {&quot;david@gmail.com&quot;};</span>
+<span class="nc" id="L35">	   sendMessageTo.setEmail(emailId);</span>
+<span class="nc" id="L36">	   campaignPayload.setSendMessageTo(sendMessageTo);</span>
+<span class="nc" id="L37">	   campaignPayload.setTagGroup(&quot;Target group for David&quot;);</span>
+<span class="nc" id="L38">	   campaignPayload.setCampaignId(1000000044);</span>
+<span class="nc" id="L39">	   campaignPayload.setRespectFrequencyCaps(false);</span>
+<span class="nc" id="L40">	   Content content = new Content();</span>
+<span class="nc" id="L41">	   content.setTitle(&quot;Hello&quot;);</span>
+<span class="nc" id="L42">	   content.setBody(&quot;How's going?&quot;);</span>
+<span class="nc" id="L43">	   content.setSubject(&quot;For testing purpose&quot;);</span>
+<span class="nc" id="L44">	   content.setSenderName(&quot;Dharmender&quot;);</span>
+<span class="nc" id="L45">	   campaignPayload.setContent(content);</span>
+<span class="nc" id="L46">	   campaignPayload.setCampaignSendTime(&quot;20210615 03:20&quot;);</span>
+	   
+<span class="nc" id="L48">	   Response resCreateCampaignTUE = instance.getCampaignInstance().createCampaignTargetId(&quot;EMAIL&quot;, campaignPayload);</span>
+<span class="nc" id="L49">	   JSONObject createCampaignTUEResponse= new JSONObject(jsonMapper.writeValueAsString(resCreateCampaignTUE));</span>
+<span class="nc" id="L50">	   System.out.println(createCampaignTUEResponse.toString(4));</span>
+//	   
+	   //create campaign by user event//
+	   
+//	   CampaignPayload campaignPayloadUE = new CampaignPayload();
+//	   campaignPayloadUE.setCampaignName(&quot;David's Webpush API campaign&quot;);
+//	   campaignPayloadUE.setEstimateOnly(true);
+//	   campaignPayloadUE.setTargetMode(&quot;webpush&quot;);
+//	   campaignPayloadUE.setRespectFrequencyCaps(false);
+//	   
+//	   Content content = new Content();
+//	   content.setTitle(&quot;Hello there&quot;);
+//	   content.setBody(&quot;How's going brother?&quot;);
+//	   content.setSubject(&quot;This is for testing purpose&quot;);
+//	   content.setSenderName(&quot;Dharmender Sheshma&quot;);
+//	   HashMap&lt;String, Object&gt; platformSpecific = new  HashMap&lt;String, Object&gt;();
+//	   HashMap&lt;String, Object&gt; data = new HashMap&lt;String, Object&gt;();
+//	   data.put(&quot;icon&quot;, &quot;https://neilpatel.com/wp-content/uploads/2017/09/image-editing-tools.jpg&quot;);
+//	   data.put(&quot;ttl&quot;, 10);
+//	   platformSpecific.put(&quot;firefox&quot;, data);
+//	   content.setPlatformSpecific(platformSpecific);
+//	   campaignPayloadUE.setContent(content);
+//	   campaignPayloadUE.setCampaignSendTime(&quot;now&quot;);
+//	   
+//	   Where campaignSendTo = new Where();
+//	   campaignSendTo.setEventName(&quot;charged&quot;);
+//	   campaignSendTo.setFromDate(20210606);
+//	   campaignSendTo.setToDate(20210609);
+//	   campaignPayloadUE.setCampaignSendTo(campaignSendTo);
+//	   
+//	   Response resCreateCampaignTUE = instance.getCampaignInstance().createCampaignTargetUserEvents(campaignPayloadUE);
+//	   JSONObject createCampaignTUEResponse= new JSONObject(jsonMapper.writeValueAsString(resCreateCampaignTUE));
+//	   System.out.println(createCampaignTUEResponse.toString(4));
+	   
+	   // stop scheduled//
+	   
+//	   CampaignPayload campaignPayloadStopC = new CampaignPayload();
+//	   campaignPayloadStopC.setCampaignId(100001561);
+//	   Response resCampaignPayloadStopC = instance.getCampaignInstance().stopScheduledCampaign(campaignPayloadStopC);
+//	   JSONObject campaignPayloadStopCResponse= new JSONObject(jsonMapper.writeValueAsString(resCampaignPayloadStopC));
+//	   System.out.println(campaignPayloadStopCResponse.toString(4));
+	   
+	   
+	   //get campaigns//
+	   
+//	   TimeInterval campaignPayloadgetC = new TimeInterval();
+//	   campaignPayloadgetC.setFromDate(20210606);
+//	   campaignPayloadgetC.setToDate(20210609);
+//	   Response resCampaignPayloadgetC = instance.getCampaignInstance().getCampaigns(campaignPayloadgetC);
+//	   JSONObject campaignPayloadgetCResponse = new JSONObject(jsonMapper.writeValueAsString(resCampaignPayloadgetC));
+//	   System.out.println(campaignPayloadgetCResponse.toString(4));
+	   
+	   
+	   //get campaign report//
+	   
+//	   CampaignPayload campaignPayloadgetReport = new CampaignPayload();
+//	   campaignPayloadgetReport.setCampaignId(100001561);
+//	   Response resCampaignPayloadgetReport = instance.getCampaignInstance().getCampaignReport(campaignPayloadgetReport);
+//	   JSONObject campaignPayloadgetReportResponse = new JSONObject(jsonMapper.writeValueAsString(resCampaignPayloadgetReport));
+//	   System.out.println(campaignPayloadgetReportResponse.toString(4));
+<span class="nc" id="L110">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

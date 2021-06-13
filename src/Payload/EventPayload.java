@@ -1,100 +1,151 @@
 package Payload;
 
 import java.util.HashMap;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class EventPayload {
-	String event_name;
-	int from;
-	int to; 
+	
+	@JsonProperty(value="from")
+	int fromDate;
+	
+	@JsonProperty(value="to")
+	int toDate; 
+	
 	String type;
-	String evtName;
+	
+	@JsonProperty(value="evtName")
+	String eventNameUpload;
+	
 	String timestamp;
-	HashMap<String, Object> evtData;
-	HashMap<String, String> event_properties;
+	
+	@JsonProperty(value="evtData")
+	HashMap<String, Object> eventData;
+	
+	@JsonProperty(value="event_name")
+	String eventNameDownload;
+	
+	@JsonProperty(value="event_properties")
+	List<HashMap<String, Object>> eventProperties;
+	
 	long ts;
 	String identity;
-	String FBID;
-	String GPID;
+	
+	@JsonProperty(value="FBID")
+	String fbid;
+	
+	@JsonProperty(value="GPID")
+	String gpid;
+	
 	String objectId;
-	
-	
-	public HashMap<String, Object> getEvtData() {
-		return evtData;
+
+	public int getFromDate() {
+		return fromDate;
 	}
-	public void setEvtData(HashMap<String, Object> evtData) {
-		this.evtData = evtData;
+
+	public void setFromDate(int fromDate) {
+		this.fromDate = fromDate;
 	}
-	public int getFrom() {
-		return from;
+
+	public int getToDate() {
+		return toDate;
 	}
-	public void setFrom(int from) {
-		this.from = from;
+
+	public void setToDate(int toDate) {
+		this.toDate = toDate;
 	}
-	public int getTo() {
-		return to;
-	}
-	public void setTo(int to) {
-		this.to = to;
-	}
-	public String getEvtName() {
-		return evtName;
-	}
-	public void setEvtName(String evtName) {
-		this.evtName = evtName;
-	}
-	public long getTs() {
-		return ts;
-	}
-	public void setTs(long ts) {
-		this.ts = ts;
-	}
-	public String getFBID() {
-		return FBID;
-	}
-	public void setFBID(String fBID) {
-		FBID = fBID;
-	}
-	public String getGPID() {
-		return GPID;
-	}
-	public void setGPID(String gPID) {
-		GPID = gPID;
-	}
-	public String getEvent_name() {
-		return event_name;
-	}
-	public void setEvent_name(String event_name) {
-		this.event_name = event_name;
-	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public String getEventNameUpload() {
+		return eventNameUpload;
+	}
+
+	public void setEventNameUpload(String eventNameUpload) {
+		this.eventNameUpload = eventNameUpload;
+	}
+
 	public String getTimestamp() {
 		return timestamp;
 	}
+
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
+
+	public HashMap<String, Object> getEventData() {
+		return eventData;
+	}
+
+	public void setEventData(HashMap<String, Object> eventData) {
+		this.eventData = eventData;
+	}
+
+	public String getEventNameDownload() {
+		return eventNameDownload;
+	}
+
+	public void setEventNameDownload(String eventNameDownload) {
+		this.eventNameDownload = eventNameDownload;
+	}
+
+	public List<HashMap<String, Object>> getEventProperties() {
+		return eventProperties;
+	}
+
+	public void setEventProperties(List<HashMap<String, Object>> eventProperties) {
+		this.eventProperties = eventProperties;
+	}
+
+	public long getTs() {
+		return ts;
+	}
+
+	public void setTs(long ts) {
+		this.ts = ts;
+	}
+
 	public String getIdentity() {
 		return identity;
 	}
+
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
+
+	public String getFbid() {
+		return fbid;
+	}
+
+	public void setFbid(String fbid) {
+		this.fbid = fbid;
+	}
+
+	public String getGpid() {
+		return gpid;
+	}
+
+	public void setGpid(String gpid) {
+		this.gpid = gpid;
+	}
+
 	public String getObjectId() {
 		return objectId;
 	}
+
 	public void setObjectId(String objectId) {
 		this.objectId = objectId;
 	}
-	public HashMap<String, String> getEvent_properties() {
-		return event_properties;
-	}
-	public void setEvent_properties(HashMap<String, String> event_properties) {
-		this.event_properties = event_properties;
-	}
-
+	
+	
 }

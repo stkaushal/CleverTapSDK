@@ -2,33 +2,52 @@ package Response;
 
 import java.util.HashMap;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RecordsEvent {
+	
 	Profile profile;
-	long ts;
-	HashMap<String, String> event_props;
-	HashMap<String, String> session_props;
+	
+	@JsonProperty(value="ts")
+	long timestamp;
+	
+	@JsonProperty(value="event_props")
+	HashMap<String, String> eventProps;
+	
+	@JsonProperty(value="session_props")
+	HashMap<String, String> sessionProps;
+
 	public Profile getProfile() {
 		return profile;
 	}
+
 	public void setProfile(Profile profile) {
 		this.profile = profile;
 	}
-	public long getTs() {
-		return ts;
+
+	public long getTimestamp() {
+		return timestamp;
 	}
-	public void setTs(long ts) {
-		this.ts = ts;
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
 	}
-	public HashMap<String, String> getEvent_props() {
-		return event_props;
+
+	public HashMap<String, String> getEventProps() {
+		return eventProps;
 	}
-	public void setEvent_props(HashMap<String, String> event_props) {
-		this.event_props = event_props;
+
+	public void setEventProps(HashMap<String, String> eventProps) {
+		this.eventProps = eventProps;
 	}
-	public HashMap<String, String> getSession_props() {
-		return session_props;
+
+	public HashMap<String, String> getSessionProps() {
+		return sessionProps;
 	}
-	public void setSession_props(HashMap<String, String> session_props) {
-		this.session_props = session_props;
+
+	public void setSessionProps(HashMap<String, String> sessionProps) {
+		this.sessionProps = sessionProps;
 	}
+	
+	
 }

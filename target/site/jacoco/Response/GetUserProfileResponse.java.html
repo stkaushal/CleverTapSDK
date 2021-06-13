@@ -2,21 +2,35 @@
 
 import java.util.List;
 
-<span class="fc" id="L5">public class GetUserProfileResponse extends Response{</span>
-<span class="fc" id="L6">	String next_cursor = null;</span>
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+<span class="fc" id="L7">public class GetUserProfileResponse extends Response{</span>
+	
+	@JsonProperty(value=&quot;next_cursor&quot;)
+	String nextCursor;
+	
 	List&lt;RecordsProfile&gt; records;
-	public String getNext_cursor() {
-<span class="fc" id="L9">		return next_cursor;</span>
+	RecordsProfile record;
+	
+	public RecordsProfile getRecord() {
+<span class="nc" id="L16">		return record;</span>
 	}
-	public void setNext_cursor(String next_cursor) {
-<span class="fc" id="L12">		this.next_cursor = next_cursor;</span>
-<span class="fc" id="L13">	}</span>
+	public void setRecord(RecordsProfile record) {
+<span class="nc" id="L19">		this.record = record;</span>
+<span class="nc" id="L20">	}</span>
+	
+	public String getNextCursor() {
+<span class="fc" id="L23">		return nextCursor;</span>
+	}
+	public void setNextCursor(String nextCursor) {
+<span class="fc" id="L26">		this.nextCursor = nextCursor;</span>
+<span class="fc" id="L27">	}</span>
 	public List&lt;RecordsProfile&gt; getRecords() {
-<span class="fc" id="L15">		return records;</span>
+<span class="fc" id="L29">		return records;</span>
 	}
 	public void setRecords(List&lt;RecordsProfile&gt;  records) {
-<span class="fc" id="L18">		this.records = records;</span>
-<span class="fc" id="L19">	}</span>
+<span class="fc" id="L32">		this.records = records;</span>
+<span class="fc" id="L33">	}</span>
 	
 	
 }

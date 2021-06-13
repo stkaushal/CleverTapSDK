@@ -1,101 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EventPayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Payload</a> &gt; <span class="el_source">EventPayload.java</span></div><h1>EventPayload.java</h1><pre class="source lang-java linenums">package Payload;
 
 import java.util.HashMap;
+import java.util.List;
 
-<span class="fc" id="L5">public class EventPayload {</span>
-	String event_name;
-	int from;
-	int to; 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L11">public class EventPayload {</span>
+	
+	@JsonProperty(value=&quot;from&quot;)
+	int fromDate;
+	
+	@JsonProperty(value=&quot;to&quot;)
+	int toDate; 
+	
 	String type;
-	String evtName;
+	
+	@JsonProperty(value=&quot;evtName&quot;)
+	String eventNameUpload;
+	
 	String timestamp;
-	HashMap&lt;String, Object&gt; evtData;
-	HashMap&lt;String, String&gt; event_properties;
+	
+	@JsonProperty(value=&quot;evtData&quot;)
+	HashMap&lt;String, Object&gt; eventData;
+	
+	@JsonProperty(value=&quot;event_name&quot;)
+	String eventNameDownload;
+	
+	@JsonProperty(value=&quot;event_properties&quot;)
+	List&lt;HashMap&lt;String, Object&gt;&gt; eventProperties;
+	
 	long ts;
 	String identity;
-	String FBID;
-	String GPID;
+	
+	@JsonProperty(value=&quot;FBID&quot;)
+	String fbid;
+	
+	@JsonProperty(value=&quot;GPID&quot;)
+	String gpid;
+	
 	String objectId;
-	
-	
-	public HashMap&lt;String, Object&gt; getEvtData() {
-<span class="fc" id="L22">		return evtData;</span>
-	}
-	public void setEvtData(HashMap&lt;String, Object&gt; evtData) {
-<span class="fc" id="L25">		this.evtData = evtData;</span>
-<span class="fc" id="L26">	}</span>
-	public int getFrom() {
-<span class="fc" id="L28">		return from;</span>
-	}
-	public void setFrom(int from) {
-<span class="fc" id="L31">		this.from = from;</span>
-<span class="fc" id="L32">	}</span>
-	public int getTo() {
-<span class="fc" id="L34">		return to;</span>
-	}
-	public void setTo(int to) {
-<span class="fc" id="L37">		this.to = to;</span>
-<span class="fc" id="L38">	}</span>
-	public String getEvtName() {
-<span class="fc" id="L40">		return evtName;</span>
-	}
-	public void setEvtName(String evtName) {
-<span class="fc" id="L43">		this.evtName = evtName;</span>
-<span class="fc" id="L44">	}</span>
-	public long getTs() {
-<span class="fc" id="L46">		return ts;</span>
-	}
-	public void setTs(long ts) {
-<span class="fc" id="L49">		this.ts = ts;</span>
-<span class="fc" id="L50">	}</span>
-	public String getFBID() {
-<span class="fc" id="L52">		return FBID;</span>
-	}
-	public void setFBID(String fBID) {
-<span class="fc" id="L55">		FBID = fBID;</span>
-<span class="fc" id="L56">	}</span>
-	public String getGPID() {
-<span class="fc" id="L58">		return GPID;</span>
-	}
-	public void setGPID(String gPID) {
-<span class="fc" id="L61">		GPID = gPID;</span>
-<span class="fc" id="L62">	}</span>
-	public String getEvent_name() {
-<span class="fc" id="L64">		return event_name;</span>
-	}
-	public void setEvent_name(String event_name) {
-<span class="fc" id="L67">		this.event_name = event_name;</span>
-<span class="fc" id="L68">	}</span>
-	public String getType() {
-<span class="fc" id="L70">		return type;</span>
-	}
-	public void setType(String type) {
-<span class="fc" id="L73">		this.type = type;</span>
-<span class="fc" id="L74">	}</span>
-	public String getTimestamp() {
-<span class="fc" id="L76">		return timestamp;</span>
-	}
-	public void setTimestamp(String timestamp) {
-<span class="fc" id="L79">		this.timestamp = timestamp;</span>
-<span class="fc" id="L80">	}</span>
-	public String getIdentity() {
-<span class="fc" id="L82">		return identity;</span>
-	}
-	public void setIdentity(String identity) {
-<span class="fc" id="L85">		this.identity = identity;</span>
-<span class="fc" id="L86">	}</span>
-	public String getObjectId() {
-<span class="fc" id="L88">		return objectId;</span>
-	}
-	public void setObjectId(String objectId) {
-<span class="fc" id="L91">		this.objectId = objectId;</span>
-<span class="fc" id="L92">	}</span>
-	public HashMap&lt;String, String&gt; getEvent_properties() {
-<span class="fc" id="L94">		return event_properties;</span>
-	}
-	public void setEvent_properties(HashMap&lt;String, String&gt; event_properties) {
-<span class="fc" id="L97">		this.event_properties = event_properties;</span>
-<span class="fc" id="L98">	}</span>
 
+	public int getFromDate() {
+<span class="fc" id="L47">		return fromDate;</span>
+	}
+
+	public void setFromDate(int fromDate) {
+<span class="fc" id="L51">		this.fromDate = fromDate;</span>
+<span class="fc" id="L52">	}</span>
+
+	public int getToDate() {
+<span class="fc" id="L55">		return toDate;</span>
+	}
+
+	public void setToDate(int toDate) {
+<span class="fc" id="L59">		this.toDate = toDate;</span>
+<span class="fc" id="L60">	}</span>
+
+	public String getType() {
+<span class="fc" id="L63">		return type;</span>
+	}
+
+	public void setType(String type) {
+<span class="fc" id="L67">		this.type = type;</span>
+<span class="fc" id="L68">	}</span>
+
+	public String getEventNameUpload() {
+<span class="fc" id="L71">		return eventNameUpload;</span>
+	}
+
+	public void setEventNameUpload(String eventNameUpload) {
+<span class="fc" id="L75">		this.eventNameUpload = eventNameUpload;</span>
+<span class="fc" id="L76">	}</span>
+
+	public String getTimestamp() {
+<span class="fc" id="L79">		return timestamp;</span>
+	}
+
+	public void setTimestamp(String timestamp) {
+<span class="fc" id="L83">		this.timestamp = timestamp;</span>
+<span class="fc" id="L84">	}</span>
+
+	public HashMap&lt;String, Object&gt; getEventData() {
+<span class="fc" id="L87">		return eventData;</span>
+	}
+
+	public void setEventData(HashMap&lt;String, Object&gt; eventData) {
+<span class="fc" id="L91">		this.eventData = eventData;</span>
+<span class="fc" id="L92">	}</span>
+
+	public String getEventNameDownload() {
+<span class="fc" id="L95">		return eventNameDownload;</span>
+	}
+
+	public void setEventNameDownload(String eventNameDownload) {
+<span class="fc" id="L99">		this.eventNameDownload = eventNameDownload;</span>
+<span class="fc" id="L100">	}</span>
+
+	public List&lt;HashMap&lt;String, Object&gt;&gt; getEventProperties() {
+<span class="fc" id="L103">		return eventProperties;</span>
+	}
+
+	public void setEventProperties(List&lt;HashMap&lt;String, Object&gt;&gt; eventProperties) {
+<span class="fc" id="L107">		this.eventProperties = eventProperties;</span>
+<span class="fc" id="L108">	}</span>
+
+	public long getTs() {
+<span class="fc" id="L111">		return ts;</span>
+	}
+
+	public void setTs(long ts) {
+<span class="fc" id="L115">		this.ts = ts;</span>
+<span class="fc" id="L116">	}</span>
+
+	public String getIdentity() {
+<span class="fc" id="L119">		return identity;</span>
+	}
+
+	public void setIdentity(String identity) {
+<span class="fc" id="L123">		this.identity = identity;</span>
+<span class="fc" id="L124">	}</span>
+
+	public String getFbid() {
+<span class="fc" id="L127">		return fbid;</span>
+	}
+
+	public void setFbid(String fbid) {
+<span class="fc" id="L131">		this.fbid = fbid;</span>
+<span class="fc" id="L132">	}</span>
+
+	public String getGpid() {
+<span class="fc" id="L135">		return gpid;</span>
+	}
+
+	public void setGpid(String gpid) {
+<span class="fc" id="L139">		this.gpid = gpid;</span>
+<span class="fc" id="L140">	}</span>
+
+	public String getObjectId() {
+<span class="fc" id="L143">		return objectId;</span>
+	}
+
+	public void setObjectId(String objectId) {
+<span class="fc" id="L147">		this.objectId = objectId;</span>
+<span class="fc" id="L148">	}</span>
+	
+	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -2,34 +2,53 @@
 
 import java.util.HashMap;
 
-<span class="fc" id="L5">public class RecordsEvent {</span>
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+<span class="fc" id="L7">public class RecordsEvent {</span>
+	
 	Profile profile;
-	long ts;
-	HashMap&lt;String, String&gt; event_props;
-	HashMap&lt;String, String&gt; session_props;
+	
+	@JsonProperty(value=&quot;ts&quot;)
+	long timestamp;
+	
+	@JsonProperty(value=&quot;event_props&quot;)
+	HashMap&lt;String, String&gt; eventProps;
+	
+	@JsonProperty(value=&quot;session_props&quot;)
+	HashMap&lt;String, String&gt; sessionProps;
+
 	public Profile getProfile() {
-<span class="fc" id="L11">		return profile;</span>
+<span class="fc" id="L21">		return profile;</span>
 	}
+
 	public void setProfile(Profile profile) {
-<span class="fc" id="L14">		this.profile = profile;</span>
-<span class="fc" id="L15">	}</span>
-	public long getTs() {
-<span class="fc" id="L17">		return ts;</span>
+<span class="fc" id="L25">		this.profile = profile;</span>
+<span class="fc" id="L26">	}</span>
+
+	public long getTimestamp() {
+<span class="fc" id="L29">		return timestamp;</span>
 	}
-	public void setTs(long ts) {
-<span class="fc" id="L20">		this.ts = ts;</span>
-<span class="fc" id="L21">	}</span>
-	public HashMap&lt;String, String&gt; getEvent_props() {
-<span class="fc" id="L23">		return event_props;</span>
+
+	public void setTimestamp(long timestamp) {
+<span class="fc" id="L33">		this.timestamp = timestamp;</span>
+<span class="fc" id="L34">	}</span>
+
+	public HashMap&lt;String, String&gt; getEventProps() {
+<span class="fc" id="L37">		return eventProps;</span>
 	}
-	public void setEvent_props(HashMap&lt;String, String&gt; event_props) {
-<span class="fc" id="L26">		this.event_props = event_props;</span>
-<span class="fc" id="L27">	}</span>
-	public HashMap&lt;String, String&gt; getSession_props() {
-<span class="fc" id="L29">		return session_props;</span>
+
+	public void setEventProps(HashMap&lt;String, String&gt; eventProps) {
+<span class="fc" id="L41">		this.eventProps = eventProps;</span>
+<span class="fc" id="L42">	}</span>
+
+	public HashMap&lt;String, String&gt; getSessionProps() {
+<span class="fc" id="L45">		return sessionProps;</span>
 	}
-	public void setSession_props(HashMap&lt;String, String&gt; session_props) {
-<span class="fc" id="L32">		this.session_props = session_props;</span>
-<span class="fc" id="L33">	}</span>
+
+	public void setSessionProps(HashMap&lt;String, String&gt; sessionProps) {
+<span class="fc" id="L49">		this.sessionProps = sessionProps;</span>
+<span class="fc" id="L50">	}</span>
+	
+	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

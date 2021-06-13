@@ -39,23 +39,23 @@ public class ReportTest {
 		jsonResponse.put("status", "success");
 		
 		ReportPayload payload = new ReportPayload();
-		payload.setEvent_name("Bought watch");
-		payload.setFrom(01012020);
-		payload.setTo(01012021);
+		payload.setEventName("Bought watch");
+		payload.setFromDate(01012020);
+		payload.setToDate(01012021);
 		String[] delivery = {"dummy"};
 		payload.setDelivery(delivery);
 		
 		HashMap<String, Group> groups = new HashMap<String, Group>();
 		Group group = new Group();
-		group.setName("dummy");
+		group.setPropertyName("dummy");
 		group.setOrder("dummy");
-		group.setProperty_type("dummy");
-		group.setTop_n(1);
-		group.setTrend_type("dummy");
+		group.setPropertyType("dummy");
+		group.setTopNValues(1);
+		group.setTrendType("dummy");
 		groups.put("group", group);
 		
 		payload.setGroups(groups);
-		payload.setUser_type(true);
+		payload.setUserType(true);
 		
 		String[] channel = {"dummy"};
 		payload.setChannel(channel);
@@ -67,7 +67,7 @@ public class ReportTest {
 		String[] lable = {"dummy"};
 		payload.setLable(lable);
 		payload.setUnique(true);
-		payload.setSum_event_prop(1);
+		payload.setSumEventProp("dummy");
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
@@ -84,7 +84,7 @@ public class ReportTest {
 		jsonResponse.put("status", "success");
 		
 		ReportPayload payload = new ReportPayload();
-		payload.setEvent_name("Bought watch");;
+		payload.setEventName("Bought watch");;
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
@@ -101,7 +101,7 @@ public class ReportTest {
 		jsonResponse.put("status", "success");
 		
 		ReportPayload payload = new ReportPayload();
-		payload.setEvent_name("Bought watch");;
+		payload.setEventName("Bought watch");;
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
@@ -118,7 +118,7 @@ public class ReportTest {
 		jsonResponse.put("status", "success");
 		
 		ReportPayload payload = new ReportPayload();
-		payload.setEvent_name("Bought watch");;
+		payload.setEventName("Bought watch");;
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		

@@ -1,39 +1,65 @@
 package Payload;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
 public class Group {
-	String property_type;
-	String name;
-	int top_n;
+	
+	@JsonProperty(value="property_type")
+	String propertyType;
+	
+	@JsonProperty(value="name")
+	String propertyName;
+	
+	@JsonProperty(value="top_n")
+	int topNValues;
+	
 	String order;
-	String trend_type;
-	public String getTrend_type() {
-		return trend_type;
+	
+	@JsonProperty(value="trend_type")
+	String trendType;
+
+	public String getPropertyType() {
+		return propertyType;
 	}
-	public void setTrend_type(String trend_type) {
-		this.trend_type = trend_type;
+
+	public void setPropertyType(String propertyType) {
+		this.propertyType = propertyType;
 	}
-	public String getProperty_type() {
-		return property_type;
+
+	public String getPropertyName() {
+		return propertyName;
 	}
-	public void setProperty_type(String property_type) {
-		this.property_type = property_type;
+
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
 	}
-	public String getName() {
-		return name;
+
+	public int getTopNValues() {
+		return topNValues;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setTopNValues(int topNValues) {
+		this.topNValues = topNValues;
 	}
-	public int getTop_n() {
-		return top_n;
-	}
-	public void setTop_n(int top_n) {
-		this.top_n = top_n;
-	}
+
 	public String getOrder() {
 		return order;
 	}
+
 	public void setOrder(String order) {
 		this.order = order;
 	}
+
+	public String getTrendType() {
+		return trendType;
+	}
+
+	public void setTrendType(String trendType) {
+		this.trendType = trendType;
+	}
+	
+	
 }

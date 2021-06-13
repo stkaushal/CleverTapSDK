@@ -3,74 +3,103 @@ package Response;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class Message {
 	
 	@JsonProperty(value="message id")
-	long message_id;
+	long messageId;
 	
 	List<HashMap<String, String>> data;
-	String start_date;
+	
+	@JsonProperty(value="start_date")
+	String startDate;
 	List<String> device;
-	Object conversion_event;
+	
+	@JsonProperty(value="conversion_event")
+	Object conversionEvent;
+	
 	List<String> lables;
 	String channel;
-	String message_name;
+	
+	@JsonProperty(value="message_name")
+	String messageName;
+	
 	String delivery;
-	public long getMessage_id() {
-		return message_id;
+
+
+	public long getMessageId() {
+		return messageId;
 	}
-	public void setMessage_id(long message_id) {
-		this.message_id = message_id;
+
+	public void setMessageId(long messageId) {
+		this.messageId = messageId;
 	}
 
 	public List<HashMap<String, String>> getData() {
 		return data;
 	}
+
 	public void setData(List<HashMap<String, String>> data) {
 		this.data = data;
 	}
-	public String getStart_date() {
-		return start_date;
+
+	public String getStartDate() {
+		return startDate;
 	}
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
+
 	public List<String> getDevice() {
 		return device;
 	}
+
 	public void setDevice(List<String> device) {
 		this.device = device;
 	}
-	public Object getConversion_event() {
-		return conversion_event;
+
+	public Object getConversionEvent() {
+		return conversionEvent;
 	}
-	public void setConversion_event(Object conversion_event) {
-		this.conversion_event = conversion_event;
+
+	public void setConversionEvent(Object conversionEvent) {
+		this.conversionEvent = conversionEvent;
 	}
+
 	public List<String> getLables() {
 		return lables;
 	}
+
 	public void setLables(List<String> lables) {
 		this.lables = lables;
 	}
+
 	public String getChannel() {
 		return channel;
 	}
+
 	public void setChannel(String channel) {
 		this.channel = channel;
 	}
-	public String getMessage_name() {
-		return message_name;
+
+	public String getMessageName() {
+		return messageName;
 	}
-	public void setMessage_name(String message_name) {
-		this.message_name = message_name;
+
+	public void setMessageName(String messageName) {
+		this.messageName = messageName;
 	}
+
 	public String getDelivery() {
 		return delivery;
 	}
+
 	public void setDelivery(String delivery) {
 		this.delivery = delivery;
 	}
+	
 }

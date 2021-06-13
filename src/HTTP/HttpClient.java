@@ -132,8 +132,13 @@ public class HttpClient {
 	};
 	
 	private int getRetryAfterTime(HttpResponse response) {
-		String retryAfter = response.getFirstHeader("Retry-After").getValue();
-		if(retryAfter!=null)
+		String retryAfter = null;
+		if(response.getFirstHeader("Retry-After") != null)
+		{
+			retryAfter = response.getFirstHeader("Retry-After").getValue();
+		}
+		
+		if(retryAfter!=null  && !retryAfter.isEmpty())
 		{
 			return Integer.parseInt(retryAfter);
 		}

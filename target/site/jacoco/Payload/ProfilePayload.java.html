@@ -2,118 +2,176 @@
 
 import java.util.HashMap;
 
-<span class="fc" id="L5">public class ProfilePayload {</span>
-	String[] identity;
-	String[] indentities; 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L10">public class ProfilePayload {</span>
+	
+	@JsonProperty(value=&quot;identity&quot;)
+	Object userIdentity;
+	
+	@JsonProperty(value=&quot;ts&quot;)
+	String timestamp;
+	
+	String type;
+	ProfileData profileData;
+	
+	TokenData tokenData;
+	
+	@JsonProperty(value=&quot;FBID&quot;)
+	String fbId;
+	
+	String[] identities; 
 	String objectId;
 	String[] guid;
-	String FBID;
-	String event_name; 
-	TokenData tokenData;
-	int from;
-	int to;
-	String ts;
-	ProfileData profileData;
-	HashMap&lt;String, String&gt; event_properties;
+	
+	@JsonProperty(value=&quot;event_name&quot;)
+	String eventName; 
+	
+	@JsonProperty(value=&quot;from&quot;)
+	int fromDate;
+	
+	@JsonProperty(value=&quot;to&quot;)
+	int toDate;
+	
+	@JsonProperty(value=&quot;event_properties&quot;)
+	HashMap&lt;String, String&gt; eventProperties;
 	String status; 
-	String type;
+	
 	String value;
+
+	public Object getUserIdentity() {
+<span class="fc" id="L46">		return userIdentity;</span>
+	}
+
+	public void setUserIdentity(String userIdentity) {
+<span class="nc" id="L50">		this.userIdentity = userIdentity;</span>
+<span class="nc" id="L51">	}</span>
 	
-	
-	public String[] getIdentity() {
-<span class="fc" id="L24">		return identity;</span>
+	public void setUserIdentity(String[] userIdentity) {
+<span class="fc" id="L54">		this.userIdentity = userIdentity;</span>
+<span class="fc" id="L55">	}</span>
+
+	public String getTimestamp() {
+<span class="fc" id="L58">		return timestamp;</span>
 	}
-	public void setIdentity(String[] identity) {
-<span class="fc" id="L27">		this.identity = identity;</span>
-<span class="fc" id="L28">	}</span>
-	public String[] getGuid() {
-<span class="fc" id="L30">		return guid;</span>
-	}
-	public void setGuid(String[] guid) {
-<span class="fc" id="L33">		this.guid = guid;</span>
-<span class="fc" id="L34">	}</span>
-	public HashMap&lt;String, String&gt; getEvent_properties() {
-<span class="fc" id="L36">		return event_properties;</span>
-	}
-	public void setEvent_properties(HashMap&lt;String, String&gt; event_properties) {
-<span class="fc" id="L39">		this.event_properties = event_properties;</span>
-<span class="fc" id="L40">	}</span>
-	public String getFBID() {
-<span class="fc" id="L42">		return FBID;</span>
-	}
-	public void setFBID(String fBID) {
-<span class="fc" id="L45">		FBID = fBID;</span>
-<span class="fc" id="L46">	}</span>
-	public String getTs() {
-<span class="fc" id="L48">		return ts;</span>
-	}
-	public void setTs(String ts) {
-<span class="fc" id="L51">		this.ts = ts;</span>
-<span class="fc" id="L52">	}</span>
-	
-	public String[] getIndentities() {
-<span class="fc" id="L55">		return indentities;</span>
-	}
-	public void setIndentities(String[] indentities) {
-<span class="fc" id="L58">		this.indentities = indentities;</span>
-<span class="fc" id="L59">	}</span>
-	public String getObjectId() {
-<span class="fc" id="L61">		return objectId;</span>
-	}
-	public void setObjectId(String objectId) {
-<span class="fc" id="L64">		this.objectId = objectId;</span>
-<span class="fc" id="L65">	}</span>
-	
-	public String getEvent_name() {
-<span class="fc" id="L68">		return event_name;</span>
-	}
-	public void setEvent_name(String event_name) {
-<span class="fc" id="L71">		this.event_name = event_name;</span>
-<span class="fc" id="L72">	}</span>
-	public int getFrom() {
-<span class="fc" id="L74">		return from;</span>
-	}
-	public void setFrom(int from) {
-<span class="fc" id="L77">		this.from = from;</span>
-<span class="fc" id="L78">	}</span>
-	public int getTo() {
-<span class="fc" id="L80">		return to;</span>
-	}
-	public void setTo(int to) {
-<span class="fc" id="L83">		this.to = to;</span>
-<span class="fc" id="L84">	}</span>
-	public TokenData getTokenData() {
-<span class="fc" id="L86">		return tokenData;</span>
-	}
-	public void setTokenData(TokenData tokenData) {
-<span class="fc" id="L89">		this.tokenData = tokenData;</span>
-<span class="fc" id="L90">	}</span>
-	
-	public ProfileData getProfileData() {
-<span class="fc" id="L93">		return profileData;</span>
-	}
-	public void setProfileData(ProfileData profileData) {
-<span class="fc" id="L96">		this.profileData = profileData;</span>
-<span class="fc" id="L97">	}</span>
-	
-	public String getStatus() {
-<span class="fc" id="L100">		return status;</span>
-	}
-	public void setStatus(String status) {
-<span class="fc" id="L103">		this.status = status;</span>
-<span class="fc" id="L104">	}</span>
+
+	public void setTimestamp(String timestamp) {
+<span class="fc" id="L62">		this.timestamp = timestamp;</span>
+<span class="fc" id="L63">	}</span>
+
 	public String getType() {
-<span class="fc" id="L106">		return type;</span>
+<span class="fc" id="L66">		return type;</span>
 	}
+
 	public void setType(String type) {
-<span class="fc" id="L109">		this.type = type;</span>
-<span class="fc" id="L110">	}</span>
-	public String getValue() {
-<span class="fc" id="L112">		return value;</span>
+<span class="fc" id="L70">		this.type = type;</span>
+<span class="fc" id="L71">	}</span>
+
+	public ProfileData getProfileData() {
+<span class="fc" id="L74">		return profileData;</span>
 	}
+
+	public void setProfileData(ProfileData profileData) {
+<span class="fc" id="L78">		this.profileData = profileData;</span>
+<span class="fc" id="L79">	}</span>
+
+
+	public String[] getIdentities() {
+<span class="fc" id="L83">		return identities;</span>
+	}
+
+	public void setIdentities(String[] identities) {
+<span class="fc" id="L87">		this.identities = identities;</span>
+<span class="fc" id="L88">	}</span>
+
+	public String getObjectId() {
+<span class="fc" id="L91">		return objectId;</span>
+	}
+
+	public void setObjectId(String objectId) {
+<span class="fc" id="L95">		this.objectId = objectId;</span>
+<span class="fc" id="L96">	}</span>
+
+	public String[] getGuid() {
+<span class="fc" id="L99">		return guid;</span>
+	}
+
+	public void setGuid(String[] guid) {
+<span class="fc" id="L103">		this.guid = guid;</span>
+<span class="fc" id="L104">	}</span>
+
+	public String getFbId() {
+<span class="fc" id="L107">		return fbId;</span>
+	}
+
+	public void setFbId(String fbId) {
+<span class="fc" id="L111">		this.fbId = fbId;</span>
+<span class="fc" id="L112">	}</span>
+
+	
+	public String getEventName() {
+<span class="fc" id="L116">		return eventName;</span>
+	}
+
+	public void setEventName(String eventName) {
+<span class="fc" id="L120">		this.eventName = eventName;</span>
+<span class="fc" id="L121">	}</span>
+
+	public TokenData getTokenData() {
+<span class="fc" id="L124">		return tokenData;</span>
+	}
+
+	public void setTokenData(TokenData tokenData) {
+<span class="fc" id="L128">		this.tokenData = tokenData;</span>
+<span class="fc" id="L129">	}</span>
+
+	public int getFromDate() {
+<span class="fc" id="L132">		return fromDate;</span>
+	}
+
+	public void setFromDate(int fromDate) {
+<span class="fc" id="L136">		this.fromDate = fromDate;</span>
+<span class="fc" id="L137">	}</span>
+
+	public int getToDate() {
+<span class="fc" id="L140">		return toDate;</span>
+	}
+
+	public void setToDate(int toDate) {
+<span class="fc" id="L144">		this.toDate = toDate;</span>
+<span class="fc" id="L145">	}</span>
+
+	public HashMap&lt;String, String&gt; getEventProperties() {
+<span class="fc" id="L148">		return eventProperties;</span>
+	}
+
+	public void setEventProperties(HashMap&lt;String, String&gt; eventProperties) {
+<span class="fc" id="L152">		this.eventProperties = eventProperties;</span>
+<span class="fc" id="L153">	}</span>
+
+	public void setUserIdentity(Object userIdentity) {
+<span class="nc" id="L156">		this.userIdentity = userIdentity;</span>
+<span class="nc" id="L157">	}</span>
+
+	public String getStatus() {
+<span class="fc" id="L160">		return status;</span>
+	}
+
+	public void setStatus(String status) {
+<span class="fc" id="L164">		this.status = status;</span>
+<span class="fc" id="L165">	}</span>
+
+	public String getValue() {
+<span class="fc" id="L168">		return value;</span>
+	}
+
 	public void setValue(String value) {
-<span class="fc" id="L115">		this.value = value;</span>
-<span class="fc" id="L116">	}</span>
+<span class="fc" id="L172">		this.value = value;</span>
+<span class="fc" id="L173">	}</span>
+
 	
 	
 }
