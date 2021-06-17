@@ -20,7 +20,7 @@ import Helper.Region;
 import Payload.CampaignPayload;
 import Payload.Content;
 import Payload.ControlGroup;
-import Payload.TimeInterval;
+import Payload.DateRangePayload;
 import Payload.To;
 import Payload.Where;
 import Response.Response;
@@ -183,7 +183,7 @@ public class CampaignsTest {
 		jsonResponse.put("message", "dummy");
 		jsonResponse.put("extraData", "dummy");
 		
-		TimeInterval timeRange = new TimeInterval();
+		DateRangePayload timeRange = new DateRangePayload();
 		timeRange.setFromDate(20210606);
 		timeRange.setToDate(20210609);
 		

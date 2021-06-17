@@ -12,7 +12,7 @@ import Helper.ClevertapInstance;
 import Helper.Region;
 import Payload.CampaignPayload;
 import Payload.Content;
-import Payload.TimeInterval;
+import Payload.DateRangePayload;
 import Payload.To;
 import Payload.Where;
 import Response.Response;

@@ -12,7 +12,7 @@ import HTTP.HttpClient;
 import Helper.CampaignMethod;
 import Helper.ClevertapInstance;
 import Payload.CampaignPayload;
-import Payload.TimeInterval;
+import Payload.DateRangePayload;
 import Response.Response;
 
 public class Campaigns {
@@ -53,7 +53,7 @@ public class Campaigns {
 		return res;
 	}
 	
-	public Response getCampaigns(TimeInterval payload) throws IOException, InterruptedException
+	public Response getCampaigns(DateRangePayload payload) throws IOException, InterruptedException
 	{
 		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject jsonResponse = client.postRequest(urlGetCampaigns, jsonPayload);
