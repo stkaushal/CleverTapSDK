@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import Helper.CampaignMethod;
 import Helper.ClevertapInstance;
 import Helper.Region;
 import Payload.CampaignPayload;
@@ -45,39 +46,36 @@ public class CampaignAPI {
 //	   campaignPayload.setContent(content);
 //	   campaignPayload.setCampaignSendTime("20210615 12:41");
 //	   
-//	   Response resCreateCampaignTUE = instance.getCampaignInstance().createCampaignTargetId("EMAIL", campaignPayload);
+//	   Response resCreateCampaignTUE = instance.getCampaignInstance().createCampaignTargetId(CampaignMethod.EMAIL, campaignPayload);
 //	   JSONObject createCampaignTUEResponse= new JSONObject(jsonMapper.writeValueAsString(resCreateCampaignTUE));
 //	   System.out.println(createCampaignTUEResponse.toString(4));
 //	   
 	   //create campaign by user event//
 	   
-//	   CampaignPayload campaignPayloadUE = new CampaignPayload();
-//	   campaignPayloadUE.setCampaignName("Campaign to target user events");
-//	   campaignPayloadUE.setCampaignSendTime("now");
-//	   
-//	   Content content = new Content();	
-//	   content.setTitle("Hello there");
-//	   content.setBody("See I told you this will work :)");
-//	   content.setSubject("Yayyyy! Campaign working.");
-//	   content.setSenderName("God Father");
-//	   campaignPayloadUE.setContent(content);
-//	   
-//	   Where campaignSendTo = new Where();
-//	   campaignSendTo.setEventName("Purchase Made");
-//	   campaignSendTo.setFromDate(20210606);
-//	   campaignSendTo.setToDate(20210616);
-//	   campaignPayloadUE.setCampaignSendTo(campaignSendTo);
-//	   
-//	   campaignPayloadUE.setEstimateOnly(false);
-//	   campaignPayloadUE.setTargetMode("EMAIL");
-//	   campaignPayloadUE.setRespectFrequencyCaps(false);
-//	   
-//	   
-//	   
-//	   
-//	   Response resCreateCampaignTUE = instance.getCampaignInstance().createCampaignTargetUserEvents(campaignPayloadUE);
-//	   JSONObject createCampaignTUEResponse= new JSONObject(jsonMapper.writeValueAsString(resCreateCampaignTUE));
-//	   System.out.println(createCampaignTUEResponse.toString(4));
+	   CampaignPayload campaignPayloadUE = new CampaignPayload();
+	   campaignPayloadUE.setCampaignName("Campaign to target user events");
+	   campaignPayloadUE.setCampaignSendTime("now");
+	   
+	   Content content = new Content();	
+	   content.setTitle("Hello there");
+	   content.setBody("See I told you this will work :)");
+	   content.setSubject("Yayyyy! Campaign working.");
+	   content.setSenderName("God Father");
+	   campaignPayloadUE.setContent(content);
+	   
+	   Where campaignSendTo = new Where();
+	   campaignSendTo.setEventName("Purchase Made");
+	   campaignSendTo.setFromDate(20210606);
+	   campaignSendTo.setToDate(20210616);
+	   campaignPayloadUE.setCampaignSendTo(campaignSendTo);
+	   
+	   campaignPayloadUE.setEstimateOnly(false);
+	   campaignPayloadUE.setTargetMode(CampaignMethod.EMAIL);
+	   campaignPayloadUE.setRespectFrequencyCaps(false);
+	   
+	   Response resCreateCampaignTUE = instance.getCampaignInstance().createCampaignTargetUserEvents(campaignPayloadUE);
+	   JSONObject createCampaignTUEResponse= new JSONObject(jsonMapper.writeValueAsString(resCreateCampaignTUE));
+	   System.out.println(createCampaignTUEResponse.toString(4));
 	   
 	   // stop scheduled//
 	   

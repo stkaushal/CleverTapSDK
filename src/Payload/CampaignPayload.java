@@ -2,6 +2,9 @@ package Payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import Helper.CampaignMethod;
+
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_DEFAULT)
@@ -90,8 +93,28 @@ public class CampaignPayload {
 		return targetMode;
 	}
 
-	public void setTargetMode(String targetMode) {
-		this.targetMode = targetMode;
+	public void setTargetMode(CampaignMethod targetMode) {
+		if(targetMode==CampaignMethod.WEBPUSH){
+			this.targetMode = "webpush";
+		}
+		else if(targetMode==CampaignMethod.MOBILEPUSH){
+			this.targetMode = "push";
+		}
+		else if(targetMode==CampaignMethod.EMAIL){
+			this.targetMode = "email";
+		}
+		else if(targetMode==CampaignMethod.SMS){
+			this.targetMode = "sms";
+		}
+		else if(targetMode==CampaignMethod.WEBHOOKS){
+			this.targetMode = "webhook";
+		}
+		else if(targetMode==CampaignMethod.APPINBOX){
+			this.targetMode = "notificationinbox";
+		}
+		else if(targetMode==CampaignMethod.WHATSAPP) {
+			this.targetMode = "whatsapp";
+		}
 	}
 
 	public String getCampaignName() {

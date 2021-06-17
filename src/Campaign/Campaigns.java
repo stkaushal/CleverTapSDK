@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.HttpClient;
+import Helper.CampaignMethod;
 import Helper.ClevertapInstance;
 import Payload.CampaignPayload;
 import Payload.TimeInterval;
@@ -21,7 +22,7 @@ public class Campaigns {
 	private static final String urlGetCampaigns = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/list.json";
 	private static final String urlCreateCampaignTargetUserEvents = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/create.json";
 	private static final String urlCreateCampaignTargetUserIdSMS = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/sms.json";
-	private static final String urlCreateCampaignTargetUserIdPush = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/push.json";
+	private static final String urlCreateCampaignTargetUserIdMobilePush = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/push.json";
 	private static final String urlCreateCampaignTargetUserIdWebPush = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/webpush.json";
 	private static final String urlCreateCampaignTargetUserIdEmail = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/email.json";
 	
@@ -68,23 +69,23 @@ public class Campaigns {
 		return res;
 	}
 	
-	public Response createCampaignTargetId(String method, CampaignPayload payload) throws IOException, InterruptedException
+	public Response createCampaignTargetId(CampaignMethod method, CampaignPayload payload) throws IOException, InterruptedException
 	{
 		
 		String url = null;
-		if(method.equals("SMS"))
+		if(method == CampaignMethod.SMS)
 		{
 			url = urlCreateCampaignTargetUserIdSMS;
 		}
-		else if(method.equals("EMAIL"))
+		else if(method == CampaignMethod.EMAIL)
 		{
 			url = urlCreateCampaignTargetUserIdEmail;
 		}
-		else if(method.equals("PUSH"))
+		else if(method == CampaignMethod.MOBILEPUSH)
 		{
-			url = urlCreateCampaignTargetUserIdPush;
+			url = urlCreateCampaignTargetUserIdMobilePush;
 		}
-		else if(method.equals("WEBPUSH"))
+		else if(method == CampaignMethod.WEBPUSH)
 		{
 			url = urlCreateCampaignTargetUserIdWebPush;
 		}
