@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import HTTP.HttpClient;
+import Helper.CampaignMethod;
 import Helper.ClevertapInstance;
 import Helper.Region;
 import Payload.CampaignPayload;
@@ -252,10 +253,10 @@ public class CampaignsTest {
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 		
-		responseSMS = campaigns.createCampaignTargetId("SMS", payload);
-		responseEMAIL = campaigns.createCampaignTargetId("EMAIL", payload);
-		responsePUSH = campaigns.createCampaignTargetId("PUSH", payload);
-		responseWEBPUSH = campaigns.createCampaignTargetId("WEBPUSH", payload);
+		responseSMS = campaigns.createCampaignTargetId(CampaignMethod.SMS, payload);
+		responseEMAIL = campaigns.createCampaignTargetId(CampaignMethod.EMAIL, payload);
+		responsePUSH = campaigns.createCampaignTargetId(CampaignMethod.MOBILEPUSH, payload);
+		responseWEBPUSH = campaigns.createCampaignTargetId(CampaignMethod.WEBPUSH, payload);
    
 		Assertions.assertNotNull(responseSMS);
 		Assertions.assertNotNull(responseEMAIL);
