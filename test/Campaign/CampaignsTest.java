@@ -15,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
+import Helper.Region;
 import Payload.CampaignPayload;
 import Payload.Content;
 import Payload.ControlGroup;
@@ -25,7 +26,7 @@ import Response.Response;
 
 public class CampaignsTest {
 	
-	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy");   
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.NONE);   
 	Campaigns resCampaigns = instance.getCampaignInstance();
 	
 	@Mock HttpClient client;

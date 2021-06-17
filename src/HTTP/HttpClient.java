@@ -171,9 +171,9 @@ public class HttpClient {
 		staleMonitor.start();
 	}
 
-	public JSONObject postRequest(String url, JSONObject obj) throws IOException, InterruptedException {
+	public JSONObject postRequest(String baseUrl, JSONObject obj) throws IOException, InterruptedException {
 		JSONObject response = null;
-		HttpPost httpPost = new HttpPost(url);
+		HttpPost httpPost = new HttpPost(baseUrl);
 
 		httpPost.setConfig(requestConfig);
 
@@ -202,12 +202,12 @@ public class HttpClient {
 		return response;
 	}
 
-	public JSONObject getRequest(String url) throws IOException, InterruptedException {
+	public JSONObject getRequest(String baseUrl) throws IOException, InterruptedException {
 
 		JSONObject response = null;
 
 		// Creating a HttpGet object
-		HttpGet httpGet = new HttpGet(url);
+		HttpGet httpGet = new HttpGet(baseUrl);
 
 		httpGet.setConfig(requestConfig);
 

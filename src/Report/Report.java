@@ -9,17 +9,18 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Payload.ReportPayload;
 import Response.Response;
 
 public class Report {
 	
-	private static final String urlGetRealTimeCounts = "https://api.clevertap.com/1/now.json";
-	private static final String urlGetMessageReport = "https://api.clevertap.com/1/message/report.json";
-	private static final String urlGetTopPropertyCount = "https://api.clevertap.com/1/counts/top.json";
-	private static final String urlGetTrends = "https://api.clevertap.com/1/counts/trends.json";
-	private static final String urlGetTopPropertyCountByReqId = "https://api.clevertap.com/1/counts/top.json?req_id=";
-	private static final String urlGetTrendsByReqId = "https://api.clevertap.com/1/counts/trends.json?req_id=";
+	private static final String urlGetRealTimeCounts = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/now.json";
+	private static final String urlGetMessageReport = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/message/report.json";
+	private static final String urlGetTopPropertyCount = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/top.json";
+	private static final String urlGetTrends = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/trends.json";
+	private static final String urlGetTopPropertyCountByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/top.json?req_id=";
+	private static final String urlGetTrendsByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/trends.json?req_id=";
 	
 	private ObjectMapper objectMapper;
 	private HttpClient client;

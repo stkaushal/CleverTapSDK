@@ -18,6 +18,7 @@ import org.mockito.MockitoAnnotations;
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
+import Helper.Region;
 import Payload.CategoryResubscribe;
 import Payload.CategoryUnsubscribe;
 import Payload.Keys;
@@ -29,7 +30,7 @@ import Response.Response;
 
 public class ProfilesTest {
 
-	ClevertapInstance instance = new ClevertapInstance("dummy", "dummy");
+	ClevertapInstance instance = new ClevertapInstance("dummy", "dummy", Region.NONE);
 	Profiles resProfiles = instance.getProfileInstance();
 
 	@Mock

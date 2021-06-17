@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
 import Helper.Cursor;
+import Helper.Region;
 import Payload.EventPayload;
 import Response.GetEventsResponse;
 import Response.Response;
@@ -20,7 +21,7 @@ public class EventsAPI {
     	
 	   String Cid = "4R8-K98-8Z6Z";
 	   String CPswd = "AOE-RUW-CHUL";
-	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);
+	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.NONE);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
 	   jsonMapper.setSerializationInclusion(Include.NON_NULL);
@@ -29,40 +30,39 @@ public class EventsAPI {
 	   //Upload events//
 	   
 //	   EventPayload uploadPayload = new EventPayload();
-//	   uploadPayload.setIdentity("rohan@gmail.com");
-//	   uploadPayload.setTs(1623380602);
+//	   uploadPayload.setIdentity("dharmendra.shesma@gmail.com");
+//	   uploadPayload.setTs(1623739706);
 //	   uploadPayload.setType("event");
-//	   uploadPayload.setEventNameUpload("charged");
+//	   uploadPayload.setEventNameUpload("Purchase Made");
 //	   HashMap<String, Object> evtData = new HashMap<String, Object>();
-//	   evtData.put("Amount", 100);
-//	   evtData.put("Currency", "Cardano");
-//	   evtData.put("Payment Method", "Uniswap");
+//	   evtData.put("Product Name", "Ipad");
+//	   evtData.put("Category", "Tablets");
+//	   evtData.put("Price", 80000);
 //	   
 //	   uploadPayload.setEventData(evtData);
 //	   List<EventPayload> uploadList = new ArrayList<EventPayload>();
 //	   uploadList.add(uploadPayload);
 //	   
 //	   Response resUpload = instance.getEventInstance().uploadEvents(uploadList);
-//	   
 //	   JSONObject uploadEvtResponse= new JSONObject(jsonMapper.writeValueAsString(resUpload));
 //	   System.out.println(uploadEvtResponse.toString(4));
 	   
 	   //Event count//
 	   
 //	   EventPayload countPayload = new EventPayload();
-//	   countPayload.setEventName("charged");
+//	   countPayload.setEventNameDownload("Product viewed");
 //	   List<HashMap<String, Object>> eventProperties = new ArrayList<HashMap<String, Object>>();
-//	   HashMap<String, Object> map = new HashMap<String, Object>();
-//	   map.put("Amount", 300);
-//	   map.put("Currency", "Bitcoin");
-//	   map.put("Payment Method", "Trust wallet transfer");	
-//	   eventProperties.add(map);
+//	   HashMap<String, Object> eventMap = new HashMap<String, Object>();
+//	   eventMap.put("Product Name", "Macbook pro");
+//	   eventMap.put("Category", "Laptops");
+//	   eventMap.put("Price", 114000);	
+//	   eventProperties.add(eventMap);
 //	   countPayload.setEventProperties(eventProperties );
 //	   countPayload.setFromDate(20210607);
-//	   countPayload.setToDate(20210609);
+//	   countPayload.setToDate(20210615);
 //	   
 //	   Response resCount = instance.getEventInstance().getEventCount(countPayload);	   
-//	   JSONObject countEvtResponse= new JSONObject(jsonMapper.writeValueAsString(countPayload));
+//	   JSONObject countEvtResponse= new JSONObject(jsonMapper.writeValueAsString(resCount));
 //	   System.out.println(countEvtResponse.toString(4));
 //	   
 //	   if(resCount.getReqId()!=0)
@@ -74,18 +74,26 @@ public class EventsAPI {
 	   
 	   // get events with cursor//
 	   
-//	   EventPayload payloadgetEventCur = new EventPayload();
-//	   payloadgetEventCur.setEventNameDownload("charged");
-//	   payloadgetEventCur.setFromDate(20210607);
-//	   payloadgetEventCur.setToDate(20210611);
-//	   
-//	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1);
-//	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(eventCursor));
-//	   System.out.println(eventCursorResponse.toString(4));
-//	   
-//	   GetEventsResponse getEvents = instance.getEventInstance().getEventsData(eventCursor);
-//	   JSONObject getEventsResponse= new JSONObject(jsonMapper.writeValueAsString(getEvents));
-//	   System.out.println(getEventsResponse.toString(4));
+	   EventPayload payloadgetEventCur = new EventPayload();
+	   payloadgetEventCur.setEventNameDownload("Purchase Made");
+	   payloadgetEventCur.setFromDate(20210606);
+	   payloadgetEventCur.setToDate(20210616);
+	   
+	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1000);
+	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(eventCursor));
+	   System.out.println(eventCursorResponse.toString(4));
+	   
+	   GetEventsResponse getEvents = instance.getEventInstance().getEventsData(eventCursor.getCursor());
+	   JSONObject getEventsResponseFirst= new JSONObject(jsonMapper.writeValueAsString(getEvents));
+	   System.out.println(getEventsResponseFirst.toString(4));
+	   
+//	   String cur = getEvents.getNextCursor();
+//	   while(cur != null) {
+//		   JSONObject getEventsResponse= new JSONObject(jsonMapper.writeValueAsString(getEvents));
+//		   System.out.println(getEventsResponse.toString(4));
+//		   getEvents = instance.getEventInstance().getEventsData(cur);
+//		   cur = getEvents.getNextCursor();
+//	   }
 	}
 	
 }

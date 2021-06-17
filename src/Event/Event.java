@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Payload.EventPayload;
 import Response.GetEventsResponse;
@@ -18,10 +19,10 @@ import Response.Response;
 
 public class Event {
 	
-	private static final String urlUploadEvent = "https://api.clevertap.com/1/upload";
-	private static final String urlGetEventCount = "https://api.clevertap.com/1/counts/events.json";
-	private static final String urlGetEventCursor = "https://api.clevertap.com/1/events.json";
-	private static final String urlGetEventCountByReqId = "https://api.clevertap.com/1/counts/events.json?req_id=";
+	private static final String urlUploadEvent = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/upload";
+	private static final String urlGetEventCount = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/events.json";
+	private static final String urlGetEventCursor = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/events.json";
+	private static final String urlGetEventCountByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/events.json?req_id=";
 	
 	private ObjectMapper objectMapper;
 	private HttpClient client;
@@ -54,9 +55,9 @@ public class Event {
 		return cur;	
 	}
 	
-	public GetEventsResponse getEventsData(Cursor cursor) throws IOException, InterruptedException
+	public GetEventsResponse getEventsData(String cursor) throws IOException, InterruptedException
 	{
-		String url = urlGetEventCursor + "?cursor=" + cursor.getCursor();
+		String url = urlGetEventCursor + "?cursor=" + cursor;
 		
 		JSONObject jsonResponse = client.getRequest(url);
 		GetEventsResponse res = objectMapper.readValue(jsonResponse.toString(), GetEventsResponse.class);

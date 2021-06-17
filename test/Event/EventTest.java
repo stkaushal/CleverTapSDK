@@ -18,17 +18,17 @@ import org.mockito.MockitoAnnotations;
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
+import Helper.Region;
 import Payload.EventPayload;
 import Response.GetEventsResponse;
 import Response.Response;
 
 public class EventTest {
 	
-	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy");
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.NONE);
 	Event resEvent = instance.getEventInstance();
 	
 	@Mock HttpClient client;
-	@Mock Cursor cursorMock;
 	@InjectMocks Event event;
 
 	@BeforeEach
@@ -122,7 +122,7 @@ public class EventTest {
 		
 		Mockito.when(client.getRequest(Mockito.anyString())).thenReturn(jsonResponse);
 		
-		response = event.getEventsData(cursorMock);
+		response = event.getEventsData("dummy");
 		
 		Assertions.assertNotNull(response);
 		Assertions.assertNotNull(response.getNextCursor());

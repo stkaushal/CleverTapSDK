@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
 import Helper.Cursor;
+import Helper.Region;
 import Payload.CategoryResubscribe;
 import Payload.CategoryUnsubscribe;
 import Payload.Keys;
@@ -27,7 +28,7 @@ public class ProfileAPI {
     	
 	   String Cid = "4R8-K98-8Z6Z";
 	   String CPswd = "AOE-RUW-CHUL";
-	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);
+	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.NONE);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
 	   jsonMapper.setSerializationInclusion(Include.NON_NULL);
@@ -36,12 +37,12 @@ public class ProfileAPI {
 	   //Upload profile//
 	   
 //	   ProfilePayload payload = new ProfilePayload();
-//	   payload.setUserIdentity("123456");
+//	   payload.setUserIdentity("911672");
 //	   payload.setType("profile");
 //	   ProfileData profileData = new ProfileData();
-//	   profileData.setName("Rohan");
-//	   profileData.setEmail("rohan@gmail.com");
-//	   profileData.setPhone("+919988776655");
+//	   profileData.setName("Dharmender Sheshma");
+//	   profileData.setEmail("dharmendra.shesma@gmail.com");
+//	   profileData.setPhone("+919116724916");
 //	   profileData.setGender("M");
 //	   profileData.setMsgSMS(false);
 //	   profileData.setMsgEmail(true);
@@ -57,10 +58,10 @@ public class ProfileAPI {
 //	   String[] categoryRS = {"Football"};
 //	   categoryResubscribe.setEmail(categoryRS);
 //	   profileData.setCategoryResubscribe(categoryResubscribe);
-//	   profileData.setDob("$D_1623298338");
-//	   profileData.setCustomerType("Silver");
+//	   profileData.setDob("$D_847996200000");
+//	   profileData.setCustomerType("Platinum");
 //	   HashMap<String, Object> userInfo = new HashMap<String, Object>(); 
-//	   userInfo.put("Entry number", "3rd");
+//	   userInfo.put("Profession", "Student");
 //	   
 //	   profileData.setUserInfo(userInfo);
 //	   
@@ -74,7 +75,7 @@ public class ProfileAPI {
 	   
 	   //Get profile by ID//
 	   
-//	   GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById("identity", "123456");
+//	   GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById("email", "dharmendra.shesma@gmail.com");
 //	 
 //	   JSONObject getProfileIdResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileId));
 //	   System.out.println(getProfileIdResponse.toString(4));
@@ -160,8 +161,6 @@ public class ProfileAPI {
 //	   JSONObject getSubscribeResponse= new JSONObject(jsonMapper.writeValueAsString(resDisasPayload));
 //	   System.out.println(getSubscribeResponse.toString(4));
 	   
-	   
-	
 	   
 	   
 	   

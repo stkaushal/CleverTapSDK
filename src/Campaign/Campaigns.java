@@ -9,20 +9,21 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Payload.CampaignPayload;
 import Payload.TimeInterval;
 import Response.Response;
 
 public class Campaigns {
 	
-	private static final String urlStopScheduledCampaign = "https://api.clevertap.com/1/targets/stop.json";
-	private static final String urlGetCampaignReport = "https://api.clevertap.com/1/targets/result.json";
-	private static final String urlGetCampaigns = "https://api.clevertap.com/1/targets/list.json";
-	private static final String urlCreateCampaignTargetUserEvents = "https://api.clevertap.com/1/targets/create.json";
-	private static final String urlCreateCampaignTargetUserIdSMS = "https://api.clevertap.com/1/send/sms.json";
-	private static final String urlCreateCampaignTargetUserIdPush = "https://api.clevertap.com/1/send/push.json";
-	private static final String urlCreateCampaignTargetUserIdWebPush = "https://api.clevertap.com/1/send/webpush.json";
-	private static final String urlCreateCampaignTargetUserIdEmail = "https://api.clevertap.com/1/send/email.json";
+	private static final String urlStopScheduledCampaign = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/stop.json";
+	private static final String urlGetCampaignReport = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/result.json";
+	private static final String urlGetCampaigns = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/list.json";
+	private static final String urlCreateCampaignTargetUserEvents = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/create.json";
+	private static final String urlCreateCampaignTargetUserIdSMS = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/sms.json";
+	private static final String urlCreateCampaignTargetUserIdPush = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/push.json";
+	private static final String urlCreateCampaignTargetUserIdWebPush = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/webpush.json";
+	private static final String urlCreateCampaignTargetUserIdEmail = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/email.json";
 	
 
 	private ObjectMapper objectMapper;

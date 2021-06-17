@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.HttpClient;
+import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Payload.ProfilePayload;
 import Response.GetUserProfileResponse;
@@ -17,14 +18,14 @@ import Response.Response;
 
 public class Profiles {	
 	
-	private static final String urlUploadData = "https://api.clevertap.com/1/upload";
-	private static final String urlGetProfileCursor = "https://api.clevertap.com/1/profiles.json";
-	private static final String urlGetProfileById = "https://api.clevertap.com/1/profile.json";
-	private static final String urlGetProfileCount = "https://api.clevertap.com/1/counts/profiles.json";
-	private static final String urlDeleteProfile = "https://api.clevertap.com/1/delete/profiles.json";
-	private static final String urlDemergeProfile = "https://api.clevertap.com/1/demerge/profiles.json";
-	private static final String urlSubscribe = "https://api.clevertap.com/1/subscribe";
-	private static final String urlDisassociate = "https://api.clevertap.com/1/disassociate";
+	private static final String urlUploadData = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/upload";
+	private static final String urlGetProfileCursor = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/profiles.json";
+	private static final String urlGetProfileById = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/profile.json";
+	private static final String urlGetProfileCount = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/profiles.json";
+	private static final String urlDeleteProfile = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/delete/profiles.json";
+	private static final String urlDemergeProfile = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/demerge/profiles.json";
+	private static final String urlSubscribe = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/subscribe";
+	private static final String urlDisassociate = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/disassociate";
 	
 	private ObjectMapper objectMapper;
 	private HttpClient client; 

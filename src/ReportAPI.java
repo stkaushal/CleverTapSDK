@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
+import Helper.Region;
 import Payload.Group;
 import Payload.ReportPayload;
 import Response.Response;
@@ -17,7 +18,7 @@ public class ReportAPI {
     	
 	   String Cid = "4R8-K98-8Z6Z";
 	   String CPswd = "AOE-RUW-CHUL";
-	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);
+	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.NONE);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
 	   jsonMapper.setSerializationInclusion(Include.NON_NULL);
