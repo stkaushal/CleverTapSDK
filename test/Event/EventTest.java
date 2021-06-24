@@ -83,7 +83,7 @@ public class EventTest {
 		
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 
-		cursor = event.getEventsCursor(payload, 0);
+		cursor = event.getEventsCursor(payload, 0, true, true, true);
 		
 		Assertions.assertNotNull(cursor);
 		Assertions.assertEquals("fhsklaioclamlkkjadajj", cursor.getCursor());

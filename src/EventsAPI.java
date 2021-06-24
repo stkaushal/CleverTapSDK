@@ -31,13 +31,13 @@ public class EventsAPI {
 	   
 //	   EventPayload uploadPayload = new EventPayload();
 //	   uploadPayload.setIdentity("dharmendra.shesma@gmail.com");
-//	   uploadPayload.setTs(1623739706);
+//	   uploadPayload.setTs(1624008422);
 //	   uploadPayload.setType("event");
-//	   uploadPayload.setEventNameUpload("Purchase Made");
+//	   uploadPayload.setEventNameUpload("Product Bought");
 //	   HashMap<String, Object> evtData = new HashMap<String, Object>();
-//	   evtData.put("Product Name", "Ipad");
-//	   evtData.put("Category", "Tablets");
-//	   evtData.put("Price", 80000);
+//	   evtData.put("Product Name", "AC");
+//	   evtData.put("Category", "Electronics");
+//	   evtData.put("Price", 30000);
 //	   
 //	   uploadPayload.setEventData(evtData);
 //	   List<EventPayload> uploadList = new ArrayList<EventPayload>();
@@ -74,18 +74,18 @@ public class EventsAPI {
 	   
 	   // get events with cursor//
 	   
-	   EventPayload payloadgetEventCur = new EventPayload();
-	   payloadgetEventCur.setEventNameDownload("Purchase Made");
-	   payloadgetEventCur.setFromDate(20210606);
-	   payloadgetEventCur.setToDate(20210616);
-	   
-	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1000);
-	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(eventCursor));
-	   System.out.println(eventCursorResponse.toString(4));
-	   
-	   GetEventsResponse getEvents = instance.getEventInstance().getEventsData(eventCursor.getCursor());
-	   JSONObject getEventsResponseFirst= new JSONObject(jsonMapper.writeValueAsString(getEvents));
-	   System.out.println(getEventsResponseFirst.toString(4));
+//	   EventPayload payloadgetEventCur = new EventPayload();
+//	   payloadgetEventCur.setEventNameDownload("Purchase Made");
+//	   payloadgetEventCur.setFromDate(20210606);
+//	   payloadgetEventCur.setToDate(20210616);
+//	   
+//	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1000);
+//	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(eventCursor));
+//	   System.out.println(eventCursorResponse.toString(4));
+//	   
+//	   GetEventsResponse getEvents = instance.getEventInstance().getEventsData(eventCursor.getCursor());
+//	   JSONObject getEventsResponseFirst= new JSONObject(jsonMapper.writeValueAsString(getEvents));
+//	   System.out.println(getEventsResponseFirst.toString(4));
 	   
 //	   String cur = getEvents.getNextCursor();
 //	   while(cur != null) {

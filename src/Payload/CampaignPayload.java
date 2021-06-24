@@ -1,5 +1,7 @@
 package Payload;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -16,7 +18,7 @@ public class CampaignPayload {
 	@JsonProperty(value="when")
 	String campaignSendTime;
 	
-	Content content;
+	Object content;
 	
 	@JsonProperty(value="provider_nick_name")
 	String providerNickName;
@@ -36,8 +38,11 @@ public class CampaignPayload {
 	@JsonProperty(value="async_estimate")
 	boolean asyncEstimate;
 	
+	@JsonProperty(value="time_to_live")
+	int timeToLiveForAppInbox;
+	
 	@JsonProperty(value="ttl")
-	int timeTolive;
+	int timeToLiveForPush;
 	
 	@JsonProperty(value="wzrk_cid")
 	String wzrkCid;
@@ -86,8 +91,87 @@ public class CampaignPayload {
 	@JsonProperty(value="id")
 	int campaignId;
 	
+	@JsonProperty(value="template_type")
+	String templateType;
+	
 	@JsonProperty(value="target_mode")
 	String targetMode;
+	
+	List<String> devices;
+	
+	@JsonProperty(value="webhook_endpoint_name")
+	String webhookEndpointName;
+	
+	@JsonProperty(value="webhook_fields")
+	List<String> webhookFields;
+	
+	@JsonProperty(value="webhook_key_value")
+	List<String> webhookKeyValue;
+	
+	List<String> tags;
+	
+	String orientation;
+	
+	public String getOrientation() {
+		return orientation;
+	}
+
+	public void setOrientation(String orientation) {
+		this.orientation = orientation;
+	}
+
+	public List<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<String> tags) {
+		this.tags = tags;
+	}
+
+	public String getWebhookEndpointName() {
+		return webhookEndpointName;
+	}
+
+	public void setWebhookEndpointName(String webhookEndpointName) {
+		this.webhookEndpointName = webhookEndpointName;
+	}
+
+	public List<String> getWebhookFields() {
+		return webhookFields;
+	}
+
+	public void setWebhookFields(List<String> webhookFields) {
+		this.webhookFields = webhookFields;
+	}
+
+	public List<String> getWebhookKeyValue() {
+		return webhookKeyValue;
+	}
+
+	public void setWebhookKeyValue(List<String> webhookKeyValue) {
+		this.webhookKeyValue = webhookKeyValue;
+	}
+
+	public List<String> getDevices() {
+		return devices;
+	}
+
+	public void setDevices(List<String> devices) {
+		this.devices = devices;
+	}
+
+	public String getTemplateType() {
+		return templateType;
+	}
+
+	public void setTemplateType(String templateType) {
+		this.templateType = templateType;
+	}
+
+	public void setTargetMode(String targetMode) {
+		this.targetMode = targetMode;
+	}
+
 
 	public String getTargetMode() {
 		return targetMode;
@@ -133,11 +217,14 @@ public class CampaignPayload {
 		this.campaignSendTime = campaignSendTime;
 	}
 
-	public Content getContent() {
+	public Object getContent() {
 		return content;
 	}
 
 	public void setContent(Content content) {
+		this.content = content;
+	}
+	public void setContent(List<Content> content) {
 		this.content = content;
 	}
 
@@ -189,12 +276,16 @@ public class CampaignPayload {
 		this.asyncEstimate = asyncEstimate;
 	}
 
-	public int getTimeTolive() {
-		return timeTolive;
+	public int getTimeToLiveForPush() {
+		return timeToLiveForPush;
 	}
 
-	public void setTimeTolive(int timeTolive) {
-		this.timeTolive = timeTolive;
+	public void setTimeToLiveForPush(int timeToLiveForPush) {
+		this.timeToLiveForPush = timeToLiveForPush;
+	}
+
+	public void setContent(Object content) {
+		this.content = content;
 	}
 
 	public String getWzrkCid() {
@@ -323,6 +414,14 @@ public class CampaignPayload {
 
 	public void setCampaignId(int campaignId) {
 		this.campaignId = campaignId;
+	}
+
+	public int getTimeToLiveForAppInbox() {
+		return timeToLiveForAppInbox;
+	}
+
+	public void setTimeToLiveForAppInbox(int timeToLiveForAppInbox) {
+		this.timeToLiveForAppInbox = timeToLiveForAppInbox;
 	}
 
 	

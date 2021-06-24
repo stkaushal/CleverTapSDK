@@ -17,7 +17,7 @@ public class Where {
 	int toDate;
 	
 	@JsonProperty(value="common_profile_properties")
-	Object commonProfileProperties;
+	CommonProfileProperties commonProfileProperties;
 
 	public String getEventName() {
 		return eventName;
@@ -43,13 +43,12 @@ public class Where {
 		this.toDate = toDate;
 	}
 
-	public Object getProfileFields() {
+	public CommonProfileProperties getCommonProfileProperties() {
 		return commonProfileProperties;
 	}
 
-	public void setProfileFields(Object commonProfileProperties) {
+	public void setCommonProfileProperties(CommonProfileProperties commonProfileProperties) {
 		this.commonProfileProperties = commonProfileProperties;
 	}
-	
 	
 }

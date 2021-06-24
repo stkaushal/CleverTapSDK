@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
+import Helper.UserIdentity;
 import Payload.ProfilePayload;
 import Response.GetUserProfileResponse;
 import Response.Response;
@@ -49,9 +50,10 @@ public class Profiles {
 		return res;
 	}
 	
-	public Cursor getUserProfileCursor(ProfilePayload payload, int batch_size) throws IOException, InterruptedException
+	public Cursor getUserProfileCursor(ProfilePayload payload, int batch_size, boolean app, boolean events, boolean profile) throws IOException, InterruptedException
 	{
-		String url = urlGetProfileCursor + "?batch_size=" + String.valueOf(batch_size);
+		String url = urlGetProfileCursor + "?batch_size=" + String.valueOf(batch_size) + "&" + "?app=" + String.valueOf(app) + 
+				"&" + "?events=" + String.valueOf(events) + "&" + "?profile=" + String.valueOf(profile);  
 		
 		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject jsonResponse = client.postRequest(url, jsonPayload);
@@ -70,18 +72,18 @@ public class Profiles {
 		return res;	
 	}
 	
-	public GetUserProfileResponse getUserProfileById(String type, String id) throws IOException, InterruptedException
+	public GetUserProfileResponse getUserProfileById(UserIdentity type, String id) throws IOException, InterruptedException
 	{
 		String url = urlGetProfileById;
-		if(type.equals("email"))
+		if(type == UserIdentity.EMAIL)
 		{
 			url = url + "?email=" + id;
 		}
-		else if(type.equals("identity"))
+		else if(type == UserIdentity.IDENTITY)
 		{
 			url = url + "?identity=" + id;
 		}
-		else if(type.equals("objectId"))
+		else if(type == UserIdentity.OBJECT_ID)
 		{
 			url = url + "?objectId=" + id;
 		}

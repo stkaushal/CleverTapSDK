@@ -1,14 +1,12 @@
 package Payload;
 
-import java.util.HashMap;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_DEFAULT)
 public class Content {
-	String title;
+	Object title;
 	String body;
 	String subject;
 	
@@ -18,20 +16,30 @@ public class Content {
 	@JsonProperty(value="template_name")
 	String templateName;
 	
-	String replacements;
-	String attachments;
+	Object replacements;
+	
+	@JsonProperty(value="attachments")
+	CampaignContentAttachments campaignContentAttachments;
 	
 	@JsonProperty(value="template_id")
 	String templateId;
 	
-	@JsonProperty(value="platform_specific")
-	HashMap<String, Object> platformSpecific;
+	CampaignContentMessage message;
+	
+	Action action;
+	
+	CampaignContentMedia media;
 
-	public String getTitle() {
+	CampaignContentIcon icon;
+	
+	@JsonProperty(value="platform_specific")
+	PlatformSpecificContent platformSpecificContent;
+
+	public Object getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(Object title) {
 		this.title = title;
 	}
 
@@ -67,20 +75,21 @@ public class Content {
 		this.templateName = templateName;
 	}
 
-	public String getReplacements() {
+	public Object getReplacements() {
 		return replacements;
 	}
 
-	public void setReplacements(String replacements) {
+	public void setReplacements(Object replacements) {
 		this.replacements = replacements;
 	}
 
-	public String getAttachments() {
-		return attachments;
+	
+	public CampaignContentAttachments getCampaignContentAttachments() {
+		return campaignContentAttachments;
 	}
 
-	public void setAttachments(String attachments) {
-		this.attachments = attachments;
+	public void setCampaignContentAttachments(CampaignContentAttachments campaignContentAttachments) {
+		this.campaignContentAttachments = campaignContentAttachments;
 	}
 
 	public String getTemplateId() {
@@ -91,13 +100,44 @@ public class Content {
 		this.templateId = templateId;
 	}
 
-	public HashMap<String, Object> getPlatformSpecific() {
-		return platformSpecific;
+	public CampaignContentMessage getMessage() {
+		return message;
 	}
 
-	public void setPlatformSpecific(HashMap<String, Object> platformSpecific) {
-		this.platformSpecific = platformSpecific;
+	public void setMessage(CampaignContentMessage message) {
+		this.message = message;
 	}
-	
-	
+
+	public Action getAction() {
+		return action;
+	}
+
+	public void setAction(Action action) {
+		this.action = action;
+	}
+
+	public CampaignContentMedia getMedia() {
+		return media;
+	}
+
+	public void setMedia(CampaignContentMedia media) {
+		this.media = media;
+	}
+
+	public CampaignContentIcon getIcon() {
+		return icon;
+	}
+
+	public void setIcon(CampaignContentIcon icon) {
+		this.icon = icon;
+	}
+
+	public PlatformSpecificContent getPlatformSpecificContent() {
+		return platformSpecificContent;
+	}
+
+	public void setPlatformSpecificContent(PlatformSpecificContent platformSpecificContent) {
+		this.platformSpecificContent = platformSpecificContent;
+	}
+
 }

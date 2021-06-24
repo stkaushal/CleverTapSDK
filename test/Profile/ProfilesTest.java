@@ -19,6 +19,7 @@ import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Helper.Region;
+import Helper.UserIdentity;
 import Payload.CategoryResubscribe;
 import Payload.CategoryUnsubscribe;
 import Payload.Keys;
@@ -131,8 +132,8 @@ public class ProfilesTest {
 
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 
-		cursor = profile.getUserProfileCursor(payload, 0);
-
+		cursor = profile.getUserProfileCursor(payload, 0, true, true, true);
+		
 		Assertions.assertNotNull(cursor);
 		Assertions.assertEquals("fhsklaioclamlkkjadajj", cursor.getCursor());
 		Assertions.assertEquals("success", cursor.getStatus());
@@ -192,7 +193,7 @@ public class ProfilesTest {
 
 		Mockito.when(client.getRequest(Mockito.anyString())).thenReturn(jsonResponse);
 
-		response = profile.getUserProfileById("email", "dummy");
+		response = profile.getUserProfileById(UserIdentity.EMAIL, "dummy");
 
 		Assertions.assertNotNull(response);
 		Assertions.assertEquals("success", response.getStatus());

@@ -45,9 +45,10 @@ public class Event {
 	}
 	
 	
-	public Cursor getEventsCursor(EventPayload payload, int batch_size) throws IOException, InterruptedException
+	public Cursor getEventsCursor(EventPayload payload, int batch_size, boolean app, boolean events, boolean profile) throws IOException, InterruptedException
 	{
-		String url = urlGetEventCursor + "?batch_size=" + String.valueOf(batch_size);
+		String url = urlGetEventCursor + "?batch_size=" + String.valueOf(batch_size) + "&" + "?app=" + String.valueOf(app) + 
+				"&" + "?events=" + String.valueOf(events) + "&" + "?profile=" + String.valueOf(profile);
 		
 		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject jsonResponse = client.postRequest(url, jsonPayload);

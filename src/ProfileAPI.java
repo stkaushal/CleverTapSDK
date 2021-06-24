@@ -44,7 +44,7 @@ public class ProfileAPI {
 //	   profileData.setEmail("dharmendra.shesma@gmail.com");
 //	   profileData.setPhone("+919116724916");
 //	   profileData.setGender("M");
-//	   profileData.setMsgSMS(false);
+//	   profileData.setMsgSMS(true);
 //	   profileData.setMsgEmail(true);
 //	   profileData.setMsgWhatsapp(true);
 //	   profileData.setMsgDndPhone(false);
