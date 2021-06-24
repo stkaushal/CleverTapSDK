@@ -75,18 +75,18 @@ public class EventsAPI {
 	   // get events with cursor//
 	   
 //	   EventPayload payloadgetEventCur = new EventPayload();
-//	   payloadgetEventCur.setEventNameDownload("Purchase Made");
-//	   payloadgetEventCur.setFromDate(20210606);
-//	   payloadgetEventCur.setToDate(20210616);
+//	   payloadgetEventCur.setEventNameDownload("Added TO Cart");
+//	   payloadgetEventCur.setFromDate(20210624);
+//	   payloadgetEventCur.setToDate(20210624);
 //	   
-//	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1000);
+//	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1000, true, true, true);
 //	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(eventCursor));
 //	   System.out.println(eventCursorResponse.toString(4));
 //	   
 //	   GetEventsResponse getEvents = instance.getEventInstance().getEventsData(eventCursor.getCursor());
 //	   JSONObject getEventsResponseFirst= new JSONObject(jsonMapper.writeValueAsString(getEvents));
 //	   System.out.println(getEventsResponseFirst.toString(4));
-	   
+//	   
 //	   String cur = getEvents.getNextCursor();
 //	   while(cur != null) {
 //		   JSONObject getEventsResponse= new JSONObject(jsonMapper.writeValueAsString(getEvents));

@@ -6,7 +6,7 @@ public class Profile {
 	String objectId;
 	String platform;
 	String email;
-	HashMap<String, String> profileData;
+	HashMap<String, Object> profileData;
 	long identity;
 	int id;
 	
@@ -28,10 +28,11 @@ public class Profile {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public HashMap<String, String> getProfileData() {
+	
+	public HashMap<String, Object> getProfileData() {
 		return profileData;
 	}
-	public void setProfileData(HashMap<String, String> profileData) {
+	public void setProfileData(HashMap<String, Object> profileData) {
 		this.profileData = profileData;
 	}
 	public long getIdentity() {

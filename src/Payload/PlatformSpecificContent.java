@@ -22,7 +22,7 @@ public class PlatformSpecificContent {
 	@JsonProperty(value="android")
 	PlatformTypeAndroid platformTypeAndroid;
 
-	public PlatformTypeChrome getPlatformTypeChrome() {
+	public PlatformTypeChrome getplatformTypeChrome() {
 		return platformTypeChrome;
 	}
 
