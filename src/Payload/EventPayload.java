@@ -30,7 +30,7 @@ public class EventPayload {
 	String eventNameDownload;
 	
 	@JsonProperty(value="event_properties")
-	List<HashMap<String, Object>> eventProperties;
+	List<EventPropertyFilter> eventProperties;
 	
 	long ts;
 	String identity;
@@ -99,11 +99,11 @@ public class EventPayload {
 		this.eventNameDownload = eventNameDownload;
 	}
 
-	public List<HashMap<String, Object>> getEventProperties() {
+	public List<EventPropertyFilter> getEventProperties() {
 		return eventProperties;
 	}
 
-	public void setEventProperties(List<HashMap<String, Object>> eventProperties) {
+	public void setEventProperties(List<EventPropertyFilter> eventProperties) {
 		this.eventProperties = eventProperties;
 	}
 

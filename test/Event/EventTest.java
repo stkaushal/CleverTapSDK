@@ -20,6 +20,7 @@ import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Helper.Region;
 import Payload.EventPayload;
+import Payload.EventPropertyFilter;
 import Response.GetEventsResponse;
 import Response.Response;
 
@@ -55,12 +56,17 @@ public class EventTest {
 		payload.setObjectId("dummy");
 		HashMap<String, Object> evtData = new HashMap<String, Object>();
 		evtData.put("key", "value");
-		HashMap<String, Object> event_properties = new HashMap<String, Object>();
-		event_properties.put("key", "value");
-		List<HashMap<String, Object>> eventPropList = new ArrayList<HashMap<String, Object>>();
-		eventPropList.add(event_properties);
 		payload.setEventData(evtData);
-		payload.setEventProperties(eventPropList);
+		
+		
+		EventPropertyFilter eventProps = new EventPropertyFilter();
+	    eventProps.setPropertName("dummy");
+	    eventProps.setOperator("dummy");
+	    eventProps.setPropertValue("dummy");
+	    List<EventPropertyFilter> eventPropList = new ArrayList<EventPropertyFilter>();
+	    eventPropList.add(eventProps);
+	   
+	   payload.setEventProperties(eventPropList);
 		
 		List<EventPayload> payloadList = new ArrayList<EventPayload>();
 		payloadList.add(payload);

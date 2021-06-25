@@ -33,11 +33,11 @@ public class ReportAPI {
 //	   JSONObject uploadProfileResponse= new JSONObject(jsonMapper.writeValueAsString(resUploadProfile));
 //	   System.out.println(uploadProfileResponse.toString(4));
 	   
-	   //Message Report//
+	   //Message Report// status code 500
 	   
 //	   ReportPayload messageReport = new ReportPayload();
 //	   messageReport.setFromDate(20210606);
-//	   messageReport.setToDate(20210609);
+//	   messageReport.setToDate(20210625);
 //	   messageReport.setDaily(true);
 //	   String[] channel = {"InApp"};
 //	   messageReport.setChannel(channel);

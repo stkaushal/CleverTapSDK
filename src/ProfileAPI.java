@@ -110,6 +110,7 @@ public class ProfileAPI {
 //	   JSONObject getProfileIdDeleteResponse= new JSONObject(jsonMapper.writeValueAsString(resUserDeletePayload));
 //	   System.out.println(getProfileIdDeleteResponse.toString(4));
 	   
+	   
 	   //Upload device tokens//
 	   
 //	   ProfilePayload tokenPayload = new ProfilePayload();

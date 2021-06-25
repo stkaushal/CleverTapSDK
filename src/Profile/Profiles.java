@@ -27,6 +27,7 @@ public class Profiles {
 	private static final String urlDemergeProfile = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/demerge/profiles.json";
 	private static final String urlSubscribe = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/subscribe";
 	private static final String urlDisassociate = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/disassociate";
+	private static final String urlGetProfileCountByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/profiles.json?req_id=";
 	
 	private ObjectMapper objectMapper;
 	private HttpClient client; 
@@ -62,9 +63,9 @@ public class Profiles {
 		return cur;	
 	}
 	
-	public GetUserProfileResponse getUserProfileData(Cursor cursor) throws IOException, InterruptedException
+	public GetUserProfileResponse getUserProfileData(String cursor) throws IOException, InterruptedException
 	{
-		String url = urlGetProfileCursor + "?cursor=" + cursor.getCursor();
+		String url = urlGetProfileCursor + "?cursor=" + cursor;
 		
 		JSONObject jsonResponse = client.getRequest(url);
 		GetUserProfileResponse res = objectMapper.readValue(jsonResponse.toString(), GetUserProfileResponse.class);
@@ -127,7 +128,6 @@ public class Profiles {
 		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
 		JSONObject jsonResponse = client.postRequest(urlDemergeProfile, jsonPayload);
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
-		System.out.println(jsonPayload);
 		return res;
 	}
 	
@@ -150,6 +150,14 @@ public class Profiles {
 		JSONObject jsonResponse = client.postRequest(urlDisassociate, jsonPayload);
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
 		
+		return res;
+	}
+	
+	public Response getProfileCountByReqId(long ReqId) throws IOException, InterruptedException
+	{
+		String url = urlGetProfileCountByReqId + String.valueOf(ReqId);
+		JSONObject jsonResponse = client.getRequest(url);
+		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
 		return res;
 	}
 }

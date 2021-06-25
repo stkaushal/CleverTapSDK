@@ -169,7 +169,7 @@ public class ProfilesTest {
 
 		Mockito.when(client.getRequest(Mockito.anyString())).thenReturn(jsonResponse);
 
-		response = profile.getUserProfileData(cursorMock);
+		response = profile.getUserProfileData("");
 
 		Assertions.assertNotNull(response);
 		Assertions.assertNotNull(response.getNextCursor());

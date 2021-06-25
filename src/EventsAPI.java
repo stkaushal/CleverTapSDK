@@ -13,6 +13,7 @@ import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Helper.Region;
 import Payload.EventPayload;
+import Payload.EventPropertyFilter;
 import Response.GetEventsResponse;
 import Response.Response;
 
@@ -50,16 +51,19 @@ public class EventsAPI {
 	   //Event count//
 	   
 //	   EventPayload countPayload = new EventPayload();
-//	   countPayload.setEventNameDownload("Product viewed");
-//	   List<HashMap<String, Object>> eventProperties = new ArrayList<HashMap<String, Object>>();
-//	   HashMap<String, Object> eventMap = new HashMap<String, Object>();
-//	   eventMap.put("Product Name", "Macbook pro");
-//	   eventMap.put("Category", "Laptops");
-//	   eventMap.put("Price", 114000);	
-//	   eventProperties.add(eventMap);
-//	   countPayload.setEventProperties(eventProperties );
+//	   countPayload.setEventNameDownload("Product Bought");
+//	   
+//	   EventPropertyFilter eventProps = new EventPropertyFilter();
+//	   eventProps.setPropertName("Category");
+//	   eventProps.setOperator("equals");
+//	   eventProps.setPropertValue("Electronics");
+//	   List<EventPropertyFilter> eventPropList = new ArrayList<EventPropertyFilter>();
+//	   eventPropList.add(eventProps);
+//	   
+//	   countPayload.setEventProperties(eventPropList);
+//	   
 //	   countPayload.setFromDate(20210607);
-//	   countPayload.setToDate(20210615);
+//	   countPayload.setToDate(20210625);
 //	   
 //	   Response resCount = instance.getEventInstance().getEventCount(countPayload);	   
 //	   JSONObject countEvtResponse= new JSONObject(jsonMapper.writeValueAsString(resCount));
@@ -75,12 +79,12 @@ public class EventsAPI {
 	   // get events with cursor//
 	   
 //	   EventPayload payloadgetEventCur = new EventPayload();
-//	   payloadgetEventCur.setEventNameDownload("Added TO Cart");
-//	   payloadgetEventCur.setFromDate(20210624);
-//	   payloadgetEventCur.setToDate(20210624);
+//	   payloadgetEventCur.setEventNameDownload("Product Bought");
+//	   payloadgetEventCur.setFromDate(20210606);
+//	   payloadgetEventCur.setToDate(20210625);
 //	   
 //	   Cursor eventCursor = instance.getEventInstance().getEventsCursor(payloadgetEventCur, 1000, true, true, true);
-//	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(eventCursor));
+//	   JSONObject eventCursorResponse= new JSONObject(jsonMapper.writeValueAsString(payloadgetEventCur));
 //	   System.out.println(eventCursorResponse.toString(4));
 //	   
 //	   GetEventsResponse getEvents = instance.getEventInstance().getEventsData(eventCursor.getCursor());
