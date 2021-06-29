@@ -159,7 +159,7 @@ class ScaleTest {
 ////			Response resCreateCampaignTID = instance.getCampaignInstance().createCampaignTargetId(CampaignMethod.EMAIL, campaignPayload);
 ////			System.out.println(resCreateCampaignTID.getEstimates());
 //		}
-		
-	}
+//		
+//	}
 
 }
