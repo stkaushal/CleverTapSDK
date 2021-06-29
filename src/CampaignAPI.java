@@ -9,18 +9,15 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Helper.CampaignMethod;
+import Helper.Enums.CampaignMethod;
 import Helper.ClevertapInstance;
-import Helper.Region;
-import Payload.CampaignContentIcon;
-import Payload.CampaignContentMedia;
-import Payload.CampaignContentMessage;
-import Payload.CampaignContentTitle;
+import Helper.Enums.Region;
+import Payload.CampaignContent.*;
 import Payload.CampaignPayload;
 import Payload.Content;
 import Payload.DateRangePayload;
 import Payload.PlatformSpecificContent;
-import Payload.PlatformTypeAndroid;
+import Payload.PlatformType.*;
 import Payload.To;
 import Payload.Where;
 import Response.Response;
@@ -28,9 +25,9 @@ import Response.Response;
 public class CampaignAPI {
 	public static void main(String[] args) throws IOException, InterruptedException {
     	
-	   String Cid = "4R8-K98-8Z6Z";
-	   String CPswd = "AOE-RUW-CHUL";
-	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.NONE);
+		String Cid = "W8W-897-865Z";
+		String CPswd = "042043bfc0ec4fd5ac14291840ec6c1e";
+		ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
 	   jsonMapper.setSerializationInclusion(Include.NON_NULL);
@@ -294,9 +291,9 @@ public class CampaignAPI {
 	   
 	   //get campaigns//
 	   
-//	   TimeInterval campaignPayloadgetC = new TimeInterval();
-//	   campaignPayloadgetC.setFromDate(20210606);
-//	   campaignPayloadgetC.setToDate(20210616);
+//	   DateRangePayload campaignPayloadgetC = new DateRangePayload();
+//	   campaignPayloadgetC.setFromDate(20210629);
+//	   campaignPayloadgetC.setToDate(20210629);
 //	   Response resCampaignPayloadgetC = instance.getCampaignInstance().getCampaigns(campaignPayloadgetC);
 //	   JSONObject campaignPayloadgetCResponse = new JSONObject(jsonMapper.writeValueAsString(resCampaignPayloadgetC));
 //	   System.out.println(campaignPayloadgetCResponse.toString(4));
@@ -305,7 +302,7 @@ public class CampaignAPI {
 	   //get campaign report//
 	   
 //	   CampaignPayload campaignPayloadgetReport = new CampaignPayload();
-//	   campaignPayloadgetReport.setCampaignId(1623808337);
+//	   campaignPayloadgetReport.setCampaignId(1000000020);
 //	   Response resCampaignPayloadgetReport = instance.getCampaignInstance().getCampaignReport(campaignPayloadgetReport);
 //	   JSONObject campaignPayloadgetReportResponse = new JSONObject(jsonMapper.writeValueAsString(resCampaignPayloadgetReport));
 //	   System.out.println(campaignPayloadgetReportResponse.toString(4));

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
-import Helper.Region;
+import Helper.Enums.Region;
 import Payload.Group;
 import Payload.ReportPayload;
 import Response.Response;
@@ -16,9 +16,9 @@ import Response.Response;
 public class ReportAPI {
 	public static void main(String[] args) throws IOException, InterruptedException {
     	
-	   String Cid = "4R8-K98-8Z6Z";
-	   String CPswd = "AOE-RUW-CHUL";
-	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.NONE);
+		String Cid = "W8W-897-865Z";
+		String CPswd = "042043bfc0ec4fd5ac14291840ec6c1e";
+		ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
 	   jsonMapper.setSerializationInclusion(Include.NON_NULL);
@@ -33,16 +33,16 @@ public class ReportAPI {
 //	   JSONObject uploadProfileResponse= new JSONObject(jsonMapper.writeValueAsString(resUploadProfile));
 //	   System.out.println(uploadProfileResponse.toString(4));
 	   
+	   
+	   
 	   //Message Report// status code 500
 	   
 //	   ReportPayload messageReport = new ReportPayload();
-//	   messageReport.setFromDate(20210606);
-//	   messageReport.setToDate(20210625);
-//	   messageReport.setDaily(true);
-//	   String[] channel = {"InApp"};
-//	   messageReport.setChannel(channel);
+//	   messageReport.setFromDate(20210629);
+//	   messageReport.setToDate(20210629);
 //	   
 //	   Response resMessageReport = instance.getReportInstance().getMessageReports(messageReport);
+//	   
 //	   JSONObject messageReportResponse= new JSONObject(jsonMapper.writeValueAsString(resMessageReport));
 //	   System.out.println(messageReportResponse.toString(4));
 	   

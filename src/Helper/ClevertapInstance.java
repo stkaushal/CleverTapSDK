@@ -3,6 +3,7 @@ package Helper;
 import Campaign.Campaigns;
 import Event.Event;
 import Profile.Profiles;
+import Helper.Enums.Region;
 import Report.Report;
 
 public class ClevertapInstance {
@@ -40,6 +41,9 @@ public class ClevertapInstance {
 		}
 		else if(ClevertapInstance.region==Region.USA){
 			return "us1.";
+		}
+		else if(ClevertapInstance.region==Region.DEVELOPMENT){
+			return "sk1.";
 		}
 		return "";
 	}

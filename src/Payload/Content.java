@@ -1,8 +1,10 @@
 package Payload;
 
+import Payload.CampaignContent.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 
 @JsonInclude(Include.NON_DEFAULT)
 public class Content {

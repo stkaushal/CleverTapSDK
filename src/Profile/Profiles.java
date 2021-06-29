@@ -1,4 +1,5 @@
 package Profile;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
-import Helper.UserIdentity;
+import Helper.Enums.UserIdentity;
 import Payload.ProfilePayload;
 import Response.GetUserProfileResponse;
 import Response.Response;

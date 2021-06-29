@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
 import Helper.Cursor;
-import Helper.Region;
+import Helper.Enums.*;
 import Payload.CategoryResubscribe;
 import Payload.CategoryUnsubscribe;
 import Payload.Keys;
@@ -26,9 +26,9 @@ public class ProfileAPI {
 	
     public static void main(String[] args) throws IOException, InterruptedException {
     	
-	   String Cid = "4R8-K98-8Z6Z";
-	   String CPswd = "AOE-RUW-CHUL";
-	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.NONE);
+    	String Cid = "W8W-897-865Z";
+    	String CPswd = "042043bfc0ec4fd5ac14291840ec6c1e";
+    	ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
 	   jsonMapper.setSerializationInclusion(Include.NON_NULL);
@@ -75,7 +75,7 @@ public class ProfileAPI {
 	   
 	   //Get profile by ID//
 	   
-//	   GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById("email", "dharmendra.shesma@gmail.com");
+//	   GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById(UserIdentity.EMAIL, "email1@gmail.com");
 //	 
 //	   JSONObject getProfileIdResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileId));
 //	   System.out.println(getProfileIdResponse.toString(4));
@@ -83,21 +83,19 @@ public class ProfileAPI {
 	   
 	   //get profile by cursor//
 	   
-//	   ProfilePayload payloadCursor = new ProfilePayload(); GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById("identity", "1");
-//	 
-//	   JSONObject getProfileIdResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileId));
-//	   System.out.println(getProfileIdResponse.toString(4));
-//	   payloadCursor.setEventName("charged");
-//	   payloadCursor.setFromDate(20210606);
-//	   payloadCursor.setToDate(20210609);
-//	   Cursor cursor = instance.getProfileInstance().getUserProfileCursor(payloadCursor, 1000);
-//	   GetUserProfileResponse getProfileEv = instance.getProfileInstance().getUserProfileData(cursor);
+//	   ProfilePayload payloadCursor = new ProfilePayload(); 
+//	
+//	   payloadCursor.setEventName("Identity Set");
+//	   payloadCursor.setFromDate(20210629);
+//	   payloadCursor.setToDate(20210629);
+//	   Cursor cursor = instance.getProfileInstance().getUserProfileCursor(payloadCursor, 1000, true, true, true);
+//	   GetUserProfileResponse getProfileEv = instance.getProfileInstance().getUserProfileData(cursor.getCursor());
 //	   while(getProfileEv.getNextCursor()!=null)
 //	   {
 //		   JSONObject getProfileEvResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileEv));
 //		   System.out.println(getProfileEvResponse.toString(4));
 //		   cursor.setCursor(getProfileEv.getNextCursor());
-//		   getProfileEv = instance.getProfileInstance().getUserProfileData(cursor);
+//		   getProfileEv = instance.getProfileInstance().getUserProfileData(cursor.getCursor());
 //	   }
 //	   JSONObject getProfileEvResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileEv));
 //	   System.out.println(getProfileEvResponse.toString(4));
@@ -105,7 +103,7 @@ public class ProfileAPI {
 	   //Delete profile//
 	   
 //	   ProfilePayload userDeletePayload = new ProfilePayload();
-//	   userDeletePayload.setUserIdentity("123456");
+//	   userDeletePayload.setUserIdentity("+916376440361");
 //	   Response resUserDeletePayload = instance.getProfileInstance().deleteUserProfile(userDeletePayload);
 //	   JSONObject getProfileIdDeleteResponse= new JSONObject(jsonMapper.writeValueAsString(resUserDeletePayload));
 //	   System.out.println(getProfileIdDeleteResponse.toString(4));
@@ -163,8 +161,22 @@ public class ProfileAPI {
 //	   System.out.println(getSubscribeResponse.toString(4));
 	   
 	   
+	   //Profile count//
 	   
-	   
+//	   ProfilePayload countProile = new ProfilePayload();
+//	   countProile.setEventName("Identity Set");
+//	   countProile.setFromDate(20210629);
+//	   countProile.setToDate(20210629);
+//	   
+//	   Response resCount = instance.getProfileInstance().getProfileCount(countProile);
+//	   JSONObject getcountResponse= new JSONObject(jsonMapper.writeValueAsString(resCount));
+//	   System.out.println(getcountResponse.toString(4));
+//	   
+//	   if(resCount.getStatus().equals("partial")) {
+//		   Response reqIdCount = instance.getProfileInstance().getProfileCountByReqId(resCount.getReqId());
+//		   JSONObject getcountReqIdResponse= new JSONObject(jsonMapper.writeValueAsString(reqIdCount));
+//		   System.out.println(getcountReqIdResponse.toString(4));
+//	   }
     }
     
     

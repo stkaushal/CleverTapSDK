@@ -113,7 +113,7 @@ public class HttpClient {
 		@Override
 		public boolean retryRequest(HttpResponse response, int executionCount, HttpContext context) {
 			if(response.getStatusLine().getStatusCode() >= 500 || response.getStatusLine().getStatusCode() == 408)
-			{
+			{	
 				waitPeriod = getRetryAfterTime(response);
 				return executionCount <= maxRetries;
 			}
@@ -152,6 +152,7 @@ public class HttpClient {
 				.setSocketTimeout(CONN_TIMEOUT)
 				.setConnectTimeout(CONN_TIMEOUT)
 				.setConnectionRequestTimeout(CONN_TIMEOUT)
+				.setExpectContinueEnabled(true)
 				.build();
 
 		this.connManager.setMaxTotal(MAX_CONN);
