@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
-import Payload.EventPayload;
+import Payload.Event.EventPayload;
 import Response.GetEventsResponse;
 import Response.Response;
 

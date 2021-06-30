@@ -14,8 +14,8 @@ import Event.Event;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Helper.Enums.Region;
-import Payload.EventPayload;
-import Payload.EventPropertyFilter;
+import Payload.Event.EventPayload;
+import Payload.Event.EventPropertyFilter;
 import Response.GetEventsResponse;
 import Response.Response;
 

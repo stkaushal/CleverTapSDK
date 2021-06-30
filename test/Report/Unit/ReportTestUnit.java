@@ -15,8 +15,8 @@ import org.mockito.MockitoAnnotations;
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Enums.Region;
-import Payload.Group;
-import Payload.ReportPayload;
+import Payload.Report.Group;
+import Payload.Report.ReportPayload;
 import Report.Report;
 import Response.Response;
 

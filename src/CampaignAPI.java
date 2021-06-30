@@ -12,14 +12,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Helper.Enums.CampaignMethod;
 import Helper.ClevertapInstance;
 import Helper.Enums.Region;
-import Payload.CampaignContent.*;
-import Payload.CampaignPayload;
-import Payload.Content;
-import Payload.DateRangePayload;
-import Payload.PlatformSpecificContent;
-import Payload.PlatformType.*;
-import Payload.To;
-import Payload.Where;
+import Payload.Campaign.CampaignContent.*;
+import Payload.Campaign.CampaignPayload;
+import Payload.Campaign.DateRangePayload;
+import Payload.Campaign.To;
+import Payload.Campaign.Where;
 import Response.Response;
 
 public class CampaignAPI {

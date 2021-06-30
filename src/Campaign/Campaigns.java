@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import HTTP.HttpClient;
 import Helper.Enums.CampaignMethod;
 import Helper.ClevertapInstance;
-import Payload.CampaignPayload;
-import Payload.DateRangePayload;
+import Payload.Campaign.CampaignPayload;
+import Payload.Campaign.DateRangePayload;
 import Response.Response;
 
 public class Campaigns {

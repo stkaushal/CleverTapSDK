@@ -12,8 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Helper.Enums.Region;
-import Payload.EventPayload;
-import Payload.EventPropertyFilter;
+import Payload.Event.EventPayload;
 import Response.GetEventsResponse;
 import Response.Response;
 

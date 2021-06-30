@@ -14,7 +14,7 @@ import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Helper.Enums.UserIdentity;
-import Payload.ProfilePayload;
+import Payload.Profile.ProfilePayload;
 import Response.GetUserProfileResponse;
 import Response.Response;
 

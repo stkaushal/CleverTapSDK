@@ -20,15 +20,15 @@ import HTTP.HttpClient;
 import Helper.ClevertapInstance;
 import Helper.Enums.CampaignMethod;
 import Helper.Enums.Region;
-import Payload.CampaignPayload;
-import Payload.Content;
-import Payload.ControlGroup;
-import Payload.DateRangePayload;
-import Payload.PlatformSpecificContent;
-import Payload.To;
-import Payload.Where;
-import Payload.CampaignContent.CampaignContentAttachments;
-import Payload.PlatformType.PlatformTypeAndroid;
+import Payload.Campaign.CampaignPayload;
+import Payload.Campaign.ControlGroup;
+import Payload.Campaign.DateRangePayload;
+import Payload.Campaign.To;
+import Payload.Campaign.Where;
+import Payload.Campaign.CampaignContent.CampaignContentAttachments;
+import Payload.Campaign.CampaignContent.Content;
+import Payload.Campaign.CampaignContent.PlatformSpecificContent;
+import Payload.Campaign.CampaignContent.PlatformType.PlatformTypeAndroid;
 import Response.Response;
 
 public class CampaignsTestUnit {

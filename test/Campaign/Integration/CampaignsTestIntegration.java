@@ -12,11 +12,11 @@ import Campaign.Campaigns;
 import Helper.ClevertapInstance;
 import Helper.Enums.CampaignMethod;
 import Helper.Enums.Region;
-import Payload.CampaignPayload;
-import Payload.Content;
-import Payload.DateRangePayload;
-import Payload.To;
-import Payload.Where;
+import Payload.Campaign.CampaignPayload;
+import Payload.Campaign.DateRangePayload;
+import Payload.Campaign.To;
+import Payload.Campaign.Where;
+import Payload.Campaign.CampaignContent.Content;
 import Response.Response;
 
 public class CampaignsTestIntegration {

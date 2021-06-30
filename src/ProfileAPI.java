@@ -13,12 +13,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Helper.ClevertapInstance;
 import Helper.Cursor;
 import Helper.Enums.*;
-import Payload.CategoryResubscribe;
-import Payload.CategoryUnsubscribe;
-import Payload.Keys;
-import Payload.ProfileData;
-import Payload.ProfilePayload;
-import Payload.TokenData;
+import Payload.Profile.Keys;
+import Payload.Profile.ProfilePayload;
+import Payload.Profile.TokenData;
+import Payload.Profile.ProfileData.CategoryResubscribe;
+import Payload.Profile.ProfileData.CategoryUnsubscribe;
+import Payload.Profile.ProfileData.ProfileData;
 import Response.GetUserProfileResponse;
 import Response.Response;
 

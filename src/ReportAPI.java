@@ -9,8 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
 import Helper.Enums.Region;
-import Payload.Group;
-import Payload.ReportPayload;
+import Payload.Report.Group;
+import Payload.Report.ReportPayload;
 import Response.Response;
 
 public class ReportAPI {

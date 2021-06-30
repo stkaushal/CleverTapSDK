@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HTTP.HttpClient;
 import Helper.ClevertapInstance;
-import Payload.ReportPayload;
+import Payload.Report.ReportPayload;
 import Response.Response;
 
 public class Report {
