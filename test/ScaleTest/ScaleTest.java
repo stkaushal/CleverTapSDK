@@ -1,6 +1,5 @@
 package ScaleTest;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -8,27 +7,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import Helper.ClevertapInstance;
-import Helper.Enums.CampaignMethod;
 import Helper.Enums.Region;
-import Payload.*;
+import Payload.Event.EventPayload;
 import Payload.Profile.ProfilePayload;
 import Payload.Profile.ProfileData.ProfileData;
 import Response.Response;
 
 class ScaleTest {
 
-	String Cid = "W8W-897-865Z";
-	String CPswd = "042043bfc0ec4fd5ac14291840ec6c1e";
+	String Cid = "TEST-69W-8RW-5R6Z";
+	String CPswd = "WRW-KSE-UWUL";
 	ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
 
 	@BeforeEach
@@ -39,119 +32,99 @@ class ScaleTest {
 	@Test
 	void testUploadUserProfile() throws IOException, InterruptedException {
 		int count = 0;
-		for(int j = 0; j < 50; j++) {
+		for(int j = 0; j < 100; j++) {
 			List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
 	
-			for(int i = 0; i < 1000; i++) {
+			for(int i = 0; i < 100; i++) {
 				ProfilePayload payload = new ProfilePayload();
-				payload.setUserIdentity("person"+String.valueOf(count));
+				String email = "fmail"+String.valueOf(Instant.now())+"@yahoomail.com";
+				payload.setUserIdentity(email);
 				payload.setType("profile");
 	
 				ProfileData profileData = new ProfileData();
-				profileData.setName("Person"+String.valueOf(count));
-				profileData.setEmail("person"+String.valueOf(count)+"@clevertap.com");
-				
-//				String number = String.valueOf(count);
-//				for(int k = number.length(); k < 10; k++)
-//				{
-//					number += "0";
-//				}
-//				profileData.setPhone("+91"+number);
+				profileData.setName("F"+String.valueOf(Instant.now()));
 				profileData.setGender("M");
 				profileData.setMsgSMS(true);
 				profileData.setMsgEmail(true);
 				profileData.setMsgWhatsapp(true);
 				profileData.setMsgDndPhone(false);
 				profileData.setMsgDndEmail(false);
-				profileData.setDob("$D_911079285");
-				profileData.setCustomerType("Platinum");
+				profileData.setDob("$D_911079111");
+				profileData.setCustomerType("Gold");
 	
 				payload.setProfileData(profileData);
 	
 				payloadList.add(payload);	
 				
 				count++;
-				
 			}
-	
 			Response resUploadProfile = instance.getProfileInstance().uploadUserProfile(payloadList);
 			System.out.println(resUploadProfile.getProcessed());
-//			try {
-//				TimeUnit.SECONDS.sleep(10);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
 		}
-//		try {
-//			TimeUnit.SECONDS.sleep(120);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
+		
+		TimeUnit.SECONDS.sleep(10);
+		
+//		ProfilePayload countProile = new ProfilePayload();
+//		countProile.setEventName("Identity Set");
+//		countProile.setFromDate(20210701);
+//		countProile.setToDate(20210701);
+//
+//		Response resCount = instance.getProfileInstance().getProfileCount(countProile);
+//
+//		if(resCount.getStatus().equals("partial")) {
+//			Response reqIdCount = instance.getProfileInstance().getProfileCountByReqId(resCount.getReqId());
+//			Assertions.assertEquals(1700000, reqIdCount.getCount());
 //		}
-		ProfilePayload countProile = new ProfilePayload();
-		countProile.setEventName("Identity Set");
-		countProile.setFromDate(20210630);
-		countProile.setToDate(20210630);
-
-		Response resCount = instance.getProfileInstance().getProfileCount(countProile);
-
-		if(resCount.getStatus().equals("partial")) {
-			Response reqIdCount = instance.getProfileInstance().getProfileCountByReqId(resCount.getReqId());
-			Assertions.assertEquals(50000, reqIdCount.getCount());
-		}
-		else
-		{
-			Assertions.assertEquals(50000, resCount.getCount());
-		}
+//		else
+//		{
+//			Assertions.assertEquals(1700000, resCount.getCount());
+//		}
 	}
 
 //	@Test
 //	void testUploadevents() throws IOException, InterruptedException {
-//		for(int j = 0; j < 50; j++) {
+//		int count = 0;
+//		for(int j = 0; j < 1000; j++) {
 //			List<EventPayload> uploadList = new ArrayList<EventPayload>();
 //			for(int i = 0; i < 1000; i++) {
 //				EventPayload uploadPayload = new EventPayload();
-//				uploadPayload.setIdentity("newmrscool64115@gmail.com");
+//				String email = "fmail"+String.valueOf(count)+"@yahoomail.com";
+//				uploadPayload.setIdentity(email);
 //				uploadPayload.setTs(Instant.now().getEpochSecond());
 //				uploadPayload.setType("event");
-//				uploadPayload.setEventNameUpload("Photo Downloaded");
+//				uploadPayload.setEventNameUpload("Book Viewed");
 //				HashMap<String, Object> evtData = new HashMap<String, Object>();
-//				evtData.put("Photo Name", "NAture "+String.valueOf(i)+String.valueOf(j));
-//				evtData.put("Category", "Photos");
-//				evtData.put("Price", 300+i+j);
+//				evtData.put("Book Name", "Sun Shines "+String.valueOf(i)+String.valueOf(j));
+//				evtData.put("Category", "Spanish Books");
+//				evtData.put("Price", 200+i+j);
 //	
 //				uploadPayload.setEventData(evtData);
 //	
 //				uploadList.add(uploadPayload);
+//				
+//				count++;
 //			}
-////			Response resUpload = instance.getEventInstance().uploadEvents(uploadList);
-////			System.out.println(resUpload.getProcessed());
-////			try {
-////				TimeUnit.SECONDS.sleep(2);
-////			} catch (InterruptedException e) {
-////				e.printStackTrace();
-////			}
-//		}
-////		try {
-////			TimeUnit.SECONDS.sleep(10);
-////		} catch (InterruptedException e) {
-////			e.printStackTrace();
-////		}
-////		
-//		EventPayload countPayload = new EventPayload();
-//		countPayload.setEventNameDownload("Photo Downloaded");
+//			Response resUpload = instance.getEventInstance().uploadEvents(uploadList);
+//			System.out.println(resUpload.getProcessed());
 //
-//		countPayload.setFromDate(20210630);
-//		countPayload.setToDate(20210630);
+//		}
+//		TimeUnit.SECONDS.sleep(10);
+//		
+//		EventPayload countPayload = new EventPayload();
+//		countPayload.setEventNameDownload("Book Viewed");
+//
+//		countPayload.setFromDate(20210701);
+//		countPayload.setToDate(20210701);
 //
 //		Response resCount = instance.getEventInstance().getEventCount(countPayload);
 //		
 //		if(resCount.getStatus().equals("partial")) {
 //			Response reqIdCount = instance.getEventInstance().getEventCountByReqId(resCount.getReqId());
-//			Assertions.assertEquals(50000, reqIdCount.getCount());
+//			Assertions.assertEquals(1000000, reqIdCount.getCount());
 //		}
 //		else
 //		{
-//			Assertions.assertEquals(50000, resCount.getCount());
+//			Assertions.assertEquals(1000000, resCount.getCount());
 //		}
 //
 //	}
