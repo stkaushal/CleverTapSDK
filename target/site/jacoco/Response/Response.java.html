@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 	}
 	@JsonAnySetter
 	public void setOtherInfo(String key, Object value) {
-<span class="pc bpc" id="L43" title="1 of 2 branches missed.">		if(this.otherInfo == null) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		if(this.otherInfo == null) {</span>
 <span class="fc" id="L44">			this.otherInfo = new HashMap&lt;String,Object&gt;();</span>
 		}
 <span class="fc" id="L46">		this.otherInfo.put(key,value);</span>

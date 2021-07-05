@@ -25,9 +25,10 @@ import Response.Response;
 public class ProfileAPI {
 	
     public static void main(String[] args) throws IOException, InterruptedException {
-    	
-    	String Cid = "TEST-69W-8RW-5R6Z";
-    	String CPswd = "WRW-KSE-UWUL";
+//    	String Cid = "4R8-K98-8Z6Z";
+//		String CPswd = "AOE-RUW-CHUL";
+    	String Cid = "W8W-897-865Z";
+		String CPswd = "042043bfc0ec4fd5ac14291840ec6c1e";
     	ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
@@ -86,8 +87,8 @@ public class ProfileAPI {
 //	   ProfilePayload payloadCursor = new ProfilePayload(); 
 //	
 //	   payloadCursor.setEventName("Identity Set");
-//	   payloadCursor.setFromDate(20210630);
-//	   payloadCursor.setToDate(20210630);
+//	   payloadCursor.setFromDate(20210705);
+//	   payloadCursor.setToDate(20210705);
 //	   Cursor cursor = instance.getProfileInstance().getUserProfileCursor(payloadCursor, 1000, true, true, true);
 //	   GetUserProfileResponse getProfileEv = instance.getProfileInstance().getUserProfileData(cursor.getCursor());
 //	   while(getProfileEv.getNextCursor()!=null)
@@ -162,18 +163,19 @@ public class ProfileAPI {
 	   //Profile count//
 	   
 	   ProfilePayload countProile = new ProfilePayload();
-	   countProile.setEventName("Reachable By");
-	   countProile.setFromDate(20210704);
-	   countProile.setToDate(20210704);
+	   countProile.setEventName("Identity Set");
+	   countProile.setFromDate(20210705);
+	   countProile.setToDate(20210705);
 	   	
 	   Response resCount = instance.getProfileInstance().getProfileCount(countProile);
 	   JSONObject getcountResponse= new JSONObject(jsonMapper.writeValueAsString(resCount));
-	   System.out.println(getcountResponse.toString(4));
+	   System.out.println("count response before::"+getcountResponse.toString(4));
+	   System.out.println("status::"+resCount.getStatus());
 	   
 	   if(resCount.getStatus().equals("partial")) {
 		   Response reqIdCount = instance.getProfileInstance().getProfileCountByReqId(resCount.getReqId());
 		   JSONObject getcountReqIdResponse= new JSONObject(jsonMapper.writeValueAsString(reqIdCount));
-		   System.out.println(getcountReqIdResponse.toString(4));
+		   System.out.println("count response after::"+getcountReqIdResponse.toString(4));
 	   }
     }
     

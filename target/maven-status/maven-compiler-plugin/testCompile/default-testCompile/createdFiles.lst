@@ -1,5 +1,12 @@
-Event/EventTest.class
+ScaleTest/ThreadScale.class
+Event/Unit/EventUnitTest.class
 HTTP/HttpClientTest.class
-Campaign/CampaignsTest.class
-Profile/ProfilesTest.class
-Report/ReportTest.class
+Event/Integration/EventIntegrationTest.class
+Campaign/Unit/CampaignsUnitTest.class
+Report/Unit/ReportUnitTest.class
+Profile/Integration/ProfilesIntegrationTest.class
+ScaleTest/ClientMultiThreaded.class
+Report/Integration/ReportIntegrationTest.class
+ScaleTest/ScaleTest.class
+Campaign/Integration/CampaignsIntegrationTest.class
+Profile/Unit/ProfilesUnitTest.class

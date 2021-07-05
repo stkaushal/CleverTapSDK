@@ -3,48 +3,69 @@
 import Campaign.Campaigns;
 import Event.Event;
 import Profile.Profiles;
+import Helper.Enums.Region;
 import Report.Report;
 
 public class ClevertapInstance {
+	
 	private static String id;
 	private static String password;
+	private static Region region;
+	
 	private Profiles profileInstance;
 	private Event eventInstance;
 	private Report reportInstance;
 	private Campaigns campaignInstance;
 
-	public ClevertapInstance(String id, String password)
-<span class="fc" id="L17">	{</span>
-<span class="fc" id="L18">		ClevertapInstance.id = id;</span>
-<span class="fc" id="L19">		ClevertapInstance.password = password;</span>
-<span class="fc" id="L20">	}</span>
+	public ClevertapInstance(String id, String password, Region region)
+<span class="fc" id="L21">	{</span>
+<span class="fc" id="L22">		ClevertapInstance.id = id;</span>
+<span class="fc" id="L23">		ClevertapInstance.password = password;</span>
+<span class="fc" id="L24">		ClevertapInstance.region = region;</span>
+<span class="fc" id="L25">	}</span>
 	
 	public static String getId() {
-<span class="fc" id="L23">		return id;</span>
+<span class="fc" id="L28">		return id;</span>
 	}
 	
 	public static String getPassword() {
-<span class="fc" id="L27">		return password;</span>
+<span class="fc" id="L32">		return password;</span>
+	}
+	
+	public static String getRegion() {
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		if(ClevertapInstance.region==Region.INDIA){</span>
+<span class="nc" id="L37">			return &quot;in1.&quot;;</span>
+		} 
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">		else if(ClevertapInstance.region==Region.SINGAPORE){</span>
+<span class="nc" id="L40">			return &quot;sg1.&quot;;</span>
+		}
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">		else if(ClevertapInstance.region==Region.USA){</span>
+<span class="nc" id="L43">			return &quot;us1.&quot;;</span>
+		}
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">		else if(ClevertapInstance.region==Region.DEVELOPMENT){</span>
+<span class="nc" id="L46">			return &quot;sk1.&quot;;</span>
+		}
+<span class="fc" id="L48">		return &quot;&quot;;</span>
 	}
 	
 	public Profiles getProfileInstance() {
-<span class="fc" id="L31">		this.profileInstance = new Profiles();</span>
-<span class="fc" id="L32">		return profileInstance;</span>
+<span class="fc" id="L52">		this.profileInstance = new Profiles();</span>
+<span class="fc" id="L53">		return profileInstance;</span>
 	}
 	
 	public Event getEventInstance() {
-<span class="fc" id="L36">		this.eventInstance = new Event();</span>
-<span class="fc" id="L37">		return eventInstance;</span>
+<span class="fc" id="L57">		this.eventInstance = new Event();</span>
+<span class="fc" id="L58">		return eventInstance;</span>
 	}
 
 	public Report getReportInstance() {
-<span class="fc" id="L41">		this.reportInstance = new Report();</span>
-<span class="fc" id="L42">		return reportInstance;</span>
+<span class="fc" id="L62">		this.reportInstance = new Report();</span>
+<span class="fc" id="L63">		return reportInstance;</span>
 	}
 	
 	public Campaigns getCampaignInstance() {
-<span class="fc" id="L46">		this.campaignInstance = new Campaigns();</span>
-<span class="fc" id="L47">		return campaignInstance;</span>
+<span class="fc" id="L67">		this.campaignInstance = new Campaigns();</span>
+<span class="fc" id="L68">		return campaignInstance;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

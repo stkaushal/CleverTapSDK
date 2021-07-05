@@ -12,38 +12,40 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
 import Helper.Cursor;
-import Payload.CategoryResubscribe;
-import Payload.CategoryUnsubscribe;
-import Payload.Keys;
-import Payload.ProfileData;
-import Payload.ProfilePayload;
-import Payload.TokenData;
+import Helper.Enums.*;
+import Payload.Profile.Keys;
+import Payload.Profile.ProfilePayload;
+import Payload.Profile.TokenData;
+import Payload.Profile.ProfileData.CategoryResubscribe;
+import Payload.Profile.ProfileData.CategoryUnsubscribe;
+import Payload.Profile.ProfileData.ProfileData;
 import Response.GetUserProfileResponse;
 import Response.Response;
 
-<span class="nc" id="L24">public class ProfileAPI {</span>
+<span class="nc" id="L25">public class ProfileAPI {</span>
 	
     public static void main(String[] args) throws IOException, InterruptedException {
-    	
-<span class="nc" id="L28">	   String Cid = &quot;4R8-K98-8Z6Z&quot;;</span>
-<span class="nc" id="L29">	   String CPswd = &quot;AOE-RUW-CHUL&quot;;</span>
-<span class="nc" id="L30">	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);</span>
+//    	String Cid = &quot;4R8-K98-8Z6Z&quot;;
+//		String CPswd = &quot;AOE-RUW-CHUL&quot;;
+<span class="nc" id="L30">    	String Cid = &quot;W8W-897-865Z&quot;;</span>
+<span class="nc" id="L31">		String CPswd = &quot;042043bfc0ec4fd5ac14291840ec6c1e&quot;;</span>
+<span class="nc" id="L32">    	ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);</span>
 	   
-<span class="nc" id="L32">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
-<span class="nc" id="L33">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
-<span class="nc" id="L34">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="nc" id="L34">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
+<span class="nc" id="L35">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="nc" id="L36">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
 	   
 	   //Upload profile//
 	   
 //	   ProfilePayload payload = new ProfilePayload();
-//	   payload.setUserIdentity(&quot;123456&quot;);
+//	   payload.setUserIdentity(&quot;911672&quot;);
 //	   payload.setType(&quot;profile&quot;);
 //	   ProfileData profileData = new ProfileData();
-//	   profileData.setName(&quot;Rohan&quot;);
-//	   profileData.setEmail(&quot;rohan@gmail.com&quot;);
-//	   profileData.setPhone(&quot;+919988776655&quot;);
+//	   profileData.setName(&quot;Dharmender Sheshma&quot;);
+//	   profileData.setEmail(&quot;dharmendra.shesma@gmail.com&quot;);
+//	   profileData.setPhone(&quot;+919116724916&quot;);
 //	   profileData.setGender(&quot;M&quot;);
-//	   profileData.setMsgSMS(false);
+//	   profileData.setMsgSMS(true);
 //	   profileData.setMsgEmail(true);
 //	   profileData.setMsgWhatsapp(true);
 //	   profileData.setMsgDndPhone(false);
@@ -57,10 +59,10 @@ import Response.Response;
 //	   String[] categoryRS = {&quot;Football&quot;};
 //	   categoryResubscribe.setEmail(categoryRS);
 //	   profileData.setCategoryResubscribe(categoryResubscribe);
-//	   profileData.setDob(&quot;$D_1623298338&quot;);
-//	   profileData.setCustomerType(&quot;Silver&quot;);
+//	   profileData.setDob(&quot;$D_847996200000&quot;);
+//	   profileData.setCustomerType(&quot;Platinum&quot;);
 //	   HashMap&lt;String, Object&gt; userInfo = new HashMap&lt;String, Object&gt;(); 
-//	   userInfo.put(&quot;Entry number&quot;, &quot;3rd&quot;);
+//	   userInfo.put(&quot;Profession&quot;, &quot;Student&quot;);
 //	   
 //	   profileData.setUserInfo(userInfo);
 //	   
@@ -74,7 +76,7 @@ import Response.Response;
 	   
 	   //Get profile by ID//
 	   
-//	   GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById(&quot;identity&quot;, &quot;123456&quot;);
+//	   GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById(UserIdentity.EMAIL, &quot;email1@gmail.com&quot;);
 //	 
 //	   JSONObject getProfileIdResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileId));
 //	   System.out.println(getProfileIdResponse.toString(4));
@@ -82,32 +84,29 @@ import Response.Response;
 	   
 	   //get profile by cursor//
 	   
-//	   ProfilePayload payloadCursor = new ProfilePayload(); GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById(&quot;identity&quot;, &quot;1&quot;);
-//	 
-//	   JSONObject getProfileIdResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileId));
-//	   System.out.println(getProfileIdResponse.toString(4));
-//	   payloadCursor.setEventName(&quot;charged&quot;);
-//	   payloadCursor.setFromDate(20210606);
-//	   payloadCursor.setToDate(20210609);
-//	   Cursor cursor = instance.getProfileInstance().getUserProfileCursor(payloadCursor, 1000);
-//	   GetUserProfileResponse getProfileEv = instance.getProfileInstance().getUserProfileData(cursor);
+//	   ProfilePayload payloadCursor = new ProfilePayload(); 
+//	
+//	   payloadCursor.setEventName(&quot;Identity Set&quot;);
+//	   payloadCursor.setFromDate(20210705);
+//	   payloadCursor.setToDate(20210705);
+//	   Cursor cursor = instance.getProfileInstance().getUserProfileCursor(payloadCursor, 1000, true, true, true);
+//	   GetUserProfileResponse getProfileEv = instance.getProfileInstance().getUserProfileData(cursor.getCursor());
 //	   while(getProfileEv.getNextCursor()!=null)
 //	   {
 //		   JSONObject getProfileEvResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileEv));
 //		   System.out.println(getProfileEvResponse.toString(4));
 //		   cursor.setCursor(getProfileEv.getNextCursor());
-//		   getProfileEv = instance.getProfileInstance().getUserProfileData(cursor);
+//		   getProfileEv = instance.getProfileInstance().getUserProfileData(cursor.getCursor());
 //	   }
-//	   JSONObject getProfileEvResponse= new JSONObject(jsonMapper.writeValueAsString(getProfileEv));
-//	   System.out.println(getProfileEvResponse.toString(4));
 	   
 	   //Delete profile//
 	   
 //	   ProfilePayload userDeletePayload = new ProfilePayload();
-//	   userDeletePayload.setUserIdentity(&quot;123456&quot;);
+//	   userDeletePayload.setUserIdentity(&quot;+916376440361&quot;);
 //	   Response resUserDeletePayload = instance.getProfileInstance().deleteUserProfile(userDeletePayload);
 //	   JSONObject getProfileIdDeleteResponse= new JSONObject(jsonMapper.writeValueAsString(resUserDeletePayload));
 //	   System.out.println(getProfileIdDeleteResponse.toString(4));
+	   
 	   
 	   //Upload device tokens//
 	   
@@ -161,11 +160,24 @@ import Response.Response;
 //	   System.out.println(getSubscribeResponse.toString(4));
 	   
 	   
-	
+	   //Profile count//
 	   
+<span class="nc" id="L165">	   ProfilePayload countProile = new ProfilePayload();</span>
+<span class="nc" id="L166">	   countProile.setEventName(&quot;Identity Set&quot;);</span>
+<span class="nc" id="L167">	   countProile.setFromDate(20210705);</span>
+<span class="nc" id="L168">	   countProile.setToDate(20210705);</span>
+	   	
+<span class="nc" id="L170">	   Response resCount = instance.getProfileInstance().getProfileCount(countProile);</span>
+<span class="nc" id="L171">	   JSONObject getcountResponse= new JSONObject(jsonMapper.writeValueAsString(resCount));</span>
+<span class="nc" id="L172">	   System.out.println(&quot;count response before::&quot;+getcountResponse.toString(4));</span>
+<span class="nc" id="L173">	   System.out.println(&quot;status::&quot;+resCount.getStatus());</span>
 	   
-	   
-<span class="nc" id="L168">    }</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">	   if(resCount.getStatus().equals(&quot;partial&quot;)) {</span>
+<span class="nc" id="L176">		   Response reqIdCount = instance.getProfileInstance().getProfileCountByReqId(resCount.getReqId());</span>
+<span class="nc" id="L177">		   JSONObject getcountReqIdResponse= new JSONObject(jsonMapper.writeValueAsString(reqIdCount));</span>
+<span class="nc" id="L178">		   System.out.println(&quot;count response after::&quot;+getcountReqIdResponse.toString(4));</span>
+	   }
+<span class="nc" id="L180">    }</span>
     
     
 }

@@ -43,8 +43,8 @@ import org.apache.http.conn.HttpClientConnectionManager;
 public class HttpClient {
 
 	private static final int KEEP_ALIVE = 5 * 60 * 1000;
-	private static final int MAX_CONN = 3;
-	private static final int MAX_CONN_PER_ROUTE = 3;
+	private static final int MAX_CONN = 5;
+	private static final int MAX_CONN_PER_ROUTE = 1;
 	private static final int CONN_TIMEOUT = 10 * 1000;
 	private static final int RETRY_AFTER = 3*1000;
 	int maxRetries = 3;
@@ -190,7 +190,7 @@ public class HttpClient {
 
 		HttpEntity entity = httpResponse.getEntity();
 		String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);
-		response = new JSONObject(json);
+		response = new JSONObject(json); 
 
 		if (httpResponse != null) {
 			try {

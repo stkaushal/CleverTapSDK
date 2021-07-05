@@ -43,8 +43,8 @@ import org.apache.http.conn.HttpClientConnectionManager;
 public class HttpClient {
 
 	private static final int KEEP_ALIVE = 5 * 60 * 1000;
-	private static final int MAX_CONN = 3;
-	private static final int MAX_CONN_PER_ROUTE = 3;
+	private static final int MAX_CONN = 5;
+	private static final int MAX_CONN_PER_ROUTE = 1;
 	private static final int CONN_TIMEOUT = 10 * 1000;
 	private static final int RETRY_AFTER = 3*1000;
 <span class="fc" id="L50">	int maxRetries = 3;</span>
@@ -58,9 +58,9 @@ public class HttpClient {
 		@Override
 		public long getKeepAliveDuration(org.apache.http.HttpResponse response,
 				org.apache.http.protocol.HttpContext context) {
-<span class="nc" id="L61">			HeaderElementIterator it = new BasicHeaderElementIterator(</span>
-<span class="nc" id="L62">					response.headerIterator(HTTP.CONN_KEEP_ALIVE));</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">			while (it.hasNext()) {</span>
+<span class="fc" id="L61">			HeaderElementIterator it = new BasicHeaderElementIterator(</span>
+<span class="fc" id="L62">					response.headerIterator(HTTP.CONN_KEEP_ALIVE));</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">			while (it.hasNext()) {</span>
 <span class="nc" id="L64">				HeaderElement he = it.nextElement();</span>
 <span class="nc" id="L65">				String param = he.getName();</span>
 <span class="nc" id="L66">				String value = he.getValue();</span>
@@ -68,7 +68,7 @@ public class HttpClient {
 <span class="nc" id="L68">					return Long.parseLong(value) * 1000;</span>
 				}
 <span class="nc" id="L70">			}</span>
-<span class="nc" id="L71">			return KEEP_ALIVE;</span>
+<span class="fc" id="L71">			return KEEP_ALIVE;</span>
 		}
 	};
 
@@ -112,37 +112,37 @@ public class HttpClient {
 <span class="fc" id="L112">		int waitPeriod = RETRY_AFTER;</span>
 		@Override
 		public boolean retryRequest(HttpResponse response, int executionCount, HttpContext context) {
-<span class="nc bnc" id="L115" title="All 4 branches missed.">			if(response.getStatusLine().getStatusCode() &gt;= 500 || response.getStatusLine().getStatusCode() == 408)</span>
-			{
-<span class="nc" id="L117">				waitPeriod = getRetryAfterTime(response);</span>
-<span class="nc bnc" id="L118" title="All 2 branches missed.">				return executionCount &lt;= maxRetries;</span>
+<span class="pc bpc" id="L115" title="1 of 4 branches missed.">			if(response.getStatusLine().getStatusCode() &gt;= 500 || response.getStatusLine().getStatusCode() == 408)</span>
+			{	
+<span class="fc" id="L117">				waitPeriod = getRetryAfterTime(response);</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">				return executionCount &lt;= maxRetries;</span>
 			}
-<span class="nc bnc" id="L120" title="All 2 branches missed.">			else if(response.getStatusLine().getStatusCode() == 429)</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">			else if(response.getStatusLine().getStatusCode() == 429)</span>
 			{
 <span class="nc" id="L122">				waitPeriod = getRetryAfterTime(response);</span>
 <span class="nc bnc" id="L123" title="All 2 branches missed.">				return executionCount &lt;= maxRetries;</span>
 			}
-<span class="nc" id="L125">			return false;</span>
+<span class="fc" id="L125">			return false;</span>
 		}
 
 		@Override
 		public long getRetryInterval() {
-<span class="nc" id="L130">			return waitPeriod;</span>
+<span class="fc" id="L130">			return waitPeriod;</span>
 		}
 	};
 	
 	private int getRetryAfterTime(HttpResponse response) {
-<span class="nc" id="L135">		String retryAfter = null;</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">		if(response.getFirstHeader(&quot;Retry-After&quot;) != null)</span>
+<span class="fc" id="L135">		String retryAfter = null;</span>
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">		if(response.getFirstHeader(&quot;Retry-After&quot;) != null)</span>
 		{
 <span class="nc" id="L138">			retryAfter = response.getFirstHeader(&quot;Retry-After&quot;).getValue();</span>
 		}
 		
-<span class="nc bnc" id="L141" title="All 4 branches missed.">		if(retryAfter!=null  &amp;&amp; !retryAfter.isEmpty())</span>
+<span class="pc bpc" id="L141" title="3 of 4 branches missed.">		if(retryAfter!=null  &amp;&amp; !retryAfter.isEmpty())</span>
 		{
 <span class="nc" id="L143">			return Integer.parseInt(retryAfter);</span>
 		}
-<span class="nc" id="L145">		return RETRY_AFTER;</span>
+<span class="fc" id="L145">		return RETRY_AFTER;</span>
 	};
 
 <span class="fc" id="L148">	public HttpClient() {</span>
@@ -152,84 +152,85 @@ public class HttpClient {
 <span class="fc" id="L152">				.setSocketTimeout(CONN_TIMEOUT)</span>
 <span class="fc" id="L153">				.setConnectTimeout(CONN_TIMEOUT)</span>
 <span class="fc" id="L154">				.setConnectionRequestTimeout(CONN_TIMEOUT)</span>
-<span class="fc" id="L155">				.build();</span>
+<span class="fc" id="L155">				.setExpectContinueEnabled(true)</span>
+<span class="fc" id="L156">				.build();</span>
 
-<span class="fc" id="L157">		this.connManager.setMaxTotal(MAX_CONN);</span>
+<span class="fc" id="L158">		this.connManager.setMaxTotal(MAX_CONN);</span>
 		// Increase default max connection per route
-<span class="fc" id="L159">		this.connManager.setDefaultMaxPerRoute(MAX_CONN_PER_ROUTE);</span>
+<span class="fc" id="L160">		this.connManager.setDefaultMaxPerRoute(MAX_CONN_PER_ROUTE);</span>
 
-<span class="fc" id="L161">		this.httpClient = HttpClients.custom()</span>
-<span class="fc" id="L162">				.setKeepAliveStrategy(keepAliveStrategy)</span>
-<span class="fc" id="L163">				.setConnectionManager(connManager)</span>
-<span class="fc" id="L164">				.setDefaultRequestConfig(requestConfig)</span>
-<span class="fc" id="L165">				.setRetryHandler(myHttpRequestRetryHandler)</span>
-<span class="fc" id="L166">				.setServiceUnavailableRetryStrategy(myServiceUnavailableRetryStrategy)</span>
-<span class="fc" id="L167">				.build();</span>
+<span class="fc" id="L162">		this.httpClient = HttpClients.custom()</span>
+<span class="fc" id="L163">				.setKeepAliveStrategy(keepAliveStrategy)</span>
+<span class="fc" id="L164">				.setConnectionManager(connManager)</span>
+<span class="fc" id="L165">				.setDefaultRequestConfig(requestConfig)</span>
+<span class="fc" id="L166">				.setRetryHandler(myHttpRequestRetryHandler)</span>
+<span class="fc" id="L167">				.setServiceUnavailableRetryStrategy(myServiceUnavailableRetryStrategy)</span>
+<span class="fc" id="L168">				.build();</span>
 
 		// detect idle and expired connections and close them
-<span class="fc" id="L170">		IdleConnectionMonitorThread staleMonitor = new IdleConnectionMonitorThread(connManager);</span>
-<span class="fc" id="L171">		staleMonitor.start();</span>
-<span class="fc" id="L172">	}</span>
+<span class="fc" id="L171">		IdleConnectionMonitorThread staleMonitor = new IdleConnectionMonitorThread(connManager);</span>
+<span class="fc" id="L172">		staleMonitor.start();</span>
+<span class="fc" id="L173">	}</span>
 
-	public JSONObject postRequest(String url, JSONObject obj) throws IOException, InterruptedException {
-<span class="fc" id="L175">		JSONObject response = null;</span>
-<span class="fc" id="L176">		HttpPost httpPost = new HttpPost(url);</span>
+	public JSONObject postRequest(String baseUrl, JSONObject obj) throws IOException, InterruptedException {
+<span class="fc" id="L176">		JSONObject response = null;</span>
+<span class="fc" id="L177">		HttpPost httpPost = new HttpPost(baseUrl);</span>
 
-<span class="fc" id="L178">		httpPost.setConfig(requestConfig);</span>
+<span class="fc" id="L179">		httpPost.setConfig(requestConfig);</span>
 
-<span class="fc" id="L180">		httpPost.addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=UTF-8&quot;);</span>
-<span class="fc" id="L181">		httpPost.addHeader(&quot;X-CleverTap-Account-Id&quot;, ClevertapInstance.getId());</span>
-<span class="fc" id="L182">		httpPost.addHeader(&quot;X-CleverTap-Passcode&quot;, ClevertapInstance.getPassword());</span>
+<span class="fc" id="L181">		httpPost.addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=UTF-8&quot;);</span>
+<span class="fc" id="L182">		httpPost.addHeader(&quot;X-CleverTap-Account-Id&quot;, ClevertapInstance.getId());</span>
+<span class="fc" id="L183">		httpPost.addHeader(&quot;X-CleverTap-Passcode&quot;, ClevertapInstance.getPassword());</span>
 
-<span class="fc" id="L184">		StringEntity params = null;</span>
-<span class="fc" id="L185">		params = new StringEntity(obj.toString());</span>
-<span class="fc" id="L186">		httpPost.setEntity(params);</span>
+<span class="fc" id="L185">		StringEntity params = null;</span>
+<span class="fc" id="L186">		params = new StringEntity(obj.toString());</span>
+<span class="fc" id="L187">		httpPost.setEntity(params);</span>
 
-<span class="fc" id="L188">		httpResponse = httpClient.execute(httpPost);</span>
+<span class="fc" id="L189">		httpResponse = httpClient.execute(httpPost);</span>
 
-<span class="fc" id="L190">		HttpEntity entity = httpResponse.getEntity();</span>
-<span class="fc" id="L191">		String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);</span>
-<span class="fc" id="L192">		response = new JSONObject(json);</span>
+<span class="fc" id="L191">		HttpEntity entity = httpResponse.getEntity();</span>
+<span class="fc" id="L192">		String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);</span>
+<span class="fc" id="L193">		response = new JSONObject(json); </span>
 
-<span class="pc bpc" id="L194" title="1 of 2 branches missed.">		if (httpResponse != null) {</span>
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">		if (httpResponse != null) {</span>
 			try {
-<span class="fc" id="L196">				httpResponse.close();</span>
-<span class="nc" id="L197">			} catch (IOException ioException) {</span>
-<span class="nc" id="L198">				ioException.printStackTrace();</span>
-<span class="fc" id="L199">			}</span>
+<span class="fc" id="L197">				httpResponse.close();</span>
+<span class="nc" id="L198">			} catch (IOException ioException) {</span>
+<span class="nc" id="L199">				ioException.printStackTrace();</span>
+<span class="fc" id="L200">			}</span>
 		}
 
-<span class="fc" id="L202">		return response;</span>
+<span class="fc" id="L203">		return response;</span>
 	}
 
-	public JSONObject getRequest(String url) throws IOException, InterruptedException {
+	public JSONObject getRequest(String baseUrl) throws IOException, InterruptedException {
 
-<span class="fc" id="L207">		JSONObject response = null;</span>
+<span class="fc" id="L208">		JSONObject response = null;</span>
 
 		// Creating a HttpGet object
-<span class="fc" id="L210">		HttpGet httpGet = new HttpGet(url);</span>
+<span class="fc" id="L211">		HttpGet httpGet = new HttpGet(baseUrl);</span>
 
-<span class="fc" id="L212">		httpGet.setConfig(requestConfig);</span>
+<span class="fc" id="L213">		httpGet.setConfig(requestConfig);</span>
 
-<span class="fc" id="L214">		httpGet.addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=UTF-8&quot;);</span>
-<span class="fc" id="L215">		httpGet.addHeader(&quot;X-CleverTap-Account-Id&quot;, ClevertapInstance.getId());</span>
-<span class="fc" id="L216">		httpGet.addHeader(&quot;X-CleverTap-Passcode&quot;, ClevertapInstance.getPassword());</span>
+<span class="fc" id="L215">		httpGet.addHeader(&quot;Content-Type&quot;, &quot;application/json; charset=UTF-8&quot;);</span>
+<span class="fc" id="L216">		httpGet.addHeader(&quot;X-CleverTap-Account-Id&quot;, ClevertapInstance.getId());</span>
+<span class="fc" id="L217">		httpGet.addHeader(&quot;X-CleverTap-Passcode&quot;, ClevertapInstance.getPassword());</span>
 
-<span class="fc" id="L218">		httpResponse = httpClient.execute(httpGet);</span>
+<span class="fc" id="L219">		httpResponse = httpClient.execute(httpGet);</span>
 
-<span class="fc" id="L220">		HttpEntity entity = httpResponse.getEntity();</span>
-<span class="fc" id="L221">		String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);</span>
-<span class="fc" id="L222">		response = new JSONObject(json);</span>
+<span class="fc" id="L221">		HttpEntity entity = httpResponse.getEntity();</span>
+<span class="fc" id="L222">		String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);</span>
+<span class="fc" id="L223">		response = new JSONObject(json);</span>
 
-<span class="pc bpc" id="L224" title="1 of 2 branches missed.">		if (httpResponse != null) {</span>
+<span class="pc bpc" id="L225" title="1 of 2 branches missed.">		if (httpResponse != null) {</span>
 			try {
-<span class="fc" id="L226">				httpResponse.close();</span>
-<span class="nc" id="L227">			} catch (IOException e) {</span>
-<span class="nc" id="L228">				e.printStackTrace();</span>
-<span class="fc" id="L229">			}</span>
+<span class="fc" id="L227">				httpResponse.close();</span>
+<span class="nc" id="L228">			} catch (IOException e) {</span>
+<span class="nc" id="L229">				e.printStackTrace();</span>
+<span class="fc" id="L230">			}</span>
 		}
 
-<span class="fc" id="L232">		return response;</span>
+<span class="fc" id="L233">		return response;</span>
 	}
 
 	public static class IdleConnectionMonitorThread extends Thread {
@@ -238,35 +239,35 @@ public class HttpClient {
 		private volatile boolean shutdown;
 
 		public IdleConnectionMonitorThread(HttpClientConnectionManager connMgr) {
-<span class="fc" id="L241">			super();</span>
-<span class="fc" id="L242">			this.connMgr = connMgr;</span>
-<span class="fc" id="L243">		}</span>
+<span class="fc" id="L242">			super();</span>
+<span class="fc" id="L243">			this.connMgr = connMgr;</span>
+<span class="fc" id="L244">		}</span>
 
 		@Override
 		public void run() {
 			try {
-<span class="pc bpc" id="L248" title="1 of 2 branches missed.">				while (!shutdown) {</span>
-<span class="fc" id="L249">					synchronized (this) {</span>
-<span class="nc" id="L250">						wait(5000);</span>
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">				while (!shutdown) {</span>
+<span class="fc" id="L250">					synchronized (this) {</span>
+<span class="fc" id="L251">						wait(5000);</span>
 						// Close expired connections
-<span class="nc" id="L252">						connMgr.closeExpiredConnections();</span>
+<span class="fc" id="L253">						connMgr.closeExpiredConnections();</span>
 						// Optionally, close connections
 						// that have been idle longer than 60 sec
-<span class="nc" id="L255">						connMgr.closeIdleConnections(60, TimeUnit.SECONDS);</span>
-<span class="nc" id="L256">					}</span>
+<span class="fc" id="L256">						connMgr.closeIdleConnections(60, TimeUnit.SECONDS);</span>
+<span class="fc" id="L257">					}</span>
 				}
-<span class="nc" id="L258">			} catch (InterruptedException ex) {</span>
+<span class="nc" id="L259">			} catch (InterruptedException ex) {</span>
 				// terminate
-<span class="nc" id="L260">				shutdown();</span>
-<span class="nc" id="L261">			}</span>
-<span class="nc" id="L262">		}</span>
+<span class="nc" id="L261">				shutdown();</span>
+<span class="nc" id="L262">			}</span>
+<span class="nc" id="L263">		}</span>
 
 		public void shutdown() {
-<span class="nc" id="L265">			shutdown = true;</span>
-<span class="nc" id="L266">			synchronized (this) {</span>
-<span class="nc" id="L267">				notifyAll();</span>
-<span class="nc" id="L268">			}</span>
-<span class="nc" id="L269">		}</span>
+<span class="nc" id="L266">			shutdown = true;</span>
+<span class="nc" id="L267">			synchronized (this) {</span>
+<span class="nc" id="L268">				notifyAll();</span>
+<span class="nc" id="L269">			}</span>
+<span class="nc" id="L270">		}</span>
 
 	}
 

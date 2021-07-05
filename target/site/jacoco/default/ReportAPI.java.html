@@ -8,20 +8,21 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Helper.ClevertapInstance;
-import Payload.Group;
-import Payload.ReportPayload;
+import Helper.Enums.Region;
+import Payload.Report.Group;
+import Payload.Report.ReportPayload;
 import Response.Response;
 
-<span class="nc" id="L15">public class ReportAPI {</span>
+<span class="nc" id="L16">public class ReportAPI {</span>
 	public static void main(String[] args) throws IOException, InterruptedException {
     	
-<span class="nc" id="L18">	   String Cid = &quot;4R8-K98-8Z6Z&quot;;</span>
-<span class="nc" id="L19">	   String CPswd = &quot;AOE-RUW-CHUL&quot;;</span>
-<span class="nc" id="L20">	   ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd);</span>
+<span class="nc" id="L19">		String Cid = &quot;W8W-897-865Z&quot;;</span>
+<span class="nc" id="L20">		String CPswd = &quot;042043bfc0ec4fd5ac14291840ec6c1e&quot;;</span>
+<span class="nc" id="L21">		ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);</span>
 	   
-<span class="nc" id="L22">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
-<span class="nc" id="L23">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
-<span class="nc" id="L24">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="nc" id="L23">	   ObjectMapper jsonMapper = new ObjectMapper();</span>
+<span class="nc" id="L24">	   jsonMapper.setSerializationInclusion(Include.NON_NULL);</span>
+<span class="nc" id="L25">	   jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
 	   
 	   
 	   //Realtime count//
@@ -32,16 +33,16 @@ import Response.Response;
 //	   JSONObject uploadProfileResponse= new JSONObject(jsonMapper.writeValueAsString(resUploadProfile));
 //	   System.out.println(uploadProfileResponse.toString(4));
 	   
-	   //Message Report//
+	   
+	   
+	   //Message Report// status code 500
 	   
 //	   ReportPayload messageReport = new ReportPayload();
-//	   messageReport.setFromDate(20210606);
-//	   messageReport.setToDate(20210609);
-//	   messageReport.setDaily(true);
-//	   String[] channel = {&quot;InApp&quot;};
-//	   messageReport.setChannel(channel);
+//	   messageReport.setFromDate(20210629);
+//	   messageReport.setToDate(20210629);
 //	   
 //	   Response resMessageReport = instance.getReportInstance().getMessageReports(messageReport);
+//	   
 //	   JSONObject messageReportResponse= new JSONObject(jsonMapper.writeValueAsString(resMessageReport));
 //	   System.out.println(messageReportResponse.toString(4));
 	   
@@ -98,6 +99,6 @@ import Response.Response;
 //	   }
 //	   
 	   
-<span class="nc" id="L101">	}</span>
+<span class="nc" id="L102">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

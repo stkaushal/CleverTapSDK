@@ -6,8 +6,8 @@ import java.util.HashMap;
 	String objectId;
 	String platform;
 	String email;
-	HashMap&lt;String, String&gt; profileData;
-	long identity;
+	HashMap&lt;String, Object&gt; profileData;
+	Object identity;
 	int id;
 	
 	public String getObjectId() {
@@ -28,23 +28,24 @@ import java.util.HashMap;
 	public void setEmail(String email) {
 <span class="fc" id="L29">		this.email = email;</span>
 <span class="fc" id="L30">	}</span>
-	public HashMap&lt;String, String&gt; getProfileData() {
-<span class="fc" id="L32">		return profileData;</span>
+	
+	public HashMap&lt;String, Object&gt; getProfileData() {
+<span class="fc" id="L33">		return profileData;</span>
 	}
-	public void setProfileData(HashMap&lt;String, String&gt; profileData) {
-<span class="fc" id="L35">		this.profileData = profileData;</span>
-<span class="fc" id="L36">	}</span>
-	public long getIdentity() {
-<span class="fc" id="L38">		return identity;</span>
+	public void setProfileData(HashMap&lt;String, Object&gt; profileData) {
+<span class="fc" id="L36">		this.profileData = profileData;</span>
+<span class="fc" id="L37">	}</span>
+	public Object getIdentity() {
+<span class="fc" id="L39">		return identity;</span>
 	}
-	public void setIdentity(long identity) {
-<span class="fc" id="L41">		this.identity = identity;</span>
-<span class="fc" id="L42">	}</span>
+	public void setIdentity(Object identity) {
+<span class="fc" id="L42">		this.identity = identity;</span>
+<span class="fc" id="L43">	}</span>
 	public int getId() {
-<span class="fc" id="L44">		return id;</span>
+<span class="fc" id="L45">		return id;</span>
 	}
 	public void setId(int id) {
-<span class="fc" id="L47">		this.id = id;</span>
-<span class="fc" id="L48">	}</span>
+<span class="fc" id="L48">		this.id = id;</span>
+<span class="fc" id="L49">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -21,7 +21,7 @@ import Response.Response;
 class ScaleTest {
 
 	String Cid = "TEST-69W-8RW-5R6Z";
-	String CPswd = "WRW-KSE-UWUL";
+	String CPswd = "af0f2e63751341fca0c934a386f5eabe";
 	ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
 
 	@BeforeEach
@@ -29,40 +29,40 @@ class ScaleTest {
 		System.out.println("Before scale test");
 	}
 
-	@Test
-	void testUploadUserProfile() throws IOException, InterruptedException {
-		int count = 0;
-		for(int j = 0; j < 100; j++) {
-			List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
-	
-			for(int i = 0; i < 100; i++) {
-				ProfilePayload payload = new ProfilePayload();
-				String email = "fmail"+String.valueOf(Instant.now())+"@yahoomail.com";
-				payload.setUserIdentity(email);
-				payload.setType("profile");
-	
-				ProfileData profileData = new ProfileData();
-				profileData.setName("F"+String.valueOf(Instant.now()));
-				profileData.setGender("M");
-				profileData.setMsgSMS(true);
-				profileData.setMsgEmail(true);
-				profileData.setMsgWhatsapp(true);
-				profileData.setMsgDndPhone(false);
-				profileData.setMsgDndEmail(false);
-				profileData.setDob("$D_911079111");
-				profileData.setCustomerType("Gold");
-	
-				payload.setProfileData(profileData);
-	
-				payloadList.add(payload);	
-				
-				count++;
-			}
-			Response resUploadProfile = instance.getProfileInstance().uploadUserProfile(payloadList);
-			System.out.println(resUploadProfile.getProcessed());
-		}
-		
-		TimeUnit.SECONDS.sleep(10);
+//	@Test
+//	void testUploadUserProfile() throws IOException, InterruptedException {
+//		int count = 0;
+//		for(int j = 0; j < 10; j++) {
+//			List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
+//	
+//			for(int i = 0; i < 1000; i++) {
+//				ProfilePayload payload = new ProfilePayload();
+//				String email = "fmail"+String.valueOf(Instant.now())+"@yahoomail.com";
+//				payload.setUserIdentity(email);
+//				payload.setType("profile");
+//	
+//				ProfileData profileData = new ProfileData();
+//				profileData.setName("F"+String.valueOf(Instant.now()));
+//				profileData.setGender("M");
+//				profileData.setMsgSMS(true);
+//				profileData.setMsgEmail(true);
+//				profileData.setMsgWhatsapp(true);
+//				profileData.setMsgDndPhone(false);
+//				profileData.setMsgDndEmail(false);
+//				profileData.setDob("$D_911079111");
+//				profileData.setCustomerType("Gold");
+//	
+//				payload.setProfileData(profileData);
+//	
+//				payloadList.add(payload);	
+//				
+//				count++;
+//			}
+//			Response resUploadProfile = instance.getProfileInstance().uploadUserProfile(payloadList);
+//			System.out.println(resUploadProfile.getProcessed());
+//		}
+//		
+//		TimeUnit.SECONDS.sleep(10);
 		
 //		ProfilePayload countProile = new ProfilePayload();
 //		countProile.setEventName("Identity Set");
@@ -79,7 +79,7 @@ class ScaleTest {
 //		{
 //			Assertions.assertEquals(1700000, resCount.getCount());
 //		}
-	}
+//	}
 
 //	@Test
 //	void testUploadevents() throws IOException, InterruptedException {

@@ -7,13 +7,14 @@ import java.util.List;
 import Helper.ClevertapInstance;
 import Payload.Profile.ProfilePayload;
 import Payload.Profile.ProfileData.ProfileData;
+import Profile.Profiles;
 import Response.Response;
 
 public class ClientMultiThreaded extends Thread {
-	ClevertapInstance instance;
+	Profiles instance;
 	int id;
 
-	public ClientMultiThreaded(ClevertapInstance instance, int id) {
+	public ClientMultiThreaded(Profiles instance, int id) {
 		this.instance = instance;
 		this.id = id;
 	}
@@ -21,7 +22,7 @@ public class ClientMultiThreaded extends Thread {
 	@Override
 	public void run() {
 		try{
-			for(int j = 0; j < 100; j++) {
+			for(int j = 0; j < 10; j++) {
 				List<ProfilePayload> payloadList = new ArrayList<ProfilePayload>();
 
 				for(int i = 0; i < 1000; i++) {
@@ -46,7 +47,7 @@ public class ClientMultiThreaded extends Thread {
 					payloadList.add(payload);	
 
 				}
-				Response resUploadProfile = instance.getProfileInstance().uploadUserProfile(payloadList);
+				Response resUploadProfile = instance.uploadUserProfile(payloadList);
 				System.out.println("For thread " + id + ", req no: "+(j+1) + " profile uploaded:: " +resUploadProfile.getProcessed());
 			}
 		

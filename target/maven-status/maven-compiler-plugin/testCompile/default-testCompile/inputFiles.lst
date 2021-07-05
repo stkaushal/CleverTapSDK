@@ -1,5 +1,12 @@
-/home/dharmender/eclipse-workspace/CleverTapSDK/test/Profile/ProfilesTest.java
-/home/dharmender/eclipse-workspace/CleverTapSDK/test/Event/EventTest.java
-/home/dharmender/eclipse-workspace/CleverTapSDK/test/Campaign/CampaignsTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Report/Unit/ReportUnitTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Profile/Unit/ProfilesUnitTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Profile/Integration/ProfilesIntegrationTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Event/Integration/EventIntegrationTest.java
 /home/dharmender/eclipse-workspace/CleverTapSDK/test/HTTP/HttpClientTest.java
-/home/dharmender/eclipse-workspace/CleverTapSDK/test/Report/ReportTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/ScaleTest/ClientMultiThreaded.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Campaign/Unit/CampaignsUnitTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Report/Integration/ReportIntegrationTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Campaign/Integration/CampaignsIntegrationTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/ScaleTest/ThreadScale.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/Event/Unit/EventUnitTest.java
+/home/dharmender/eclipse-workspace/CleverTapSDK/test/ScaleTest/ScaleTest.java

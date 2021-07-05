@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: Report.Integration.ReportIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.899 s - in Report.Integration.ReportIntegrationTest

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>To.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">Payload.Campaign</a> &gt; <span class="el_source">To.java</span></div><h1>To.java</h1><pre class="source lang-java linenums">package Payload.Campaign;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L10">public class To {</span>
+	
+	@JsonProperty(value=&quot;FBID&quot;)
+	List&lt;String&gt; fbid;
+	
+	@JsonProperty(value=&quot;Email&quot;)
+	List&lt;String&gt; email;
+	
+	@JsonProperty(value=&quot;GPID&quot;)
+	List&lt;String&gt; gpid;
+	
+	@JsonProperty(value=&quot;Identity&quot;)
+	List&lt;String&gt; identity;
+	
+	@JsonProperty(value=&quot;objectId&quot;)
+	List&lt;String&gt; objectId;
+
+	public List&lt;String&gt; getFbid() {
+<span class="fc" id="L28">		return fbid;</span>
+	}
+
+	public void setFbid(List&lt;String&gt; fbid) {
+<span class="fc" id="L32">		this.fbid = fbid;</span>
+<span class="fc" id="L33">	}</span>
+
+	public List&lt;String&gt; getEmail() {
+<span class="fc" id="L36">		return email;</span>
+	}
+
+	public void setEmail(List&lt;String&gt; email) {
+<span class="fc" id="L40">		this.email = email;</span>
+<span class="fc" id="L41">	}</span>
+
+	public List&lt;String&gt; getGpid() {
+<span class="fc" id="L44">		return gpid;</span>
+	}
+
+	public void setGpid(List&lt;String&gt; gpid) {
+<span class="nc" id="L48">		this.gpid = gpid;</span>
+<span class="nc" id="L49">	}</span>
+
+	public List&lt;String&gt; getIdentity() {
+<span class="fc" id="L52">		return identity;</span>
+	}
+
+	public void setIdentity(List&lt;String&gt; identity) {
+<span class="fc" id="L56">		this.identity = identity;</span>
+<span class="fc" id="L57">	}</span>
+
+	public List&lt;String&gt; getObjectId() {
+<span class="fc" id="L60">		return objectId;</span>
+	}
+
+	public void setObjectId(List&lt;String&gt; objectId) {
+<span class="fc" id="L64">		this.objectId = objectId;</span>
+<span class="fc" id="L65">	}</span>
+
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
