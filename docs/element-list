@@ -1,0 +1,17 @@
+unnamed package
+campaign
+event
+helper
+helper.enums
+http
+payload.campaign
+payload.campaign.campaigncontent
+payload.campaign.campaigncontent.actions
+payload.campaign.campaigncontent.platformtype
+payload.event
+payload.profile
+payload.profile.profiledata
+payload.report
+profile
+report
+response

@@ -10,25 +10,25 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Helper.ClevertapInstance;
-import Helper.Cursor;
-import Helper.Enums.*;
-import Payload.Profile.Keys;
-import Payload.Profile.ProfilePayload;
-import Payload.Profile.TokenData;
-import Payload.Profile.ProfileData.CategoryResubscribe;
-import Payload.Profile.ProfileData.CategoryUnsubscribe;
-import Payload.Profile.ProfileData.ProfileData;
-import Response.GetUserProfileResponse;
-import Response.Response;
+import helper.ClevertapInstance;
+import helper.Cursor;
+import helper.enums.*;
+import payload.profile.Keys;
+import payload.profile.ProfilePayload;
+import payload.profile.TokenData;
+import payload.profile.profiledata.CategoryResubscribe;
+import payload.profile.profiledata.CategoryUnsubscribe;
+import payload.profile.profiledata.ProfileData;
+import response.GetUserProfileResponse;
+import response.Response;
 
 public class ProfileAPI {
 	
     public static void main(String[] args) throws IOException, InterruptedException {
 //    	String Cid = "4R8-K98-8Z6Z";
 //		String CPswd = "AOE-RUW-CHUL";
-    	String Cid = "W8W-897-865Z";
-		String CPswd = "042043bfc0ec4fd5ac14291840ec6c1e";
+    	String Cid = "TEST-69W-8RW-5R6Z";
+    	String CPswd = "af0f2e63751341fca0c934a386f5eabe";
     	ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
 	   
 	   ObjectMapper jsonMapper = new ObjectMapper();
@@ -164,9 +164,9 @@ public class ProfileAPI {
 	   
 	   ProfilePayload countProile = new ProfilePayload();
 	   countProile.setEventName("Identity Set");
-	   countProile.setFromDate(20210705);
-	   countProile.setToDate(20210705);
-	   	
+	   countProile.setFromDate(20210706);
+	   countProile.setToDate(20210706);
+	   
 	   Response resCount = instance.getProfileInstance().getProfileCount(countProile);
 	   JSONObject getcountResponse= new JSONObject(jsonMapper.writeValueAsString(resCount));
 	   System.out.println("count response before::"+getcountResponse.toString(4));
@@ -175,7 +175,7 @@ public class ProfileAPI {
 	   if(resCount.getStatus().equals("partial")) {
 		   Response reqIdCount = instance.getProfileInstance().getProfileCountByReqId(resCount.getReqId());
 		   JSONObject getcountReqIdResponse= new JSONObject(jsonMapper.writeValueAsString(reqIdCount));
-		   System.out.println("count response after::"+getcountReqIdResponse.toString(4));
+		   System.out.println("count response after:: "+getcountReqIdResponse.toString(4));
 	   }
     }
     

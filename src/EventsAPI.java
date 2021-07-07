@@ -9,12 +9,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Helper.ClevertapInstance;
-import Helper.Cursor;
-import Helper.Enums.Region;
-import Payload.Event.EventPayload;
-import Response.GetEventsResponse;
-import Response.Response;
+import helper.ClevertapInstance;
+import helper.Cursor;
+import helper.enums.Region;
+import payload.event.EventPayload;
+import response.GetEventsResponse;
+import response.Response;
 
 public class EventsAPI {
 	public static void main(String[] args) throws IOException, InterruptedException {

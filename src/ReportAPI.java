@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Helper.ClevertapInstance;
-import Helper.Enums.Region;
-import Payload.Report.Group;
-import Payload.Report.ReportPayload;
-import Response.Response;
+import helper.ClevertapInstance;
+import helper.enums.Region;
+import payload.report.Group;
+import payload.report.ReportPayload;
+import response.Response;
 
 public class ReportAPI {
 	public static void main(String[] args) throws IOException, InterruptedException {

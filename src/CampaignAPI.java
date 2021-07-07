@@ -9,15 +9,15 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Helper.Enums.CampaignMethod;
-import Helper.ClevertapInstance;
-import Helper.Enums.Region;
-import Payload.Campaign.CampaignContent.*;
-import Payload.Campaign.CampaignPayload;
-import Payload.Campaign.DateRangePayload;
-import Payload.Campaign.To;
-import Payload.Campaign.Where;
-import Response.Response;
+import helper.ClevertapInstance;
+import helper.enums.CampaignMethod;
+import helper.enums.Region;
+import payload.campaign.CampaignPayload;
+import payload.campaign.DateRangePayload;
+import payload.campaign.To;
+import payload.campaign.Where;
+import payload.campaign.campaigncontent.*;
+import response.Response;
 
 public class CampaignAPI {
 	public static void main(String[] args) throws IOException, InterruptedException {
