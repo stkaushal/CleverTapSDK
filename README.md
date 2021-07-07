@@ -6,3 +6,5 @@
 
 To check test coverage click on the above badge.
 
+### [CLevertap SDK Javadocs](https://dharmendersheshma.github.io/CleverTapSDK)
+
