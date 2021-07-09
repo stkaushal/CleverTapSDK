@@ -19,35 +19,35 @@ import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Profiles.
+ * The Profiles Class.
  */
 public class Profiles {	
 	
-	/** The Constant urlUploadData. */
+	/** The API endpoint to upload profiles. */
 	private static final String urlUploadData = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/upload";
 	
-	/** The Constant urlGetProfileCursor. */
+	/** The API endpoint to get cursor for profiles. */
 	private static final String urlGetProfileCursor = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/profiles.json";
 	
-	/** The Constant urlGetProfileById. */
+	/** The API endpoint to get the profile using id. */
 	private static final String urlGetProfileById = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/profile.json";
 	
-	/** The Constant urlGetProfileCount. */
+	/** The API endpoint to get profile count. */
 	private static final String urlGetProfileCount = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/profiles.json";
 	
-	/** The Constant urlDeleteProfile. */
+	/** The API endpoint to delete profile. */
 	private static final String urlDeleteProfile = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/delete/profiles.json";
 	
-	/** The Constant urlDemergeProfile. */
+	/** The API endpoint to demerge profile. */
 	private static final String urlDemergeProfile = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/demerge/profiles.json";
 	
-	/** The Constant urlSubscribe. */
+	/** The API endpoint to set a phone number or email status as subscribed or unsubscribed. */
 	private static final String urlSubscribe = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/subscribe";
 	
-	/** The Constant urlDisassociate. */
+	/** The API endpoint to disconnect a phone number from a user profile. */
 	private static final String urlDisassociate = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/disassociate";
 	
-	/** The Constant urlGetProfileCountByReqId. */
+	/** The API endpoint to get profile count using request id. */
 	private static final String urlGetProfileCountByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/profiles.json?req_id=";
 	
 	/** The object mapper. */
@@ -60,7 +60,7 @@ public class Profiles {
 	 * Instantiates a new profiles.
 	 */
 	public Profiles(){
-		this.client = new HttpClient();
+		this.client = HttpClient.getHttpClientInstance();
 		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -70,8 +70,8 @@ public class Profiles {
 	/**
 	 * Upload user profile.
 	 *
-	 * @param payload the payload
-	 * @return the response
+	 * @param payload the profile payload list
+	 * @return Response - the response
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -87,14 +87,14 @@ public class Profiles {
 	}
 	
 	/**
-	 * Gets the user profile cursor.
+	 * Gets the cursor to get user profiles.
 	 *
-	 * @param payload the payload
-	 * @param batch_size the batch size
-	 * @param app the app
-	 * @param events the events
-	 * @param profile the profile
-	 * @return the user profile cursor
+	 * @param payload the profile payload
+	 * @param batch_size The number of results to return in each API call
+	 * @param app the boolean flag to receive app fields in the response
+	 * @param events the boolean flag to receive event summary fields in the response
+	 * @param profile the boolean flag to receive the custom profile properties in the response.
+	 * @return Cursor - the user profiles cursor
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -111,7 +111,7 @@ public class Profiles {
 	}
 	
 	/**
-	 * Gets the user profile data.
+	 * Gets the user profile data using cursor.
 	 *
 	 * @param cursor the cursor
 	 * @return the user profile data
@@ -131,9 +131,9 @@ public class Profiles {
 	/**
 	 * Gets the user profile by id.
 	 *
-	 * @param type the type
+	 * @param type the type of user id
 	 * @param id the id
-	 * @return the user profile by id
+	 * @return the user profile 
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -162,7 +162,7 @@ public class Profiles {
 	/**
 	 * Upload device tokens.
 	 *
-	 * @param payload the payload
+	 * @param payload the profile payload list
 	 * @return the response
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -181,7 +181,7 @@ public class Profiles {
 	/**
 	 * Gets the profile count.
 	 *
-	 * @param payload the payload
+	 * @param payload the profile payload
 	 * @return the profile count
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -197,7 +197,7 @@ public class Profiles {
 	/**
 	 * Delete user profile.
 	 *
-	 * @param payload the payload
+	 * @param payload the profile payload
 	 * @return the response
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -214,7 +214,7 @@ public class Profiles {
 	/**
 	 * Demerge user profile.
 	 *
-	 * @param payload the payload
+	 * @param payload the profile payload
 	 * @return the response
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -228,9 +228,9 @@ public class Profiles {
 	}
 	
 	/**
-	 * Subscribe.
+	 * Set a phone number or email status as subscribed or unsubscribed.
 	 *
-	 * @param payload the payload
+	 * @param payload the profile payload list
 	 * @return the response
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -247,9 +247,9 @@ public class Profiles {
 	}
 	
 	/**
-	 * Disassociate.
+	 * Disconnect a phone number from a user profile.
 	 *
-	 * @param payload the payload
+	 * @param payload the profile payload list
 	 * @return the response
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -266,10 +266,10 @@ public class Profiles {
 	}
 	
 	/**
-	 * Gets the profile count by req id.
+	 * Gets the profile count using request id.
 	 *
-	 * @param ReqId the req id
-	 * @return the profile count by req id
+	 * @param ReqId the request id
+	 * @return the profile count 
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */

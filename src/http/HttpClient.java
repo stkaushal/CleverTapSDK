@@ -43,31 +43,31 @@ import org.apache.http.conn.HttpClientConnectionManager;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class HttpClient.
+ * The singleton HttpClient Class .
  *
  * @author dharmender
  */
 public class HttpClient {
 
-	/** The Constant KEEP_ALIVE. */
+	/** The Constant to keep alive connection. */
 	private static final int KEEP_ALIVE = 5 * 60 * 1000;
 	
-	/** The Constant MAX_CONN. */
+	/** The Constant for maximum connection in pool. */
 	private static final int MAX_CONN = 5;
 	
-	/** The Constant MAX_CONN_PER_ROUTE. */
+	/** The Constant for maximum connection per route in a pool. */
 	private static final int MAX_CONN_PER_ROUTE = 3;
 	
-	/** The Constant CONN_TIMEOUT. */
+	/** The Constant for connection timeout. */
 	private static final int CONN_TIMEOUT = 10 * 1000;
 	
-	/** The Constant RETRY_AFTER. */
+	/** The Constant for time gap in retrying. */
 	private static final int RETRY_AFTER = 3*1000;
 	
-	/** The max retries. */
-	int maxRetries = 3;
+	/** The Constant for maximum retries. */
+	private static final int MAX_RETRIES = 3;
 	
-	/** The request config. */
+	/** The request configuration. */
 	private RequestConfig requestConfig;
 	
 	/** The http client. */
@@ -76,7 +76,7 @@ public class HttpClient {
 	/** The http response. */
 	private CloseableHttpResponse httpResponse;
 	
-	/** The conn manager. */
+	/** The connection manager. */
 	private PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
 
 	/** The keep alive strategy. */
@@ -99,12 +99,12 @@ public class HttpClient {
 		}
 	};
 
-	/** The my http request retry handler. */
+	/** The http request retry handler. */
 	private HttpRequestRetryHandler myHttpRequestRetryHandler = new HttpRequestRetryHandler() {
 		@Override
         public boolean retryRequest(IOException exception, int retryTimes, HttpContext context) {
         	
-        	if (retryTimes >= maxRetries) {
+        	if (retryTimes >= MAX_RETRIES) {
                 return false;
             }
 			if (exception instanceof ConnectTimeoutException || exception instanceof NoHttpResponseException || exception instanceof SocketTimeoutException
@@ -136,7 +136,7 @@ public class HttpClient {
 		}
 	};
 
-	/** The my service unavailable retry strategy. */
+	/** The service unavailable retry strategy. */
 	private ServiceUnavailableRetryStrategy myServiceUnavailableRetryStrategy = new ServiceUnavailableRetryStrategy() {
 		int waitPeriod = RETRY_AFTER;
 		@Override
@@ -144,12 +144,24 @@ public class HttpClient {
 			if(response.getStatusLine().getStatusCode() >= 500 || response.getStatusLine().getStatusCode() == 408)
 			{	
 				waitPeriod = getRetryAfterTime(response);
-				return executionCount <= maxRetries;
+				if(executionCount <= MAX_RETRIES){
+					return true;
+				}
+				else {
+					System.out.println("Maximum retries exceeded for server error");
+					return false;
+				}
 			}
 			else if(response.getStatusLine().getStatusCode() == 429)
 			{
 				waitPeriod = getRetryAfterTime(response);
-				return executionCount <= maxRetries;
+				if(executionCount <= MAX_RETRIES){
+					return true;
+				}
+				else {
+					System.out.println("Maximum retries exceeded for server error");
+					return false;
+				}
 			}
 			return false;
 		}
@@ -161,9 +173,9 @@ public class HttpClient {
 	};
 	
 	/**
-	 * Gets the retry after time.
+	 * Gets the time for retry gap .
 	 *
-	 * @param response the response
+	 * @param response the http response
 	 * @return the retry after time
 	 */
 	private int getRetryAfterTime(HttpResponse response) {
@@ -181,9 +193,9 @@ public class HttpClient {
 	};
 
 	/**
-	 * Instantiates a new http client.
+	 * Instantiates a new private http client.
 	 */
-	public HttpClient() {
+	private HttpClient() {
 		this.httpResponse = null;
 
 		this.requestConfig = RequestConfig.custom()
@@ -209,13 +221,29 @@ public class HttpClient {
 		IdleConnectionMonitorThread staleMonitor = new IdleConnectionMonitorThread(connManager);
 		staleMonitor.start();
 	}
+	
+	 /** The static client. */
+ 	private static HttpClient client = null;
+	 
+	 /**
+ 	 * Gets the static http client instance.
+ 	 *
+ 	 * @return the http client instance
+ 	 */
+ 	public static HttpClient getHttpClientInstance() {
+		 if(client==null)
+		 {
+			 client = new HttpClient();
+		 }
+	      return client;
+	   }
 
 	/**
 	 * Post request.
 	 *
-	 * @param baseUrl the base url
-	 * @param obj the obj
-	 * @return the JSON object
+	 * @param baseUrl the url to post the request
+	 * @param obj the payload of request
+	 * @return the JSON object as response of request
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -253,8 +281,8 @@ public class HttpClient {
 	/**
 	 * Gets the request.
 	 *
-	 * @param baseUrl the base url
-	 * @return the request
+	 * @param baseUrl the url to get the request
+	 * @return  the JSON object as response of request
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -289,20 +317,20 @@ public class HttpClient {
 	}
 
 	/**
-	 * The Class IdleConnectionMonitorThread.
+	 * The Class IdleConnectionMonitorThread to identitfy any passive cpnnections.
 	 */
 	public static class IdleConnectionMonitorThread extends Thread {
 
-		/** The conn mgr. */
+		/** The connection  manager. */
 		private final HttpClientConnectionManager connMgr;
 		
-		/** The shutdown. */
+		/** The connection shutdown boolean. */
 		private volatile boolean shutdown;
 
 		/**
 		 * Instantiates a new idle connection monitor thread.
 		 *
-		 * @param connMgr the conn mgr
+		 * @param connMgr the connection  manager
 		 */
 		public IdleConnectionMonitorThread(HttpClientConnectionManager connMgr) {
 			super();

@@ -15,26 +15,26 @@ import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Report.
+ * The Report Class.
  */
 public class Report {
 	
-	/** The Constant urlGetRealTimeCounts. */
+	/** The API endpoint to get real time count of users. */
 	private static final String urlGetRealTimeCounts = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/now.json";
 	
-	/** The Constant urlGetMessageReport. */
+	/** The API endpoint to get campaign message report. */
 	private static final String urlGetMessageReport = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/message/report.json";
 	
-	/** The Constant urlGetTopPropertyCount. */
+	/** The API endpoint to get top property count. */
 	private static final String urlGetTopPropertyCount = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/top.json";
 	
-	/** The Constant urlGetTrends. */
+	/** The API endpoint to get trends. */
 	private static final String urlGetTrends = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/trends.json";
 	
-	/** The Constant urlGetTopPropertyCountByReqId. */
+	/** The API endpoint to get property count using request id. */
 	private static final String urlGetTopPropertyCountByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/top.json?req_id=";
 	
-	/** The Constant urlGetTrendsByReqId. */
+	/** The API endpoint to get trends using request id. */
 	private static final String urlGetTrendsByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/trends.json?req_id=";
 	
 	/** The object mapper. */
@@ -47,7 +47,7 @@ public class Report {
 	 * Instantiates a new report.
 	 */
 	public Report(){
-		this.client = new HttpClient();
+		this.client = HttpClient.getHttpClientInstance();
 		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -55,9 +55,9 @@ public class Report {
 	
 	
 	/**
-	 * Gets the real time counts.
+	 * Gets the real-time count of active users in the past five minutes in app.
 	 *
-	 * @param payload the payload
+	 * @param payload the report payload
 	 * @return the real time counts
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -71,9 +71,9 @@ public class Report {
 	}
 	
 	/**
-	 * Gets the message reports.
+	 * Gets the message reports for sent messages.
 	 *
-	 * @param payload the payload
+	 * @param payload the report payload
 	 * @return the message reports
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -87,9 +87,9 @@ public class Report {
 	}
 	
 	/**
-	 * Gets the top property count.
+	 * Gets the counts for the most and least frequently occurring properties for a particular event in a specified duration.
 	 *
-	 * @param payload the payload
+	 * @param payload the report payload
 	 * @return the top property count
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -103,25 +103,25 @@ public class Report {
 	}
 	
 	/**
-	 * Gets the top property count by req id.
+	 * Gets the counts for the most and least frequently occurring properties for a particular event in a specified duration using request id.
 	 *
-	 * @param ReqId the req id
-	 * @return the top property count by req id
+	 * @param reqId the request id
+	 * @return the top property count
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
-	public Response getTopPropertyCountByReqId(long ReqId) throws IOException, InterruptedException
+	public Response getTopPropertyCountByReqId(long reqId) throws IOException, InterruptedException
 	{
-		String url = urlGetTopPropertyCountByReqId + String.valueOf(ReqId);
+		String url = urlGetTopPropertyCountByReqId + String.valueOf(reqId);
 		JSONObject jsonResponse = client.getRequest(url);
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
 		return res;
 	}
 	
 	/**
-	 * Gets the trends.
+	 * Gets the daily, weekly, and monthly event trends in a specified duration.
 	 *
-	 * @param payload the payload
+	 * @param payload the report payload
 	 * @return the trends
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -135,16 +135,16 @@ public class Report {
 	}
 	
 	/**
-	 * Gets the trends by req id.
+	 * Gets the daily, weekly, and monthly event trends in a specified duration using request id.
 	 *
-	 * @param ReqId the req id
-	 * @return the trends by req id
+	 * @param reqId the request id
+	 * @return the trends 
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
-	public Response getTrendsByReqId(long ReqId) throws IOException, InterruptedException
+	public Response getTrendsByReqId(long reqId) throws IOException, InterruptedException
 	{
-		String url = urlGetTrendsByReqId + String.valueOf(ReqId);
+		String url = urlGetTrendsByReqId + String.valueOf(reqId);
 		JSONObject jsonResponse = client.getRequest(url);
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);
 		return res;

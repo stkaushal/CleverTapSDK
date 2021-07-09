@@ -8,17 +8,17 @@ import report.Report;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class ClevertapInstance.
+ * The ClevertapInstanceClass.
  */
 public class ClevertapInstance {
 	
-	/** The id. */
+	/** The Clevertap account id. */
 	private static String id;
 	
-	/** The password. */
+	/** The Clevertap account password. */
 	private static String password;
 	
-	/** The region. */
+	/** The region for API endpoints. */
 	private static Region region;
 	
 	/** The profile instance. */
@@ -36,9 +36,9 @@ public class ClevertapInstance {
 	/**
 	 * Instantiates a new clevertap instance.
 	 *
-	 * @param id the id
-	 * @param password the password
-	 * @param region the region
+	 * @param id the Clevertap account id
+	 * @param password the Clevertap account password
+	 * @param region the region for API endpoints
 	 */
 	public ClevertapInstance(String id, String password, Region region)
 	{
@@ -48,7 +48,7 @@ public class ClevertapInstance {
 	}
 	
 	/**
-	 * Gets the id.
+	 * Gets the Clevertap account id.
 	 *
 	 * @return the id
 	 */
@@ -57,7 +57,7 @@ public class ClevertapInstance {
 	}
 	
 	/**
-	 * Gets the password.
+	 * Gets the Clevertap account password.
 	 *
 	 * @return the password
 	 */
@@ -66,7 +66,7 @@ public class ClevertapInstance {
 	}
 	
 	/**
-	 * Gets the region.
+	 * Gets the API endpoint region.
 	 *
 	 * @return the region
 	 */

@@ -19,20 +19,20 @@ import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Event.
+ * The Event Class.
  */
 public class Event {
 	
-	/** The Constant urlUploadEvent. */
+	/** The API endpoint to upload events. */
 	private static final String urlUploadEvent = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/upload";
 	
-	/** The Constant urlGetEventCount. */
+	/** The API endpoint to get events counts. */
 	private static final String urlGetEventCount = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/events.json";
 	
-	/** The Constant urlGetEventCursor. */
+	/** The API endpoint to get events. */
 	private static final String urlGetEventCursor = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/events.json";
 	
-	/** The Constant urlGetEventCountByReqId. */
+	/** The API endpoint to get events counts using request id. */
 	private static final String urlGetEventCountByReqId = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/counts/events.json?req_id=";
 	
 	/** The object mapper. */
@@ -45,7 +45,7 @@ public class Event {
 	 * Instantiates a new event.
 	 */
 	public Event(){
-		this.client = new HttpClient();
+		this.client = HttpClient.getHttpClientInstance();
 		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -54,8 +54,8 @@ public class Event {
 	/**
 	 * Upload events.
 	 *
-	 * @param payload the payload
-	 * @return the response
+	 * @param payload the events payload
+	 * @return Response - the response
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -71,14 +71,14 @@ public class Event {
 	
 	
 	/**
-	 * Gets the events cursor.
+	 * Gets the cursor to fetch the events.
 	 *
-	 * @param payload the payload
-	 * @param batch_size the batch size
-	 * @param app the app
-	 * @param events the events
-	 * @param profile the profile
-	 * @return the events cursor
+	 * @param payload the events payload
+	 * @param batch_size The number of results to return in each API call
+	 * @param app the boolean flag to receive app fields in the response
+	 * @param events the boolean flag to receive event summary fields in the response
+	 * @param profile the boolean flag to receive the custom profile properties in the response.
+	 * @return Cursor - the events cursor
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -94,7 +94,7 @@ public class Event {
 	}
 	
 	/**
-	 * Gets the events data.
+	 * Gets the events data using cursor.
 	 *
 	 * @param cursor the cursor
 	 * @return the events data
@@ -111,9 +111,9 @@ public class Event {
 	}
 	
 	/**
-	 * Gets the event count.
+	 * Retrieves counts for an event in a specified duration.
 	 *
-	 * @param payload the payload
+	 * @param payload the event payload
 	 * @return the event count
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -127,10 +127,10 @@ public class Event {
 	}
 	
 	/**
-	 * Gets the event count by req id.
+	 * Retrieves counts for an event in a specified duration using request id.
 	 *
-	 * @param ReqId the req id
-	 * @return the event count by req id
+	 * @param ReqId the request id
+	 * @return the event count 
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */

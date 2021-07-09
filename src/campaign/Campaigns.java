@@ -17,56 +17,56 @@ import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Campaigns.
+ * The Campaigns Class.
  */
 public class Campaigns {
 	
-	/** The Constant urlStopScheduledCampaign. */
+	/** The API endpoint for stopping scheduled campaigns. */
 	private static final String urlStopScheduledCampaign = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/stop.json";
 	
-	/** The Constant urlGetCampaignReport. */
+	/** The API endpoint to get campaign report. */
 	private static final String urlGetCampaignReport = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/result.json";
 	
-	/** The Constant urlGetCampaigns. */
+	/** The API endpoint for retrieving campaigns. */
 	private static final String urlGetCampaigns = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/list.json";
 	
-	/** The Constant urlCreateCampaignTargetUserEvents. */
+	/** The API endpoint for creating campaiInterruptedException the the requestinterrupted exceptiongns to target the users based on events. */
 	private static final String urlCreateCampaignTargetUserEvents = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/create.json";
 	
-	/** The Constant urlCreateCampaignTargetUserIdSMS. */
+	/** The API endpoint for creating SMS campaigns to target the users based on user id. */
 	private static final String urlCreateCampaignTargetUserIdSMS = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/sms.json";
 	
-	/** The Constant urlCreateCampaignTargetUserIdMobilePush. */
+	/** The API endpoint for creating mobile push campaigns to target the users based on user id. */
 	private static final String urlCreateCampaignTargetUserIdMobilePush = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/push.json";
 	
-	/** The Constant urlCreateCampaignTargetUserIdWebPush. */
+	/** The API endpoint for creating web push campaigns to target the users based on user id. */
 	private static final String urlCreateCampaignTargetUserIdWebPush = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/webpush.json";
 	
-	/** The Constant urlCreateCampaignTargetUserIdEmail. */
+	/** The API endpoint for creating email push campaigns to target the users based on user id.. */
 	private static final String urlCreateCampaignTargetUserIdEmail = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/send/email.json";
 	
 
 	/** The object mapper. */
 	private ObjectMapper objectMapper;
 	
-	/** The client. */
+	/** The http client. */
 	private HttpClient client; 
 	
 	/**
-	 * Instantiates a new campaigns.
+	 * Instantiates a new campaigns instance.
 	 */
 	public Campaigns(){
-		this.client = new HttpClient();
+		this.client = HttpClient.getHttpClientInstance();
 		this.objectMapper = new ObjectMapper();
 		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
 		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 	/**
-	 * Stop scheduled campaign.
+	 * Stops the scheduled campaigns.
 	 *
-	 * @param payload the payload
-	 * @return the response
+	 * @param payload the campaign payload
+	 * @return Response - the response from server
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -81,8 +81,8 @@ public class Campaigns {
 	/**
 	 * Gets the campaign report.
 	 *
-	 * @param payload the payload
-	 * @return the campaign report
+	 * @param payload the campaign payload
+	 * @return campaign report
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -97,7 +97,7 @@ public class Campaigns {
 	/**
 	 * Gets the campaigns.
 	 *
-	 * @param payload the payload
+	 * @param payload the date range in which campaigns were created
 	 * @return the campaigns
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
@@ -111,10 +111,10 @@ public class Campaigns {
 	}
 	
 	/**
-	 * Creates the campaign target user events.
+	 * Creates the campaigns on targeted user events.
 	 *
-	 * @param payload the payload
-	 * @return the response
+	 * @param payload the campaign payload
+	 * @return Response - the response from server
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
@@ -127,11 +127,11 @@ public class Campaigns {
 	}
 	
 	/**
-	 * Creates the campaign target id.
+	 * Creates the campaigns targeted by user id.
 	 *
-	 * @param method the method
+	 * @param method the method of campaigns(SMS, Email, etc.)
 	 * @param payload the payload
-	 * @return the response
+	 * @return Response - the response from server
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */

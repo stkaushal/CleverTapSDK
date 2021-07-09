@@ -6,14 +6,14 @@ package helper.enums;
  */
 public enum Region {
 	
-	/** The india. */
+	/** The india region. */
 	INDIA, 
- /** The singapore. */
+ /** The singapore region. */
  SINGAPORE, 
- /** The usa. */
+ /** The usa region. */
  USA, 
- /** The none. */
+ /** The eu1 region. */
  NONE, 
- /** The development. */
+ /** The sk1 region. */
  DEVELOPMENT;
 }

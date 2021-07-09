@@ -2,7 +2,7 @@ package helper;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Cursor.
+ * The Cursor Class.
  */
 public class Cursor {
 	
