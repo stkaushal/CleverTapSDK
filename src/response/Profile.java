@@ -9,22 +9,22 @@ import java.util.HashMap;
 public class Profile {
 	
 	/** The object id. */
-	String objectId;
+	private String objectId;
 	
 	/** The platform. */
-	String platform;
+	private String platform;
 	
 	/** The email. */
-	String email;
+	private String email;
 	
 	/** The profile data. */
-	HashMap<String, Object> profileData;
+	private HashMap<String, Object> profileData;
 	
 	/** The identity. */
-	Object identity;
+	private Object identity;
 	
 	/** The id. */
-	int id;
+	private int id;
 	
 	/**
 	 * Gets the object id.

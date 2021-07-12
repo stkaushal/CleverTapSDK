@@ -12,58 +12,58 @@ public class ProfileData {
 	
 	/** The name. */
 	@JsonProperty(value="Name")
-    String name;
+	private String name;
 	
 	/** The email. */
 	@JsonProperty(value="Email")
-    String email;
+	private  String email;
 	
 	/** The phone. */
 	@JsonProperty(value="Phone")
-    String phone;
+	private String phone;
 	
 	/** The gender. */
 	@JsonProperty(value="Gender")
-    String gender;
+	private String gender;
     
     /** The msg SMS. */
     @JsonProperty(value="MSG-sms")
-    boolean msgSMS;
+    private boolean msgSMS;
     
     /** The msg email. */
     @JsonProperty(value="MSG-email")
-    boolean msgEmail;
+    private boolean msgEmail;
     
     /** The msg whatsapp. */
     @JsonProperty(value="MSG-whatsapp")
-    boolean msgWhatsapp;
+    private boolean msgWhatsapp;
     
     /** The msg dnd phone. */
     @JsonProperty(value="MSG-dndPhone")
-    boolean msgDndPhone;
+    private boolean msgDndPhone;
     
     /** The msg dnd email. */
     @JsonProperty(value="MSG-dndEmail")
-    boolean msgDndEmail;
+    private boolean msgDndEmail;
     
     /** The category unsubscribe. */
     @JsonProperty(value="category-unsubscribe")
-    CategoryUnsubscribe categoryUnsubscribe;
+    private CategoryUnsubscribe categoryUnsubscribe;
     
     /** The category resubscribe. */
     @JsonProperty(value="category-resubscribe")
-    CategoryResubscribe categoryResubscribe;
+    private CategoryResubscribe categoryResubscribe;
    
     /** The dob. */
     @JsonProperty(value="DOB")
-    String dob;  
+    private String dob;  
     
     /** The customer type. */
     @JsonProperty(value="Customer Type")
-	String customerType;
+    private String customerType;
     
     /** The user info. */
-    HashMap<String, Object> userInfo;
+    private HashMap<String, Object> userInfo;
 
 	/**
 	 * Gets the name.

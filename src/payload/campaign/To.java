@@ -15,23 +15,23 @@ public class To {
 	
 	/** The fbid. */
 	@JsonProperty(value="FBID")
-	List<String> fbid;
+	private List<String> fbid;
 	
 	/** The email. */
 	@JsonProperty(value="Email")
-	List<String> email;
+	private List<String> email;
 	
 	/** The gpid. */
 	@JsonProperty(value="GPID")
-	List<String> gpid;
+	private List<String> gpid;
 	
 	/** The identity. */
 	@JsonProperty(value="Identity")
-	List<String> identity;
+	private List<String> identity;
 	
 	/** The object id. */
 	@JsonProperty(value="objectId")
-	List<String> objectId;
+	private List<String> objectId;
 
 	/**
 	 * Gets the fbid.

@@ -20,9 +20,9 @@ import response.Response;
 
 class ScaleTest {
 
-	String Cid = "TEST-69W-8RW-5R6Z";
-	String CPswd = "af0f2e63751341fca0c934a386f5eabe";
-	ClevertapInstance instance  = new ClevertapInstance(Cid, CPswd, Region.DEVELOPMENT);
+	String clevertapID = "TEST-69W-8RW-5R6Z";
+	String clevertapPassword = "af0f2e63751341fca0c934a386f5eabe";
+	ClevertapInstance instance  = new ClevertapInstance(clevertapID, clevertapPassword, Region.DEVELOPMENT);
 
 	@BeforeEach
 	void setUp() throws Exception {

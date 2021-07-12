@@ -7,13 +7,13 @@ package payload.campaign;
 public class ProfileFields {
 	
 	/** The name. */
-	String name;
+	private String name;
 	
 	/** The operator. */
-	String operator;
+	private String operator;
 	
 	/** The value. */
-	Object value;
+	private Object value;
 	
 	/**
 	 * Gets the name.

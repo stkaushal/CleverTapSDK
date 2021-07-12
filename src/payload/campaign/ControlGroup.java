@@ -7,13 +7,13 @@ package payload.campaign;
 public class ControlGroup {
 	
 	/** The type. */
-	String type;
+	private String type;
 	
 	/** The name. */
-	String name;
+	private String name;
 	
 	/** The percentage. */
-	int percentage;
+	private int percentage;
 	
 	/**
 	 * Gets the type.

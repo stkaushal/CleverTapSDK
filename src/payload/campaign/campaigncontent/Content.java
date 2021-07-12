@@ -15,48 +15,48 @@ import payload.campaign.campaigncontent.actions.Action;
 public class Content {
 	
 	/** The title. */
-	Object title;
+	private Object title;
 	
 	/** The body. */
-	String body;
+	private String body;
 	
 	/** The subject. */
-	String subject;
+	private String subject;
 	
 	/** The sender name. */
 	@JsonProperty(value="sender_name")
-	String senderName;
+	private String senderName;
 	
 	/** The template name. */
 	@JsonProperty(value="template_name")
-	String templateName;
+	private String templateName;
 	
 	/** The replacements. */
-	Object replacements;
+	private Object replacements;
 	
 	/** The campaign content attachments. */
 	@JsonProperty(value="attachments")
-	CampaignContentAttachments campaignContentAttachments;
+	private CampaignContentAttachments campaignContentAttachments;
 	
 	/** The template id. */
 	@JsonProperty(value="template_id")
-	String templateId;
+	private String templateId;
 	
 	/** The message. */
-	CampaignContentMessage message;
+	private CampaignContentMessage message;
 	
 	/** The action. */
-	Action action;
+	private Action action;
 	
 	/** The media. */
-	CampaignContentMedia media;
+	private CampaignContentMedia media;
 
 	/** The icon. */
-	CampaignContentIcon icon;
+	private CampaignContentIcon icon;
 	
 	/** The platform specific content. */
 	@JsonProperty(value="platform_specific")
-	PlatformSpecificContent platformSpecificContent;
+	private PlatformSpecificContent platformSpecificContent;
 
 	/**
 	 * Gets the title.

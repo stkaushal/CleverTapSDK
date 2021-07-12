@@ -7,10 +7,10 @@ package payload.profile;
 public class Keys {
 	
 	/** The p 256 dh. */
-	String p256dh;
+	private String p256dh;
 	
 	/** The auth. */
-	String auth;
+	private String auth;
 	
 	/**
 	 * Gets the p 256 dh.

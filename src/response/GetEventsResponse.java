@@ -12,10 +12,10 @@ public class GetEventsResponse extends Response{
 	
 	/** The next cursor. */
 	@JsonProperty(value="next_cursor")
-	String nextCursor;
+	private String nextCursor;
 	
 	/** The records. */
-	List<RecordsEvent> records;
+	private List<RecordsEvent> records;
 	
 	
 	/**

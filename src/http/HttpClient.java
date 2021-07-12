@@ -47,7 +47,7 @@ import org.apache.http.conn.HttpClientConnectionManager;
  *
  * @author dharmender
  */
-public class HttpClient {
+final public class HttpClient {
 
 	/** The Constant to keep alive connection. */
 	private static final int KEEP_ALIVE = 5 * 60 * 1000;
@@ -242,12 +242,12 @@ public class HttpClient {
 	 * Post request.
 	 *
 	 * @param baseUrl the url to post the request
-	 * @param obj the payload of request
+	 * @param requestBody the payload of request
 	 * @return the JSON object as response of request
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException the interrupted exception
 	 */
-	public JSONObject postRequest(String baseUrl, JSONObject obj) throws IOException, InterruptedException {
+	public JSONObject postRequest(String baseUrl, JSONObject requestBody) throws IOException, InterruptedException {
 		JSONObject response = null;
 		HttpPost httpPost = new HttpPost(baseUrl);
 
@@ -257,16 +257,15 @@ public class HttpClient {
 		httpPost.addHeader("X-CleverTap-Account-Id", ClevertapInstance.getId());
 		httpPost.addHeader("X-CleverTap-Passcode", ClevertapInstance.getPassword());
 
-		StringEntity params = null;
-		params = new StringEntity(obj.toString());
-		httpPost.setEntity(params);
+		StringEntity sendEntity = null;
+		sendEntity = new StringEntity(requestBody.toString());
+		httpPost.setEntity(sendEntity);
 
 		httpResponse = httpClient.execute(httpPost);
 
-		HttpEntity entity = httpResponse.getEntity();
-		String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);
-		response = new JSONObject(json); 
-
+		HttpEntity rcvEntity = httpResponse.getEntity();
+		response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8)); 
+		// add try catch with finally block
 		if (httpResponse != null) {
 			try {
 				httpResponse.close();
@@ -301,9 +300,8 @@ public class HttpClient {
 
 		httpResponse = httpClient.execute(httpGet);
 
-		HttpEntity entity = httpResponse.getEntity();
-		String json = EntityUtils.toString(entity, StandardCharsets.UTF_8);
-		response = new JSONObject(json);
+		HttpEntity rcvEntity = httpResponse.getEntity();
+		response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8));
 
 		if (httpResponse != null) {
 			try {
@@ -317,7 +315,7 @@ public class HttpClient {
 	}
 
 	/**
-	 * The Class IdleConnectionMonitorThread to identitfy any passive cpnnections.
+	 * The Class IdleConnectionMonitorThread to identitfy any passive connections.
 	 */
 	public static class IdleConnectionMonitorThread extends Thread {
 

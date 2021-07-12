@@ -12,7 +12,7 @@ public class CommonProfileProperties {
 	
 	/** The profile fields. */
 	@JsonProperty(value="profile_fields")
-	List<ProfileFields> profileFields;
+	private List<ProfileFields> profileFields;
 
 	/**
 	 * Gets the profile fields.

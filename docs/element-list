@@ -4,6 +4,7 @@ event
 helper
 helper.enums
 http
+payload
 payload.campaign
 payload.campaign.campaigncontent
 payload.campaign.campaigncontent.actions

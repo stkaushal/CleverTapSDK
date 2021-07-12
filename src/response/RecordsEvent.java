@@ -11,19 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RecordsEvent {
 	
 	/** The profile. */
-	Profile profile;
+	private Profile profile;
 	
 	/** The timestamp. */
 	@JsonProperty(value="ts")
-	long timestamp;
+	private long timestamp;
 	
 	/** The event props. */
 	@JsonProperty(value="event_props")
-	HashMap<String, String> eventProps;
+	private HashMap<String, String> eventProps;
 	
 	/** The session props. */
 	@JsonProperty(value="session_props")
-	HashMap<String, String> sessionProps;
+	private HashMap<String, String> sessionProps;
 
 	/**
 	 * Gets the profile.

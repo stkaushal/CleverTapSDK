@@ -12,17 +12,17 @@ import org.junit.jupiter.api.Test;
 
 import event.Event;
 import helper.ClevertapInstance;
-import helper.Cursor;
 import helper.enums.Region;
+import payload.Cursor;
 import payload.event.EventPayload;
 import payload.event.EventPropertyFilter;
 import response.GetEventsResponse;
 import response.Response;
 
 public class EventIntegrationTest {
-	String Cid = "4R8-K98-8Z6Z";
-	String CPswd = "AOE-RUW-CHUL";
-	ClevertapInstance instance = new ClevertapInstance(Cid, CPswd, Region.NONE);
+	String clevertapID = "4R8-K98-8Z6Z";
+	String clevertapPassword = "AOE-RUW-CHUL";
+	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.NONE);
 	Event eventInstance = instance.getEventInstance();
 
 	@BeforeEach

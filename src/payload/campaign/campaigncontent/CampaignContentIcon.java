@@ -10,11 +10,11 @@ public class CampaignContentIcon {
 	
 	/** The content type. */
 	@JsonProperty(value="content_type")
-	String contentType;
+	private String contentType;
 	
 	/** The media url. */
 	@JsonProperty(value="url")
-	String mediaUrl;
+	private String mediaUrl;
 
 	/**
 	 * Gets the content type.

@@ -10,7 +10,7 @@ import report.Report;
 /**
  * The ClevertapInstanceClass.
  */
-public class ClevertapInstance {
+final public class ClevertapInstance {
 	
 	/** The Clevertap account id. */
 	private static String id;
@@ -40,7 +40,7 @@ public class ClevertapInstance {
 	 * @param password the Clevertap account password
 	 * @param region the region for API endpoints
 	 */
-	public ClevertapInstance(String id, String password, Region region)
+	public ClevertapInstance(String id, String password, Region region)   // dont make its static
 	{
 		ClevertapInstance.id = id;
 		ClevertapInstance.password = password;
@@ -92,7 +92,7 @@ public class ClevertapInstance {
 	 * @return the profile instance
 	 */
 	public Profiles getProfileInstance() {
-		this.profileInstance = new Profiles();
+		this.profileInstance = Profiles.getProfilesInstance();
 		return profileInstance;
 	}
 	
@@ -102,7 +102,7 @@ public class ClevertapInstance {
 	 * @return the event instance
 	 */
 	public Event getEventInstance() {
-		this.eventInstance = new Event();
+		this.eventInstance = Event.getEventsInstance();
 		return eventInstance;
 	}
 
@@ -112,7 +112,7 @@ public class ClevertapInstance {
 	 * @return the report instance
 	 */
 	public Report getReportInstance() {
-		this.reportInstance = new Report();
+		this.reportInstance = Report.getReportsInstance();
 		return reportInstance;
 	}
 	
@@ -122,7 +122,7 @@ public class ClevertapInstance {
 	 * @return the campaign instance
 	 */
 	public Campaigns getCampaignInstance() {
-		this.campaignInstance = new Campaigns();
+		this.campaignInstance = Campaigns.getCampaignsInstance();
 		return campaignInstance;
 	}
 }

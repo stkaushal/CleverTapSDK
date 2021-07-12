@@ -16,50 +16,50 @@ public class EventPayload {
 	
 	/** The from date. */
 	@JsonProperty(value="from")
-	int fromDate;
+	private int fromDate;
 	
 	/** The to date. */
 	@JsonProperty(value="to")
-	int toDate; 
+	private int toDate; 
 	
 	/** The type. */
-	String type;
+	private String type;
 	
 	/** The event name upload. */
 	@JsonProperty(value="evtName")
-	String eventNameUpload;
+	private String eventNameUpload;
 	
 	/** The timestamp. */
-	String timestamp;
+	private String timestamp;
 	
 	/** The event data. */
 	@JsonProperty(value="evtData")
-	HashMap<String, Object> eventData;
+	private HashMap<String, Object> eventData;
 	
 	/** The event name download. */
 	@JsonProperty(value="event_name")
-	String eventNameDownload;
+	private String eventNameDownload;
 	
 	/** The event properties. */
 	@JsonProperty(value="event_properties")
-	List<EventPropertyFilter> eventProperties;
+	private List<EventPropertyFilter> eventProperties;
 	
 	/** The ts. */
-	long ts;
+	private long ts;
 	
 	/** The identity. */
-	String identity;
+	private String identity;
 	
 	/** The fbid. */
 	@JsonProperty(value="FBID")
-	String fbid;
+	private String fbid;
 	
 	/** The gpid. */
 	@JsonProperty(value="GPID")
-	String gpid;
+	private String gpid;
 	
 	/** The object id. */
-	String objectId;
+	private String objectId;
 
 	/**
 	 * Gets the from date.

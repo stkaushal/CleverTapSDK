@@ -7,7 +7,7 @@ package payload.campaign.campaigncontent;
 public class CampaignContentTitle {
 	
 	/** The text. */
-	String text;
+	private String text;
 
 	/**
 	 * Gets the text.

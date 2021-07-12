@@ -1,4 +1,4 @@
-package helper;
+package payload;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -7,10 +7,10 @@ package helper;
 public class Cursor {
 	
 	/** The cursor. */
-	String cursor;
+	private String cursor;
 	
 	/** The status. */
-	String status;
+	private String status;
 	
 	/**
 	 * Gets the status.

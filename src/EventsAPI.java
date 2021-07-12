@@ -10,8 +10,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import helper.ClevertapInstance;
-import helper.Cursor;
 import helper.enums.Region;
+import payload.Cursor;
 import payload.event.EventPayload;
 import response.GetEventsResponse;
 import response.Response;

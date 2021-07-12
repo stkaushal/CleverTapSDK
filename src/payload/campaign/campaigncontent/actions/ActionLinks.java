@@ -12,20 +12,20 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class ActionLinks {
 	
 	/** The type. */
-	String type;
+	private String type;
 	
 	/** The text. */
-	String text;
+	private String text;
 	
 	/** The color. */
-	String color;
+	private String color;
 	
 	/** The bg. */
-	String bg;
+	private String bg;
 	
 	/** The action url. */
 	@JsonProperty(value="url")
-	ActionUrl actionUrl;
+	private ActionUrl actionUrl;
 
 	/**
 	 * Gets the type.

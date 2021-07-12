@@ -16,10 +16,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import helper.ClevertapInstance;
-import helper.Cursor;
 import helper.enums.Region;
 import helper.enums.UserIdentity;
 import http.HttpClient;
+import payload.Cursor;
 import payload.profile.Keys;
 import payload.profile.ProfilePayload;
 import payload.profile.TokenData;

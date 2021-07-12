@@ -6,22 +6,21 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import helper.ClevertapInstance;
-import helper.Cursor;
+import helper.ObjectMapperHelper;
 import http.HttpClient;
+import payload.Cursor;
 import payload.event.EventPayload;
 import response.GetEventsResponse;
 import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Event Class.
+ * The singleton Event Class.
  */
-public class Event {
+final public class Event {
 	
 	/** The API endpoint to upload events. */
 	private static final String urlUploadEvent = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/upload";
@@ -44,12 +43,26 @@ public class Event {
 	/**
 	 * Instantiates a new event.
 	 */
-	public Event(){
+	private Event(){
 		this.client = HttpClient.getHttpClientInstance();
-		this.objectMapper = new ObjectMapper();
-		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
-		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		this.objectMapper = ObjectMapperHelper.ObjectMapperHelperInstance().getObjectMapper();
 	}
+	
+	/** The event. */
+	private static Event event = null;
+	
+	/**
+	 * Gets the events instance.
+	 *
+	 * @return the events instance
+	 */
+	public static Event getEventsInstance() {
+		 if(event==null)
+		 {
+			 event = new Event();
+		 }
+	      return event;
+	 }
 	
 	/**
 	 * Upload events.

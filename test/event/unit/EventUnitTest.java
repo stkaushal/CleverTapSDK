@@ -17,9 +17,9 @@ import org.mockito.MockitoAnnotations;
 
 import event.Event;
 import helper.ClevertapInstance;
-import helper.Cursor;
 import helper.enums.Region;
 import http.HttpClient;
+import payload.Cursor;
 import payload.event.EventPayload;
 import payload.event.EventPropertyFilter;
 import response.GetEventsResponse;

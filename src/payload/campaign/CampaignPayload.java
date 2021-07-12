@@ -19,138 +19,138 @@ public class CampaignPayload {
 	
 	/** The campaign name. */
 	@JsonProperty(value="name")
-	String campaignName;
+	private String campaignName;
 	
 	/** The campaign send time. */
 	@JsonProperty(value="when")
-	String campaignSendTime;
+	private String campaignSendTime;
 	
 	/** The content. */
-	Object content;
+	private Object content;
 	
 	/** The provider nick name. */
 	@JsonProperty(value="provider_nick_name")
-	String providerNickName;
+	private String providerNickName;
 	
 	/** The provider group nickname. */
 	@JsonProperty(value="provider_group_nickname")
-	String providerGroupNickname;
+	private String providerGroupNickname;
 	
 	/** The campaign send to. */
 	@JsonProperty(value="where")
-	Where campaignSendTo;
+	private Where campaignSendTo;
 	
 	/** The respect frequency caps. */
 	@JsonProperty(value="respect_frequency_caps")
-	boolean respectFrequencyCaps;
+	private boolean respectFrequencyCaps;
 	
 	/** The estimate only. */
 	@JsonProperty(value="estimate_only")
-	boolean estimateOnly;
+	private boolean estimateOnly;
 	
 	/** The async estimate. */
 	@JsonProperty(value="async_estimate")
-	boolean asyncEstimate;
+	private boolean asyncEstimate;
 	
 	/** The time to live for app inbox. */
 	@JsonProperty(value="time_to_live")
-	int timeToLiveForAppInbox;
+	private int timeToLiveForAppInbox;
 	
 	/** The time to live for push. */
 	@JsonProperty(value="ttl")
-	int timeToLiveForPush;
+	private int timeToLiveForPush;
 	
 	/** The wzrk cid. */
 	@JsonProperty(value="wzrk_cid")
-	String wzrkCid;
+	private String wzrkCid;
 	
 	/** The wzrk bc. */
 	@JsonProperty(value="wzrk_bc")
-	String wzrkBc;
+	private String wzrkBc;
 	
 	/** The wzrk bi. */
 	@JsonProperty(value="wzrk_bi")
-	String wzrkBi;
+	private String wzrkBi;
 	
 	/** The include system control group. */
 	@JsonProperty(value="system_control_group_include")
-	boolean includeSystemControlGroup;
+	private boolean includeSystemControlGroup;
 	
 	/** The control group. */
 	@JsonProperty(value="control_group")
-	ControlGroup controlGroup;
+	private ControlGroup controlGroup;
 	
 	/** The wzrk acts. */
 	@JsonProperty(value="wzrk_acts")
-	String wzrkActs;
+	private String wzrkActs;
 	
 	/** The respect throttle. */
 	@JsonProperty(value="respect_throttle")
-	boolean respectThrottle;
+	private boolean respectThrottle;
 	
 	/** The skip estimate. */
 	@JsonProperty(value="skip_estimate")
-	boolean skipEstimate;
+	private boolean skipEstimate;
 	
 	/** The send to all devices. */
 	@JsonProperty(value="send_to_all_devices")
-	boolean sendToAllDevices;
+	private boolean sendToAllDevices;
 	
 	/** The segment. */
-	int segment;
+	private int segment;
 	
 	/** The send message to. */
 	@JsonProperty(value="to")
-	To sendMessageTo;
+	private To sendMessageTo;
 	
 	/** The tag group. */
 	@JsonProperty(value="tag_group")
-	String tagGroup;
+	private String tagGroup;
 	
 	/** The badge id. */
 	@JsonProperty(value="badge_id")
-	int badgeId;
+	private int badgeId;
 	
 	/** The badge icon. */
 	@JsonProperty(value="badge_icon")
-	String badgeIcon;
+	private String badgeIcon;
 	
 	/** The mutable content. */
 	@JsonProperty(value="mutable_content")
-	boolean mutableContent;
+	private boolean mutableContent;
 	
 	/** The campaign id. */
 	@JsonProperty(value="id")
-	int campaignId;
+	private int campaignId;
 	
 	/** The template type. */
 	@JsonProperty(value="template_type")
-	String templateType;
+	private String templateType;
 	
 	/** The target mode. */
 	@JsonProperty(value="target_mode")
-	String targetMode;
+	private String targetMode;
 	
 	/** The devices. */
-	List<String> devices;
+	private List<String> devices;
 	
 	/** The webhook endpoint name. */
 	@JsonProperty(value="webhook_endpoint_name")
-	String webhookEndpointName;
+	private String webhookEndpointName;
 	
 	/** The webhook fields. */
 	@JsonProperty(value="webhook_fields")
-	List<String> webhookFields;
+	private List<String> webhookFields;
 	
 	/** The webhook key value. */
 	@JsonProperty(value="webhook_key_value")
-	List<String> webhookKeyValue;
+	private List<String> webhookKeyValue;
 	
 	/** The tags. */
-	List<String> tags;
+	private List<String> tags;
 	
 	/** The orientation. */
-	String orientation;
+	private String orientation;
 	
 	/**
 	 * Gets the orientation.

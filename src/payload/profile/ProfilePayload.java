@@ -18,55 +18,55 @@ public class ProfilePayload {
 	
 	/** The user identity. */
 	@JsonProperty(value="identity")
-	Object userIdentity;
+	private Object userIdentity;
 	
 	/** The timestamp. */
 	@JsonProperty(value="ts")
-	String timestamp;
+	private String timestamp;
 	
 	/** The type. */
-	String type;
+	private String type;
 	
 	/** The profile data. */
-	ProfileData profileData;
+	private ProfileData profileData;
 	
 	/** The token data. */
-	TokenData tokenData;
+	private TokenData tokenData;
 	
 	/** The fb id. */
 	@JsonProperty(value="FBID")
-	String fbId;
+	private String fbId;
 	
 	/** The identities. */
-	String[] identities; 
+	private String[] identities; 
 	
 	/** The object id. */
-	String objectId;
+	private String objectId;
 	
 	/** The guid. */
-	String[] guid;
+	private String[] guid;
 	
 	/** The event name. */
 	@JsonProperty(value="event_name")
-	String eventName; 
+	private String eventName; 
 	
 	/** The from date. */
 	@JsonProperty(value="from")
-	int fromDate;
+	private int fromDate;
 	
 	/** The to date. */
 	@JsonProperty(value="to")
-	int toDate;
+	private int toDate;
 	
 	/** The event properties. */
 	@JsonProperty(value="event_properties")
-	HashMap<String, String> eventProperties;
+	private HashMap<String, String> eventProperties;
 	
 	/** The status. */
-	String status; 
+	private String status; 
 	
 	/** The value. */
-	String value;
+	private String value;
 
 	/**
 	 * Gets the user identity.

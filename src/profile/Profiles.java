@@ -5,23 +5,22 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import helper.ClevertapInstance;
-import helper.Cursor;
+import helper.ObjectMapperHelper;
 import helper.enums.UserIdentity;
 import http.HttpClient;
+import payload.Cursor;
 import payload.profile.ProfilePayload;
 import response.GetUserProfileResponse;
 import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Profiles Class.
+ * The singleton Profiles Class.
  */
-public class Profiles {	
+final public class Profiles {	
 	
 	/** The API endpoint to upload profiles. */
 	private static final String urlUploadData = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/upload";
@@ -59,12 +58,26 @@ public class Profiles {
 	/**
 	 * Instantiates a new profiles.
 	 */
-	public Profiles(){
+	private Profiles(){
 		this.client = HttpClient.getHttpClientInstance();
-		this.objectMapper = new ObjectMapper();
-		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
-		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		this.objectMapper = ObjectMapperHelper.ObjectMapperHelperInstance().getObjectMapper();
 	}
+	
+	/** The profile. */
+	private static Profiles profile = null;
+	
+	/**
+	 * Gets the profiles instance.
+	 *
+	 * @return the profiles instance
+	 */
+	public static Profiles getProfilesInstance() {
+		 if(profile==null)
+		 {
+			 profile = new Profiles();
+		 }
+	      return profile;
+	 }
 
 
 	/**

@@ -13,25 +13,25 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 public class RecordsProfile {
 	
 	/** The email. */
-	String email;
+	private String email;
 	
 	/** The name. */
-	String name;
+	private String name;
 	
 	/** The identity. */
-	String identity;
+	private String identity;
 	
 	/** The profile data. */
-	HashMap<String, Object> profileData;
+	private HashMap<String, Object> profileData;
 	
 	/** The events. */
-	HashMap<String, Object> events;
+	private HashMap<String, Object> events;
 	
 	/** The platform info. */
-	List<HashMap<String, Object>> platformInfo;
+	private List<HashMap<String, Object>> platformInfo;
 	
 	/** The other info. */
-	HashMap<String, Object> otherInfo;
+	private HashMap<String, Object> otherInfo;
 	
 	/**
 	 * Gets the other info.

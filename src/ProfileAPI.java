@@ -11,8 +11,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import helper.ClevertapInstance;
-import helper.Cursor;
 import helper.enums.*;
+import payload.Cursor;
 import payload.profile.Keys;
 import payload.profile.ProfilePayload;
 import payload.profile.TokenData;

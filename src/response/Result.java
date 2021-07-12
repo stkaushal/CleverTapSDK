@@ -7,10 +7,10 @@ package response;
 public class Result {
 	
 	/** The clicked. */
-	int clicked;
+	private int clicked;
 	
 	/** The sent. */
-	int sent;
+	private int sent;
 	
 	/**
 	 * Gets the clicked.

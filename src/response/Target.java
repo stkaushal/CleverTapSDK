@@ -9,17 +9,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Target {
 	
 	/** The id. */
-	long id;
+	private long id;
 	
 	/** The name. */
-	String name;
+	private String name;
 	
 	/** The scheduled on. */
 	@JsonProperty(value="scheduled_on")
-	long scheduledOn;
+	private long scheduledOn;
 	
 	/** The status. */
-	String status;
+	private String status;
 	
 	/**
 	 * Gets the id.

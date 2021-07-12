@@ -13,19 +13,19 @@ public class Where {
 	
 	/** The event name. */
 	@JsonProperty(value="event_name")
-	String eventName;
+	private String eventName;
 	
 	/** The from date. */
 	@JsonProperty(value="from")
-	int fromDate;
+	private int fromDate;
 	
 	/** The to date. */
 	@JsonProperty(value="to")
-	int toDate;
+	private int toDate;
 	
 	/** The common profile properties. */
 	@JsonProperty(value="common_profile_properties")
-	CommonProfileProperties commonProfileProperties;
+	private CommonProfileProperties commonProfileProperties;
 
 	/**
 	 * Gets the event name.

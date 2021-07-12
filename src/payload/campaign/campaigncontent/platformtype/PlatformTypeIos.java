@@ -14,38 +14,38 @@ public class PlatformTypeIos {
 
 	/** The mutable content. */
 	@JsonProperty(value="mutable-content")
-	boolean mutableContent;
+	private boolean mutableContent;
 	
 	/** The deep link. */
 	@JsonProperty(value="deep_link")
-	String deepLink;
+	private String deepLink;
 	
 	/** The sound file. */
 	@JsonProperty(value="sound_file")
-	String soundFile;
+	private String soundFile;
 	
 	/** The category. */
-	String category;
+	private String category;
 	
 	/** The badge count. */
 	@JsonProperty(value="badge_count")
-	int badgeCount;
+	private int badgeCount;
 	
 	/** The background image URL. */
 	@JsonProperty(value="background_image")
-	String backgroundImageURL;
+	private String backgroundImageURL;
 	
 	/** The default sound. */
 	@JsonProperty(value="default_sound")
-	boolean defaultSound;
+	private boolean defaultSound;
 	
 	/** The large icon URL. */
 	@JsonProperty(value="large_icon")
-	String largeIconURL;
+	private String largeIconURL;
 	
 	/** The time to live. */
 	@JsonProperty(value="ttl")
-	int timeToLive;
+	private int timeToLive;
 
 	/**
 	 * Checks if is mutable content.

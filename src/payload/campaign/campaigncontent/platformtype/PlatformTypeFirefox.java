@@ -13,23 +13,23 @@ public class PlatformTypeFirefox {
 
 	/** The image URL. */
 	@JsonProperty(value="image")
-	String imageURL;
+	private String imageURL;
 	
 	/** The icon URL. */
 	@JsonProperty(value="icon")
-	String iconURL;
+	private String iconURL;
 	
 	/** The deep link. */
 	@JsonProperty(value="deep_link")
-	String deepLink;
+	private String deepLink;
 	
 	/** The time to live. */
 	@JsonProperty(value="ttl")
-	String timeToLive;
+	private String timeToLive;
 	
 	/** The require interaction. */
 	@JsonProperty(value="require_interaction")
-	String requireInteraction;
+	private String requireInteraction;
 
 	/**
 	 * Gets the image URL.

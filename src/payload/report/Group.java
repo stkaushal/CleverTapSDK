@@ -13,22 +13,22 @@ public class Group {
 	
 	/** The property type. */
 	@JsonProperty(value="property_type")
-	String propertyType;
+	private String propertyType;
 	
 	/** The property name. */
 	@JsonProperty(value="name")
-	String propertyName;
+	private String propertyName;
 	
 	/** The top N values. */
 	@JsonProperty(value="top_n")
-	int topNValues;
+	private int topNValues;
 	
 	/** The order. */
-	String order;
+	private String order;
 	
 	/** The trend type. */
 	@JsonProperty(value="trend_type")
-	String trendType;
+	private String trendType;
 
 	/**
 	 * Gets the property type.

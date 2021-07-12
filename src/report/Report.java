@@ -4,20 +4,19 @@ import java.io.IOException;
 
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import helper.ClevertapInstance;
+import helper.ObjectMapperHelper;
 import http.HttpClient;
 import payload.report.ReportPayload;
 import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Report Class.
+ * The singleton Report Class.
  */
-public class Report {
+final public class Report {
 	
 	/** The API endpoint to get real time count of users. */
 	private static final String urlGetRealTimeCounts = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/now.json";
@@ -46,13 +45,26 @@ public class Report {
 	/**
 	 * Instantiates a new report.
 	 */
-	public Report(){
+	private Report(){
 		this.client = HttpClient.getHttpClientInstance();
-		this.objectMapper = new ObjectMapper();
-		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
-		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		this.objectMapper = ObjectMapperHelper.ObjectMapperHelperInstance().getObjectMapper();
 	}
 	
+	/** The report. */
+	private static Report report = null;
+	
+	/**
+	 * Gets the reports instance.
+	 *
+	 * @return the reports instance
+	 */
+	public static Report getReportsInstance() {
+		 if(report==null)
+		 {
+			 report = new Report();
+		 }
+	      return report;
+	 }
 	
 	/**
 	 * Gets the real-time count of active users in the past five minutes in app.

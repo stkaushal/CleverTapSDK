@@ -14,52 +14,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Response {
 	
 	/** The status. */
-	String status;
+	private String status;
 	
 	/** The processed. */
-	int processed;
+	private int processed;
 	
 	/** The unprocessed. */
-	List<Object> unprocessed;
+	private List<Object> unprocessed;
 	
 	/** The error. */
-	String error;
+	private String error;
 	
 	/** The code. */
-	int code;
+	private int code;  // rename
 	
 	/** The count. */
-	int count;
+	private int count;
 	
 	/** The req id. */
 	@JsonProperty(value="req_id")
-	long reqId;
+	private long reqId;
 	
 	/** The user type. */
 	@JsonProperty(value="user_type")
-	HashMap<String, Object> userType;
+	private HashMap<String, Object> userType;
 	
 	/** The total results. */
 	@JsonProperty(value="total_results")
-	int totalResults;
+	private int totalResults;
 	
 	/** The messages. */
-	List<Message> messages;
+	private List<Message> messages;
 	
 	/** The estimates. */
-	HashMap<String, String> estimates;
+	private HashMap<String, String> estimates;
 	
 	/** The result. */
-	Result result;
+	private Result result;
 	
 	/** The targets. */
-	List<Target> targets;
+	private List<Target> targets;
 	
 	/** The message. */
-	String message;
+	private String message;
 	
 	/** The other info. */
-	HashMap<String, Object> otherInfo;
+	private HashMap<String, Object> otherInfo;
 	
 	/**
 	 * Gets the other info.

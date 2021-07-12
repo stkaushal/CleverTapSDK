@@ -7,7 +7,7 @@ package payload.campaign.campaigncontent.actions;
 public class AndroidActionUrl {
 	
 	/** The text. */
-	String text;
+	private String text;
 
 	/**
 	 * Gets the text.

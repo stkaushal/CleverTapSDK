@@ -10,11 +10,11 @@ public class CampaignContentAttachments {
 	
 	/** The attachment type. */
 	@JsonProperty(value="type")
-	String attachmentType;
+	private String attachmentType;
 	
 	/** The attachment value. */
 	@JsonProperty(value="value")
-	String attachmentValue;
+	private String attachmentValue;
 
 	/**
 	 * Gets the attachment type.

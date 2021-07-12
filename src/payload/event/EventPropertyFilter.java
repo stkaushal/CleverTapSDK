@@ -10,14 +10,14 @@ public class EventPropertyFilter {
 	
 	/** The propert name. */
 	@JsonProperty(value="name")
-	String propertName;
+	private String propertName;
 	
 	/** The operator. */
-	String operator;
+	private String operator;
 	
 	/** The propert value. */
 	@JsonProperty(value="value")
-	Object propertValue;
+	private Object propertValue;
 
 	/**
 	 * Gets the propert name.

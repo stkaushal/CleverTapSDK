@@ -4,11 +4,10 @@ import java.io.IOException;
 
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import helper.ClevertapInstance;
+import helper.ObjectMapperHelper;
 import helper.enums.CampaignMethod;
 import http.HttpClient;
 import payload.campaign.CampaignPayload;
@@ -17,9 +16,9 @@ import response.Response;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Campaigns Class.
+ * The singleton Campaigns Class.
  */
-public class Campaigns {
+final public class Campaigns {
 	
 	/** The API endpoint for stopping scheduled campaigns. */
 	private static final String urlStopScheduledCampaign = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/stop.json";
@@ -55,12 +54,26 @@ public class Campaigns {
 	/**
 	 * Instantiates a new campaigns instance.
 	 */
-	public Campaigns(){
+	private Campaigns(){
 		this.client = HttpClient.getHttpClientInstance();
-		this.objectMapper = new ObjectMapper();
-		this.objectMapper.setSerializationInclusion(Include.NON_NULL);
-		this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		this.objectMapper = ObjectMapperHelper.ObjectMapperHelperInstance().getObjectMapper();
 	}
+	
+	/** The campaigns. */
+	private static Campaigns campaigns = null;
+	
+	/**
+	 * Gets the campaigns instance.
+	 *
+	 * @return the campaigns instance
+	 */
+	public static Campaigns getCampaignsInstance() {
+		 if(campaigns==null)
+		 {
+			 campaigns = new Campaigns();
+		 }
+	      return campaigns;
+	 }
 
 	/**
 	 * Stops the scheduled campaigns.

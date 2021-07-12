@@ -15,11 +15,11 @@ public class Action {
 	
 	/** The action url. */
 	@JsonProperty(value="url")
-	ActionUrl actionUrl;
+	private ActionUrl actionUrl;
 	
 	/** The actionlinks. */
 	@JsonProperty(value="links")
-	List<ActionLinks> actionlinks;
+	private List<ActionLinks> actionlinks;
 
 	/**
 	 * Gets the action url.

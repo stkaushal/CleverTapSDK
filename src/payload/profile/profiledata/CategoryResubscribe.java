@@ -7,7 +7,7 @@ package payload.profile.profiledata;
 public class CategoryResubscribe {
 	
 	/** The email. */
-	String[] email;
+	private String[] email;
 
 	/**
 	 * Gets the email.

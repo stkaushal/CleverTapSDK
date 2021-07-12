@@ -15,48 +15,48 @@ public class ReportPayload {
 	
 	/** The user type. */
 	@JsonProperty(value="user_type")
-	boolean userType;
+	private boolean userType;
 	
 	/** The from date. */
 	@JsonProperty(value="from")
-	int fromDate;
+	private int fromDate;
 	
 	/** The to date. */
 	@JsonProperty(value="to")
-	int toDate;
+	private int toDate;
 	
 	/** The channel. */
-	String[] channel;
+	private String[] channel;
 	
 	/** The delivery. */
-	String[] delivery;
+	private String[] delivery;
 	
 	/** The daily. */
-	boolean daily;
+	private boolean daily;
 	
 	/** The status. */
-	String[] status;
+	private String[] status;
 	
 	/** The message type. */
-	String[] message_type;
+	private String[] message_type;
 	
 	/** The lable. */
-	String[] lable;
+	private String[] lable;
 	
 	/** The event name. */
 	@JsonProperty(value="event_name")
-	String eventName; 
+	private String eventName; 
 	
 	/** The groups. */
-	HashMap<String, Group> groups;
+	private HashMap<String, Group> groups;
 	
 	/** The is unique. */
 	@JsonProperty(value="unique")
-	boolean isUnique;
+	private boolean isUnique;
 	
 	/** The sum event prop. */
 	@JsonProperty(value="sum_event_prop")
-	String sumEventProp;
+	private String sumEventProp;
 
 	/**
 	 * Checks if is user type.

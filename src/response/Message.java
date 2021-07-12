@@ -13,34 +13,34 @@ public class Message {
 	
 	/** The message id. */
 	@JsonProperty(value="message id")
-	long messageId;
+	private long messageId;
 	
 	/** The data. */
-	List<HashMap<String, String>> data;
+	private List<HashMap<String, String>> data;
 	
 	/** The start date. */
 	@JsonProperty(value="start_date")
-	String startDate;
+	private String startDate;
 	
 	/** The device. */
-	List<String> device;
+	private List<String> device;
 	
 	/** The conversion event. */
 	@JsonProperty(value="conversion_event")
-	Object conversionEvent;
+	private Object conversionEvent;
 	
 	/** The lables. */
-	List<String> lables;
+	private List<String> lables;
 	
 	/** The channel. */
-	String channel;
+	private String channel;
 	
 	/** The message name. */
 	@JsonProperty(value="message_name")
-	String messageName;
+	private String messageName;
 	
 	/** The delivery. */
-	String delivery;
+	private String delivery;
 
 
 	/**

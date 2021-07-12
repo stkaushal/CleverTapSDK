@@ -10,9 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import helper.ClevertapInstance;
-import helper.Cursor;
 import helper.enums.Region;
 import helper.enums.UserIdentity;
+import payload.Cursor;
 import payload.profile.Keys;
 import payload.profile.ProfilePayload;
 import payload.profile.TokenData;
@@ -25,9 +25,9 @@ import response.Response;
 
 public class ProfilesIntegrationTest {
 
-	String Cid = "4R8-K98-8Z6Z";
-	String CPswd = "AOE-RUW-CHUL";
-	ClevertapInstance instance = new ClevertapInstance(Cid, CPswd, Region.NONE);
+	String clevertapID = "4R8-K98-8Z6Z";
+	String clevertapPassword = "AOE-RUW-CHUL";
+	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.NONE);
 	Profiles profileInstance = instance.getProfileInstance();
 
 	@BeforeEach

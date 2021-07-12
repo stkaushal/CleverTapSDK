@@ -16,9 +16,9 @@ import response.Response;
 
 public class ReportIntegrationTest {
 
-	String Cid = "4R8-K98-8Z6Z";
-	String CPswd = "AOE-RUW-CHUL";
-	ClevertapInstance instance = new ClevertapInstance(Cid, CPswd, Region.NONE);
+	String clevertapID = "4R8-K98-8Z6Z";
+	String clevertapPassword = "AOE-RUW-CHUL";
+	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.NONE);
 	Report reportInstance = instance.getReportInstance();
 
 	@BeforeEach

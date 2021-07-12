@@ -7,7 +7,7 @@ package payload.campaign.campaigncontent.actions;
 public class IosActionUrl {
 	
 	/** The text. */
-	String text;
+	private String text;
 
 	/**
 	 * Gets the text.

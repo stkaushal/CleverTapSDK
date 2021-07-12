@@ -7,13 +7,13 @@ package payload.profile;
 public class TokenData {
 	
 	/** The id. */
-	String id;
+	private String id;
 	
 	/** The type. */
-	String type;
+	private String type;
 	
 	/** The keys. */
-	Keys keys;
+	private Keys keys;
 	
 	/**
 	 * Gets the id.

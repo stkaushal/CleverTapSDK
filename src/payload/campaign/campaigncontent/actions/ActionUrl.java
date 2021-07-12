@@ -13,11 +13,11 @@ public class ActionUrl {
 	
 	/** The android action url. */
 	@JsonProperty(value="android")
-	AndroidActionUrl androidActionUrl;
+	private AndroidActionUrl androidActionUrl;
 	
 	/** The ios action url. */
 	@JsonProperty(value="ios")
-	IosActionUrl iosActionUrl;
+	private IosActionUrl iosActionUrl;
 
 	/**
 	 * Gets the android action url.

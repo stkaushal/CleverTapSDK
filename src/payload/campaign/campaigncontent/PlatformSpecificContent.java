@@ -19,23 +19,23 @@ public class PlatformSpecificContent {
 	
 	/** The platform type chrome. */
 	@JsonProperty(value="chrome")
-	PlatformTypeChrome platformTypeChrome; 
+	private PlatformTypeChrome platformTypeChrome; 
 	
 	/** The platform type firefox. */
 	@JsonProperty(value="firefox")
-	PlatformTypeFirefox platformTypeFirefox; 
+	private PlatformTypeFirefox platformTypeFirefox; 
 	
 	/** The platform type safari. */
 	@JsonProperty(value="safari")
-	PlatformTypeSafari platformTypeSafari; 
+	private PlatformTypeSafari platformTypeSafari; 
 	
 	/** The platform type ios. */
 	@JsonProperty(value="ios")
-	PlatformTypeIos platformTypeIos; 
+	private PlatformTypeIos platformTypeIos; 
 	
 	/** The platform type android. */
 	@JsonProperty(value="android")
-	PlatformTypeAndroid platformTypeAndroid;
+	private PlatformTypeAndroid platformTypeAndroid;
 
 	/**
 	 * Gets the platform type chrome.

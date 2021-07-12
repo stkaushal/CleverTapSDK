@@ -13,7 +13,7 @@ public enum Region {
  /** The usa region. */
  USA, 
  /** The eu1 region. */
- NONE, 
+ NONE,   ///Default 
  /** The sk1 region. */
- DEVELOPMENT;
+ DEVELOPMENT;  // remove this
 }

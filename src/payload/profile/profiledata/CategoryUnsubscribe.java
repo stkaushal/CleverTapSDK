@@ -7,7 +7,7 @@ package payload.profile.profiledata;
 public class CategoryUnsubscribe {
 	
 	/** The email. */
-	String[] email;
+	private String[] email;
 
 	/**
 	 * Gets the email.

@@ -12,13 +12,13 @@ public class GetUserProfileResponse extends Response{
 	
 	/** The next cursor. */
 	@JsonProperty(value="next_cursor")
-	String nextCursor;
+	private String nextCursor;
 	
 	/** The records. */
-	List<RecordsProfile> records;
+	private List<RecordsProfile> records;
 	
 	/** The record. */
-	RecordsProfile record;
+	private RecordsProfile record;
 	
 	/**
 	 * Gets the record.

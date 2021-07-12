@@ -10,11 +10,11 @@ public class DateRangePayload {
 	
 	/** The from date. */
 	@JsonProperty(value="from")
-	int fromDate;
+	private int fromDate;
 	
 	/** The to date. */
 	@JsonProperty(value="to")
-	int toDate;
+	private int toDate;
 
 	/**
 	 * Gets the from date.
