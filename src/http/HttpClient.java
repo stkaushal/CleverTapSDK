@@ -259,11 +259,11 @@ public class HttpClient {
 		sendEntity = new StringEntity(requestBody.toString());
 		httpPost.setEntity(sendEntity);
 
-		CloseableHttpResponse httpResponse = null;
-		httpResponse = httpClient.execute(httpPost);
+		try(CloseableHttpResponse httpResponse = httpClient.execute(httpPost)){
 
-		HttpEntity rcvEntity = httpResponse.getEntity();
-		response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8)); 	
+			HttpEntity rcvEntity = httpResponse.getEntity();
+			response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8)); 	
+		}
 
 		return response;
 	}
@@ -289,11 +289,11 @@ public class HttpClient {
 		httpGet.addHeader("X-CleverTap-Account-Id", ClevertapInstance.getId());
 		httpGet.addHeader("X-CleverTap-Passcode", ClevertapInstance.getPassword());
 
-		CloseableHttpResponse httpResponse = null;
-		httpResponse = httpClient.execute(httpGet);
+		try(CloseableHttpResponse httpResponse = httpClient.execute(httpGet)){
 
-		HttpEntity rcvEntity = httpResponse.getEntity();
-		response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8));
+			HttpEntity rcvEntity = httpResponse.getEntity();
+			response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8));
+		}
 
 		return response;
 	}
