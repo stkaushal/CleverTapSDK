@@ -259,7 +259,7 @@ public class HttpClient {
 		sendEntity = new StringEntity(requestBody.toString());
 		httpPost.setEntity(sendEntity);
 
-		CloseableHttpResponse httpResponse;
+		CloseableHttpResponse httpResponse = null;
 		httpResponse = httpClient.execute(httpPost);
 
 		HttpEntity rcvEntity = httpResponse.getEntity();
@@ -289,7 +289,7 @@ public class HttpClient {
 		httpGet.addHeader("X-CleverTap-Account-Id", ClevertapInstance.getId());
 		httpGet.addHeader("X-CleverTap-Passcode", ClevertapInstance.getPassword());
 
-		CloseableHttpResponse httpResponse;
+		CloseableHttpResponse httpResponse = null;
 		httpResponse = httpClient.execute(httpGet);
 
 		HttpEntity rcvEntity = httpResponse.getEntity();
