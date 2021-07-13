@@ -167,9 +167,7 @@ public class HttpClient {
 					System.out.println("Maximum retries exceeded for server error");
 					try {
 						if(httpResponse!=null) {
-							if(httpResponse!=null) {
-								httpResponse.close();
-							}
+							httpResponse.close();
 						}
 						System.out.println("http response closed");
 					} catch (IOException e) {
@@ -187,7 +185,9 @@ public class HttpClient {
 				else {
 					System.out.println("Maximum retries exceeded for server error");
 					try {
-						httpResponse.close();
+						if(httpResponse!=null) {
+							httpResponse.close();
+						}
 						System.out.println("http response closed");
 					} catch (IOException e) {
 						e.printStackTrace();
