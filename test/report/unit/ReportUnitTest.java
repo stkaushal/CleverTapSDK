@@ -22,7 +22,7 @@ import response.Response;
 
 public class ReportUnitTest {
 	
-	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.NONE);
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.DEFAULT);
 	Report resReport = instance.getReportInstance();
 	
 	@Mock HttpClient client;

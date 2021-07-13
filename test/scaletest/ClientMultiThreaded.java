@@ -2,11 +2,9 @@ package scaletest;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import event.Event;
-import payload.event.EventPayload;
 import payload.profile.ProfilePayload;
 import payload.profile.profiledata.ProfileData;
 import profile.Profiles;

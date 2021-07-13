@@ -7,7 +7,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import helper.ClevertapInstance;
 import helper.enums.Region;
@@ -23,11 +26,12 @@ import profile.Profiles;
 import response.GetUserProfileResponse;
 import response.Response;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class ProfilesIntegrationTest {
 
 	String clevertapID = "4R8-K98-8Z6Z";
 	String clevertapPassword = "AOE-RUW-CHUL";
-	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.NONE);
+	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.DEFAULT);
 	Profiles profileInstance = instance.getProfileInstance();
 
 	@BeforeEach
@@ -36,6 +40,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(1)
 	void testUploadUserProfile() throws IOException, InterruptedException {
 		ProfilePayload payload = new ProfilePayload();
 		payload.setUserIdentity("894683");
@@ -77,6 +82,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(2)
 	void testGetUserProfileCursor() throws IOException, InterruptedException {
 		ProfilePayload payloadCursor = new ProfilePayload();
 		payloadCursor.setEventName("charged");
@@ -89,6 +95,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(3)
 	void testGetUserProfileData() throws IOException, InterruptedException {
 		GetUserProfileResponse getProfileEv = instance.getProfileInstance().getUserProfileData("");
 
@@ -97,6 +104,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(4)
 	void testGetUserProfileById() throws IOException, InterruptedException {
 		GetUserProfileResponse getProfileId = instance.getProfileInstance().getUserProfileById(UserIdentity.EMAIL,
 				"dharmender.sheshma@clevertap.com");
@@ -106,6 +114,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(5)
 	void testUploadDeviceTokens() throws IOException, InterruptedException {
 		ProfilePayload tokenPayload = new ProfilePayload();
 		tokenPayload.setType("token");
@@ -127,6 +136,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(6)
 	void testGetProfileCount() throws IOException, InterruptedException {
 		ProfilePayload payload = new ProfilePayload();
 		payload.setEventName("Charged");
@@ -148,6 +158,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(7)
 	void testDeleteUserProfile() throws IOException, InterruptedException {
 		ProfilePayload userDeletePayload = new ProfilePayload();
 		userDeletePayload.setUserIdentity("894683");
@@ -158,6 +169,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(8)
 	void testDemergeUserProfile() throws IOException, InterruptedException {
 		ProfilePayload userDemergePayload = new ProfilePayload();
 		String[] id = {"894683", "911672"};
@@ -169,6 +181,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(9)
 	void testSubscribe() throws IOException, InterruptedException {
 		List<ProfilePayload> paySubscribeList = new ArrayList<ProfilePayload>();
 		ProfilePayload subscribePayload = new ProfilePayload();
@@ -183,6 +196,7 @@ public class ProfilesIntegrationTest {
 	}
 
 	@Test
+	@Order(10)
 	void testDisassociate() throws IOException, InterruptedException {
 		List<ProfilePayload> payDisasList = new ArrayList<ProfilePayload>();
 		ProfilePayload disassociatePayload = new ProfilePayload();

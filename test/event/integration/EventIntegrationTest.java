@@ -22,7 +22,7 @@ import response.Response;
 public class EventIntegrationTest {
 	String clevertapID = "4R8-K98-8Z6Z";
 	String clevertapPassword = "AOE-RUW-CHUL";
-	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.NONE);
+	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.DEFAULT);
 	Event eventInstance = instance.getEventInstance();
 
 	@BeforeEach

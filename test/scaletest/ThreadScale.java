@@ -1,8 +1,6 @@
 package scaletest;
 
 import java.io.IOException;
-import java.time.Instant;
-
 import event.Event;
 import helper.ClevertapInstance;
 import helper.enums.Region;

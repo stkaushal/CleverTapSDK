@@ -47,7 +47,7 @@ import org.apache.http.conn.HttpClientConnectionManager;
  *
  * @author dharmender
  */
-final public class HttpClient {
+public class HttpClient {
 
 	/** The Constant to keep alive connection. */
 	private static final int KEEP_ALIVE = 5 * 60 * 1000;
@@ -105,6 +105,14 @@ final public class HttpClient {
         public boolean retryRequest(IOException exception, int retryTimes, HttpContext context) {
         	
         	if (retryTimes >= MAX_RETRIES) {
+        		try {
+        			if(httpResponse!=null) {
+						httpResponse.close();
+					}
+					System.out.println("http response closed");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
                 return false;
             }
 			if (exception instanceof ConnectTimeoutException || exception instanceof NoHttpResponseException || exception instanceof SocketTimeoutException
@@ -131,6 +139,14 @@ final public class HttpClient {
 				}                     
                 return true; // If the request is considered to be idempotent, then try again. That is, repeated execution does not affect other effects of the program.
             }
+            try {
+            	if(httpResponse!=null) {
+					httpResponse.close();
+				}
+				System.out.println("http response closed");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
             return false;
 
 		}
@@ -149,6 +165,16 @@ final public class HttpClient {
 				}
 				else {
 					System.out.println("Maximum retries exceeded for server error");
+					try {
+						if(httpResponse!=null) {
+							if(httpResponse!=null) {
+								httpResponse.close();
+							}
+						}
+						System.out.println("http response closed");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					return false;
 				}
 			}
@@ -160,6 +186,12 @@ final public class HttpClient {
 				}
 				else {
 					System.out.println("Maximum retries exceeded for server error");
+					try {
+						httpResponse.close();
+						System.out.println("http response closed");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					return false;
 				}
 			}
@@ -248,7 +280,10 @@ final public class HttpClient {
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public JSONObject postRequest(String baseUrl, JSONObject requestBody) throws IOException, InterruptedException {
+		
 		JSONObject response = null;
+		
+		
 		HttpPost httpPost = new HttpPost(baseUrl);
 
 		httpPost.setConfig(requestConfig);
@@ -264,15 +299,7 @@ final public class HttpClient {
 		httpResponse = httpClient.execute(httpPost);
 
 		HttpEntity rcvEntity = httpResponse.getEntity();
-		response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8)); 
-		// add try catch with finally block
-		if (httpResponse != null) {
-			try {
-				httpResponse.close();
-			} catch (IOException ioException) {
-				ioException.printStackTrace();
-			}
-		}
+		response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8)); 	
 
 		return response;
 	}
@@ -302,14 +329,6 @@ final public class HttpClient {
 
 		HttpEntity rcvEntity = httpResponse.getEntity();
 		response = new JSONObject(EntityUtils.toString(rcvEntity, StandardCharsets.UTF_8));
-
-		if (httpResponse != null) {
-			try {
-				httpResponse.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 
 		return response;
 	}

@@ -3,17 +3,12 @@ package scaletest;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import helper.ClevertapInstance;
 import helper.enums.Region;
-import payload.event.EventPayload;
 import payload.profile.ProfilePayload;
 import payload.profile.profiledata.ProfileData;
 import response.Response;

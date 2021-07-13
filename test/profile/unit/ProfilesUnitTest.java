@@ -32,7 +32,7 @@ import response.Response;
 
 public class ProfilesUnitTest {
 
-	ClevertapInstance instance = new ClevertapInstance("dummy", "dummy", Region.NONE);
+	ClevertapInstance instance = new ClevertapInstance("dummy", "dummy", Region.DEFAULT);
 	Profiles resProfiles = instance.getProfileInstance();
 
 	@Mock

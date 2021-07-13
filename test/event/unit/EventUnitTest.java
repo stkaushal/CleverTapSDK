@@ -27,7 +27,7 @@ import response.Response;
 
 public class EventUnitTest {
 	
-	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.NONE);
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.DEFAULT);
 	Event resEvent = instance.getEventInstance();
 	
 	@Mock HttpClient client;

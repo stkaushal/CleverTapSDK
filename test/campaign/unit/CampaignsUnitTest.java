@@ -45,7 +45,7 @@ import response.Response;
 
 public class CampaignsUnitTest {
 	
-	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.NONE);   
+	ClevertapInstance instance  = new ClevertapInstance("dummy", "dummy", Region.DEFAULT);   
 	Campaigns resCampaigns = instance.getCampaignInstance();
 	
 	@Mock HttpClient client;

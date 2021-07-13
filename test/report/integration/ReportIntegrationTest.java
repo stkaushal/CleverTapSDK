@@ -18,7 +18,7 @@ public class ReportIntegrationTest {
 
 	String clevertapID = "4R8-K98-8Z6Z";
 	String clevertapPassword = "AOE-RUW-CHUL";
-	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.NONE);
+	ClevertapInstance instance = new ClevertapInstance(clevertapID, clevertapPassword, Region.DEFAULT);
 	Report reportInstance = instance.getReportInstance();
 
 	@BeforeEach
