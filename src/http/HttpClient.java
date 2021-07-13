@@ -73,9 +73,6 @@ public class HttpClient {
 	/** The http client. */
 	private CloseableHttpClient httpClient;
 	
-	/** The http response. */
-	private CloseableHttpResponse httpResponse;
-	
 	/** The connection manager. */
 	private PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
 
@@ -105,14 +102,6 @@ public class HttpClient {
         public boolean retryRequest(IOException exception, int retryTimes, HttpContext context) {
         	
         	if (retryTimes >= MAX_RETRIES) {
-        		try {
-        			if(httpResponse!=null) {
-						httpResponse.close();
-					}
-					System.out.println("http response closed");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
                 return false;
             }
 			if (exception instanceof ConnectTimeoutException || exception instanceof NoHttpResponseException || exception instanceof SocketTimeoutException
@@ -139,14 +128,6 @@ public class HttpClient {
 				}                     
                 return true; // If the request is considered to be idempotent, then try again. That is, repeated execution does not affect other effects of the program.
             }
-            try {
-            	if(httpResponse!=null) {
-					httpResponse.close();
-				}
-				System.out.println("http response closed");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
             return false;
 
 		}
@@ -165,14 +146,6 @@ public class HttpClient {
 				}
 				else {
 					System.out.println("Maximum retries exceeded for server error");
-					try {
-						if(httpResponse!=null) {
-							httpResponse.close();
-						}
-						System.out.println("http response closed");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
 					return false;
 				}
 			}
@@ -184,14 +157,6 @@ public class HttpClient {
 				}
 				else {
 					System.out.println("Maximum retries exceeded for server error");
-					try {
-						if(httpResponse!=null) {
-							httpResponse.close();
-						}
-						System.out.println("http response closed");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
 					return false;
 				}
 			}
@@ -228,7 +193,6 @@ public class HttpClient {
 	 * Instantiates a new private http client.
 	 */
 	private HttpClient() {
-		this.httpResponse = null;
 
 		this.requestConfig = RequestConfig.custom()
 				.setSocketTimeout(CONN_TIMEOUT)
@@ -283,7 +247,6 @@ public class HttpClient {
 		
 		JSONObject response = null;
 		
-		
 		HttpPost httpPost = new HttpPost(baseUrl);
 
 		httpPost.setConfig(requestConfig);
@@ -296,6 +259,7 @@ public class HttpClient {
 		sendEntity = new StringEntity(requestBody.toString());
 		httpPost.setEntity(sendEntity);
 
+		CloseableHttpResponse httpResponse;
 		httpResponse = httpClient.execute(httpPost);
 
 		HttpEntity rcvEntity = httpResponse.getEntity();
@@ -315,7 +279,7 @@ public class HttpClient {
 	public JSONObject getRequest(String baseUrl) throws IOException, InterruptedException {
 
 		JSONObject response = null;
-
+		
 		// Creating a HttpGet object
 		HttpGet httpGet = new HttpGet(baseUrl);
 
@@ -325,6 +289,7 @@ public class HttpClient {
 		httpGet.addHeader("X-CleverTap-Account-Id", ClevertapInstance.getId());
 		httpGet.addHeader("X-CleverTap-Passcode", ClevertapInstance.getPassword());
 
+		CloseableHttpResponse httpResponse;
 		httpResponse = httpClient.execute(httpGet);
 
 		HttpEntity rcvEntity = httpResponse.getEntity();
