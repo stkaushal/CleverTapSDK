@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CampaignPayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">payload.campaign</a> &gt; <span class="el_source">CampaignPayload.java</span></div><h1>CampaignPayload.java</h1><pre class="source lang-java linenums">package payload.campaign;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import helper.enums.CampaignMethod;
+import payload.campaign.campaigncontent.Content;
+
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CampaignPayload.
+ */
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L18">public class CampaignPayload {</span>
+	
+	/** The campaign name. */
+	@JsonProperty(value=&quot;name&quot;)
+	private String campaignName;
+	
+	/** The campaign send time. */
+	@JsonProperty(value=&quot;when&quot;)
+	private String campaignSendTime;
+	
+	/** The content, defined as Object type because it can be a single Content object as well a list of Content objects*/
+	private Object content;
+	
+	/** The provider nick name. */
+	@JsonProperty(value=&quot;provider_nick_name&quot;)
+	private String providerNickName;
+	
+	/** The provider group nickname. */
+	@JsonProperty(value=&quot;provider_group_nickname&quot;)
+	private String providerGroupNickname;
+	
+	/** The campaign send to. */
+	@JsonProperty(value=&quot;where&quot;)
+	private Where campaignSendTo;
+	
+	/** The respect frequency caps. */
+	@JsonProperty(value=&quot;respect_frequency_caps&quot;)
+	private boolean respectFrequencyCaps;
+	
+	/** The estimate only. */
+	@JsonProperty(value=&quot;estimate_only&quot;)
+	private boolean estimateOnly;
+	
+	/** The async estimate. */
+	@JsonProperty(value=&quot;async_estimate&quot;)
+	private boolean asyncEstimate;
+	
+	/** The time to live for app inbox. */
+	@JsonProperty(value=&quot;time_to_live&quot;)
+	private int timeToLiveForAppInbox;
+	
+	/** The time to live for push. */
+	@JsonProperty(value=&quot;ttl&quot;)
+	private int timeToLiveForPush;
+	
+	/** The wzrk cid. */
+	@JsonProperty(value=&quot;wzrk_cid&quot;)
+	private String wzrkCid;
+	
+	/** The wzrk bc. */
+	@JsonProperty(value=&quot;wzrk_bc&quot;)
+	private String wzrkBc;
+	
+	/** The wzrk bi. */
+	@JsonProperty(value=&quot;wzrk_bi&quot;)
+	private String wzrkBi;
+	
+	/** The include system control group. */
+	@JsonProperty(value=&quot;system_control_group_include&quot;)
+	private boolean includeSystemControlGroup;
+	
+	/** The control group. */
+	@JsonProperty(value=&quot;control_group&quot;)
+	private ControlGroup controlGroup;
+	
+	/** The wzrk acts. */
+	@JsonProperty(value=&quot;wzrk_acts&quot;)
+	private String wzrkActs;
+	
+	/** The respect throttle. */
+	@JsonProperty(value=&quot;respect_throttle&quot;)
+	private boolean respectThrottle;
+	
+	/** The skip estimate. */
+	@JsonProperty(value=&quot;skip_estimate&quot;)
+	private boolean skipEstimate;
+	
+	/** The send to all devices. */
+	@JsonProperty(value=&quot;send_to_all_devices&quot;)
+	private boolean sendToAllDevices;
+	
+	/** The segment. */
+	private int segment;
+	
+	/** The send message to. */
+	@JsonProperty(value=&quot;to&quot;)
+	private To sendMessageTo;
+	
+	/** The tag group. */
+	@JsonProperty(value=&quot;tag_group&quot;)
+	private String tagGroup;
+	
+	/** The badge id. */
+	@JsonProperty(value=&quot;badge_id&quot;)
+	private int badgeId;
+	
+	/** The badge icon. */
+	@JsonProperty(value=&quot;badge_icon&quot;)
+	private String badgeIcon;
+	
+	/** The mutable content. */
+	@JsonProperty(value=&quot;mutable_content&quot;)
+	private boolean mutableContent;
+	
+	/** The campaign id. */
+	@JsonProperty(value=&quot;id&quot;)
+	private int campaignId;
+	
+	/** The template type. */
+	@JsonProperty(value=&quot;template_type&quot;)
+	private String templateType;
+	
+	/** The target mode. */
+	@JsonProperty(value=&quot;target_mode&quot;)
+	private String targetMode;
+	
+	/** The devices. */
+	private List&lt;String&gt; devices;
+	
+	/** The webhook endpoint name. */
+	@JsonProperty(value=&quot;webhook_endpoint_name&quot;)
+	private String webhookEndpointName;
+	
+	/** The webhook fields. */
+	@JsonProperty(value=&quot;webhook_fields&quot;)
+	private List&lt;String&gt; webhookFields;
+	
+	/** The webhook key value. */
+	@JsonProperty(value=&quot;webhook_key_value&quot;)
+	private List&lt;String&gt; webhookKeyValue;
+	
+	/** The tags. */
+	private List&lt;String&gt; tags;
+	
+	/** The orientation. */
+	private String orientation;
+	
+	/**
+	 * Gets the orientation.
+	 *
+	 * @return the orientation
+	 */
+	public String getOrientation() {
+<span class="fc" id="L161">		return orientation;</span>
+	}
+
+	/**
+	 * Sets the orientation.
+	 *
+	 * @param orientation the new orientation
+	 */
+	public void setOrientation(String orientation) {
+<span class="nc" id="L170">		this.orientation = orientation;</span>
+<span class="nc" id="L171">	}</span>
+
+	/**
+	 * Gets the tags.
+	 *
+	 * @return the tags
+	 */
+	public List&lt;String&gt; getTags() {
+<span class="fc" id="L179">		return tags;</span>
+	}
+
+	/**
+	 * Sets the tags.
+	 *
+	 * @param tags the new tags
+	 */
+	public void setTags(List&lt;String&gt; tags) {
+<span class="nc" id="L188">		this.tags = tags;</span>
+<span class="nc" id="L189">	}</span>
+
+	/**
+	 * Gets the webhook endpoint name.
+	 *
+	 * @return the webhook endpoint name
+	 */
+	public String getWebhookEndpointName() {
+<span class="fc" id="L197">		return webhookEndpointName;</span>
+	}
+
+	/**
+	 * Sets the webhook endpoint name.
+	 *
+	 * @param webhookEndpointName the new webhook endpoint name
+	 */
+	public void setWebhookEndpointName(String webhookEndpointName) {
+<span class="nc" id="L206">		this.webhookEndpointName = webhookEndpointName;</span>
+<span class="nc" id="L207">	}</span>
+
+	/**
+	 * Gets the webhook fields.
+	 *
+	 * @return the webhook fields
+	 */
+	public List&lt;String&gt; getWebhookFields() {
+<span class="fc" id="L215">		return webhookFields;</span>
+	}
+
+	/**
+	 * Sets the webhook fields.
+	 *
+	 * @param webhookFields the new webhook fields
+	 */
+	public void setWebhookFields(List&lt;String&gt; webhookFields) {
+<span class="nc" id="L224">		this.webhookFields = webhookFields;</span>
+<span class="nc" id="L225">	}</span>
+
+	/**
+	 * Gets the webhook key value.
+	 *
+	 * @return the webhook key value
+	 */
+	public List&lt;String&gt; getWebhookKeyValue() {
+<span class="fc" id="L233">		return webhookKeyValue;</span>
+	}
+
+	/**
+	 * Sets the webhook key value.
+	 *
+	 * @param webhookKeyValue the new webhook key value
+	 */
+	public void setWebhookKeyValue(List&lt;String&gt; webhookKeyValue) {
+<span class="nc" id="L242">		this.webhookKeyValue = webhookKeyValue;</span>
+<span class="nc" id="L243">	}</span>
+
+	/**
+	 * Gets the devices.
+	 *
+	 * @return the devices
+	 */
+	public List&lt;String&gt; getDevices() {
+<span class="fc" id="L251">		return devices;</span>
+	}
+
+	/**
+	 * Sets the devices.
+	 *
+	 * @param devices the new devices
+	 */
+	public void setDevices(List&lt;String&gt; devices) {
+<span class="nc" id="L260">		this.devices = devices;</span>
+<span class="nc" id="L261">	}</span>
+
+	/**
+	 * Gets the template type.
+	 *
+	 * @return the template type
+	 */
+	public String getTemplateType() {
+<span class="fc" id="L269">		return templateType;</span>
+	}
+
+	/**
+	 * Sets the template type.
+	 *
+	 * @param templateType the new template type
+	 */
+	public void setTemplateType(String templateType) {
+<span class="nc" id="L278">		this.templateType = templateType;</span>
+<span class="nc" id="L279">	}</span>
+
+	/**
+	 * Sets the target mode.
+	 *
+	 * @param targetMode the new target mode
+	 */
+	public void setTargetMode(String targetMode) {
+<span class="nc" id="L287">		this.targetMode = targetMode;</span>
+<span class="nc" id="L288">	}</span>
+
+
+	/**
+	 * Gets the target mode.
+	 *
+	 * @return the target mode
+	 */
+	public String getTargetMode() {
+<span class="fc" id="L297">		return targetMode;</span>
+	}
+
+	/**
+	 * Sets the target mode.
+	 *
+	 * @param targetMode the new target mode
+	 */
+	public void setTargetMode(CampaignMethod targetMode) {
+<span class="pc bpc" id="L306" title="1 of 2 branches missed.">		if(targetMode==CampaignMethod.WEBPUSH){</span>
+<span class="nc" id="L307">			this.targetMode = &quot;webpush&quot;;</span>
+		}
+<span class="pc bpc" id="L309" title="1 of 2 branches missed.">		else if(targetMode==CampaignMethod.MOBILEPUSH){</span>
+<span class="nc" id="L310">			this.targetMode = &quot;push&quot;;</span>
+		}
+<span class="pc bpc" id="L312" title="1 of 2 branches missed.">		else if(targetMode==CampaignMethod.EMAIL){</span>
+<span class="nc" id="L313">			this.targetMode = &quot;email&quot;;</span>
+		}
+<span class="pc bpc" id="L315" title="1 of 2 branches missed.">		else if(targetMode==CampaignMethod.SMS){</span>
+<span class="fc" id="L316">			this.targetMode = &quot;sms&quot;;</span>
+		}
+<span class="nc bnc" id="L318" title="All 2 branches missed.">		else if(targetMode==CampaignMethod.WEBHOOKS){</span>
+<span class="nc" id="L319">			this.targetMode = &quot;webhook&quot;;</span>
+		}
+<span class="nc bnc" id="L321" title="All 2 branches missed.">		else if(targetMode==CampaignMethod.APPINBOX){</span>
+<span class="nc" id="L322">			this.targetMode = &quot;notificationinbox&quot;;</span>
+		}
+<span class="nc bnc" id="L324" title="All 2 branches missed.">		else if(targetMode==CampaignMethod.WHATSAPP) {</span>
+<span class="nc" id="L325">			this.targetMode = &quot;whatsapp&quot;;</span>
+		}
+<span class="fc" id="L327">	}</span>
+
+	/**
+	 * Gets the campaign name.
+	 *
+	 * @return the campaign name
+	 */
+	public String getCampaignName() {
+<span class="fc" id="L335">		return campaignName;</span>
+	}
+
+	/**
+	 * Sets the campaign name.
+	 *
+	 * @param campaignName the new campaign name
+	 */
+	public void setCampaignName(String campaignName) {
+<span class="fc" id="L344">		this.campaignName = campaignName;</span>
+<span class="fc" id="L345">	}</span>
+
+	/**
+	 * Gets the campaign send time.
+	 *
+	 * @return the campaign send time
+	 */
+	public String getCampaignSendTime() {
+<span class="fc" id="L353">		return campaignSendTime;</span>
+	}
+
+	/**
+	 * Sets the campaign send time.
+	 *
+	 * @param campaignSendTime the new campaign send time
+	 */
+	public void setCampaignSendTime(String campaignSendTime) {
+<span class="fc" id="L362">		this.campaignSendTime = campaignSendTime;</span>
+<span class="fc" id="L363">	}</span>
+
+	/**
+	 * Gets the content.
+	 *
+	 * @return the content
+	 */
+	public Object getContent() {
+<span class="fc" id="L371">		return content;</span>
+	}
+
+	/**
+	 * Sets the content.
+	 *
+	 * @param content the new content
+	 */
+	public void setContent(Content content) {
+<span class="fc" id="L380">		this.content = content;</span>
+<span class="fc" id="L381">	}</span>
+	
+	/**
+	 * Sets the content.
+	 *
+	 * @param content the new content
+	 */
+	public void setContent(List&lt;Content&gt; content) {
+<span class="nc" id="L389">		this.content = content;</span>
+<span class="nc" id="L390">	}</span>
+
+	/**
+	 * Gets the provider nick name.
+	 *
+	 * @return the provider nick name
+	 */
+	public String getProviderNickName() {
+<span class="fc" id="L398">		return providerNickName;</span>
+	}
+
+	/**
+	 * Sets the provider nick name.
+	 *
+	 * @param providerNickName the new provider nick name
+	 */
+	public void setProviderNickName(String providerNickName) {
+<span class="fc" id="L407">		this.providerNickName = providerNickName;</span>
+<span class="fc" id="L408">	}</span>
+
+	/**
+	 * Gets the provider group nickname.
+	 *
+	 * @return the provider group nickname
+	 */
+	public String getProviderGroupNickname() {
+<span class="fc" id="L416">		return providerGroupNickname;</span>
+	}
+
+	/**
+	 * Sets the provider group nickname.
+	 *
+	 * @param providerGroupNickname the new provider group nickname
+	 */
+	public void setProviderGroupNickname(String providerGroupNickname) {
+<span class="fc" id="L425">		this.providerGroupNickname = providerGroupNickname;</span>
+<span class="fc" id="L426">	}</span>
+
+	/**
+	 * Gets the campaign send to.
+	 *
+	 * @return the campaign send to
+	 */
+	public Where getCampaignSendTo() {
+<span class="fc" id="L434">		return campaignSendTo;</span>
+	}
+
+	/**
+	 * Sets the campaign send to.
+	 *
+	 * @param campaignSendTo the new campaign send to
+	 */
+	public void setCampaignSendTo(Where campaignSendTo) {
+<span class="fc" id="L443">		this.campaignSendTo = campaignSendTo;</span>
+<span class="fc" id="L444">	}</span>
+
+	/**
+	 * Checks if is respect frequency caps.
+	 *
+	 * @return true, if is respect frequency caps
+	 */
+	public boolean isRespectFrequencyCaps() {
+<span class="fc" id="L452">		return respectFrequencyCaps;</span>
+	}
+
+	/**
+	 * Sets the respect frequency caps.
+	 *
+	 * @param respectFrequencyCaps the new respect frequency caps
+	 */
+	public void setRespectFrequencyCaps(boolean respectFrequencyCaps) {
+<span class="fc" id="L461">		this.respectFrequencyCaps = respectFrequencyCaps;</span>
+<span class="fc" id="L462">	}</span>
+
+	/**
+	 * Checks if is estimate only.
+	 *
+	 * @return true, if is estimate only
+	 */
+	public boolean isEstimateOnly() {
+<span class="fc" id="L470">		return estimateOnly;</span>
+	}
+
+	/**
+	 * Sets the estimate only.
+	 *
+	 * @param estimateOnly the new estimate only
+	 */
+	public void setEstimateOnly(boolean estimateOnly) {
+<span class="fc" id="L479">		this.estimateOnly = estimateOnly;</span>
+<span class="fc" id="L480">	}</span>
+
+	/**
+	 * Checks if is async estimate.
+	 *
+	 * @return true, if is async estimate
+	 */
+	public boolean isAsyncEstimate() {
+<span class="fc" id="L488">		return asyncEstimate;</span>
+	}
+
+	/**
+	 * Sets the async estimate.
+	 *
+	 * @param asyncEstimate the new async estimate
+	 */
+	public void setAsyncEstimate(boolean asyncEstimate) {
+<span class="fc" id="L497">		this.asyncEstimate = asyncEstimate;</span>
+<span class="fc" id="L498">	}</span>
+
+	/**
+	 * Gets the time to live for push.
+	 *
+	 * @return the time to live for push
+	 */
+	public int getTimeToLiveForPush() {
+<span class="fc" id="L506">		return timeToLiveForPush;</span>
+	}
+
+	/**
+	 * Sets the time to live for push.
+	 *
+	 * @param timeToLiveForPush the new time to live for push
+	 */
+	public void setTimeToLiveForPush(int timeToLiveForPush) {
+<span class="fc" id="L515">		this.timeToLiveForPush = timeToLiveForPush;</span>
+<span class="fc" id="L516">	}</span>
+
+	/**
+	 * Sets the content.
+	 *
+	 * @param content the new content
+	 */
+	public void setContent(Object content) {
+<span class="nc" id="L524">		this.content = content;</span>
+<span class="nc" id="L525">	}</span>
+
+	/**
+	 * Gets the wzrk cid.
+	 *
+	 * @return the wzrk cid
+	 */
+	public String getWzrkCid() {
+<span class="fc" id="L533">		return wzrkCid;</span>
+	}
+
+	/**
+	 * Sets the wzrk cid.
+	 *
+	 * @param wzrkCid the new wzrk cid
+	 */
+	public void setWzrkCid(String wzrkCid) {
+<span class="fc" id="L542">		this.wzrkCid = wzrkCid;</span>
+<span class="fc" id="L543">	}</span>
+
+	/**
+	 * Gets the wzrk bc.
+	 *
+	 * @return the wzrk bc
+	 */
+	public String getWzrkBc() {
+<span class="fc" id="L551">		return wzrkBc;</span>
+	}
+
+	/**
+	 * Sets the wzrk bc.
+	 *
+	 * @param wzrkBc the new wzrk bc
+	 */
+	public void setWzrkBc(String wzrkBc) {
+<span class="fc" id="L560">		this.wzrkBc = wzrkBc;</span>
+<span class="fc" id="L561">	}</span>
+
+	/**
+	 * Gets the wzrk bi.
+	 *
+	 * @return the wzrk bi
+	 */
+	public String getWzrkBi() {
+<span class="fc" id="L569">		return wzrkBi;</span>
+	}
+
+	/**
+	 * Sets the wzrk bi.
+	 *
+	 * @param wzrkBi the new wzrk bi
+	 */
+	public void setWzrkBi(String wzrkBi) {
+<span class="fc" id="L578">		this.wzrkBi = wzrkBi;</span>
+<span class="fc" id="L579">	}</span>
+
+	/**
+	 * Checks if is include system control group.
+	 *
+	 * @return true, if is include system control group
+	 */
+	public boolean isIncludeSystemControlGroup() {
+<span class="fc" id="L587">		return includeSystemControlGroup;</span>
+	}
+
+	/**
+	 * Sets the include system control group.
+	 *
+	 * @param includeSystemControlGroup the new include system control group
+	 */
+	public void setIncludeSystemControlGroup(boolean includeSystemControlGroup) {
+<span class="fc" id="L596">		this.includeSystemControlGroup = includeSystemControlGroup;</span>
+<span class="fc" id="L597">	}</span>
+
+	/**
+	 * Gets the control group.
+	 *
+	 * @return the control group
+	 */
+	public ControlGroup getControlGroup() {
+<span class="fc" id="L605">		return controlGroup;</span>
+	}
+
+	/**
+	 * Sets the control group.
+	 *
+	 * @param controlGroup the new control group
+	 */
+	public void setControlGroup(ControlGroup controlGroup) {
+<span class="fc" id="L614">		this.controlGroup = controlGroup;</span>
+<span class="fc" id="L615">	}</span>
+
+	/**
+	 * Gets the wzrk acts.
+	 *
+	 * @return the wzrk acts
+	 */
+	public String getWzrkActs() {
+<span class="fc" id="L623">		return wzrkActs;</span>
+	}
+
+	/**
+	 * Sets the wzrk acts.
+	 *
+	 * @param wzrkActs the new wzrk acts
+	 */
+	public void setWzrkActs(String wzrkActs) {
+<span class="fc" id="L632">		this.wzrkActs = wzrkActs;</span>
+<span class="fc" id="L633">	}</span>
+
+	/**
+	 * Checks if is respect throttle.
+	 *
+	 * @return true, if is respect throttle
+	 */
+	public boolean isRespectThrottle() {
+<span class="fc" id="L641">		return respectThrottle;</span>
+	}
+
+	/**
+	 * Sets the respect throttle.
+	 *
+	 * @param respectThrottle the new respect throttle
+	 */
+	public void setRespectThrottle(boolean respectThrottle) {
+<span class="fc" id="L650">		this.respectThrottle = respectThrottle;</span>
+<span class="fc" id="L651">	}</span>
+
+	/**
+	 * Checks if is skip estimate.
+	 *
+	 * @return true, if is skip estimate
+	 */
+	public boolean isSkipEstimate() {
+<span class="fc" id="L659">		return skipEstimate;</span>
+	}
+
+	/**
+	 * Sets the skip estimate.
+	 *
+	 * @param skipEstimate the new skip estimate
+	 */
+	public void setSkipEstimate(boolean skipEstimate) {
+<span class="fc" id="L668">		this.skipEstimate = skipEstimate;</span>
+<span class="fc" id="L669">	}</span>
+
+	/**
+	 * Checks if is send to all devices.
+	 *
+	 * @return true, if is send to all devices
+	 */
+	public boolean isSendToAllDevices() {
+<span class="fc" id="L677">		return sendToAllDevices;</span>
+	}
+
+	/**
+	 * Sets the send to all devices.
+	 *
+	 * @param sendToAllDevices the new send to all devices
+	 */
+	public void setSendToAllDevices(boolean sendToAllDevices) {
+<span class="fc" id="L686">		this.sendToAllDevices = sendToAllDevices;</span>
+<span class="fc" id="L687">	}</span>
+
+	/**
+	 * Gets the segment.
+	 *
+	 * @return the segment
+	 */
+	public int getSegment() {
+<span class="fc" id="L695">		return segment;</span>
+	}
+
+	/**
+	 * Sets the segment.
+	 *
+	 * @param segment the new segment
+	 */
+	public void setSegment(int segment) {
+<span class="fc" id="L704">		this.segment = segment;</span>
+<span class="fc" id="L705">	}</span>
+
+	/**
+	 * Gets the send message to.
+	 *
+	 * @return the send message to
+	 */
+	public To getSendMessageTo() {
+<span class="fc" id="L713">		return sendMessageTo;</span>
+	}
+
+	/**
+	 * Sets the send message to.
+	 *
+	 * @param sendMessageTo the new send message to
+	 */
+	public void setSendMessageTo(To sendMessageTo) {
+<span class="fc" id="L722">		this.sendMessageTo = sendMessageTo;</span>
+<span class="fc" id="L723">	}</span>
+
+	/**
+	 * Gets the tag group.
+	 *
+	 * @return the tag group
+	 */
+	public String getTagGroup() {
+<span class="fc" id="L731">		return tagGroup;</span>
+	}
+
+	/**
+	 * Sets the tag group.
+	 *
+	 * @param tagGroup the new tag group
+	 */
+	public void setTagGroup(String tagGroup) {
+<span class="fc" id="L740">		this.tagGroup = tagGroup;</span>
+<span class="fc" id="L741">	}</span>
+
+	/**
+	 * Gets the badge id.
+	 *
+	 * @return the badge id
+	 */
+	public int getBadgeId() {
+<span class="fc" id="L749">		return badgeId;</span>
+	}
+
+	/**
+	 * Sets the badge id.
+	 *
+	 * @param badgeId the new badge id
+	 */
+	public void setBadgeId(int badgeId) {
+<span class="fc" id="L758">		this.badgeId = badgeId;</span>
+<span class="fc" id="L759">	}</span>
+
+	/**
+	 * Gets the badge icon.
+	 *
+	 * @return the badge icon
+	 */
+	public String getBadgeIcon() {
+<span class="fc" id="L767">		return badgeIcon;</span>
+	}
+
+	/**
+	 * Sets the badge icon.
+	 *
+	 * @param badgeIcon the new badge icon
+	 */
+	public void setBadgeIcon(String badgeIcon) {
+<span class="fc" id="L776">		this.badgeIcon = badgeIcon;</span>
+<span class="fc" id="L777">	}</span>
+
+	/**
+	 * Checks if is mutable content.
+	 *
+	 * @return true, if is mutable content
+	 */
+	public boolean isMutableContent() {
+<span class="fc" id="L785">		return mutableContent;</span>
+	}
+
+	/**
+	 * Sets the mutable content.
+	 *
+	 * @param mutableContent the new mutable content
+	 */
+	public void setMutableContent(boolean mutableContent) {
+<span class="fc" id="L794">		this.mutableContent = mutableContent;</span>
+<span class="fc" id="L795">	}</span>
+
+	/**
+	 * Gets the campaign id.
+	 *
+	 * @return the campaign id
+	 */
+	public int getCampaignId() {
+<span class="fc" id="L803">		return campaignId;</span>
+	}
+
+	/**
+	 * Sets the campaign id.
+	 *
+	 * @param campaignId the new campaign id
+	 */
+	public void setCampaignId(int campaignId) {
+<span class="fc" id="L812">		this.campaignId = campaignId;</span>
+<span class="fc" id="L813">	}</span>
+
+	/**
+	 * Gets the time to live for app inbox.
+	 *
+	 * @return the time to live for app inbox
+	 */
+	public int getTimeToLiveForAppInbox() {
+<span class="fc" id="L821">		return timeToLiveForAppInbox;</span>
+	}
+
+	/**
+	 * Sets the time to live for app inbox.
+	 *
+	 * @param timeToLiveForAppInbox the new time to live for app inbox
+	 */
+	public void setTimeToLiveForAppInbox(int timeToLiveForAppInbox) {
+<span class="nc" id="L830">		this.timeToLiveForAppInbox = timeToLiveForAppInbox;</span>
+<span class="nc" id="L831">	}</span>
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

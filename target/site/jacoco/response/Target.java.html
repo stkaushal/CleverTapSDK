@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Target.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">response</a> &gt; <span class="el_source">Target.java</span></div><h1>Target.java</h1><pre class="source lang-java linenums">package response;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Target.
+ */
+<span class="fc" id="L9">public class Target {</span>
+	
+	/** The id. */
+	private long id;
+	
+	/** The name. */
+	private String name;
+	
+	/** The scheduled on. */
+	@JsonProperty(value=&quot;scheduled_on&quot;)
+	private long scheduledOn;
+	
+	/** The status. */
+	private String status;
+	
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	public long getId() {
+<span class="fc" id="L30">		return id;</span>
+	}
+	
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
+	public void setId(long id) {
+<span class="fc" id="L39">		this.id = id;</span>
+<span class="fc" id="L40">	}</span>
+	
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
+	public String getName() {
+<span class="fc" id="L48">		return name;</span>
+	}
+	
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
+	public void setName(String name) {
+<span class="fc" id="L57">		this.name = name;</span>
+<span class="fc" id="L58">	}</span>
+
+	/**
+	 * Gets the scheduled on.
+	 *
+	 * @return the scheduled on
+	 */
+	public long getScheduledOn() {
+<span class="fc" id="L66">		return scheduledOn;</span>
+	}
+	
+	/**
+	 * Sets the scheduled on.
+	 *
+	 * @param scheduledOn the new scheduled on
+	 */
+	public void setScheduledOn(long scheduledOn) {
+<span class="fc" id="L75">		this.scheduledOn = scheduledOn;</span>
+<span class="fc" id="L76">	}</span>
+	
+	/**
+	 * Gets the status.
+	 *
+	 * @return the status
+	 */
+	public String getStatus() {
+<span class="fc" id="L84">		return status;</span>
+	}
+	
+	/**
+	 * Sets the status.
+	 *
+	 * @param status the new status
+	 */
+	public void setStatus(String status) {
+<span class="fc" id="L93">		this.status = status;</span>
+<span class="fc" id="L94">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

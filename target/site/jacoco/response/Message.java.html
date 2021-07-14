@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Message.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">response</a> &gt; <span class="el_source">Message.java</span></div><h1>Message.java</h1><pre class="source lang-java linenums">package response;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Message.
+ */
+<span class="fc" id="L12">public class Message {</span>
+	
+	/** The message id. */
+	@JsonProperty(value=&quot;message id&quot;)
+	private long messageId;
+	
+	/** The data. */
+	private List&lt;HashMap&lt;String, String&gt;&gt; data;
+	
+	/** The start date. */
+	@JsonProperty(value=&quot;start_date&quot;)
+	private String startDate;
+	
+	/** The device. */
+	private List&lt;String&gt; device;
+	
+	/** The conversion event. */
+	@JsonProperty(value=&quot;conversion_event&quot;)
+	private Object conversionEvent;
+	
+	/** The lables. */
+	private List&lt;String&gt; lables;
+	
+	/** The channel. */
+	private String channel;
+	
+	/** The message name. */
+	@JsonProperty(value=&quot;message_name&quot;)
+	private String messageName;
+	
+	/** The delivery. */
+	private String delivery;
+
+
+	/**
+	 * Gets the message id.
+	 *
+	 * @return the message id
+	 */
+	public long getMessageId() {
+<span class="fc" id="L52">		return messageId;</span>
+	}
+
+	/**
+	 * Sets the message id.
+	 *
+	 * @param messageId the new message id
+	 */
+	public void setMessageId(long messageId) {
+<span class="fc" id="L61">		this.messageId = messageId;</span>
+<span class="fc" id="L62">	}</span>
+
+	/**
+	 * Gets the data.
+	 *
+	 * @return the data
+	 */
+	public List&lt;HashMap&lt;String, String&gt;&gt; getData() {
+<span class="fc" id="L70">		return data;</span>
+	}
+
+	/**
+	 * Sets the data.
+	 *
+	 * @param data the data
+	 */
+	public void setData(List&lt;HashMap&lt;String, String&gt;&gt; data) {
+<span class="fc" id="L79">		this.data = data;</span>
+<span class="fc" id="L80">	}</span>
+
+	/**
+	 * Gets the start date.
+	 *
+	 * @return the start date
+	 */
+	public String getStartDate() {
+<span class="fc" id="L88">		return startDate;</span>
+	}
+
+	/**
+	 * Sets the start date.
+	 *
+	 * @param startDate the new start date
+	 */
+	public void setStartDate(String startDate) {
+<span class="fc" id="L97">		this.startDate = startDate;</span>
+<span class="fc" id="L98">	}</span>
+
+	/**
+	 * Gets the device.
+	 *
+	 * @return the device
+	 */
+	public List&lt;String&gt; getDevice() {
+<span class="fc" id="L106">		return device;</span>
+	}
+
+	/**
+	 * Sets the device.
+	 *
+	 * @param device the new device
+	 */
+	public void setDevice(List&lt;String&gt; device) {
+<span class="fc" id="L115">		this.device = device;</span>
+<span class="fc" id="L116">	}</span>
+
+	/**
+	 * Gets the conversion event.
+	 *
+	 * @return the conversion event
+	 */
+	public Object getConversionEvent() {
+<span class="fc" id="L124">		return conversionEvent;</span>
+	}
+
+	/**
+	 * Sets the conversion event.
+	 *
+	 * @param conversionEvent the new conversion event
+	 */
+	public void setConversionEvent(Object conversionEvent) {
+<span class="fc" id="L133">		this.conversionEvent = conversionEvent;</span>
+<span class="fc" id="L134">	}</span>
+
+	/**
+	 * Gets the lables.
+	 *
+	 * @return the lables
+	 */
+	public List&lt;String&gt; getLables() {
+<span class="fc" id="L142">		return lables;</span>
+	}
+
+	/**
+	 * Sets the lables.
+	 *
+	 * @param lables the new lables
+	 */
+	public void setLables(List&lt;String&gt; lables) {
+<span class="fc" id="L151">		this.lables = lables;</span>
+<span class="fc" id="L152">	}</span>
+
+	/**
+	 * Gets the channel.
+	 *
+	 * @return the channel
+	 */
+	public String getChannel() {
+<span class="fc" id="L160">		return channel;</span>
+	}
+
+	/**
+	 * Sets the channel.
+	 *
+	 * @param channel the new channel
+	 */
+	public void setChannel(String channel) {
+<span class="fc" id="L169">		this.channel = channel;</span>
+<span class="fc" id="L170">	}</span>
+
+	/**
+	 * Gets the message name.
+	 *
+	 * @return the message name
+	 */
+	public String getMessageName() {
+<span class="fc" id="L178">		return messageName;</span>
+	}
+
+	/**
+	 * Sets the message name.
+	 *
+	 * @param messageName the new message name
+	 */
+	public void setMessageName(String messageName) {
+<span class="fc" id="L187">		this.messageName = messageName;</span>
+<span class="fc" id="L188">	}</span>
+
+	/**
+	 * Gets the delivery.
+	 *
+	 * @return the delivery
+	 */
+	public String getDelivery() {
+<span class="fc" id="L196">		return delivery;</span>
+	}
+
+	/**
+	 * Sets the delivery.
+	 *
+	 * @param delivery the new delivery
+	 */
+	public void setDelivery(String delivery) {
+<span class="fc" id="L205">		this.delivery = delivery;</span>
+<span class="fc" id="L206">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

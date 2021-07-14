@@ -20,6 +20,7 @@ import helper.enums.Region;
 import helper.enums.UserIdentity;
 import http.HttpClient;
 import payload.Cursor;
+import payload.EventPropertyFilter;
 import payload.profile.Keys;
 import payload.profile.ProfilePayload;
 import payload.profile.TokenData;
@@ -67,9 +68,13 @@ public class ProfilesUnitTest {
 		payload.setUserIdentity(identity);
 		payload.setIdentities(identities);
 		payload.setGuid(guid);
-		HashMap<String, String> evtProps = new HashMap<String, String>();
-		evtProps.put("type", "test");
-		payload.setEventProperties(evtProps);
+		List<EventPropertyFilter> listProps = new ArrayList<EventPropertyFilter>();
+		EventPropertyFilter evtProps = new EventPropertyFilter();
+		evtProps.setOperator("dummy");
+		evtProps.setPropertName("dummy");
+		evtProps.setPropertValue("dummy");
+		listProps.add(evtProps);
+		payload.setEventProperties(listProps);
 
 		ProfileData profileData = new ProfileData();
 		profileData.setName("dummy");
@@ -134,7 +139,7 @@ public class ProfilesUnitTest {
 		Mockito.when(client.postRequest(Mockito.anyString(), Mockito.any(JSONObject.class))).thenReturn(jsonResponse);
 
 		cursor = profile.getUserProfileCursor(payload, 0, true, true, true);
-		
+
 		Assertions.assertNotNull(cursor);
 		Assertions.assertEquals("fhsklaioclamlkkjadajj", cursor.getCursor());
 		Assertions.assertEquals("success", cursor.getStatus());
@@ -181,7 +186,6 @@ public class ProfilesUnitTest {
 		Assertions.assertNotNull(response.getRecords().get(0).getName());
 		Assertions.assertNotNull(response.getRecords().get(0).getPlatformInfo());
 		Assertions.assertNotNull(response.getRecords().get(0).getProfileData());
-		System.out.println(response.getRecords());
 		Assertions.assertEquals("success", response.getStatus());
 	}
 

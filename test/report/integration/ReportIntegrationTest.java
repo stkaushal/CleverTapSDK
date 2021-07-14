@@ -39,8 +39,8 @@ public class ReportIntegrationTest {
 	@Test
 	void testGetMessageReports() throws IOException, InterruptedException {
 		ReportPayload messageReport = new ReportPayload();
-		messageReport.setFromDate(20210624);
-		messageReport.setToDate(20210625);
+		messageReport.setFromDate("20210624");
+		messageReport.setToDate("20210625");
 
 		Response resMessageReport = reportInstance.getMessageReports(messageReport);
 

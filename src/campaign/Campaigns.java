@@ -29,7 +29,7 @@ final public class Campaigns {
 	/** The API endpoint for retrieving campaigns. */
 	private static final String urlGetCampaigns = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/list.json";
 	
-	/** The API endpoint for creating campaiInterruptedException the the requestinterrupted exceptiongns to target the users based on events. */
+	/** The API endpoint for creating campaigns to target the users based on events. */
 	private static final String urlCreateCampaignTargetUserEvents = "https://" + ClevertapInstance.getRegion() + "api.clevertap.com/1/targets/create.json";
 	
 	/** The API endpoint for creating SMS campaigns to target the users based on user id. */

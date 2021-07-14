@@ -14,7 +14,7 @@ import payload.campaign.campaigncontent.actions.Action;
 @JsonInclude(Include.NON_DEFAULT)
 public class Content {
 	
-	/** The title. */
+	/** The title, defined as Object type because title can be a string as well as an object */
 	private Object title;
 	
 	/** The body. */

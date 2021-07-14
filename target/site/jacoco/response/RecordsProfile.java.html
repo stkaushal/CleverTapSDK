@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecordsProfile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">response</a> &gt; <span class="el_source">RecordsProfile.java</span></div><h1>RecordsProfile.java</h1><pre class="source lang-java linenums">package response;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RecordsProfile.
+ */
+<span class="fc" id="L13">public class RecordsProfile {</span>
+	
+	/** The email. */
+	private String email;
+	
+	/** The name. */
+	private String name;
+	
+	/** The identity. */
+	private String identity;
+	
+	/** The profile data. */
+	private HashMap&lt;String, Object&gt; profileData;
+	
+	/** The events. */
+	private HashMap&lt;String, Object&gt; events;
+	
+	/** The platform info. */
+	private List&lt;HashMap&lt;String, Object&gt;&gt; platformInfo;
+	
+	/** The other info. */
+	private HashMap&lt;String, Object&gt; otherInfo;
+	
+	/**
+	 * Gets the other info.
+	 *
+	 * @return the other info
+	 */
+	@JsonAnyGetter
+	public HashMap&lt;String, Object&gt; getOtherInfo() {
+<span class="nc" id="L43">		return otherInfo;</span>
+	}
+	
+	/**
+	 * Sets the other info.
+	 *
+	 * @param key the key
+	 * @param value the value
+	 */
+	@JsonAnySetter
+	public void setOtherInfo(String key, Object value) {
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">		if(this.otherInfo == null) {</span>
+<span class="fc" id="L55">			this.otherInfo = new HashMap&lt;String,Object&gt;();</span>
+		}
+<span class="fc" id="L57">		this.otherInfo.put(key,value);</span>
+<span class="fc" id="L58">	}</span>
+	
+	/**
+	 * Gets the email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail() {
+<span class="fc" id="L66">		return email;</span>
+	}
+	
+	/**
+	 * Sets the email.
+	 *
+	 * @param email the new email
+	 */
+	public void setEmail(String email) {
+<span class="fc" id="L75">		this.email = email;</span>
+<span class="fc" id="L76">	}</span>
+	
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
+	public String getName() {
+<span class="fc" id="L84">		return name;</span>
+	}
+	
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
+	public void setName(String name) {
+<span class="fc" id="L93">		this.name = name;</span>
+<span class="fc" id="L94">	}</span>
+	
+	/**
+	 * Gets the identity.
+	 *
+	 * @return the identity
+	 */
+	public String getIdentity() {
+<span class="fc" id="L102">		return identity;</span>
+	}
+	
+	/**
+	 * Sets the identity.
+	 *
+	 * @param identity the new identity
+	 */
+	public void setIdentity(String identity) {
+<span class="fc" id="L111">		this.identity = identity;</span>
+<span class="fc" id="L112">	}</span>
+	
+	/**
+	 * Gets the profile data.
+	 *
+	 * @return the profile data
+	 */
+	public HashMap&lt;String, Object&gt; getProfileData() {
+<span class="fc" id="L120">		return profileData;</span>
+	}
+	
+	/**
+	 * Sets the profile data.
+	 *
+	 * @param profileData the profile data
+	 */
+	public void setProfileData(HashMap&lt;String, Object&gt; profileData) {
+<span class="fc" id="L129">		this.profileData = profileData;</span>
+<span class="fc" id="L130">	}</span>
+	
+	/**
+	 * Gets the events.
+	 *
+	 * @return the events
+	 */
+	public HashMap&lt;String, Object&gt; getEvents() {
+<span class="fc" id="L138">		return events;</span>
+	}
+	
+	/**
+	 * Sets the events.
+	 *
+	 * @param events the events
+	 */
+	public void setEvents(HashMap&lt;String, Object&gt; events) {
+<span class="fc" id="L147">		this.events = events;</span>
+<span class="fc" id="L148">	}</span>
+	
+	/**
+	 * Gets the platform info.
+	 *
+	 * @return the platform info
+	 */
+	public List&lt;HashMap&lt;String, Object&gt;&gt; getPlatformInfo() {
+<span class="fc" id="L156">		return platformInfo;</span>
+	}
+	
+	/**
+	 * Sets the platform info.
+	 *
+	 * @param platformInfo the platform info
+	 */
+	public void setPlatformInfo(List&lt;HashMap&lt;String, Object&gt;&gt; platformInfo) {
+<span class="fc" id="L165">		this.platformInfo = platformInfo;</span>
+<span class="fc" id="L166">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

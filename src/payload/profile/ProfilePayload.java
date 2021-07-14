@@ -1,10 +1,11 @@
 package payload.profile;
 
-import java.util.HashMap;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import payload.EventPropertyFilter;
 import payload.profile.profiledata.ProfileData;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -60,7 +61,7 @@ public class ProfilePayload {
 	
 	/** The event properties. */
 	@JsonProperty(value="event_properties")
-	private HashMap<String, String> eventProperties;
+	private List<EventPropertyFilter> eventProperties;
 	
 	/** The status. */
 	private String status; 
@@ -300,7 +301,7 @@ public class ProfilePayload {
 	 *
 	 * @return the event properties
 	 */
-	public HashMap<String, String> getEventProperties() {
+	public List<EventPropertyFilter> getEventProperties() {
 		return eventProperties;
 	}
 
@@ -309,7 +310,7 @@ public class ProfilePayload {
 	 *
 	 * @param eventProperties the event properties
 	 */
-	public void setEventProperties(HashMap<String, String> eventProperties) {
+	public void setEventProperties(List<EventPropertyFilter> eventProperties) {
 		this.eventProperties = eventProperties;
 	}
 

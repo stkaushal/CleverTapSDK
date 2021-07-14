@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Campaigns.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">campaign</a> &gt; <span class="el_source">Campaigns.java</span></div><h1>Campaigns.java</h1><pre class="source lang-java linenums">package campaign;
+
+import java.io.IOException;
+
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import helper.ClevertapInstance;
+import helper.ObjectMapperHelper;
+import helper.enums.CampaignMethod;
+import http.HttpClient;
+import payload.campaign.CampaignPayload;
+import payload.campaign.DateRangePayload;
+import response.Response;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The singleton Campaigns Class.
+ */
+final public class Campaigns {
+	
+	/** The API endpoint for stopping scheduled campaigns. */
+<span class="fc" id="L24">	private static final String urlStopScheduledCampaign = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/targets/stop.json&quot;;</span>
+	
+	/** The API endpoint to get campaign report. */
+<span class="fc" id="L27">	private static final String urlGetCampaignReport = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/targets/result.json&quot;;</span>
+	
+	/** The API endpoint for retrieving campaigns. */
+<span class="fc" id="L30">	private static final String urlGetCampaigns = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/targets/list.json&quot;;</span>
+	
+	/** The API endpoint for creating campaigns to target the users based on events. */
+<span class="fc" id="L33">	private static final String urlCreateCampaignTargetUserEvents = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/targets/create.json&quot;;</span>
+	
+	/** The API endpoint for creating SMS campaigns to target the users based on user id. */
+<span class="fc" id="L36">	private static final String urlCreateCampaignTargetUserIdSMS = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/send/sms.json&quot;;</span>
+	
+	/** The API endpoint for creating mobile push campaigns to target the users based on user id. */
+<span class="fc" id="L39">	private static final String urlCreateCampaignTargetUserIdMobilePush = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/send/push.json&quot;;</span>
+	
+	/** The API endpoint for creating web push campaigns to target the users based on user id. */
+<span class="fc" id="L42">	private static final String urlCreateCampaignTargetUserIdWebPush = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/send/webpush.json&quot;;</span>
+	
+	/** The API endpoint for creating email push campaigns to target the users based on user id.. */
+<span class="fc" id="L45">	private static final String urlCreateCampaignTargetUserIdEmail = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/send/email.json&quot;;</span>
+	
+
+	/** The object mapper. */
+	private ObjectMapper objectMapper;
+	
+	/** The http client. */
+	private HttpClient client; 
+	
+	/**
+	 * Instantiates a new campaigns instance.
+	 */
+<span class="fc" id="L57">	private Campaigns(){</span>
+<span class="fc" id="L58">		this.client = HttpClient.getHttpClientInstance();</span>
+<span class="fc" id="L59">		this.objectMapper = ObjectMapperHelper.ObjectMapperHelperInstance().getObjectMapper();</span>
+<span class="fc" id="L60">	}</span>
+	
+	/** The campaigns. */
+<span class="fc" id="L63">	private static Campaigns campaigns = null;</span>
+	
+	/**
+	 * Gets the campaigns instance.
+	 *
+	 * @return the campaigns instance
+	 */
+	public static Campaigns getCampaignsInstance() {
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		 if(campaigns==null)</span>
+		 {
+<span class="fc" id="L73">			 campaigns = new Campaigns();</span>
+		 }
+<span class="fc" id="L75">	      return campaigns;</span>
+	 }
+
+	/**
+	 * Stops the scheduled campaigns.
+	 *
+	 * @param payload the campaign payload
+	 * @return Response - the response from server
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response stopScheduledCampaign(CampaignPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L88">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L89">		JSONObject jsonResponse = client.postRequest(urlStopScheduledCampaign, jsonPayload);</span>
+<span class="fc" id="L90">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L91">		return res;</span>
+	}
+	
+	/**
+	 * Gets the campaign report.
+	 *
+	 * @param payload the campaign payload
+	 * @return campaign report
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response getCampaignReport(CampaignPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L104">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L105">		JSONObject jsonResponse = client.postRequest(urlGetCampaignReport, jsonPayload);</span>
+<span class="fc" id="L106">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L107">		return res;</span>
+	}
+	
+	/**
+	 * Gets the campaigns.
+	 *
+	 * @param payload the date range in which campaigns were created
+	 * @return the campaigns
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response getCampaigns(DateRangePayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L120">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L121">		JSONObject jsonResponse = client.postRequest(urlGetCampaigns, jsonPayload);</span>
+<span class="fc" id="L122">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L123">		return res;</span>
+	}
+	
+	/**
+	 * Creates the campaigns on targeted user events.
+	 *
+	 * @param payload the campaign payload
+	 * @return Response - the response from server
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response createCampaignTargetUserEvents(CampaignPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L136">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L137">		JSONObject jsonResponse = client.postRequest(urlCreateCampaignTargetUserEvents, jsonPayload);</span>
+<span class="fc" id="L138">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		</span>
+<span class="fc" id="L139">		return res;</span>
+	}
+	
+	/**
+	 * Creates the campaigns targeted by user id.
+	 *
+	 * @param method the method of campaigns(SMS, Email, etc.)
+	 * @param payload the payload
+	 * @return Response - the response from server
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response createCampaignTargetId(CampaignMethod method, CampaignPayload payload) throws IOException, InterruptedException
+	{
+		
+<span class="fc" id="L154">		String url = null;</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">		if(method == CampaignMethod.SMS)</span>
+		{
+<span class="fc" id="L157">			url = urlCreateCampaignTargetUserIdSMS;</span>
+		}
+<span class="fc bfc" id="L159" title="All 2 branches covered.">		else if(method == CampaignMethod.EMAIL)</span>
+		{
+<span class="fc" id="L161">			url = urlCreateCampaignTargetUserIdEmail;</span>
+		}
+<span class="fc bfc" id="L163" title="All 2 branches covered.">		else if(method == CampaignMethod.MOBILEPUSH)</span>
+		{
+<span class="fc" id="L165">			url = urlCreateCampaignTargetUserIdMobilePush;</span>
+		}
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">		else if(method == CampaignMethod.WEBPUSH)</span>
+		{
+<span class="fc" id="L169">			url = urlCreateCampaignTargetUserIdWebPush;</span>
+		}
+		
+<span class="fc" id="L172">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L173">		JSONObject jsonResponse = client.postRequest(url, jsonPayload);</span>
+<span class="fc" id="L174">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);	</span>
+<span class="fc" id="L175">		return res;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

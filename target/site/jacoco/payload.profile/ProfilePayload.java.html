@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfilePayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">payload.profile</a> &gt; <span class="el_source">ProfilePayload.java</span></div><h1>ProfilePayload.java</h1><pre class="source lang-java linenums">package payload.profile;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import payload.EventPropertyFilter;
+import payload.profile.profiledata.ProfileData;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ProfilePayload.
+ */
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L18">public class ProfilePayload {</span>
+	
+	/** The user identity. */
+	@JsonProperty(value=&quot;identity&quot;)
+	private Object userIdentity;
+	
+	/** The timestamp. */
+	@JsonProperty(value=&quot;ts&quot;)
+	private String timestamp;
+	
+	/** The type. */
+	private String type;
+	
+	/** The profile data. */
+	private ProfileData profileData;
+	
+	/** The token data. */
+	private TokenData tokenData;
+	
+	/** The fb id. */
+	@JsonProperty(value=&quot;FBID&quot;)
+	private String fbId;
+	
+	/** The identities. */
+	private String[] identities; 
+	
+	/** The object id. */
+	private String objectId;
+	
+	/** The guid. */
+	private String[] guid;
+	
+	/** The event name. */
+	@JsonProperty(value=&quot;event_name&quot;)
+	private String eventName; 
+	
+	/** The from date. */
+	@JsonProperty(value=&quot;from&quot;)
+	private int fromDate;
+	
+	/** The to date. */
+	@JsonProperty(value=&quot;to&quot;)
+	private int toDate;
+	
+	/** The event properties. */
+	@JsonProperty(value=&quot;event_properties&quot;)
+	private List&lt;EventPropertyFilter&gt; eventProperties;
+	
+	/** The status. */
+	private String status; 
+	
+	/** The value. */
+	private String value;
+
+	/**
+	 * Gets the user identity.
+	 *
+	 * @return the user identity
+	 */
+	public Object getUserIdentity() {
+<span class="fc" id="L78">		return userIdentity;</span>
+	}
+
+	/**
+	 * Sets the user identity.
+	 *
+	 * @param userIdentity the new user identity
+	 */
+	public void setUserIdentity(String userIdentity) {
+<span class="fc" id="L87">		this.userIdentity = userIdentity;</span>
+<span class="fc" id="L88">	}</span>
+	
+	/**
+	 * Sets the user identity.
+	 *
+	 * @param userIdentity the new user identity
+	 */
+	public void setUserIdentity(String[] userIdentity) {
+<span class="fc" id="L96">		this.userIdentity = userIdentity;</span>
+<span class="fc" id="L97">	}</span>
+
+	/**
+	 * Gets the timestamp.
+	 *
+	 * @return the timestamp
+	 */
+	public String getTimestamp() {
+<span class="fc" id="L105">		return timestamp;</span>
+	}
+
+	/**
+	 * Sets the timestamp.
+	 *
+	 * @param timestamp the new timestamp
+	 */
+	public void setTimestamp(String timestamp) {
+<span class="fc" id="L114">		this.timestamp = timestamp;</span>
+<span class="fc" id="L115">	}</span>
+
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
+	public String getType() {
+<span class="fc" id="L123">		return type;</span>
+	}
+
+	/**
+	 * Sets the type.
+	 *
+	 * @param type the new type
+	 */
+	public void setType(String type) {
+<span class="fc" id="L132">		this.type = type;</span>
+<span class="fc" id="L133">	}</span>
+
+	/**
+	 * Gets the profile data.
+	 *
+	 * @return the profile data
+	 */
+	public ProfileData getProfileData() {
+<span class="fc" id="L141">		return profileData;</span>
+	}
+
+	/**
+	 * Sets the profile data.
+	 *
+	 * @param profileData the new profile data
+	 */
+	public void setProfileData(ProfileData profileData) {
+<span class="fc" id="L150">		this.profileData = profileData;</span>
+<span class="fc" id="L151">	}</span>
+
+
+	/**
+	 * Gets the identities.
+	 *
+	 * @return the identities
+	 */
+	public String[] getIdentities() {
+<span class="fc" id="L160">		return identities;</span>
+	}
+
+	/**
+	 * Sets the identities.
+	 *
+	 * @param identities the new identities
+	 */
+	public void setIdentities(String[] identities) {
+<span class="fc" id="L169">		this.identities = identities;</span>
+<span class="fc" id="L170">	}</span>
+
+	/**
+	 * Gets the object id.
+	 *
+	 * @return the object id
+	 */
+	public String getObjectId() {
+<span class="fc" id="L178">		return objectId;</span>
+	}
+
+	/**
+	 * Sets the object id.
+	 *
+	 * @param objectId the new object id
+	 */
+	public void setObjectId(String objectId) {
+<span class="fc" id="L187">		this.objectId = objectId;</span>
+<span class="fc" id="L188">	}</span>
+
+	/**
+	 * Gets the guid.
+	 *
+	 * @return the guid
+	 */
+	public String[] getGuid() {
+<span class="fc" id="L196">		return guid;</span>
+	}
+
+	/**
+	 * Sets the guid.
+	 *
+	 * @param guid the new guid
+	 */
+	public void setGuid(String[] guid) {
+<span class="fc" id="L205">		this.guid = guid;</span>
+<span class="fc" id="L206">	}</span>
+
+	/**
+	 * Gets the fb id.
+	 *
+	 * @return the fb id
+	 */
+	public String getFbId() {
+<span class="fc" id="L214">		return fbId;</span>
+	}
+
+	/**
+	 * Sets the fb id.
+	 *
+	 * @param fbId the new fb id
+	 */
+	public void setFbId(String fbId) {
+<span class="fc" id="L223">		this.fbId = fbId;</span>
+<span class="fc" id="L224">	}</span>
+
+	
+	/**
+	 * Gets the event name.
+	 *
+	 * @return the event name
+	 */
+	public String getEventName() {
+<span class="fc" id="L233">		return eventName;</span>
+	}
+
+	/**
+	 * Sets the event name.
+	 *
+	 * @param eventName the new event name
+	 */
+	public void setEventName(String eventName) {
+<span class="fc" id="L242">		this.eventName = eventName;</span>
+<span class="fc" id="L243">	}</span>
+
+	/**
+	 * Gets the token data.
+	 *
+	 * @return the token data
+	 */
+	public TokenData getTokenData() {
+<span class="fc" id="L251">		return tokenData;</span>
+	}
+
+	/**
+	 * Sets the token data.
+	 *
+	 * @param tokenData the new token data
+	 */
+	public void setTokenData(TokenData tokenData) {
+<span class="fc" id="L260">		this.tokenData = tokenData;</span>
+<span class="fc" id="L261">	}</span>
+
+	/**
+	 * Gets the from date.
+	 *
+	 * @return the from date
+	 */
+	public int getFromDate() {
+<span class="fc" id="L269">		return fromDate;</span>
+	}
+
+	/**
+	 * Sets the from date.
+	 *
+	 * @param fromDate the new from date
+	 */
+	public void setFromDate(int fromDate) {
+<span class="fc" id="L278">		this.fromDate = fromDate;</span>
+<span class="fc" id="L279">	}</span>
+
+	/**
+	 * Gets the to date.
+	 *
+	 * @return the to date
+	 */
+	public int getToDate() {
+<span class="fc" id="L287">		return toDate;</span>
+	}
+
+	/**
+	 * Sets the to date.
+	 *
+	 * @param toDate the new to date
+	 */
+	public void setToDate(int toDate) {
+<span class="fc" id="L296">		this.toDate = toDate;</span>
+<span class="fc" id="L297">	}</span>
+
+	/**
+	 * Gets the event properties.
+	 *
+	 * @return the event properties
+	 */
+	public List&lt;EventPropertyFilter&gt; getEventProperties() {
+<span class="fc" id="L305">		return eventProperties;</span>
+	}
+
+	/**
+	 * Sets the event properties.
+	 *
+	 * @param eventProperties the event properties
+	 */
+	public void setEventProperties(List&lt;EventPropertyFilter&gt; eventProperties) {
+<span class="fc" id="L314">		this.eventProperties = eventProperties;</span>
+<span class="fc" id="L315">	}</span>
+
+	/**
+	 * Sets the user identity.
+	 *
+	 * @param userIdentity the new user identity
+	 */
+	public void setUserIdentity(Object userIdentity) {
+<span class="nc" id="L323">		this.userIdentity = userIdentity;</span>
+<span class="nc" id="L324">	}</span>
+
+	/**
+	 * Gets the status.
+	 *
+	 * @return the status
+	 */
+	public String getStatus() {
+<span class="fc" id="L332">		return status;</span>
+	}
+
+	/**
+	 * Sets the status.
+	 *
+	 * @param status the new status
+	 */
+	public void setStatus(String status) {
+<span class="fc" id="L341">		this.status = status;</span>
+<span class="fc" id="L342">	}</span>
+
+	/**
+	 * Gets the value.
+	 *
+	 * @return the value
+	 */
+	public String getValue() {
+<span class="fc" id="L350">		return value;</span>
+	}
+
+	/**
+	 * Sets the value.
+	 *
+	 * @param value the new value
+	 */
+	public void setValue(String value) {
+<span class="fc" id="L359">		this.value = value;</span>
+<span class="fc" id="L360">	}</span>
+
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlatformSpecificContent.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">payload.campaign.campaigncontent</a> &gt; <span class="el_source">PlatformSpecificContent.java</span></div><h1>PlatformSpecificContent.java</h1><pre class="source lang-java linenums">package payload.campaign.campaigncontent;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import payload.campaign.campaigncontent.platformtype.PlatformTypeAndroid;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeChrome;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeFirefox;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeIos;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeSafari;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlatformSpecificContent.
+ */
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L18">public class PlatformSpecificContent {</span>
+	
+	/** The platform type chrome. */
+	@JsonProperty(value=&quot;chrome&quot;)
+	private PlatformTypeChrome platformTypeChrome; 
+	
+	/** The platform type firefox. */
+	@JsonProperty(value=&quot;firefox&quot;)
+	private PlatformTypeFirefox platformTypeFirefox; 
+	
+	/** The platform type safari. */
+	@JsonProperty(value=&quot;safari&quot;)
+	private PlatformTypeSafari platformTypeSafari; 
+	
+	/** The platform type ios. */
+	@JsonProperty(value=&quot;ios&quot;)
+	private PlatformTypeIos platformTypeIos; 
+	
+	/** The platform type android. */
+	@JsonProperty(value=&quot;android&quot;)
+	private PlatformTypeAndroid platformTypeAndroid;
+
+	/**
+	 * Gets the platform type chrome.
+	 *
+	 * @return the platform type chrome
+	 */
+	public PlatformTypeChrome getplatformTypeChrome() {
+<span class="fc" id="L46">		return platformTypeChrome;</span>
+	}
+
+	/**
+	 * Sets the platform type chrome.
+	 *
+	 * @param platformTypeChrome the new platform type chrome
+	 */
+	public void setPlatformTypeChrome(PlatformTypeChrome platformTypeChrome) {
+<span class="fc" id="L55">		this.platformTypeChrome = platformTypeChrome;</span>
+<span class="fc" id="L56">	}</span>
+
+	/**
+	 * Gets the platform type firefox.
+	 *
+	 * @return the platform type firefox
+	 */
+	public PlatformTypeFirefox getPlatformTypeFirefox() {
+<span class="fc" id="L64">		return platformTypeFirefox;</span>
+	}
+
+	/**
+	 * Sets the platform type firefox.
+	 *
+	 * @param platformTypeFirefox the new platform type firefox
+	 */
+	public void setPlatformTypeFirefox(PlatformTypeFirefox platformTypeFirefox) {
+<span class="fc" id="L73">		this.platformTypeFirefox = platformTypeFirefox;</span>
+<span class="fc" id="L74">	}</span>
+
+	/**
+	 * Gets the platform type safari.
+	 *
+	 * @return the platform type safari
+	 */
+	public PlatformTypeSafari getPlatformTypeSafari() {
+<span class="fc" id="L82">		return platformTypeSafari;</span>
+	}
+
+	/**
+	 * Sets the platform type safari.
+	 *
+	 * @param platformTypeSafari the new platform type safari
+	 */
+	public void setPlatformTypeSafari(PlatformTypeSafari platformTypeSafari) {
+<span class="fc" id="L91">		this.platformTypeSafari = platformTypeSafari;</span>
+<span class="fc" id="L92">	}</span>
+
+	/**
+	 * Gets the platform type ios.
+	 *
+	 * @return the platform type ios
+	 */
+	public PlatformTypeIos getPlatformTypeIos() {
+<span class="fc" id="L100">		return platformTypeIos;</span>
+	}
+
+	/**
+	 * Sets the platform type ios.
+	 *
+	 * @param platformTypeIos the new platform type ios
+	 */
+	public void setPlatformTypeIos(PlatformTypeIos platformTypeIos) {
+<span class="fc" id="L109">		this.platformTypeIos = platformTypeIos;</span>
+<span class="fc" id="L110">	}</span>
+
+	/**
+	 * Gets the platform type android.
+	 *
+	 * @return the platform type android
+	 */
+	public PlatformTypeAndroid getPlatformTypeAndroid() {
+<span class="fc" id="L118">		return platformTypeAndroid;</span>
+	}
+
+	/**
+	 * Sets the platform type android.
+	 *
+	 * @param platformTypeAndroid the new platform type android
+	 */
+	public void setPlatformTypeAndroid(PlatformTypeAndroid platformTypeAndroid) {
+<span class="fc" id="L127">		this.platformTypeAndroid = platformTypeAndroid;</span>
+<span class="fc" id="L128">	} </span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

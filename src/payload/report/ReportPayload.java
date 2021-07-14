@@ -19,11 +19,11 @@ public class ReportPayload {
 	
 	/** The from date. */
 	@JsonProperty(value="from")
-	private int fromDate;
+	private Object fromDate;
 	
 	/** The to date. */
 	@JsonProperty(value="to")
-	private int toDate;
+	private Object toDate;
 	
 	/** The channel. */
 	private String[] channel;
@@ -81,16 +81,24 @@ public class ReportPayload {
 	 *
 	 * @return the from date
 	 */
-	public int getFromDate() {
+	public Object getFromDate() {
 		return fromDate;
 	}
 
 	/**
-	 * Sets the from date.
+	 * Sets the from date (date is int type).
 	 *
 	 * @param fromDate the new from date
 	 */
 	public void setFromDate(int fromDate) {
+		this.fromDate = fromDate;
+	}
+	/**
+	 * Sets the from date (date is string type).
+	 *
+	 * @param fromDate the new from date
+	 */
+	public void setFromDate(String fromDate) {
 		this.fromDate = fromDate;
 	}
 
@@ -99,16 +107,25 @@ public class ReportPayload {
 	 *
 	 * @return the to date
 	 */
-	public int getToDate() {
+	public Object getToDate() {
 		return toDate;
 	}
 
 	/**
-	 * Sets the to date.
+	 * Sets the to date (date is int type).
 	 *
 	 * @param toDate the new to date
 	 */
 	public void setToDate(int toDate) {
+		this.toDate = toDate;
+	}
+	
+	/**
+	 * Sets the to date (date is string type).
+	 *
+	 * @param toDate the new to date
+	 */
+	public void setToDate(String toDate) {
 		this.toDate = toDate;
 	}
 

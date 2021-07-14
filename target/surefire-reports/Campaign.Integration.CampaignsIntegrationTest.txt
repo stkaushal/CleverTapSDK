@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: Campaign.Integration.CampaignsIntegrationTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.267 s - in Campaign.Integration.CampaignsIntegrationTest

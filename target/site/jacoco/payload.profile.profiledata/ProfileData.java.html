@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfileData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">payload.profile.profiledata</a> &gt; <span class="el_source">ProfileData.java</span></div><h1>ProfileData.java</h1><pre class="source lang-java linenums">package payload.profile.profiledata;
+
+import java.util.HashMap;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ProfileData.
+ */
+<span class="fc" id="L11">public class ProfileData {</span>
+	
+	/** The name. */
+	@JsonProperty(value=&quot;Name&quot;)
+	private String name;
+	
+	/** The email. */
+	@JsonProperty(value=&quot;Email&quot;)
+	private  String email;
+	
+	/** The phone. */
+	@JsonProperty(value=&quot;Phone&quot;)
+	private String phone;
+	
+	/** The gender. */
+	@JsonProperty(value=&quot;Gender&quot;)
+	private String gender;
+    
+    /** The msg SMS. */
+    @JsonProperty(value=&quot;MSG-sms&quot;)
+    private boolean msgSMS;
+    
+    /** The msg email. */
+    @JsonProperty(value=&quot;MSG-email&quot;)
+    private boolean msgEmail;
+    
+    /** The msg whatsapp. */
+    @JsonProperty(value=&quot;MSG-whatsapp&quot;)
+    private boolean msgWhatsapp;
+    
+    /** The msg dnd phone. */
+    @JsonProperty(value=&quot;MSG-dndPhone&quot;)
+    private boolean msgDndPhone;
+    
+    /** The msg dnd email. */
+    @JsonProperty(value=&quot;MSG-dndEmail&quot;)
+    private boolean msgDndEmail;
+    
+    /** The category unsubscribe. */
+    @JsonProperty(value=&quot;category-unsubscribe&quot;)
+    private CategoryUnsubscribe categoryUnsubscribe;
+    
+    /** The category resubscribe. */
+    @JsonProperty(value=&quot;category-resubscribe&quot;)
+    private CategoryResubscribe categoryResubscribe;
+   
+    /** The dob. */
+    @JsonProperty(value=&quot;DOB&quot;)
+    private String dob;  
+    
+    /** The customer type. */
+    @JsonProperty(value=&quot;Customer Type&quot;)
+    private String customerType;
+    
+    /** The user info. */
+    private HashMap&lt;String, Object&gt; userInfo;
+
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
+	public String getName() {
+<span class="fc" id="L74">		return name;</span>
+	}
+
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
+	public void setName(String name) {
+<span class="fc" id="L83">		this.name = name;</span>
+<span class="fc" id="L84">	}</span>
+
+	/**
+	 * Gets the email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail() {
+<span class="fc" id="L92">		return email;</span>
+	}
+
+	/**
+	 * Sets the email.
+	 *
+	 * @param email the new email
+	 */
+	public void setEmail(String email) {
+<span class="fc" id="L101">		this.email = email;</span>
+<span class="fc" id="L102">	}</span>
+
+	/**
+	 * Gets the phone.
+	 *
+	 * @return the phone
+	 */
+	public String getPhone() {
+<span class="fc" id="L110">		return phone;</span>
+	}
+
+	/**
+	 * Sets the phone.
+	 *
+	 * @param phone the new phone
+	 */
+	public void setPhone(String phone) {
+<span class="fc" id="L119">		this.phone = phone;</span>
+<span class="fc" id="L120">	}</span>
+
+	/**
+	 * Gets the gender.
+	 *
+	 * @return the gender
+	 */
+	public String getGender() {
+<span class="fc" id="L128">		return gender;</span>
+	}
+
+	/**
+	 * Sets the gender.
+	 *
+	 * @param gender the new gender
+	 */
+	public void setGender(String gender) {
+<span class="fc" id="L137">		this.gender = gender;</span>
+<span class="fc" id="L138">	}</span>
+
+	/**
+	 * Checks if is msg SMS.
+	 *
+	 * @return true, if is msg SMS
+	 */
+	public boolean isMsgSMS() {
+<span class="fc" id="L146">		return msgSMS;</span>
+	}
+
+	/**
+	 * Sets the msg SMS.
+	 *
+	 * @param msgSMS the new msg SMS
+	 */
+	public void setMsgSMS(boolean msgSMS) {
+<span class="fc" id="L155">		this.msgSMS = msgSMS;</span>
+<span class="fc" id="L156">	}</span>
+
+	/**
+	 * Checks if is msg email.
+	 *
+	 * @return true, if is msg email
+	 */
+	public boolean isMsgEmail() {
+<span class="fc" id="L164">		return msgEmail;</span>
+	}
+
+	/**
+	 * Sets the msg email.
+	 *
+	 * @param msgEmail the new msg email
+	 */
+	public void setMsgEmail(boolean msgEmail) {
+<span class="fc" id="L173">		this.msgEmail = msgEmail;</span>
+<span class="fc" id="L174">	}</span>
+
+	/**
+	 * Checks if is msg whatsapp.
+	 *
+	 * @return true, if is msg whatsapp
+	 */
+	public boolean isMsgWhatsapp() {
+<span class="fc" id="L182">		return msgWhatsapp;</span>
+	}
+
+	/**
+	 * Sets the msg whatsapp.
+	 *
+	 * @param msgWhatsapp the new msg whatsapp
+	 */
+	public void setMsgWhatsapp(boolean msgWhatsapp) {
+<span class="fc" id="L191">		this.msgWhatsapp = msgWhatsapp;</span>
+<span class="fc" id="L192">	}</span>
+
+	/**
+	 * Checks if is msg dnd phone.
+	 *
+	 * @return true, if is msg dnd phone
+	 */
+	public boolean isMsgDndPhone() {
+<span class="fc" id="L200">		return msgDndPhone;</span>
+	}
+
+	/**
+	 * Sets the msg dnd phone.
+	 *
+	 * @param msgDndPhone the new msg dnd phone
+	 */
+	public void setMsgDndPhone(boolean msgDndPhone) {
+<span class="fc" id="L209">		this.msgDndPhone = msgDndPhone;</span>
+<span class="fc" id="L210">	}</span>
+
+	/**
+	 * Checks if is msg dnd email.
+	 *
+	 * @return true, if is msg dnd email
+	 */
+	public boolean isMsgDndEmail() {
+<span class="fc" id="L218">		return msgDndEmail;</span>
+	}
+
+	/**
+	 * Sets the msg dnd email.
+	 *
+	 * @param msgDndEmail the new msg dnd email
+	 */
+	public void setMsgDndEmail(boolean msgDndEmail) {
+<span class="fc" id="L227">		this.msgDndEmail = msgDndEmail;</span>
+<span class="fc" id="L228">	}</span>
+
+	/**
+	 * Gets the category unsubscribe.
+	 *
+	 * @return the category unsubscribe
+	 */
+	public CategoryUnsubscribe getCategoryUnsubscribe() {
+<span class="fc" id="L236">		return categoryUnsubscribe;</span>
+	}
+
+	/**
+	 * Sets the category unsubscribe.
+	 *
+	 * @param categoryUnsubscribe the new category unsubscribe
+	 */
+	public void setCategoryUnsubscribe(CategoryUnsubscribe categoryUnsubscribe) {
+<span class="fc" id="L245">		this.categoryUnsubscribe = categoryUnsubscribe;</span>
+<span class="fc" id="L246">	}</span>
+
+	/**
+	 * Gets the category resubscribe.
+	 *
+	 * @return the category resubscribe
+	 */
+	public CategoryResubscribe getCategoryResubscribe() {
+<span class="fc" id="L254">		return categoryResubscribe;</span>
+	}
+
+	/**
+	 * Sets the category resubscribe.
+	 *
+	 * @param categoryResubscribe the new category resubscribe
+	 */
+	public void setCategoryResubscribe(CategoryResubscribe categoryResubscribe) {
+<span class="fc" id="L263">		this.categoryResubscribe = categoryResubscribe;</span>
+<span class="fc" id="L264">	}</span>
+
+	/**
+	 * Gets the dob.
+	 *
+	 * @return the dob
+	 */
+	public String getDob() {
+<span class="fc" id="L272">		return dob;</span>
+	}
+
+	/**
+	 * Sets the dob.
+	 *
+	 * @param dob the new dob
+	 */
+	public void setDob(String dob) {
+<span class="fc" id="L281">		this.dob = dob;</span>
+<span class="fc" id="L282">	}</span>
+
+	/**
+	 * Gets the customer type.
+	 *
+	 * @return the customer type
+	 */
+	public String getCustomerType() {
+<span class="fc" id="L290">		return customerType;</span>
+	}
+
+	/**
+	 * Sets the customer type.
+	 *
+	 * @param customerType the new customer type
+	 */
+	public void setCustomerType(String customerType) {
+<span class="fc" id="L299">		this.customerType = customerType;</span>
+<span class="fc" id="L300">	}</span>
+
+	/**
+	 * Gets the user info.
+	 *
+	 * @return the user info
+	 */
+	public HashMap&lt;String, Object&gt; getUserInfo() {
+<span class="fc" id="L308">		return userInfo;</span>
+	}
+
+	/**
+	 * Sets the user info.
+	 *
+	 * @param userInfo the user info
+	 */
+	public void setUserInfo(HashMap&lt;String, Object&gt; userInfo) {
+<span class="fc" id="L317">		this.userInfo = userInfo;</span>
+<span class="fc" id="L318">	}</span>
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

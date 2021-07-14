@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Profiles.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">profile</a> &gt; <span class="el_source">Profiles.java</span></div><h1>Profiles.java</h1><pre class="source lang-java linenums">package profile;
+import java.io.IOException;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import helper.ClevertapInstance;
+import helper.ObjectMapperHelper;
+import helper.enums.UserIdentity;
+import http.HttpClient;
+import payload.Cursor;
+import payload.profile.ProfilePayload;
+import response.GetUserProfileResponse;
+import response.Response;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The singleton Profiles Class.
+ */
+final public class Profiles {	
+	
+	/** The API endpoint to upload profiles. */
+<span class="fc" id="L26">	private static final String urlUploadData = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/upload&quot;;</span>
+	
+	/** The API endpoint to get cursor for profiles. */
+<span class="fc" id="L29">	private static final String urlGetProfileCursor = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/profiles.json&quot;;</span>
+	
+	/** The API endpoint to get the profile using id. */
+<span class="fc" id="L32">	private static final String urlGetProfileById = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/profile.json&quot;;</span>
+	
+	/** The API endpoint to get profile count. */
+<span class="fc" id="L35">	private static final String urlGetProfileCount = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/counts/profiles.json&quot;;</span>
+	
+	/** The API endpoint to delete profile. */
+<span class="fc" id="L38">	private static final String urlDeleteProfile = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/delete/profiles.json&quot;;</span>
+	
+	/** The API endpoint to demerge profile. */
+<span class="fc" id="L41">	private static final String urlDemergeProfile = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/demerge/profiles.json&quot;;</span>
+	
+	/** The API endpoint to set a phone number or email status as subscribed or unsubscribed. */
+<span class="fc" id="L44">	private static final String urlSubscribe = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/subscribe&quot;;</span>
+	
+	/** The API endpoint to disconnect a phone number from a user profile. */
+<span class="fc" id="L47">	private static final String urlDisassociate = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/disassociate&quot;;</span>
+	
+	/** The API endpoint to get profile count using request id. */
+<span class="fc" id="L50">	private static final String urlGetProfileCountByReqId = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/counts/profiles.json?req_id=&quot;;</span>
+	
+	/** The object mapper. */
+	private ObjectMapper objectMapper;
+	
+	/** The client. */
+	private HttpClient client; 
+	
+	/**
+	 * Instantiates a new profiles.
+	 */
+<span class="fc" id="L61">	private Profiles(){</span>
+<span class="fc" id="L62">		this.client = HttpClient.getHttpClientInstance();</span>
+<span class="fc" id="L63">		this.objectMapper = ObjectMapperHelper.ObjectMapperHelperInstance().getObjectMapper();</span>
+<span class="fc" id="L64">	}</span>
+	
+	/** The profile. */
+<span class="fc" id="L67">	private static Profiles profile = null;</span>
+	
+	/**
+	 * Gets the profiles instance.
+	 *
+	 * @return the profiles instance
+	 */
+	public static Profiles getProfilesInstance() {
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		 if(profile==null)</span>
+		 {
+<span class="fc" id="L77">			 profile = new Profiles();</span>
+		 }
+<span class="fc" id="L79">	      return profile;</span>
+	 }
+
+
+	/**
+	 * Upload user profile.
+	 *
+	 * @param payload the profile payload list
+	 * @return Response - the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response uploadUserProfile(List&lt;ProfilePayload&gt; payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L93">		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L94">		JSONObject jsonPayload = new JSONObject();</span>
+<span class="fc" id="L95">		jsonPayload.put(&quot;d&quot;, jsonPayloadArray);</span>
+<span class="fc" id="L96">		JSONObject jsonResponse = client.postRequest(urlUploadData, jsonPayload);</span>
+<span class="fc" id="L97">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+		
+<span class="fc" id="L99">		return res;</span>
+	}
+	
+	/**
+	 * Gets the cursor to get user profiles.
+	 *
+	 * @param payload the profile payload
+	 * @param batch_size The number of results to return in each API call
+	 * @param app the boolean flag to receive app fields in the response
+	 * @param events the boolean flag to receive event summary fields in the response
+	 * @param profile the boolean flag to receive the custom profile properties in the response.
+	 * @return Cursor - the user profiles cursor
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Cursor getUserProfileCursor(ProfilePayload payload, int batch_size, boolean app, boolean events, boolean profile) throws IOException, InterruptedException
+	{
+<span class="fc" id="L116">		String url = urlGetProfileCursor + &quot;?batch_size=&quot; + String.valueOf(batch_size) + &quot;&amp;&quot; + &quot;?app=&quot; + String.valueOf(app) + </span>
+<span class="fc" id="L117">				&quot;&amp;&quot; + &quot;?events=&quot; + String.valueOf(events) + &quot;&amp;&quot; + &quot;?profile=&quot; + String.valueOf(profile);  </span>
+		
+<span class="fc" id="L119">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L120">		JSONObject jsonResponse = client.postRequest(url, jsonPayload);</span>
+<span class="fc" id="L121">		Cursor cur = objectMapper.readValue(jsonResponse.toString(), Cursor.class);</span>
+		
+<span class="fc" id="L123">		return cur;	</span>
+	}
+	
+	/**
+	 * Gets the user profile data using cursor.
+	 *
+	 * @param cursor the cursor
+	 * @return the user profile data
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public GetUserProfileResponse getUserProfileData(String cursor) throws IOException, InterruptedException
+	{
+<span class="fc" id="L136">		String url = urlGetProfileCursor + &quot;?cursor=&quot; + cursor;</span>
+		
+<span class="fc" id="L138">		JSONObject jsonResponse = client.getRequest(url);</span>
+<span class="fc" id="L139">		GetUserProfileResponse res = objectMapper.readValue(jsonResponse.toString(), GetUserProfileResponse.class);</span>
+		
+<span class="fc" id="L141">		return res;	</span>
+	}
+	
+	/**
+	 * Gets the user profile by id.
+	 *
+	 * @param type the type of user id
+	 * @param id the id
+	 * @return the user profile 
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public GetUserProfileResponse getUserProfileById(UserIdentity type, String id) throws IOException, InterruptedException
+	{
+<span class="fc" id="L155">		String url = urlGetProfileById;</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">		if(type == UserIdentity.EMAIL)</span>
+		{
+<span class="fc" id="L158">			url = url + &quot;?email=&quot; + id;</span>
+		}
+<span class="nc bnc" id="L160" title="All 2 branches missed.">		else if(type == UserIdentity.IDENTITY)</span>
+		{
+<span class="nc" id="L162">			url = url + &quot;?identity=&quot; + id;</span>
+		}
+<span class="nc bnc" id="L164" title="All 2 branches missed.">		else if(type == UserIdentity.OBJECT_ID)</span>
+		{
+<span class="nc" id="L166">			url = url + &quot;?objectId=&quot; + id;</span>
+		}
+		
+<span class="fc" id="L169">		JSONObject jsonResponse = client.getRequest(url); </span>
+<span class="fc" id="L170">		GetUserProfileResponse res = objectMapper.readValue(jsonResponse.toString(), GetUserProfileResponse.class);</span>
+		
+<span class="fc" id="L172">		return res;	</span>
+	}
+	
+	/**
+	 * Upload device tokens.
+	 *
+	 * @param payload the profile payload list
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response uploadDeviceTokens(List&lt;ProfilePayload&gt; payload) throws IOException, InterruptedException
+	{	
+<span class="fc" id="L185">		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L186">		JSONObject jsonPayload = new JSONObject();</span>
+<span class="fc" id="L187">		jsonPayload.put(&quot;d&quot;, jsonPayloadArray);</span>
+<span class="fc" id="L188">		JSONObject jsonResponse = client.postRequest(urlUploadData, jsonPayload);</span>
+<span class="fc" id="L189">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+
+<span class="fc" id="L191">		return res;</span>
+	}
+	
+	/**
+	 * Gets the profile count.
+	 *
+	 * @param payload the profile payload
+	 * @return the profile count
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response getProfileCount(ProfilePayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L204">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L205">		JSONObject jsonResponse = client.postRequest(urlGetProfileCount, jsonPayload);</span>
+<span class="fc" id="L206">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L207">		return res;</span>
+	}
+	
+	/**
+	 * Delete user profile.
+	 *
+	 * @param payload the profile payload
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response deleteUserProfile(ProfilePayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L220">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L221">		JSONObject jsonResponse = client.postRequest(urlDeleteProfile, jsonPayload);</span>
+<span class="fc" id="L222">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+		
+<span class="fc" id="L224">		return res;</span>
+	}
+	
+	/**
+	 * Demerge user profile.
+	 *
+	 * @param payload the profile payload
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response demergeUserProfile(ProfilePayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L237">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L238">		JSONObject jsonResponse = client.postRequest(urlDemergeProfile, jsonPayload);</span>
+<span class="fc" id="L239">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L240">		return res;</span>
+	}
+	
+	/**
+	 * Set a phone number or email status as subscribed or unsubscribed.
+	 *
+	 * @param payload the profile payload list
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response subscribe(List&lt;ProfilePayload&gt; payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L253">		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L254">		JSONObject jsonPayload = new JSONObject();</span>
+<span class="fc" id="L255">		jsonPayload.put(&quot;d&quot;, jsonPayloadArray);</span>
+<span class="fc" id="L256">		JSONObject jsonResponse = client.postRequest(urlSubscribe, jsonPayload);</span>
+<span class="fc" id="L257">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+		
+<span class="fc" id="L259">		return res;</span>
+	}
+	
+	/**
+	 * Disconnect a phone number from a user profile.
+	 *
+	 * @param payload the profile payload list
+	 * @return the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response disassociate(List&lt;ProfilePayload&gt; payload) throws IOException, InterruptedException
+	{	
+<span class="fc" id="L272">		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L273">		JSONObject jsonPayload = new JSONObject();</span>
+<span class="fc" id="L274">		jsonPayload.put(&quot;d&quot;, jsonPayloadArray);</span>
+<span class="fc" id="L275">		JSONObject jsonResponse = client.postRequest(urlDisassociate, jsonPayload);</span>
+<span class="fc" id="L276">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+		
+<span class="fc" id="L278">		return res;</span>
+	}
+	
+	/**
+	 * Gets the profile count using request id.
+	 *
+	 * @param ReqId the request id
+	 * @return the profile count 
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response getProfileCountByReqId(long ReqId) throws IOException, InterruptedException
+	{
+<span class="fc" id="L291">		String url = urlGetProfileCountByReqId + String.valueOf(ReqId);</span>
+<span class="fc" id="L292">		JSONObject jsonResponse = client.getRequest(url);</span>
+<span class="fc" id="L293">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L294">		return res;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -92,7 +92,7 @@ final public class Report {
 	 */
 	public Response getMessageReports(ReportPayload payload) throws IOException, InterruptedException
 	{
-		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));
+		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload)); 
 		JSONObject jsonResponse = client.postRequest(urlGetMessageReport, jsonPayload);
 		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);		
 		return res;

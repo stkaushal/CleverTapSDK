@@ -25,7 +25,7 @@ public class CampaignPayload {
 	@JsonProperty(value="when")
 	private String campaignSendTime;
 	
-	/** The content. */
+	/** The content, defined as Object type because it can be a single Content object as well a list of Content objects*/
 	private Object content;
 	
 	/** The provider nick name. */

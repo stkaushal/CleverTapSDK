@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Event.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">event</a> &gt; <span class="el_source">Event.java</span></div><h1>Event.java</h1><pre class="source lang-java linenums">package event;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import helper.ClevertapInstance;
+import helper.ObjectMapperHelper;
+import http.HttpClient;
+import payload.Cursor;
+import payload.event.EventPayload;
+import response.GetEventsResponse;
+import response.Response;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The singleton Event Class.
+ */
+final public class Event {
+	
+	/** The API endpoint to upload events. */
+<span class="fc" id="L26">	private static final String urlUploadEvent = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/upload&quot;;</span>
+	
+	/** The API endpoint to get events counts. */
+<span class="fc" id="L29">	private static final String urlGetEventCount = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/counts/events.json&quot;;</span>
+	
+	/** The API endpoint to get events. */
+<span class="fc" id="L32">	private static final String urlGetEventCursor = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/events.json&quot;;</span>
+	
+	/** The API endpoint to get events counts using request id. */
+<span class="fc" id="L35">	private static final String urlGetEventCountByReqId = &quot;https://&quot; + ClevertapInstance.getRegion() + &quot;api.clevertap.com/1/counts/events.json?req_id=&quot;;</span>
+	
+	/** The object mapper. */
+	private ObjectMapper objectMapper;
+	
+	/** The client. */
+	private HttpClient client;
+	
+	/**
+	 * Instantiates a new event.
+	 */
+<span class="fc" id="L46">	private Event(){</span>
+<span class="fc" id="L47">		this.client = HttpClient.getHttpClientInstance();</span>
+<span class="fc" id="L48">		this.objectMapper = ObjectMapperHelper.ObjectMapperHelperInstance().getObjectMapper();</span>
+<span class="fc" id="L49">	}</span>
+	
+	/** The event. */
+<span class="fc" id="L52">	private static Event event = null;</span>
+	
+	/**
+	 * Gets the events instance.
+	 *
+	 * @return the events instance
+	 */
+	public static Event getEventsInstance() {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		 if(event==null)</span>
+		 {
+<span class="fc" id="L62">			 event = new Event();</span>
+		 }
+<span class="fc" id="L64">	      return event;</span>
+	 }
+	
+	/**
+	 * Upload events.
+	 *
+	 * @param payload the events payload
+	 * @return Response - the response
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response uploadEvents(List&lt;EventPayload&gt; payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L77">		JSONArray jsonPayloadArray = new JSONArray(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L78">		JSONObject jsonPayload = new JSONObject();</span>
+<span class="fc" id="L79">		jsonPayload.put(&quot;d&quot;, jsonPayloadArray);</span>
+<span class="fc" id="L80">		JSONObject jsonResponse = client.postRequest(urlUploadEvent, jsonPayload);</span>
+<span class="fc" id="L81">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);	</span>
+<span class="fc" id="L82">		return res;</span>
+	}
+	
+	
+	/**
+	 * Gets the cursor to fetch the events.
+	 *
+	 * @param payload the events payload
+	 * @param batch_size The number of results to return in each API call
+	 * @param app the boolean flag to receive app fields in the response
+	 * @param events the boolean flag to receive event summary fields in the response
+	 * @param profile the boolean flag to receive the custom profile properties in the response.
+	 * @return Cursor - the events cursor
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Cursor getEventsCursor(EventPayload payload, int batch_size, boolean app, boolean events, boolean profile) throws IOException, InterruptedException
+	{
+<span class="fc" id="L100">		String url = urlGetEventCursor + &quot;?batch_size=&quot; + String.valueOf(batch_size) + &quot;&amp;&quot; + &quot;?app=&quot; + String.valueOf(app) + </span>
+<span class="fc" id="L101">				&quot;&amp;&quot; + &quot;?events=&quot; + String.valueOf(events) + &quot;&amp;&quot; + &quot;?profile=&quot; + String.valueOf(profile);</span>
+		
+<span class="fc" id="L103">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L104">		JSONObject jsonResponse = client.postRequest(url, jsonPayload);</span>
+<span class="fc" id="L105">		Cursor cur = objectMapper.readValue(jsonResponse.toString(), Cursor.class);</span>
+<span class="fc" id="L106">		return cur;	</span>
+	}
+	
+	/**
+	 * Gets the events data using cursor.
+	 *
+	 * @param cursor the cursor
+	 * @return the events data
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public GetEventsResponse getEventsData(String cursor) throws IOException, InterruptedException
+	{
+<span class="fc" id="L119">		String url = urlGetEventCursor + &quot;?cursor=&quot; + cursor;</span>
+		
+<span class="fc" id="L121">		JSONObject jsonResponse = client.getRequest(url);</span>
+<span class="fc" id="L122">		GetEventsResponse res = objectMapper.readValue(jsonResponse.toString(), GetEventsResponse.class);</span>
+<span class="fc" id="L123">		return res;	</span>
+	}
+	
+	/**
+	 * Retrieves counts for an event in a specified duration.
+	 *
+	 * @param payload the event payload
+	 * @return the event count
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response getEventCount(EventPayload payload) throws IOException, InterruptedException
+	{
+<span class="fc" id="L136">		JSONObject jsonPayload = new JSONObject(objectMapper.writeValueAsString(payload));</span>
+<span class="fc" id="L137">		JSONObject jsonResponse = client.postRequest(urlGetEventCount, jsonPayload);</span>
+<span class="fc" id="L138">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L139">		return res;</span>
+	}
+	
+	/**
+	 * Retrieves counts for an event in a specified duration using request id.
+	 *
+	 * @param ReqId the request id
+	 * @return the event count 
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public Response getEventCountByReqId(long ReqId) throws IOException, InterruptedException
+	{
+<span class="fc" id="L152">		String url = urlGetEventCountByReqId + String.valueOf(ReqId);</span>
+<span class="fc" id="L153">		JSONObject jsonResponse = client.getRequest(url);</span>
+<span class="fc" id="L154">		Response res = objectMapper.readValue(jsonResponse.toString(), Response.class);</span>
+<span class="fc" id="L155">		return res;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

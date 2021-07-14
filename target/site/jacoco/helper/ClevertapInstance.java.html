@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClevertapInstance.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">helper</a> &gt; <span class="el_source">ClevertapInstance.java</span></div><h1>ClevertapInstance.java</h1><pre class="source lang-java linenums">package helper;
+
+import campaign.Campaigns;
+import event.Event;
+import helper.enums.Region;
+import profile.Profiles;
+import report.Report;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The ClevertapInstanceClass.
+ */
+final public class ClevertapInstance {
+	
+	/** The Clevertap account id. */
+	private static String id;
+	
+	/** The Clevertap account password. */
+	private static String password;
+	
+	/** The region for API endpoints. */
+	private static Region region;
+	
+	/** The profile instance. */
+	private Profiles profileInstance;
+	
+	/** The event instance. */
+	private Event eventInstance;
+	
+	/** The report instance. */
+	private Report reportInstance;
+	
+	/** The campaign instance. */
+	private Campaigns campaignInstance;
+
+	/**
+	 * Instantiates a new clevertap instance.
+	 *
+	 * @param id the Clevertap account id
+	 * @param password the Clevertap account password
+	 * @param region the region for API endpoints
+	 */
+	public ClevertapInstance(String id, String password, Region region)   // dont make its static
+<span class="fc" id="L44">	{</span>
+<span class="fc" id="L45">		ClevertapInstance.id = id;</span>
+<span class="fc" id="L46">		ClevertapInstance.password = password;</span>
+<span class="fc" id="L47">		ClevertapInstance.region = region;</span>
+<span class="fc" id="L48">	}</span>
+	
+	/**
+	 * Gets the Clevertap account id.
+	 *
+	 * @return the id
+	 */
+	public static String getId() {
+<span class="fc" id="L56">		return id;</span>
+	}
+	
+	/**
+	 * Gets the Clevertap account password.
+	 *
+	 * @return the password
+	 */
+	public static String getPassword() {
+<span class="fc" id="L65">		return password;</span>
+	}
+	
+	/**
+	 * Gets the API endpoint region.
+	 *
+	 * @return the region
+	 */
+	public static String getRegion() {
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">		if(ClevertapInstance.region==Region.INDIA){</span>
+<span class="nc" id="L75">			return &quot;in1.&quot;;</span>
+		} 
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">		else if(ClevertapInstance.region==Region.SINGAPORE){</span>
+<span class="nc" id="L78">			return &quot;sg1.&quot;;</span>
+		}
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">		else if(ClevertapInstance.region==Region.USA){</span>
+<span class="nc" id="L81">			return &quot;us1.&quot;;</span>
+		}
+<span class="fc" id="L83">		return &quot;&quot;;</span>
+	}
+	
+	/**
+	 * Gets the profile instance.
+	 *
+	 * @return the profile instance
+	 */
+	public Profiles getProfileInstance() {
+<span class="fc" id="L92">		this.profileInstance = Profiles.getProfilesInstance();</span>
+<span class="fc" id="L93">		return profileInstance;</span>
+	}
+	
+	/**
+	 * Gets the event instance.
+	 *
+	 * @return the event instance
+	 */
+	public Event getEventInstance() {
+<span class="fc" id="L102">		this.eventInstance = Event.getEventsInstance();</span>
+<span class="fc" id="L103">		return eventInstance;</span>
+	}
+
+	/**
+	 * Gets the report instance.
+	 *
+	 * @return the report instance
+	 */
+	public Report getReportInstance() {
+<span class="fc" id="L112">		this.reportInstance = Report.getReportsInstance();</span>
+<span class="fc" id="L113">		return reportInstance;</span>
+	}
+	
+	/**
+	 * Gets the campaign instance.
+	 *
+	 * @return the campaign instance
+	 */
+	public Campaigns getCampaignInstance() {
+<span class="fc" id="L122">		this.campaignInstance = Campaigns.getCampaignsInstance();</span>
+<span class="fc" id="L123">		return campaignInstance;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

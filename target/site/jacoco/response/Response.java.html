@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Response.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">response</a> &gt; <span class="el_source">Response.java</span></div><h1>Response.java</h1><pre class="source lang-java linenums">package response;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Response.
+ */
+<span class="fc" id="L14">public class Response {</span>
+	
+	/** The status. */
+	private String status;
+	
+	/** The processed. */
+	private int processed;
+	
+	/** The unprocessed. */
+	private List&lt;Object&gt; unprocessed;
+	
+	/** The error. */
+	private String error;
+	
+	/** The code. */
+	private int code;  // rename
+	
+	/** The count. */
+	private int count;
+	
+	/** The req id. */
+	@JsonProperty(value=&quot;req_id&quot;)
+	private long reqId;
+	
+	/** The user type. */
+	@JsonProperty(value=&quot;user_type&quot;)
+	private HashMap&lt;String, Object&gt; userType;
+	
+	/** The total results. */
+	@JsonProperty(value=&quot;total_results&quot;)
+	private int totalResults;
+	
+	/** The messages. */
+	private List&lt;Message&gt; messages;
+	
+	/** The estimates. */
+	private HashMap&lt;String, String&gt; estimates;
+	
+	/** The result. */
+	private Result result;
+	
+	/** The targets. */
+	private List&lt;Target&gt; targets;
+	
+	/** The message. */
+	private String message;
+	
+	/** The other info. */
+	private HashMap&lt;String, Object&gt; otherInfo;
+	
+	/**
+	 * Gets the other info.
+	 *
+	 * @return the other info
+	 */
+	@JsonAnyGetter
+	public HashMap&lt;String, Object&gt; getOtherInfo() {
+<span class="fc" id="L71">		return otherInfo;</span>
+	}
+	
+	/**
+	 * Sets the other info.
+	 *
+	 * @param key the key
+	 * @param value the value
+	 */
+	@JsonAnySetter
+	public void setOtherInfo(String key, Object value) {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		if(this.otherInfo == null) {</span>
+<span class="fc" id="L83">			this.otherInfo = new HashMap&lt;String,Object&gt;();</span>
+		}
+<span class="fc" id="L85">		this.otherInfo.put(key,value);</span>
+<span class="fc" id="L86">	}</span>
+	
+	/**
+	 * Gets the status.
+	 *
+	 * @return the status
+	 */
+	public String getStatus() {
+<span class="fc" id="L94">		return status;</span>
+	}
+	
+	/**
+	 * Sets the status.
+	 *
+	 * @param status the new status
+	 */
+	public void setStatus(String status) {
+<span class="fc" id="L103">		this.status = status;</span>
+<span class="fc" id="L104">	}</span>
+	
+	/**
+	 * Gets the processed.
+	 *
+	 * @return the processed
+	 */
+	public int getProcessed() {
+<span class="fc" id="L112">		return processed;</span>
+	}
+	
+	/**
+	 * Sets the processed.
+	 *
+	 * @param processed the new processed
+	 */
+	public void setProcessed(int processed) {
+<span class="fc" id="L121">		this.processed = processed;</span>
+<span class="fc" id="L122">	}</span>
+	
+	/**
+	 * Gets the unprocessed.
+	 *
+	 * @return the unprocessed
+	 */
+	public List&lt;Object&gt; getUnprocessed() {
+<span class="fc" id="L130">		return unprocessed;</span>
+	}
+	
+	/**
+	 * Sets the unprocessed.
+	 *
+	 * @param unprocessed the new unprocessed
+	 */
+	public void setUnprocessed(List&lt;Object&gt; unprocessed) {
+<span class="fc" id="L139">		this.unprocessed = unprocessed;</span>
+<span class="fc" id="L140">	}</span>
+	
+	/**
+	 * Gets the error.
+	 *
+	 * @return the error
+	 */
+	public String getError() {
+<span class="fc" id="L148">		return error;</span>
+	}
+	
+	/**
+	 * Sets the error.
+	 *
+	 * @param error the new error
+	 */
+	public void setError(String error) {
+<span class="fc" id="L157">		this.error = error;</span>
+<span class="fc" id="L158">	}</span>
+	
+	/**
+	 * Gets the code.
+	 *
+	 * @return the code
+	 */
+	public int getCode() {
+<span class="fc" id="L166">		return code;</span>
+	}
+	
+	/**
+	 * Sets the code.
+	 *
+	 * @param code the new code
+	 */
+	public void setCode(int code) {
+<span class="fc" id="L175">		this.code = code;</span>
+<span class="fc" id="L176">	}</span>
+	
+	/**
+	 * Gets the count.
+	 *
+	 * @return the count
+	 */
+	public int getCount() {
+<span class="fc" id="L184">		return count;</span>
+	}
+	
+	/**
+	 * Sets the count.
+	 *
+	 * @param count the new count
+	 */
+	public void setCount(int count) {
+<span class="fc" id="L193">		this.count = count;</span>
+<span class="fc" id="L194">	}</span>
+	
+	/**
+	 * Gets the req id.
+	 *
+	 * @return the req id
+	 */
+	public long getReqId() {
+<span class="fc" id="L202">		return reqId;</span>
+	}
+	
+	/**
+	 * Sets the req id.
+	 *
+	 * @param reqId the new req id
+	 */
+	public void setReqId(long reqId) {
+<span class="fc" id="L211">		this.reqId = reqId;</span>
+<span class="fc" id="L212">	}</span>
+	
+	/**
+	 * Gets the user type.
+	 *
+	 * @return the user type
+	 */
+	public HashMap&lt;String, Object&gt; getUserType() {
+<span class="fc" id="L220">		return userType;</span>
+	}
+	
+	/**
+	 * Sets the user type.
+	 *
+	 * @param userType the user type
+	 */
+	public void setUserType(HashMap&lt;String, Object&gt; userType) {
+<span class="fc" id="L229">		this.userType = userType;</span>
+<span class="fc" id="L230">	}</span>
+	
+	/**
+	 * Gets the total results.
+	 *
+	 * @return the total results
+	 */
+	public int getTotalResults() {
+<span class="fc" id="L238">		return totalResults;</span>
+	}
+	
+	/**
+	 * Sets the total results.
+	 *
+	 * @param totalResults the new total results
+	 */
+	public void setTotalResults(int totalResults) {
+<span class="fc" id="L247">		this.totalResults = totalResults;</span>
+<span class="fc" id="L248">	}</span>
+	
+	/**
+	 * Sets the other info.
+	 *
+	 * @param otherInfo the other info
+	 */
+	public void setOtherInfo(HashMap&lt;String, Object&gt; otherInfo) {
+<span class="nc" id="L256">		this.otherInfo = otherInfo;</span>
+<span class="nc" id="L257">	}</span>
+	
+	/**
+	 * Gets the messages.
+	 *
+	 * @return the messages
+	 */
+	public List&lt;Message&gt; getMessages() {
+<span class="fc" id="L265">		return messages;</span>
+	}
+	
+	/**
+	 * Sets the messages.
+	 *
+	 * @param messages the new messages
+	 */
+	public void setMessages(List&lt;Message&gt; messages) {
+<span class="fc" id="L274">		this.messages = messages;</span>
+<span class="fc" id="L275">	}</span>
+	
+	/**
+	 * Gets the estimates.
+	 *
+	 * @return the estimates
+	 */
+	public HashMap&lt;String, String&gt; getEstimates() {
+<span class="fc" id="L283">		return estimates;</span>
+	}
+	
+	/**
+	 * Sets the estimates.
+	 *
+	 * @param estimates the estimates
+	 */
+	public void setEstimates(HashMap&lt;String, String&gt; estimates) {
+<span class="fc" id="L292">		this.estimates = estimates;</span>
+<span class="fc" id="L293">	}</span>
+	
+	/**
+	 * Gets the result.
+	 *
+	 * @return the result
+	 */
+	public Result getResult() {
+<span class="fc" id="L301">		return result;</span>
+	}
+	
+	/**
+	 * Sets the result.
+	 *
+	 * @param result the new result
+	 */
+	public void setResult(Result result) {
+<span class="fc" id="L310">		this.result = result;</span>
+<span class="fc" id="L311">	}</span>
+	
+	/**
+	 * Gets the targets.
+	 *
+	 * @return the targets
+	 */
+	public List&lt;Target&gt; getTargets() {
+<span class="fc" id="L319">		return targets;</span>
+	}
+	
+	/**
+	 * Sets the targets.
+	 *
+	 * @param targets the new targets
+	 */
+	public void setTargets(List&lt;Target&gt; targets) {
+<span class="fc" id="L328">		this.targets = targets;</span>
+<span class="fc" id="L329">	}</span>
+	
+	/**
+	 * Gets the message.
+	 *
+	 * @return the message
+	 */
+	public String getMessage() {
+<span class="fc" id="L337">		return message;</span>
+	}
+	
+	/**
+	 * Sets the message.
+	 *
+	 * @param message the new message
+	 */
+	public void setMessage(String message) {
+<span class="fc" id="L346">		this.message = message;</span>
+<span class="fc" id="L347">	}</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

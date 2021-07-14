@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EventPayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">payload.event</a> &gt; <span class="el_source">EventPayload.java</span></div><h1>EventPayload.java</h1><pre class="source lang-java linenums">package payload.event;
+
+import java.util.HashMap;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import payload.EventPropertyFilter;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EventPayload.
+ */
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L17">public class EventPayload {</span>
+	
+	/** The from date. */
+	@JsonProperty(value=&quot;from&quot;)
+	private int fromDate;
+	
+	/** The to date. */
+	@JsonProperty(value=&quot;to&quot;)
+	private int toDate; 
+	
+	/** The type. */
+	private String type;
+	
+	/** The event name upload. */
+	@JsonProperty(value=&quot;evtName&quot;)
+	private String eventNameUpload;
+	
+	/** The timestamp. */
+	private String timestamp;
+	
+	/** The event data. */
+	@JsonProperty(value=&quot;evtData&quot;)
+	private HashMap&lt;String, Object&gt; eventData;
+	
+	/** The event name download. */
+	@JsonProperty(value=&quot;event_name&quot;)
+	private String eventNameDownload;
+	
+	/** The event properties. */
+	@JsonProperty(value=&quot;event_properties&quot;)
+	private List&lt;EventPropertyFilter&gt; eventProperties;
+	
+	/** The ts. */
+	private long ts;
+	
+	/** The identity. */
+	private String identity;
+	
+	/** The fbid. */
+	@JsonProperty(value=&quot;FBID&quot;)
+	private String fbid;
+	
+	/** The gpid. */
+	@JsonProperty(value=&quot;GPID&quot;)
+	private String gpid;
+	
+	/** The object id. */
+	private String objectId;
+
+	/**
+	 * Gets the from date.
+	 *
+	 * @return the from date
+	 */
+	public int getFromDate() {
+<span class="fc" id="L72">		return fromDate;</span>
+	}
+
+	/**
+	 * Sets the from date.
+	 *
+	 * @param fromDate the new from date
+	 */
+	public void setFromDate(int fromDate) {
+<span class="fc" id="L81">		this.fromDate = fromDate;</span>
+<span class="fc" id="L82">	}</span>
+
+	/**
+	 * Gets the to date.
+	 *
+	 * @return the to date
+	 */
+	public int getToDate() {
+<span class="fc" id="L90">		return toDate;</span>
+	}
+
+	/**
+	 * Sets the to date.
+	 *
+	 * @param toDate the new to date
+	 */
+	public void setToDate(int toDate) {
+<span class="fc" id="L99">		this.toDate = toDate;</span>
+<span class="fc" id="L100">	}</span>
+
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
+	public String getType() {
+<span class="fc" id="L108">		return type;</span>
+	}
+
+	/**
+	 * Sets the type.
+	 *
+	 * @param type the new type
+	 */
+	public void setType(String type) {
+<span class="fc" id="L117">		this.type = type;</span>
+<span class="fc" id="L118">	}</span>
+
+	/**
+	 * Gets the event name upload.
+	 *
+	 * @return the event name upload
+	 */
+	public String getEventNameUpload() {
+<span class="fc" id="L126">		return eventNameUpload;</span>
+	}
+
+	/**
+	 * Sets the event name upload.
+	 *
+	 * @param eventNameUpload the new event name upload
+	 */
+	public void setEventNameUpload(String eventNameUpload) {
+<span class="fc" id="L135">		this.eventNameUpload = eventNameUpload;</span>
+<span class="fc" id="L136">	}</span>
+
+	/**
+	 * Gets the timestamp.
+	 *
+	 * @return the timestamp
+	 */
+	public String getTimestamp() {
+<span class="fc" id="L144">		return timestamp;</span>
+	}
+
+	/**
+	 * Sets the timestamp.
+	 *
+	 * @param timestamp the new timestamp
+	 */
+	public void setTimestamp(String timestamp) {
+<span class="fc" id="L153">		this.timestamp = timestamp;</span>
+<span class="fc" id="L154">	}</span>
+
+	/**
+	 * Gets the event data.
+	 *
+	 * @return the event data
+	 */
+	public HashMap&lt;String, Object&gt; getEventData() {
+<span class="fc" id="L162">		return eventData;</span>
+	}
+
+	/**
+	 * Sets the event data.
+	 *
+	 * @param eventData the event data
+	 */
+	public void setEventData(HashMap&lt;String, Object&gt; eventData) {
+<span class="fc" id="L171">		this.eventData = eventData;</span>
+<span class="fc" id="L172">	}</span>
+
+	/**
+	 * Gets the event name download.
+	 *
+	 * @return the event name download
+	 */
+	public String getEventNameDownload() {
+<span class="fc" id="L180">		return eventNameDownload;</span>
+	}
+
+	/**
+	 * Sets the event name download.
+	 *
+	 * @param eventNameDownload the new event name download
+	 */
+	public void setEventNameDownload(String eventNameDownload) {
+<span class="fc" id="L189">		this.eventNameDownload = eventNameDownload;</span>
+<span class="fc" id="L190">	}</span>
+
+	/**
+	 * Gets the event properties.
+	 *
+	 * @return the event properties
+	 */
+	public List&lt;EventPropertyFilter&gt; getEventProperties() {
+<span class="fc" id="L198">		return eventProperties;</span>
+	}
+
+	/**
+	 * Sets the event properties.
+	 *
+	 * @param eventProperties the new event properties
+	 */
+	public void setEventProperties(List&lt;EventPropertyFilter&gt; eventProperties) {
+<span class="fc" id="L207">		this.eventProperties = eventProperties;</span>
+<span class="fc" id="L208">	}</span>
+
+	/**
+	 * Gets the ts.
+	 *
+	 * @return the ts
+	 */
+	public long getTs() {
+<span class="fc" id="L216">		return ts;</span>
+	}
+
+	/**
+	 * Sets the ts.
+	 *
+	 * @param ts the new ts
+	 */
+	public void setTs(long ts) {
+<span class="fc" id="L225">		this.ts = ts;</span>
+<span class="fc" id="L226">	}</span>
+
+	/**
+	 * Gets the identity.
+	 *
+	 * @return the identity
+	 */
+	public String getIdentity() {
+<span class="fc" id="L234">		return identity;</span>
+	}
+
+	/**
+	 * Sets the identity.
+	 *
+	 * @param identity the new identity
+	 */
+	public void setIdentity(String identity) {
+<span class="fc" id="L243">		this.identity = identity;</span>
+<span class="fc" id="L244">	}</span>
+
+	/**
+	 * Gets the fbid.
+	 *
+	 * @return the fbid
+	 */
+	public String getFbid() {
+<span class="fc" id="L252">		return fbid;</span>
+	}
+
+	/**
+	 * Sets the fbid.
+	 *
+	 * @param fbid the new fbid
+	 */
+	public void setFbid(String fbid) {
+<span class="fc" id="L261">		this.fbid = fbid;</span>
+<span class="fc" id="L262">	}</span>
+
+	/**
+	 * Gets the gpid.
+	 *
+	 * @return the gpid
+	 */
+	public String getGpid() {
+<span class="fc" id="L270">		return gpid;</span>
+	}
+
+	/**
+	 * Sets the gpid.
+	 *
+	 * @param gpid the new gpid
+	 */
+	public void setGpid(String gpid) {
+<span class="fc" id="L279">		this.gpid = gpid;</span>
+<span class="fc" id="L280">	}</span>
+
+	/**
+	 * Gets the object id.
+	 *
+	 * @return the object id
+	 */
+	public String getObjectId() {
+<span class="fc" id="L288">		return objectId;</span>
+	}
+
+	/**
+	 * Sets the object id.
+	 *
+	 * @param objectId the new object id
+	 */
+	public void setObjectId(String objectId) {
+<span class="fc" id="L297">		this.objectId = objectId;</span>
+<span class="fc" id="L298">	}</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

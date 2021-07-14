@@ -80,9 +80,6 @@ final public class ClevertapInstance {
 		else if(ClevertapInstance.region==Region.USA){
 			return "us1.";
 		}
-		else if(ClevertapInstance.region==Region.DEVELOPMENT){
-			return "sk1.";
-		}
 		return "";
 	}
 	

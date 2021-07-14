@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlatformTypeAndroid.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">payload.campaign.campaigncontent.platformtype</a> &gt; <span class="el_source">PlatformTypeAndroid.java</span></div><h1>PlatformTypeAndroid.java</h1><pre class="source lang-java linenums">package payload.campaign.campaigncontent.platformtype;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlatformTypeAndroid.
+ */
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L12">public class PlatformTypeAndroid {</span>
+	
+	/** The mutable content. */
+	@JsonProperty(value=&quot;mutable-content&quot;)
+	private boolean mutableContent;
+	
+	/** The deep link. */
+	@JsonProperty(value=&quot;deep_link&quot;)
+	private String deepLink;
+	
+	/** The sound file. */
+	@JsonProperty(value=&quot;sound_file&quot;)
+	private String soundFile;
+	
+	/** The category. */
+	private String category;
+	
+	/** The badge count. */
+	@JsonProperty(value=&quot;badge_count&quot;)
+	private int badgeCount;
+	
+	/** The background image URL. */
+	@JsonProperty(value=&quot;background_image&quot;)
+	private String backgroundImageURL;
+	
+	/** The default sound. */
+	@JsonProperty(value=&quot;default_sound&quot;)
+	private boolean defaultSound;
+	
+	/** The large icon URL. */
+	@JsonProperty(value=&quot;large_icon&quot;)
+	private String largeIconURL;
+	
+	/** The time to live. */
+	@JsonProperty(value=&quot;ttl&quot;)
+	private int timeToLive;
+
+	/**
+	 * Checks if is mutable content.
+	 *
+	 * @return true, if is mutable content
+	 */
+	public boolean isMutableContent() {
+<span class="fc" id="L55">		return mutableContent;</span>
+	}
+
+	/**
+	 * Sets the mutable content.
+	 *
+	 * @param mutableContent the new mutable content
+	 */
+	public void setMutableContent(boolean mutableContent) {
+<span class="nc" id="L64">		this.mutableContent = mutableContent;</span>
+<span class="nc" id="L65">	}</span>
+
+	/**
+	 * Gets the deep link.
+	 *
+	 * @return the deep link
+	 */
+	public String getDeepLink() {
+<span class="fc" id="L73">		return deepLink;</span>
+	}
+
+	/**
+	 * Sets the deep link.
+	 *
+	 * @param deepLink the new deep link
+	 */
+	public void setDeepLink(String deepLink) {
+<span class="nc" id="L82">		this.deepLink = deepLink;</span>
+<span class="nc" id="L83">	}</span>
+
+	/**
+	 * Gets the sound file.
+	 *
+	 * @return the sound file
+	 */
+	public String getSoundFile() {
+<span class="fc" id="L91">		return soundFile;</span>
+	}
+
+	/**
+	 * Sets the sound file.
+	 *
+	 * @param soundFile the new sound file
+	 */
+	public void setSoundFile(String soundFile) {
+<span class="nc" id="L100">		this.soundFile = soundFile;</span>
+<span class="nc" id="L101">	}</span>
+
+	/**
+	 * Gets the category.
+	 *
+	 * @return the category
+	 */
+	public String getCategory() {
+<span class="fc" id="L109">		return category;</span>
+	}
+
+	/**
+	 * Sets the category.
+	 *
+	 * @param category the new category
+	 */
+	public void setCategory(String category) {
+<span class="fc" id="L118">		this.category = category;</span>
+<span class="fc" id="L119">	}</span>
+
+	/**
+	 * Gets the badge count.
+	 *
+	 * @return the badge count
+	 */
+	public int getBadgeCount() {
+<span class="fc" id="L127">		return badgeCount;</span>
+	}
+
+	/**
+	 * Sets the badge count.
+	 *
+	 * @param badgeCount the new badge count
+	 */
+	public void setBadgeCount(int badgeCount) {
+<span class="nc" id="L136">		this.badgeCount = badgeCount;</span>
+<span class="nc" id="L137">	}</span>
+
+	/**
+	 * Gets the background image URL.
+	 *
+	 * @return the background image URL
+	 */
+	public String getBackgroundImageURL() {
+<span class="fc" id="L145">		return backgroundImageURL;</span>
+	}
+
+	/**
+	 * Sets the background image URL.
+	 *
+	 * @param backgroundImageURL the new background image URL
+	 */
+	public void setBackgroundImageURL(String backgroundImageURL) {
+<span class="fc" id="L154">		this.backgroundImageURL = backgroundImageURL;</span>
+<span class="fc" id="L155">	}</span>
+
+	/**
+	 * Checks if is default sound.
+	 *
+	 * @return true, if is default sound
+	 */
+	public boolean isDefaultSound() {
+<span class="fc" id="L163">		return defaultSound;</span>
+	}
+
+	/**
+	 * Sets the default sound.
+	 *
+	 * @param defaultSound the new default sound
+	 */
+	public void setDefaultSound(boolean defaultSound) {
+<span class="fc" id="L172">		this.defaultSound = defaultSound;</span>
+<span class="fc" id="L173">	}</span>
+
+	/**
+	 * Gets the large icon URL.
+	 *
+	 * @return the large icon URL
+	 */
+	public String getLargeIconURL() {
+<span class="fc" id="L181">		return largeIconURL;</span>
+	}
+
+	/**
+	 * Sets the large icon URL.
+	 *
+	 * @param largeIconURL the new large icon URL
+	 */
+	public void setLargeIconURL(String largeIconURL) {
+<span class="fc" id="L190">		this.largeIconURL = largeIconURL;</span>
+<span class="fc" id="L191">	}</span>
+
+	/**
+	 * Gets the time to live.
+	 *
+	 * @return the time to live
+	 */
+	public int getTimeToLive() {
+<span class="fc" id="L199">		return timeToLive;</span>
+	}
+
+	/**
+	 * Sets the time to live.
+	 *
+	 * @param timeToLive the new time to live
+	 */
+	public void setTimeToLive(int timeToLive) {
+<span class="fc" id="L208">		this.timeToLive = timeToLive;</span>
+<span class="fc" id="L209">	}</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

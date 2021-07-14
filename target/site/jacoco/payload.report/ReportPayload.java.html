@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReportPayload.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CleverTap API SDK</a> &gt; <a href="index.source.html" class="el_package">payload.report</a> &gt; <span class="el_source">ReportPayload.java</span></div><h1>ReportPayload.java</h1><pre class="source lang-java linenums">package payload.report;
+
+import java.util.HashMap;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReportPayload.
+ */
+@JsonInclude(Include.NON_DEFAULT)
+<span class="fc" id="L14">public class ReportPayload {</span>
+	
+	/** The user type. */
+	@JsonProperty(value=&quot;user_type&quot;)
+	private boolean userType;
+	
+	/** The from date. */
+	@JsonProperty(value=&quot;from&quot;)
+	private Object fromDate;
+	
+	/** The to date. */
+	@JsonProperty(value=&quot;to&quot;)
+	private Object toDate;
+	
+	/** The channel. */
+	private String[] channel;
+	
+	/** The delivery. */
+	private String[] delivery;
+	
+	/** The daily. */
+	private boolean daily;
+	
+	/** The status. */
+	private String[] status;
+	
+	/** The message type. */
+	private String[] message_type;
+	
+	/** The lable. */
+	private String[] lable;
+	
+	/** The event name. */
+	@JsonProperty(value=&quot;event_name&quot;)
+	private String eventName; 
+	
+	/** The groups. */
+	private HashMap&lt;String, Group&gt; groups;
+	
+	/** The is unique. */
+	@JsonProperty(value=&quot;unique&quot;)
+	private boolean isUnique;
+	
+	/** The sum event prop. */
+	@JsonProperty(value=&quot;sum_event_prop&quot;)
+	private String sumEventProp;
+
+	/**
+	 * Checks if is user type.
+	 *
+	 * @return true, if is user type
+	 */
+	public boolean isUserType() {
+<span class="fc" id="L67">		return userType;</span>
+	}
+
+	/**
+	 * Sets the user type.
+	 *
+	 * @param userType the new user type
+	 */
+	public void setUserType(boolean userType) {
+<span class="fc" id="L76">		this.userType = userType;</span>
+<span class="fc" id="L77">	}</span>
+
+	/**
+	 * Gets the from date.
+	 *
+	 * @return the from date
+	 */
+	public Object getFromDate() {
+<span class="fc" id="L85">		return fromDate;</span>
+	}
+
+	/**
+	 * Sets the from date (date is int type).
+	 *
+	 * @param fromDate the new from date
+	 */
+	public void setFromDate(int fromDate) {
+<span class="fc" id="L94">		this.fromDate = fromDate;</span>
+<span class="fc" id="L95">	}</span>
+	/**
+	 * Sets the from date (date is string type).
+	 *
+	 * @param fromDate the new from date
+	 */
+	public void setFromDate(String fromDate) {
+<span class="fc" id="L102">		this.fromDate = fromDate;</span>
+<span class="fc" id="L103">	}</span>
+
+	/**
+	 * Gets the to date.
+	 *
+	 * @return the to date
+	 */
+	public Object getToDate() {
+<span class="fc" id="L111">		return toDate;</span>
+	}
+
+	/**
+	 * Sets the to date (date is int type).
+	 *
+	 * @param toDate the new to date
+	 */
+	public void setToDate(int toDate) {
+<span class="fc" id="L120">		this.toDate = toDate;</span>
+<span class="fc" id="L121">	}</span>
+	
+	/**
+	 * Sets the to date (date is string type).
+	 *
+	 * @param toDate the new to date
+	 */
+	public void setToDate(String toDate) {
+<span class="fc" id="L129">		this.toDate = toDate;</span>
+<span class="fc" id="L130">	}</span>
+
+	/**
+	 * Gets the channel.
+	 *
+	 * @return the channel
+	 */
+	public String[] getChannel() {
+<span class="fc" id="L138">		return channel;</span>
+	}
+
+	/**
+	 * Sets the channel.
+	 *
+	 * @param channel the new channel
+	 */
+	public void setChannel(String[] channel) {
+<span class="fc" id="L147">		this.channel = channel;</span>
+<span class="fc" id="L148">	}</span>
+
+	/**
+	 * Gets the delivery.
+	 *
+	 * @return the delivery
+	 */
+	public String[] getDelivery() {
+<span class="fc" id="L156">		return delivery;</span>
+	}
+
+	/**
+	 * Sets the delivery.
+	 *
+	 * @param delivery the new delivery
+	 */
+	public void setDelivery(String[] delivery) {
+<span class="fc" id="L165">		this.delivery = delivery;</span>
+<span class="fc" id="L166">	}</span>
+
+	/**
+	 * Checks if is daily.
+	 *
+	 * @return true, if is daily
+	 */
+	public boolean isDaily() {
+<span class="fc" id="L174">		return daily;</span>
+	}
+
+	/**
+	 * Sets the daily.
+	 *
+	 * @param daily the new daily
+	 */
+	public void setDaily(boolean daily) {
+<span class="fc" id="L183">		this.daily = daily;</span>
+<span class="fc" id="L184">	}</span>
+
+	/**
+	 * Gets the status.
+	 *
+	 * @return the status
+	 */
+	public String[] getStatus() {
+<span class="fc" id="L192">		return status;</span>
+	}
+
+	/**
+	 * Sets the status.
+	 *
+	 * @param status the new status
+	 */
+	public void setStatus(String[] status) {
+<span class="fc" id="L201">		this.status = status;</span>
+<span class="fc" id="L202">	}</span>
+
+	/**
+	 * Gets the message type.
+	 *
+	 * @return the message type
+	 */
+	public String[] getMessage_type() {
+<span class="fc" id="L210">		return message_type;</span>
+	}
+
+	/**
+	 * Sets the message type.
+	 *
+	 * @param message_type the new message type
+	 */
+	public void setMessage_type(String[] message_type) {
+<span class="fc" id="L219">		this.message_type = message_type;</span>
+<span class="fc" id="L220">	}</span>
+
+	/**
+	 * Gets the lable.
+	 *
+	 * @return the lable
+	 */
+	public String[] getLable() {
+<span class="fc" id="L228">		return lable;</span>
+	}
+
+	/**
+	 * Sets the lable.
+	 *
+	 * @param lable the new lable
+	 */
+	public void setLable(String[] lable) {
+<span class="fc" id="L237">		this.lable = lable;</span>
+<span class="fc" id="L238">	}</span>
+
+	/**
+	 * Gets the event name.
+	 *
+	 * @return the event name
+	 */
+	public String getEventName() {
+<span class="fc" id="L246">		return eventName;</span>
+	}
+
+	/**
+	 * Sets the event name.
+	 *
+	 * @param eventName the new event name
+	 */
+	public void setEventName(String eventName) {
+<span class="fc" id="L255">		this.eventName = eventName;</span>
+<span class="fc" id="L256">	}</span>
+
+	/**
+	 * Gets the groups.
+	 *
+	 * @return the groups
+	 */
+	public HashMap&lt;String, Group&gt; getGroups() {
+<span class="fc" id="L264">		return groups;</span>
+	}
+
+	/**
+	 * Sets the groups.
+	 *
+	 * @param groups the groups
+	 */
+	public void setGroups(HashMap&lt;String, Group&gt; groups) {
+<span class="fc" id="L273">		this.groups = groups;</span>
+<span class="fc" id="L274">	}</span>
+
+	/**
+	 * Checks if is unique.
+	 *
+	 * @return true, if is unique
+	 */
+	public boolean isUnique() {
+<span class="fc" id="L282">		return isUnique;</span>
+	}
+
+	/**
+	 * Sets the unique.
+	 *
+	 * @param isUnique the new unique
+	 */
+	public void setUnique(boolean isUnique) {
+<span class="fc" id="L291">		this.isUnique = isUnique;</span>
+<span class="fc" id="L292">	}</span>
+
+	/**
+	 * Gets the sum event prop.
+	 *
+	 * @return the sum event prop
+	 */
+	public String getSumEventProp() {
+<span class="fc" id="L300">		return sumEventProp;</span>
+	}
+
+	/**
+	 * Sets the sum event prop.
+	 *
+	 * @param sumEventProp the new sum event prop
+	 */
+	public void setSumEventProp(String sumEventProp) {
+<span class="fc" id="L309">		this.sumEventProp = sumEventProp;</span>
+<span class="fc" id="L310">	}</span>
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
