@@ -1,16 +1,12 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 CleverTap API SDK,profile,Profiles,15,351,5,3,4,73,3,15,0,14
 CleverTap API SDK,payload.event,EventPayload,0,94,0,0,0,40,0,27,0,27
-CleverTap API SDK,payload.campaign.campaigncontent.platformtype,PlatformTypeFirefox,12,26,0,0,6,10,3,8,3,8
-CleverTap API SDK,payload.campaign.campaigncontent.platformtype,PlatformTypeIos,28,38,0,0,14,14,7,12,7,12
-CleverTap API SDK,payload.campaign.campaigncontent.platformtype,PlatformTypeAndroid,16,50,0,0,8,20,4,15,4,15
-CleverTap API SDK,payload.campaign.campaigncontent.platformtype,PlatformTypeSafari,12,26,0,0,6,10,3,8,3,8
-CleverTap API SDK,payload.campaign.campaigncontent.platformtype,PlatformTypeChrome,12,26,0,0,6,10,3,8,3,8
+CleverTap API SDK,payload.campaign.campaigncontent.platformtype,PlatformTypeWeb,4,34,0,0,2,14,1,10,1,10
+CleverTap API SDK,payload.campaign.campaigncontent.platformtype,PlatformTypeMobile,16,50,0,0,8,20,4,15,4,15
 CleverTap API SDK,payload.profile,ProfilePayload,4,112,0,0,2,48,1,32,1,32
-CleverTap API SDK,payload.profile,Keys,0,17,0,0,0,7,0,5,0,5
+CleverTap API SDK,payload.profile,TokenKeys,0,17,0,0,0,7,0,5,0,5
 CleverTap API SDK,payload.profile,TokenData,0,24,0,0,0,10,0,7,0,7
-CleverTap API SDK,payload.campaign.campaigncontent.actions.actionurl,AndroidActionUrl,0,10,0,0,0,4,0,3,0,3
-CleverTap API SDK,payload.campaign.campaigncontent.actions.actionurl,IosActionUrl,0,10,0,0,0,4,0,3,0,3
+CleverTap API SDK,payload.campaign.campaigncontent.actions.actionurl,MobileActionUrl,0,10,0,0,0,4,0,3,0,3
 CleverTap API SDK,payload.campaign.campaigncontent.actions.actionurl,ActionUrl,0,17,0,0,0,7,0,5,0,5
 CleverTap API SDK,payload.campaign.campaigncontent.actions,ActionLinks,4,34,0,0,2,14,1,10,1,10
 CleverTap API SDK,payload.campaign.campaigncontent.actions,Action,0,17,0,0,0,7,0,5,0,5
@@ -30,13 +26,13 @@ CleverTap API SDK,response,Result,0,17,0,0,0,7,0,5,0,5
 CleverTap API SDK,response,RecordsEvent,0,31,0,0,0,13,0,9,0,9
 CleverTap API SDK,response,Profile,0,45,0,0,0,19,0,13,0,13
 CleverTap API SDK,response,GetEventsResponse,0,17,0,0,0,7,0,5,0,5
+CleverTap API SDK,payload.campaign,CampaignToEventProperty,4,27,0,0,2,11,1,8,1,8
 CleverTap API SDK,payload.campaign,CommonProfileProperties,10,0,0,0,4,0,3,0,3,0
 CleverTap API SDK,payload.campaign,ProfileFields,24,0,0,0,10,0,7,0,7,0
 CleverTap API SDK,payload.campaign,DateRangePayload,0,17,0,0,0,7,0,5,0,5
 CleverTap API SDK,payload.campaign,ControlGroup,0,24,0,0,0,10,0,7,0,7
 CleverTap API SDK,payload.campaign,CampaignPayload,76,229,10,4,31,94,18,63,11,63
-CleverTap API SDK,payload.campaign,To,4,34,0,0,2,14,1,10,1,10
-CleverTap API SDK,payload.campaign,Where,4,27,0,0,2,11,1,8,1,8
+CleverTap API SDK,payload.campaign,CampaignToUserID,4,34,0,0,2,14,1,10,1,10
 CleverTap API SDK,payload.profile.profiledata,ProfileData,0,101,0,0,0,43,0,29,0,29
 CleverTap API SDK,payload.profile.profiledata,CategoryResubscribe,0,10,0,0,0,4,0,3,0,3
 CleverTap API SDK,payload.profile.profiledata,CategoryUnsubscribe,0,10,0,0,0,4,0,3,0,3

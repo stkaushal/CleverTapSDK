@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	
 	/** The campaign send to. */
 	@JsonProperty(value=&quot;where&quot;)
-	private Where campaignSendTo;
+	private CampaignToEventProperty campaignSendTo;
 	
 	/** The respect frequency caps. */
 	@JsonProperty(value=&quot;respect_frequency_caps&quot;)
@@ -101,7 +101,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	
 	/** The send message to. */
 	@JsonProperty(value=&quot;to&quot;)
-	private To sendMessageTo;
+	private CampaignToUserID sendMessageTo;
 	
 	/** The tag group. */
 	@JsonProperty(value=&quot;tag_group&quot;)
@@ -430,7 +430,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	 *
 	 * @return the campaign send to
 	 */
-	public Where getCampaignSendTo() {
+	public CampaignToEventProperty getCampaignSendTo() {
 <span class="fc" id="L434">		return campaignSendTo;</span>
 	}
 
@@ -439,7 +439,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	 *
 	 * @param campaignSendTo the new campaign send to
 	 */
-	public void setCampaignSendTo(Where campaignSendTo) {
+	public void setCampaignSendTo(CampaignToEventProperty campaignSendTo) {
 <span class="fc" id="L443">		this.campaignSendTo = campaignSendTo;</span>
 <span class="fc" id="L444">	}</span>
 
@@ -709,7 +709,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	 *
 	 * @return the send message to
 	 */
-	public To getSendMessageTo() {
+	public CampaignToUserID getSendMessageTo() {
 <span class="fc" id="L713">		return sendMessageTo;</span>
 	}
 
@@ -718,7 +718,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	 *
 	 * @param sendMessageTo the new send message to
 	 */
-	public void setSendMessageTo(To sendMessageTo) {
+	public void setSendMessageTo(CampaignToUserID sendMessageTo) {
 <span class="fc" id="L722">		this.sendMessageTo = sendMessageTo;</span>
 <span class="fc" id="L723">	}</span>
 

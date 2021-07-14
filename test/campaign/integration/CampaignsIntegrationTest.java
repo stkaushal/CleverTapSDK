@@ -14,8 +14,8 @@ import helper.enums.CampaignMethod;
 import helper.enums.Region;
 import payload.campaign.CampaignPayload;
 import payload.campaign.DateRangePayload;
-import payload.campaign.To;
-import payload.campaign.Where;
+import payload.campaign.CampaignToUserID;
+import payload.campaign.CampaignToEventProperty;
 import payload.campaign.campaigncontent.Content;
 import response.Response;
 
@@ -37,7 +37,7 @@ public class CampaignsIntegrationTest {
 		campaignPayloadUE.setCampaignName("SMS Campaign Integration testing");
 		campaignPayloadUE.setCampaignSendTime("now");
 
-		Where campaignSendTo = new Where();
+		CampaignToEventProperty campaignSendTo = new CampaignToEventProperty();
 		campaignSendTo.setEventName("Product Sold");
 		campaignSendTo.setFromDate(20210606);
 		campaignSendTo.setToDate(20210625);
@@ -60,7 +60,7 @@ public class CampaignsIntegrationTest {
 	@Test
 	public void testCreateCampaignTargetId() throws IOException, InterruptedException {
 		CampaignPayload campaignPayload = new CampaignPayload();
-		To sendMessageTo = new To();
+		CampaignToUserID sendMessageTo = new CampaignToUserID();
 		List<String> emailId = new ArrayList<String>();
 		emailId.add("dharmender.sheshma@clevertap.com");
 		sendMessageTo.setEmail(emailId);

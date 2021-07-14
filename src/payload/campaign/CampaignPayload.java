@@ -38,7 +38,7 @@ public class CampaignPayload {
 	
 	/** The campaign send to. */
 	@JsonProperty(value="where")
-	private Where campaignSendTo;
+	private CampaignToEventProperty campaignSendTo;
 	
 	/** The respect frequency caps. */
 	@JsonProperty(value="respect_frequency_caps")
@@ -101,7 +101,7 @@ public class CampaignPayload {
 	
 	/** The send message to. */
 	@JsonProperty(value="to")
-	private To sendMessageTo;
+	private CampaignToUserID sendMessageTo;
 	
 	/** The tag group. */
 	@JsonProperty(value="tag_group")
@@ -430,7 +430,7 @@ public class CampaignPayload {
 	 *
 	 * @return the campaign send to
 	 */
-	public Where getCampaignSendTo() {
+	public CampaignToEventProperty getCampaignSendTo() {
 		return campaignSendTo;
 	}
 
@@ -439,7 +439,7 @@ public class CampaignPayload {
 	 *
 	 * @param campaignSendTo the new campaign send to
 	 */
-	public void setCampaignSendTo(Where campaignSendTo) {
+	public void setCampaignSendTo(CampaignToEventProperty campaignSendTo) {
 		this.campaignSendTo = campaignSendTo;
 	}
 
@@ -709,7 +709,7 @@ public class CampaignPayload {
 	 *
 	 * @return the send message to
 	 */
-	public To getSendMessageTo() {
+	public CampaignToUserID getSendMessageTo() {
 		return sendMessageTo;
 	}
 
@@ -718,7 +718,7 @@ public class CampaignPayload {
 	 *
 	 * @param sendMessageTo the new send message to
 	 */
-	public void setSendMessageTo(To sendMessageTo) {
+	public void setSendMessageTo(CampaignToUserID sendMessageTo) {
 		this.sendMessageTo = sendMessageTo;
 	}
 

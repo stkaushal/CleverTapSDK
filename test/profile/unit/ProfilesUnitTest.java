@@ -21,7 +21,7 @@ import helper.enums.UserIdentity;
 import http.HttpClient;
 import payload.Cursor;
 import payload.EventPropertyFilter;
-import payload.profile.Keys;
+import payload.profile.TokenKeys;
 import payload.profile.ProfilePayload;
 import payload.profile.TokenData;
 import payload.profile.profiledata.CategoryResubscribe;
@@ -103,10 +103,10 @@ public class ProfilesUnitTest {
 		TokenData tokenData = new TokenData();
 		tokenData.setId("dummy");
 		tokenData.setType("test");
-		Keys keys = new Keys();
-		keys.setAuth("auth");
-		keys.setP256dh("jjfjfj");
-		tokenData.setKeys(keys);
+		TokenKeys tokenKeys = new TokenKeys();
+		tokenKeys.setAuth("auth");
+		tokenKeys.setP256dh("jjfjfj");
+		tokenData.setKeys(tokenKeys);
 
 		payload.setTokenData(tokenData);
 

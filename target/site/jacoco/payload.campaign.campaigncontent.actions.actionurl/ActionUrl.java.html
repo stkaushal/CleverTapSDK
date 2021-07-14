@@ -13,18 +13,18 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	
 	/** The android action url. */
 	@JsonProperty(value=&quot;android&quot;)
-	private AndroidActionUrl androidActionUrl;
+	private MobileActionUrl androidActionUrl;
 	
 	/** The ios action url. */
 	@JsonProperty(value=&quot;ios&quot;)
-	private IosActionUrl iosActionUrl;
+	private MobileActionUrl iosActionUrl;
 
 	/**
 	 * Gets the android action url.
 	 *
 	 * @return the android action url
 	 */
-	public AndroidActionUrl getAndroidActionUrl() {
+	public MobileActionUrl getAndroidActionUrl() {
 <span class="fc" id="L28">		return androidActionUrl;</span>
 	}
 
@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	 *
 	 * @param androidActionUrl the new android action url
 	 */
-	public void setAndroidActionUrl(AndroidActionUrl androidActionUrl) {
+	public void setAndroidActionUrl(MobileActionUrl androidActionUrl) {
 <span class="fc" id="L37">		this.androidActionUrl = androidActionUrl;</span>
 <span class="fc" id="L38">	}</span>
 
@@ -42,17 +42,17 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 	 *
 	 * @return the ios action url
 	 */
-	public IosActionUrl getIosActionUrl() {
+	public MobileActionUrl getIosActionUrl() {
 <span class="fc" id="L46">		return iosActionUrl;</span>
 	}
 
 	/**
 	 * Sets the ios action url.
 	 *
-	 * @param iosActionUrl the new ios action url
+	 * @param mobileActionUrl the new ios action url
 	 */
-	public void setIosActionUrl(IosActionUrl iosActionUrl) {
-<span class="fc" id="L55">		this.iosActionUrl = iosActionUrl;</span>
+	public void setIosActionUrl(MobileActionUrl mobileActionUrl) {
+<span class="fc" id="L55">		this.iosActionUrl = mobileActionUrl;</span>
 <span class="fc" id="L56">	} </span>
 	
 	

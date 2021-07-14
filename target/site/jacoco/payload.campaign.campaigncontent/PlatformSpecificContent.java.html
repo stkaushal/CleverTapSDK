@@ -4,64 +4,61 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import payload.campaign.campaigncontent.platformtype.PlatformTypeAndroid;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeChrome;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeFirefox;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeIos;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeSafari;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeMobile;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeWeb;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class PlatformSpecificContent.
  */
 @JsonInclude(Include.NON_DEFAULT)
-<span class="fc" id="L18">public class PlatformSpecificContent {</span>
+<span class="fc" id="L15">public class PlatformSpecificContent {</span>
 	
 	/** The platform type chrome. */
 	@JsonProperty(value=&quot;chrome&quot;)
-	private PlatformTypeChrome platformTypeChrome; 
+	private PlatformTypeWeb platformTypeChrome; 
 	
 	/** The platform type firefox. */
 	@JsonProperty(value=&quot;firefox&quot;)
-	private PlatformTypeFirefox platformTypeFirefox; 
+	private PlatformTypeWeb platformTypeFirefox; 
 	
 	/** The platform type safari. */
 	@JsonProperty(value=&quot;safari&quot;)
-	private PlatformTypeSafari platformTypeSafari; 
+	private PlatformTypeWeb platformTypeSafari; 
 	
 	/** The platform type ios. */
 	@JsonProperty(value=&quot;ios&quot;)
-	private PlatformTypeIos platformTypeIos; 
+	private PlatformTypeMobile platformTypeIos; 
 	
 	/** The platform type android. */
 	@JsonProperty(value=&quot;android&quot;)
-	private PlatformTypeAndroid platformTypeAndroid;
+	private PlatformTypeMobile platformTypeAndroid;
 
 	/**
 	 * Gets the platform type chrome.
 	 *
 	 * @return the platform type chrome
 	 */
-	public PlatformTypeChrome getplatformTypeChrome() {
-<span class="fc" id="L46">		return platformTypeChrome;</span>
+	public PlatformTypeWeb getplatformTypeChrome() {
+<span class="fc" id="L43">		return platformTypeChrome;</span>
 	}
 
 	/**
 	 * Sets the platform type chrome.
 	 *
-	 * @param platformTypeChrome the new platform type chrome
+	 * @param platformTypeWeb the new platform type chrome
 	 */
-	public void setPlatformTypeChrome(PlatformTypeChrome platformTypeChrome) {
-<span class="fc" id="L55">		this.platformTypeChrome = platformTypeChrome;</span>
-<span class="fc" id="L56">	}</span>
+	public void setPlatformTypeChrome(PlatformTypeWeb platformTypeChrome) {
+<span class="fc" id="L52">		this.platformTypeChrome = platformTypeChrome;</span>
+<span class="fc" id="L53">	}</span>
 
 	/**
 	 * Gets the platform type firefox.
 	 *
 	 * @return the platform type firefox
 	 */
-	public PlatformTypeFirefox getPlatformTypeFirefox() {
-<span class="fc" id="L64">		return platformTypeFirefox;</span>
+	public PlatformTypeWeb getPlatformTypeFirefox() {
+<span class="fc" id="L61">		return platformTypeFirefox;</span>
 	}
 
 	/**
@@ -69,17 +66,17 @@ import payload.campaign.campaigncontent.platformtype.PlatformTypeSafari;
 	 *
 	 * @param platformTypeFirefox the new platform type firefox
 	 */
-	public void setPlatformTypeFirefox(PlatformTypeFirefox platformTypeFirefox) {
-<span class="fc" id="L73">		this.platformTypeFirefox = platformTypeFirefox;</span>
-<span class="fc" id="L74">	}</span>
+	public void setPlatformTypeFirefox(PlatformTypeWeb platformTypeFirefox) {
+<span class="fc" id="L70">		this.platformTypeFirefox = platformTypeFirefox;</span>
+<span class="fc" id="L71">	}</span>
 
 	/**
 	 * Gets the platform type safari.
 	 *
 	 * @return the platform type safari
 	 */
-	public PlatformTypeSafari getPlatformTypeSafari() {
-<span class="fc" id="L82">		return platformTypeSafari;</span>
+	public PlatformTypeWeb getPlatformTypeSafari() {
+<span class="fc" id="L79">		return platformTypeSafari;</span>
 	}
 
 	/**
@@ -87,17 +84,17 @@ import payload.campaign.campaigncontent.platformtype.PlatformTypeSafari;
 	 *
 	 * @param platformTypeSafari the new platform type safari
 	 */
-	public void setPlatformTypeSafari(PlatformTypeSafari platformTypeSafari) {
-<span class="fc" id="L91">		this.platformTypeSafari = platformTypeSafari;</span>
-<span class="fc" id="L92">	}</span>
+	public void setPlatformTypeSafari(PlatformTypeWeb platformTypeSafari) {
+<span class="fc" id="L88">		this.platformTypeSafari = platformTypeSafari;</span>
+<span class="fc" id="L89">	}</span>
 
 	/**
 	 * Gets the platform type ios.
 	 *
 	 * @return the platform type ios
 	 */
-	public PlatformTypeIos getPlatformTypeIos() {
-<span class="fc" id="L100">		return platformTypeIos;</span>
+	public PlatformTypeMobile getPlatformTypeIos() {
+<span class="fc" id="L97">		return platformTypeIos;</span>
 	}
 
 	/**
@@ -105,27 +102,27 @@ import payload.campaign.campaigncontent.platformtype.PlatformTypeSafari;
 	 *
 	 * @param platformTypeIos the new platform type ios
 	 */
-	public void setPlatformTypeIos(PlatformTypeIos platformTypeIos) {
-<span class="fc" id="L109">		this.platformTypeIos = platformTypeIos;</span>
-<span class="fc" id="L110">	}</span>
+	public void setPlatformTypeIos(PlatformTypeMobile platformTypeIos) {
+<span class="fc" id="L106">		this.platformTypeIos = platformTypeIos;</span>
+<span class="fc" id="L107">	}</span>
 
 	/**
 	 * Gets the platform type android.
 	 *
 	 * @return the platform type android
 	 */
-	public PlatformTypeAndroid getPlatformTypeAndroid() {
-<span class="fc" id="L118">		return platformTypeAndroid;</span>
+	public PlatformTypeMobile getPlatformTypeAndroid() {
+<span class="fc" id="L115">		return platformTypeAndroid;</span>
 	}
 
 	/**
 	 * Sets the platform type android.
 	 *
-	 * @param platformTypeAndroid the new platform type android
+	 * @param platformTypeMobile the new platform type android
 	 */
-	public void setPlatformTypeAndroid(PlatformTypeAndroid platformTypeAndroid) {
-<span class="fc" id="L127">		this.platformTypeAndroid = platformTypeAndroid;</span>
-<span class="fc" id="L128">	} </span>
+	public void setPlatformTypeAndroid(PlatformTypeMobile platformTypeMobile) {
+<span class="fc" id="L124">		this.platformTypeAndroid = platformTypeMobile;</span>
+<span class="fc" id="L125">	} </span>
 	
 	
 }

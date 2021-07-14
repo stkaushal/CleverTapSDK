@@ -13,18 +13,18 @@ public class ActionUrl {
 	
 	/** The android action url. */
 	@JsonProperty(value="android")
-	private AndroidActionUrl androidActionUrl;
+	private MobileActionUrl androidActionUrl;
 	
 	/** The ios action url. */
 	@JsonProperty(value="ios")
-	private IosActionUrl iosActionUrl;
+	private MobileActionUrl iosActionUrl;
 
 	/**
 	 * Gets the android action url.
 	 *
 	 * @return the android action url
 	 */
-	public AndroidActionUrl getAndroidActionUrl() {
+	public MobileActionUrl getAndroidActionUrl() {
 		return androidActionUrl;
 	}
 
@@ -33,7 +33,7 @@ public class ActionUrl {
 	 *
 	 * @param androidActionUrl the new android action url
 	 */
-	public void setAndroidActionUrl(AndroidActionUrl androidActionUrl) {
+	public void setAndroidActionUrl(MobileActionUrl androidActionUrl) {
 		this.androidActionUrl = androidActionUrl;
 	}
 
@@ -42,17 +42,17 @@ public class ActionUrl {
 	 *
 	 * @return the ios action url
 	 */
-	public IosActionUrl getIosActionUrl() {
+	public MobileActionUrl getIosActionUrl() {
 		return iosActionUrl;
 	}
 
 	/**
 	 * Sets the ios action url.
 	 *
-	 * @param iosActionUrl the new ios action url
+	 * @param mobileActionUrl the new ios action url
 	 */
-	public void setIosActionUrl(IosActionUrl iosActionUrl) {
-		this.iosActionUrl = iosActionUrl;
+	public void setIosActionUrl(MobileActionUrl mobileActionUrl) {
+		this.iosActionUrl = mobileActionUrl;
 	} 
 	
 	

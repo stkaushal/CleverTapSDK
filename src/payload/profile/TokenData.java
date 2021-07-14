@@ -13,7 +13,7 @@ public class TokenData {
 	private String type;
 	
 	/** The keys. */
-	private Keys keys;
+	private TokenKeys tokenKeys;
 	
 	/**
 	 * Gets the id.
@@ -29,17 +29,17 @@ public class TokenData {
 	 *
 	 * @return the keys
 	 */
-	public Keys getKeys() {
-		return keys;
+	public TokenKeys getKeys() {
+		return tokenKeys;
 	}
 	
 	/**
 	 * Sets the keys.
 	 *
-	 * @param keys the new keys
+	 * @param tokenKeys the new keys
 	 */
-	public void setKeys(Keys keys) {
-		this.keys = keys;
+	public void setKeys(TokenKeys tokenKeys) {
+		this.tokenKeys = tokenKeys;
 	}
 	
 	/**

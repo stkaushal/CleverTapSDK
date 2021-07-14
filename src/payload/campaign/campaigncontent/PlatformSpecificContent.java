@@ -4,11 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import payload.campaign.campaigncontent.platformtype.PlatformTypeAndroid;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeChrome;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeFirefox;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeIos;
-import payload.campaign.campaigncontent.platformtype.PlatformTypeSafari;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeMobile;
+import payload.campaign.campaigncontent.platformtype.PlatformTypeWeb;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -19,39 +16,39 @@ public class PlatformSpecificContent {
 	
 	/** The platform type chrome. */
 	@JsonProperty(value="chrome")
-	private PlatformTypeChrome platformTypeChrome; 
+	private PlatformTypeWeb platformTypeChrome; 
 	
 	/** The platform type firefox. */
 	@JsonProperty(value="firefox")
-	private PlatformTypeFirefox platformTypeFirefox; 
+	private PlatformTypeWeb platformTypeFirefox; 
 	
 	/** The platform type safari. */
 	@JsonProperty(value="safari")
-	private PlatformTypeSafari platformTypeSafari; 
+	private PlatformTypeWeb platformTypeSafari; 
 	
 	/** The platform type ios. */
 	@JsonProperty(value="ios")
-	private PlatformTypeIos platformTypeIos; 
+	private PlatformTypeMobile platformTypeIos; 
 	
 	/** The platform type android. */
 	@JsonProperty(value="android")
-	private PlatformTypeAndroid platformTypeAndroid;
+	private PlatformTypeMobile platformTypeAndroid;
 
 	/**
 	 * Gets the platform type chrome.
 	 *
 	 * @return the platform type chrome
 	 */
-	public PlatformTypeChrome getplatformTypeChrome() {
+	public PlatformTypeWeb getplatformTypeChrome() {
 		return platformTypeChrome;
 	}
 
 	/**
 	 * Sets the platform type chrome.
 	 *
-	 * @param platformTypeChrome the new platform type chrome
+	 * @param platformTypeWeb the new platform type chrome
 	 */
-	public void setPlatformTypeChrome(PlatformTypeChrome platformTypeChrome) {
+	public void setPlatformTypeChrome(PlatformTypeWeb platformTypeChrome) {
 		this.platformTypeChrome = platformTypeChrome;
 	}
 
@@ -60,7 +57,7 @@ public class PlatformSpecificContent {
 	 *
 	 * @return the platform type firefox
 	 */
-	public PlatformTypeFirefox getPlatformTypeFirefox() {
+	public PlatformTypeWeb getPlatformTypeFirefox() {
 		return platformTypeFirefox;
 	}
 
@@ -69,7 +66,7 @@ public class PlatformSpecificContent {
 	 *
 	 * @param platformTypeFirefox the new platform type firefox
 	 */
-	public void setPlatformTypeFirefox(PlatformTypeFirefox platformTypeFirefox) {
+	public void setPlatformTypeFirefox(PlatformTypeWeb platformTypeFirefox) {
 		this.platformTypeFirefox = platformTypeFirefox;
 	}
 
@@ -78,7 +75,7 @@ public class PlatformSpecificContent {
 	 *
 	 * @return the platform type safari
 	 */
-	public PlatformTypeSafari getPlatformTypeSafari() {
+	public PlatformTypeWeb getPlatformTypeSafari() {
 		return platformTypeSafari;
 	}
 
@@ -87,7 +84,7 @@ public class PlatformSpecificContent {
 	 *
 	 * @param platformTypeSafari the new platform type safari
 	 */
-	public void setPlatformTypeSafari(PlatformTypeSafari platformTypeSafari) {
+	public void setPlatformTypeSafari(PlatformTypeWeb platformTypeSafari) {
 		this.platformTypeSafari = platformTypeSafari;
 	}
 
@@ -96,7 +93,7 @@ public class PlatformSpecificContent {
 	 *
 	 * @return the platform type ios
 	 */
-	public PlatformTypeIos getPlatformTypeIos() {
+	public PlatformTypeMobile getPlatformTypeIos() {
 		return platformTypeIos;
 	}
 
@@ -105,7 +102,7 @@ public class PlatformSpecificContent {
 	 *
 	 * @param platformTypeIos the new platform type ios
 	 */
-	public void setPlatformTypeIos(PlatformTypeIos platformTypeIos) {
+	public void setPlatformTypeIos(PlatformTypeMobile platformTypeIos) {
 		this.platformTypeIos = platformTypeIos;
 	}
 
@@ -114,17 +111,17 @@ public class PlatformSpecificContent {
 	 *
 	 * @return the platform type android
 	 */
-	public PlatformTypeAndroid getPlatformTypeAndroid() {
+	public PlatformTypeMobile getPlatformTypeAndroid() {
 		return platformTypeAndroid;
 	}
 
 	/**
 	 * Sets the platform type android.
 	 *
-	 * @param platformTypeAndroid the new platform type android
+	 * @param platformTypeMobile the new platform type android
 	 */
-	public void setPlatformTypeAndroid(PlatformTypeAndroid platformTypeAndroid) {
-		this.platformTypeAndroid = platformTypeAndroid;
+	public void setPlatformTypeAndroid(PlatformTypeMobile platformTypeMobile) {
+		this.platformTypeAndroid = platformTypeMobile;
 	} 
 	
 	
