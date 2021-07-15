@@ -6,10 +6,10 @@ package helper.enums;
  */
 public enum UserIdentity {
 	
-	/** The email. */
+	/** User’s email address. */
 	EMAIL, 
- /** The identity. */
+ /** The custom user identity defined by user. */
  IDENTITY, 
- /** The object id. */
+ /** The CleverTap ID. */
  OBJECT_ID;
 }

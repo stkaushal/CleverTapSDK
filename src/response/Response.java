@@ -13,52 +13,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Response {
 	
-	/** The status. */
+	/** The status response from server for the request. */
 	private String status;
 	
-	/** The processed. */
+	/** The processed objects. */
 	private int processed;
 	
-	/** The unprocessed. */
+	/** The unprocessed objects. */
 	private List<Object> unprocessed;
 	
-	/** The error. */
+	/** The error message received from server. */
 	private String error;
 	
-	/** The code. */
+	/** The server code. */
 	private int code;  // rename
 	
-	/** The count. */
+	/** The count(real time users, profiles, events count). */
 	private int count;
 	
-	/** The req id. */
+	/** The key with a long int value that we will use to poll for the result in case partial status is received for counts api. */
 	@JsonProperty(value="req_id")
 	private long reqId;
 	
-	/** The user type. */
+	/** The boolean flag for split of users by type. */
 	@JsonProperty(value="user_type")
 	private HashMap<String, Object> userType;
 	
-	/** The total results. */
+	/** The total results in message report. */
 	@JsonProperty(value="total_results")
 	private int totalResults;
 	
-	/** The messages. */
+	/** The messages report. */
 	private List<Message> messages;
 	
-	/** The estimates. */
+	/** The estimate reach of campaign. */
 	private HashMap<String, String> estimates;
 	
-	/** The result. */
+	/** The result for campaign report. */
 	private Result result;
 	
-	/** The targets. */
+	/** The campaigns data. */
 	private List<Target> targets;
 	
-	/** The message. */
+	/** The message from server. */
 	private String message;
 	
-	/** The other info. */
+	/** Stores the data received from server which is not defined in out response class. */
 	private HashMap<String, Object> otherInfo;
 	
 	/**

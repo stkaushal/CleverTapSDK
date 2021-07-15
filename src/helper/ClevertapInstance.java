@@ -40,7 +40,7 @@ final public class ClevertapInstance {
 	 * @param password the Clevertap account password
 	 * @param region the region for API endpoints
 	 */
-	public ClevertapInstance(String id, String password, Region region)   // dont make its static
+	public ClevertapInstance(String id, String password, Region region)  
 	{
 		ClevertapInstance.id = id;
 		ClevertapInstance.password = password;

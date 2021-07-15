@@ -6,18 +6,18 @@ package helper.enums;
  */
 public enum CampaignMethod {
 	
-	/** The sms. */
+	/** The SMS campaign target mode. */
 	SMS, 
  /** The email. */
  EMAIL, 
- /** The mobilepush. */
+ /** The mobilepush campaign target mode. */
  MOBILEPUSH, 
- /** The webpush. */
+ /** The webpush campaign target mode. */
  WEBPUSH, 
- /** The webhooks. */
+ /** The webhooks campaign target mode. */
  WEBHOOKS, 
- /** The appinbox. */
+ /** The appinbox campaign target mode. */
  APPINBOX, 
- /** The whatsapp. */
+ /** The whatsapp campaign target mode. */
  WHATSAPP;
 }
